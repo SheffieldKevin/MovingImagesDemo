@@ -27,6 +27,11 @@ func createDictionaryFromJSONFile(name: String) -> [String:AnyObject]? {
 
 class MISpinner: NSControl {
 
+internal
+    var minValue:Float = 0.0
+    var maxValue:Float = 1.0
+    var spinnerValue = Float(0.5)
+    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         self.drawDictionary = createDictionaryFromJSONFile("drawarc")
@@ -43,7 +48,7 @@ class MISpinner: NSControl {
             let theContext = NSGraphicsContext.currentContext()!.CGContext
             let controlText = NSString(format: "%1.3f", self.spinnerValue)
             let variables = [
-                "controlValue" : self.spinnerValue,
+                "controlValue" : self.normalizedControlValue(),
                 "controltext" : controlText
             ]
             self.simpleRenderer.variables = variables
@@ -55,24 +60,34 @@ class MISpinner: NSControl {
         let deltaY = Float(theEvent.scrollingDeltaY)
         
         self.spinnerValue -= deltaY / 1000.0
-        if self.spinnerValue < minimumValue
+        if self.spinnerValue < minValue
         {
-            self.spinnerValue = minimumValue
+            self.spinnerValue = minValue
         }
-        else if self.spinnerValue > maximimValue
+        else if self.spinnerValue > maxValue
         {
-            self.spinnerValue = maximimValue
+            self.spinnerValue = maxValue
         }
         self.setNeedsDisplay()
     }
 
 private
     let simpleRenderer = MISimpleRenderer()
-
-    var spinnerValue = Float(0.5)
-    
-    let minimumValue:Float = 0.0
-    let maximimValue:Float = 1.0
-
     var drawDictionary:[String:AnyObject]?
+    
+    func resetControlValue() -> Void {
+        spinnerValue = 0.0
+        minValue = 0.0
+        maxValue = 1.0
+    }
+    
+    func normalizedControlValue() -> Float {
+        if minValue > maxValue ||
+           spinnerValue < minValue ||
+           spinnerValue > maxValue {
+            self.resetControlValue()
+        }
+        let spread = maxValue - minValue
+        return (spinnerValue - minValue) / spread
+    }
 }

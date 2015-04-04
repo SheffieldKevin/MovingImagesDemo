@@ -14,7 +14,7 @@ func createDictionaryFromJSONString(jsonString: String) -> [String:AnyObject]? {
             options: NSJSONReadingOptions.allZeros, error:nil) as? [String:AnyObject] {
         return theDict
     }
-    return .None
+    return Optional.None
 }
 
 class SimpleRendererWindowController: NSWindowController, NSTextViewDelegate {
@@ -23,9 +23,14 @@ class SimpleRendererWindowController: NSWindowController, NSTextViewDelegate {
     
     @IBOutlet var simpleRenderView: SimpleRendererView!
 
+    @IBOutlet weak var spinnerOne: MISpinner!
+    @IBOutlet weak var spinnerTwo: MISpinner!
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         drawElementJSON.delegate = self
+        spinnerOne.delegate = self
+        spinnerTwo.delegate = self
         drawElementJSON.automaticQuoteSubstitutionEnabled = false
     }
     
