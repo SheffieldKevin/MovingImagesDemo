@@ -25,12 +25,25 @@ func createDictionaryFromJSONFile(name: String) -> [String:AnyObject]? {
     return Optional.None
 }
 
+protocol MISpinnerDelegate {
+    func spinnerValueChanged(#sender: MISpinner) -> Void
+}
+
 class MISpinner: NSControl {
 
 internal
     var minValue:Float = 0.0
     var maxValue:Float = 1.0
-    var spinnerValue = Float(0.5)
+
+    var spinnerValue:Float = 0.5 {
+        didSet {
+            if let delegate = spinnerDelegate {
+                delegate.spinnerValueChanged(sender: self)
+            }
+        }
+    }
+
+    var spinnerDelegate:MISpinnerDelegate?
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -52,6 +65,7 @@ internal
                 "controltext" : controlText
             ]
             self.simpleRenderer.variables = variables
+            CGContextSetTextMatrix(theContext, CGAffineTransformIdentity)
             simpleRenderer.drawDictionary(drawDict, intoCGContext: theContext)
         }
     }
@@ -59,7 +73,7 @@ internal
     override func scrollWheel(theEvent: NSEvent) {
         let deltaY = Float(theEvent.scrollingDeltaY)
         
-        self.spinnerValue -= deltaY / 1000.0
+        self.spinnerValue -= (maxValue - minValue) * deltaY / 1000.0
         if self.spinnerValue < minValue
         {
             self.spinnerValue = minValue
@@ -74,7 +88,7 @@ internal
 private
     let simpleRenderer = MISimpleRenderer()
     var drawDictionary:[String:AnyObject]?
-    
+
     func resetControlValue() -> Void {
         spinnerValue = 0.0
         minValue = 0.0

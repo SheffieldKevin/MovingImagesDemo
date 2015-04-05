@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MovingImages
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        MIInitializeCocoaLumberjack()
         // Insert code here to initialize your application
     }
 

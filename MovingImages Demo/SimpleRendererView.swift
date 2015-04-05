@@ -1,10 +1,8 @@
-//
 //  SimpleRendererView.swift
 //  MovingImages Demo
 //
 //  Created by Kevin Meaney on 30/03/2015.
-//  Copyright (c) 2015 Kevin Meaney. All rights reserved.
-//
+//  Copyright (c) 2015 Kevin Meaney.
 
 import Cocoa
 import MovingImages
@@ -29,6 +27,7 @@ class SimpleRendererView: NSView {
     
     override func drawRect(dirtyRect: NSRect) {
         let theContext = NSGraphicsContext.currentContext()!.CGContext
+        CGContextSetTextMatrix(theContext, CGAffineTransformIdentity)
         drawOutlineAndInsetDrawing(theContext)
         if let drawDict = self.drawDictionary {
             simpleRenderer.drawDictionary(drawDict, intoCGContext: theContext)

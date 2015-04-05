@@ -16,10 +16,11 @@
 		6EC4C43C1ACC40DE00314829 /* MovingImages.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6EC4C4361AC9BB6700314829 /* MovingImages.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EC4C4471ACC46B200314829 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EC4C4451ACC46B200314829 /* MainMenu.xib */; };
 		6EC4C44B1ACC481F00314829 /* SimpleRenderer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EC4C4491ACC481F00314829 /* SimpleRenderer.xib */; };
-		6EC4C44D1ACC812100314829 /* MIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C44C1ACC812100314829 /* MIControl.swift */; };
+		6EC4C44D1ACC812100314829 /* MISpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C44C1ACC812100314829 /* MISpinner.swift */; };
 		6EC4C44F1ACCB77B00314829 /* drawarc.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EC4C44E1ACCB77B00314829 /* drawarc.json */; };
 		6EC4C4501AD02CFB00314829 /* SimpleRendererView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C4381AC9BD6B00314829 /* SimpleRendererView.swift */; };
 		6EC4C4511AD02D0E00314829 /* MovingImages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC4C4361AC9BB6700314829 /* MovingImages.framework */; };
+		6EC4C4521AD03B0500314829 /* MISpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C44C1ACC812100314829 /* MISpinner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +59,7 @@
 		6EC4C4381AC9BD6B00314829 /* SimpleRendererView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleRendererView.swift; sourceTree = "<group>"; };
 		6EC4C4481ACC472B00314829 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6EC4C44A1ACC481F00314829 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SimpleRenderer.xib; sourceTree = "<group>"; };
-		6EC4C44C1ACC812100314829 /* MIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIControl.swift; sourceTree = "<group>"; };
+		6EC4C44C1ACC812100314829 /* MISpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MISpinner.swift; sourceTree = "<group>"; };
 		6EC4C44E1ACCB77B00314829 /* drawarc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = drawarc.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,7 +113,7 @@
 				6EC4C4321AC9A1A900314829 /* SimpleRenderer.swift */,
 				6EC4C4491ACC481F00314829 /* SimpleRenderer.xib */,
 				6EC4C4381AC9BD6B00314829 /* SimpleRendererView.swift */,
-				6EC4C44C1ACC812100314829 /* MIControl.swift */,
+				6EC4C44C1ACC812100314829 /* MISpinner.swift */,
 			);
 			path = "MovingImages Demo";
 			sourceTree = "<group>";
@@ -245,7 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EC4C4341AC9A1A900314829 /* SimpleRenderer.swift in Sources */,
-				6EC4C44D1ACC812100314829 /* MIControl.swift in Sources */,
+				6EC4C44D1ACC812100314829 /* MISpinner.swift in Sources */,
 				6EC4C4391AC9BD6B00314829 /* SimpleRendererView.swift in Sources */,
 				6EC4C4141AC9983000314829 /* AppDelegate.swift in Sources */,
 			);
@@ -256,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EC4C4251AC9983000314829 /* MovingImages_DemoTests.swift in Sources */,
+				6EC4C4521AD03B0500314829 /* MISpinner.swift in Sources */,
 				6EC4C4501AD02CFB00314829 /* SimpleRendererView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,8 +410,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
-					"$(PROJECT_DIR)/MovingImages",
-					Demo,
+					"\"$(PROJECT_DIR)/MovingImages Demo\"",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -430,8 +431,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
-					"$(PROJECT_DIR)/MovingImages",
-					Demo,
+					"\"$(PROJECT_DIR)/MovingImages Demo\"",
 				);
 				INFOPLIST_FILE = "MovingImages DemoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
