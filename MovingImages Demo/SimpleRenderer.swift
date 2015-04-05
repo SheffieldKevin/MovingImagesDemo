@@ -92,13 +92,6 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     @IBOutlet weak var spinnerOne: MISpinner!
     @IBOutlet weak var spinnerTwo: MISpinner!
 
-    /*
-    override func close() {
-        super.close()
-        drawElementJSON = nil
-    }
-*/
-    
     override func windowDidLoad() {
         super.windowDidLoad()
         drawElementJSON.delegate = self

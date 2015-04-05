@@ -25,7 +25,7 @@ func createDictionaryFromJSONFile(name: String) -> [String:AnyObject]? {
     return Optional.None
 }
 
-protocol MISpinnerDelegate {
+protocol MISpinnerDelegate: class {
     func spinnerValueChanged(#sender: MISpinner) -> Void
 }
 
@@ -43,7 +43,7 @@ internal
         }
     }
 
-    var spinnerDelegate:MISpinnerDelegate?
+    weak var spinnerDelegate:MISpinnerDelegate?
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
