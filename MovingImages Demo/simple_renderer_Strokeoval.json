@@ -1,0 +1,37 @@
+{
+    "variabledefinitions" :
+    [
+        {
+            "minvalue" : 1.0,
+            "defaultvalue" : 4.0,
+            "maxvalue" : 30.0,
+            "variablekey" : "linewidth"
+        }
+    ],
+    "drawinstructions" :
+    {
+        "elementtype" : "strokeoval",
+        "rect" :
+        {
+            "size" :
+            {
+                "width" : 300,
+                "height" : 200
+            },
+            "origin" :
+            {
+                "x" : 100,
+                "y" : 100
+            }
+        },
+        "strokecolor" :
+        {
+            "red" : 0.6,
+            "green" : 0.1,
+            "blue" : 0.2,
+            "alpha" : 1.0,
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB"
+        },
+        "linewidth" : "$linewidth"
+    }
+}

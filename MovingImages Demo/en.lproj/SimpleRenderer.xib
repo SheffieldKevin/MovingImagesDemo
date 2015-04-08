@@ -10,8 +10,8 @@
                 <outlet property="control1Maximum" destination="1Wo-Xq-atp" id="Iq7-Gf-tX5"/>
                 <outlet property="control1Minimum" destination="8KZ-UD-7ex" id="V8V-le-jvf"/>
                 <outlet property="control2Key" destination="gqg-HO-Wzv" id="xPD-1y-eTu"/>
-                <outlet property="control2Maximum" destination="wRD-Qu-zdY" id="aq6-1i-1qi"/>
-                <outlet property="control2Minimum" destination="2t4-h1-rJv" id="vts-5z-0dj"/>
+                <outlet property="control2Maximum" destination="wRD-Qu-zdY" id="frI-aK-nlj"/>
+                <outlet property="control2Minimum" destination="2t4-h1-rJv" id="wxq-Gt-RJq"/>
                 <outlet property="drawElementJSON" destination="k2u-qq-YDH" id="Nai-oz-hyo"/>
                 <outlet property="exampleList" destination="flh-mG-rbv" id="F8R-Hm-lN3"/>
                 <outlet property="simpleRenderView" destination="cZu-b1-qq6" id="zyq-Zp-oev"/>
@@ -23,7 +23,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="24" y="179" width="1200" height="660"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>

@@ -1,0 +1,55 @@
+{
+    "variabledefinitions" :
+    [
+        {
+            "minvalue" : 0.0,
+            "defaultvalue" : 0.0,
+            "maxvalue" : 400.0,
+            "variablekey" : "leftedge"
+        },
+        {
+            "minvalue" : 0.0,
+            "defaultvalue" : 0.0,
+            "maxvalue" : 300,
+            "variablekey" : "topedge"
+        }
+    ],
+    "drawinstructions" :
+    {
+        "elementtype" : "drawimage",
+        "imageidentifier" : "Sculpture",
+        "destinationrectangle" :
+        {
+            "size" :
+            {
+                "width" : "600 - $leftedge",
+                "height" : "450 - $topedge"
+            },
+            "origin" :
+            {
+                "x" : "$leftedge - 300",
+                "y" : -225
+            }
+        },
+        "sourcerectangle" :
+        {
+            "size" :
+            {
+                "width" : "600 - $leftedge",
+                "height" : "450 - $topedge"
+            },
+            "origin" :
+            {
+                "x" : "$leftedge",
+                "y" : "$topedge"
+            }
+        },
+        "contexttransformation" :
+        [
+            {
+                "transformationtype" : "translate",
+                "translation" : { "x" : "$width / 2", "y" : "$height / 2" },
+            }
+        ]
+    }
+}

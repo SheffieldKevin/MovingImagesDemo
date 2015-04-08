@@ -162,7 +162,8 @@ extern NSString *const MIJSONValueRadialGradientFill;
 
 /**
  @brief The element type draw image. "drawimage"
- @discussion Made of: { sourceobject, destinationrectangle, [imageindex],
+ @discussion Made of: { sourceobject | imageidentifier,
+ destinationrectangle, [imageindex],
  [sourcerectangle], [blendmode], [transformation], [affinetransform] 
  [interpolationquality] }.
  The draw image element type action draws onto the context. The source of the

@@ -623,22 +623,6 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Moving Images" id="1mg-Wr-vfA">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Moving Images" id="WmL-ID-5JV">
-                        <items>
-                            <menuItem title="Simple Renderer" id="tnG-e3-twX">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="displaySimpleRenderer:" target="Voe-Tx-rLC" id="J4O-is-gBv"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Renderer" id="sSD-kF-8Nf">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
                 <menuItem title="Window" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">

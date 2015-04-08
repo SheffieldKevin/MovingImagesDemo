@@ -1,6 +1,5 @@
 //  MIControl.swift
 //  MovingImages Demo
-//
 //  Copyright (c) 2015 Kevin Meaney, MIT License.
 
 import Cocoa

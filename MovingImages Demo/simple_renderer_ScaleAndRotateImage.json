@@ -1,0 +1,50 @@
+{
+    "variabledefinitions" :
+    [
+        {
+            "minvalue" : 0.2,
+            "defaultvalue" : 1.0,
+            "maxvalue" : 2.0,
+            "variablekey" : "scale"
+        },
+        {
+            "minvalue" : -3.14159,
+            "defaultvalue" : 0.0,
+            "maxvalue" : 3.14159,
+            "variablekey" : "rotate"
+        }
+    ],
+    "drawinstructions" :
+    {
+        "elementtype" : "drawimage",
+        "imageidentifier" : "Sculpture",
+        "destinationrectangle" :
+        {
+            "size" :
+            {
+                "width" : 600,
+                "height" : 450
+            },
+            "origin" :
+            {
+                "x" : -300,
+                "y" : -225
+            }
+        },
+        "contexttransformation" :
+        [
+            {
+                "transformationtype" : "translate",
+                "translation" : { "x" : "$width / 2", "y" : "$height / 2" },
+            },
+            {
+                "transformationtype" : "scale",
+                "scale" : { "x" : "$scale", "y" : "$scale" }
+            },
+            {
+                 "transformationtype" : "rotate",
+                 "rotation" : "$rotate",
+            }
+        ]
+    }
+}

@@ -14,14 +14,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var simpleRendererWindowContoller : SimpleRendererWindowController!
     
-    @IBAction func displaySimpleRenderer(sender: AnyObject) -> Void {
-        simpleRendererWindowContoller = SimpleRendererWindowController(
-                                            windowNibName: "SimpleRenderer")
-        simpleRendererWindowContoller.showWindow(sender)
-    }
-
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         MIInitializeCocoaLumberjack()
+        simpleRendererWindowContoller = SimpleRendererWindowController(
+            windowNibName: "SimpleRenderer")
+        simpleRendererWindowContoller.showWindow(self)
         // Insert code here to initialize your application
     }
 

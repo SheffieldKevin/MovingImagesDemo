@@ -1,8 +1,6 @@
 //  SimpleRendererView.swift
 //  MovingImages Demo
-//
-//  Created by Kevin Meaney on 30/03/2015.
-//  Copyright (c) 2015 Kevin Meaney.
+//  Copyright (c) 2015 Kevin Meaney. 30/03/2015
 
 import Cocoa
 import MovingImages
@@ -32,6 +30,10 @@ class SimpleRendererView: NSView {
         if let drawDict = self.drawDictionary {
             simpleRenderer.drawDictionary(drawDict, intoCGContext: theContext)
         }
+    }
+
+    func assignImage(image: CGImage, identifier: String) -> Void {
+        simpleRenderer.assignImage(image, withIdentifier: identifier)
     }
 
 private

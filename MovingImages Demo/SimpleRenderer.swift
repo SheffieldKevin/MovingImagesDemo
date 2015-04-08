@@ -5,27 +5,6 @@
 import Cocoa
 import MovingImages
 
-/*
-func createDictionaryFromJSONFile(name: String) -> [String:AnyObject]? {
-    let bundle = NSBundle.mainBundle()
-    if let url = bundle.URLForResource(name, withExtension: "json"),
-        let inStream = NSInputStream(URL: url) {
-            inStream.open()
-            if let container:AnyObject? = NSJSONSerialization.JSONObjectWithStream(
-                inStream, options:NSJSONReadingOptions.allZeros, error:nil),
-                let theContainer = container as? [String : AnyObject]
-            {
-                return theContainer
-            }
-            else
-            {
-                return Optional.None
-            }
-    }
-    return Optional.None
-}
-*/
-
 func listOfExamples(#prefix: String) -> [String] {
     // Find list of JSON file in the first instance in the application
     // bundle. Might change this to application support as well
@@ -110,6 +89,18 @@ func makePrettyJSONFromDictionary(dictionary: [String:AnyObject]) -> String? {
     return Optional.None
 }
 
+func createCGImage(name: String, #fileExtension: String) -> CGImage? {
+    let bundle = NSBundle.mainBundle()
+    if let url = bundle.URLForResource(name, withExtension: fileExtension) {
+        if NSFileManager.defaultManager().fileExistsAtPath(url.path!) {
+            if let imageSource = CGImageSourceCreateWithURL(url as CFURLRef, nil) {
+                return CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
+            }
+        }
+    }
+    return Optional.None
+}
+
 class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                                      MISpinnerDelegate {
 
@@ -123,7 +114,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     @IBAction func controlkey2Changed(sender: AnyObject) {
         variableKeyTwo = sender.stringValue
     }
-
+    
     var variableKeyOne:String = InitialKeyOne
     var variableKeyTwo:String = InitialKeyTwo
 
@@ -177,8 +168,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     @IBOutlet weak var control2Key: NSTextField!
     @IBOutlet weak var control2Minimum: NSTextField!
     @IBOutlet weak var control2Maximum: NSTextField!
-    
-    
+
     @IBAction func exampleSelected(sender: AnyObject) {
         let popup = sender as! NSPopUpButton
         let selectedTitle = popup.titleOfSelectedItem!
@@ -261,7 +251,12 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         spinnerTwo.spinnerDelegate = self
         drawElementJSON.automaticQuoteSubstitutionEnabled = false
         simpleRenderView.variables = self.variables
+        if let theImage = createCGImage("Sculpture", fileExtension: "jpg") {
+            simpleRenderView.assignImage(theImage, identifier: "Sculpture")
+        }
+        
         exampleList.addItemsWithTitles(listOfExamples(prefix: "simple_renderer_"))
+        self.exampleSelected(exampleList)
     }
     
     func textDidChange(notification: NSNotification) {
@@ -283,7 +278,9 @@ private
         get {
             return [
                 variableKeyOne : spinnerOne.spinnerValue,
-                variableKeyTwo : spinnerTwo.spinnerValue
+                variableKeyTwo : spinnerTwo.spinnerValue,
+                MIJSONKeyWidth : simpleRenderView.frame.width - 8,
+                MIJSONKeyHeight : simpleRenderView.frame.height - 8
             ]
         }
     }

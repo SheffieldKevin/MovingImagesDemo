@@ -1,0 +1,42 @@
+{
+    "variabledefinitions" :
+    [
+        {
+            "minvalue" : 0.0,
+            "defaultvalue" : 0.5,
+            "maxvalue" : 1.0,
+            "variablekey" : "fraction"
+        },
+        {
+            "minvalue" : 0.0,
+            "defaultvalue" : 0.5,
+            "maxvalue" : 1.0,
+            "variablekey" : "colorslider"
+        }
+    ],
+    "drawinstructions" :
+    {
+        "elementtype" : "fillrectangle",
+        "rect" :
+        {
+            "size" :
+            {
+                "width" : "$width * $fraction",
+                "height" : "$height * 0.5"
+            },
+            "origin" :
+            {
+                "x" : "$width * (1.0 - $fraction) * 0.5",
+                "y" : "$height * 0.25"
+            }
+        },
+        "fillcolor" :
+        {
+            "red" : "$colorslider",
+            "green" : "1 - 4 * ($colorslider - 0.5) ** 2",
+            "blue" : "1 - $colorslider",
+            "alpha" : 1.0,
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB"
+        }
+    }
+}

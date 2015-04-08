@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E3FF0AF1AD1D68700AD45AD /* simple_renderer_bluecamera.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0AE1AD1D68700AD45AD /* simple_renderer_bluecamera.json */; };
+		6E3FF0AF1AD1D68700AD45AD /* simple_renderer_Bluecamera.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */; };
+		6E3FF0B11AD53EE500AD45AD /* simple_renderer_Fillrect.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */; };
+		6E3FF0B31AD544E700AD45AD /* simple_renderer_Strokeoval.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B21AD544E700AD45AD /* simple_renderer_Strokeoval.json */; };
+		6E3FF0B51AD5646D00AD45AD /* Sculpture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B41AD5646D00AD45AD /* Sculpture.jpg */; };
+		6E3FF0B71AD56C0700AD45AD /* simple_renderer_ScaleAndRotateImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B61AD56C0700AD45AD /* simple_renderer_ScaleAndRotateImage.json */; };
+		6E3FF0B91AD5791A00AD45AD /* simple_renderer_CropImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B81AD5791A00AD45AD /* simple_renderer_CropImage.json */; };
 		6EC4C4141AC9983000314829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C4131AC9983000314829 /* AppDelegate.swift */; };
 		6EC4C4161AC9983000314829 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EC4C4151AC9983000314829 /* Images.xcassets */; };
 		6EC4C4251AC9983000314829 /* MovingImages_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C4241AC9983000314829 /* MovingImages_DemoTests.swift */; };
@@ -48,7 +53,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6E3FF0AE1AD1D68700AD45AD /* simple_renderer_bluecamera.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_bluecamera.json; sourceTree = "<group>"; };
+		6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_Bluecamera.json; sourceTree = "<group>"; };
+		6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_Fillrect.json; sourceTree = "<group>"; };
+		6E3FF0B21AD544E700AD45AD /* simple_renderer_Strokeoval.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_Strokeoval.json; sourceTree = "<group>"; };
+		6E3FF0B41AD5646D00AD45AD /* Sculpture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sculpture.jpg; sourceTree = "<group>"; };
+		6E3FF0B61AD56C0700AD45AD /* simple_renderer_ScaleAndRotateImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_ScaleAndRotateImage.json; sourceTree = "<group>"; };
+		6E3FF0B81AD5791A00AD45AD /* simple_renderer_CropImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_CropImage.json; sourceTree = "<group>"; };
 		6EC4C40E1AC9983000314829 /* MovingImages Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovingImages Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EC4C4121AC9983000314829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EC4C4131AC9983000314829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,7 +133,12 @@
 			isa = PBXGroup;
 			children = (
 				6EC4C44E1ACCB77B00314829 /* drawarc.json */,
-				6E3FF0AE1AD1D68700AD45AD /* simple_renderer_bluecamera.json */,
+				6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */,
+				6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */,
+				6E3FF0B21AD544E700AD45AD /* simple_renderer_Strokeoval.json */,
+				6E3FF0B61AD56C0700AD45AD /* simple_renderer_ScaleAndRotateImage.json */,
+				6E3FF0B81AD5791A00AD45AD /* simple_renderer_CropImage.json */,
+				6E3FF0B41AD5646D00AD45AD /* Sculpture.jpg */,
 				6EC4C4121AC9983000314829 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -228,10 +243,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EC4C44F1ACCB77B00314829 /* drawarc.json in Resources */,
+				6E3FF0B11AD53EE500AD45AD /* simple_renderer_Fillrect.json in Resources */,
 				6EC4C4161AC9983000314829 /* Images.xcassets in Resources */,
+				6E3FF0B51AD5646D00AD45AD /* Sculpture.jpg in Resources */,
+				6E3FF0B91AD5791A00AD45AD /* simple_renderer_CropImage.json in Resources */,
 				6EC4C4471ACC46B200314829 /* MainMenu.xib in Resources */,
-				6E3FF0AF1AD1D68700AD45AD /* simple_renderer_bluecamera.json in Resources */,
+				6E3FF0B71AD56C0700AD45AD /* simple_renderer_ScaleAndRotateImage.json in Resources */,
+				6E3FF0AF1AD1D68700AD45AD /* simple_renderer_Bluecamera.json in Resources */,
 				6EC4C44B1ACC481F00314829 /* SimpleRenderer.xib in Resources */,
+				6E3FF0B31AD544E700AD45AD /* simple_renderer_Strokeoval.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
