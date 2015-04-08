@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E3FF0AF1AD1D68700AD45AD /* simple_renderer_bluecamera.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0AE1AD1D68700AD45AD /* simple_renderer_bluecamera.json */; };
 		6EC4C4141AC9983000314829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C4131AC9983000314829 /* AppDelegate.swift */; };
 		6EC4C4161AC9983000314829 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EC4C4151AC9983000314829 /* Images.xcassets */; };
 		6EC4C4251AC9983000314829 /* MovingImages_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C4241AC9983000314829 /* MovingImages_DemoTests.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6E3FF0AE1AD1D68700AD45AD /* simple_renderer_bluecamera.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_bluecamera.json; sourceTree = "<group>"; };
 		6EC4C40E1AC9983000314829 /* MovingImages Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovingImages Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EC4C4121AC9983000314829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EC4C4131AC9983000314829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,7 +109,6 @@
 				6EC4C4451ACC46B200314829 /* MainMenu.xib */,
 				6EC4C4131AC9983000314829 /* AppDelegate.swift */,
 				6EC4C4151AC9983000314829 /* Images.xcassets */,
-				6EC4C44E1ACCB77B00314829 /* drawarc.json */,
 				6EC4C4361AC9BB6700314829 /* MovingImages.framework */,
 				6EC4C4111AC9983000314829 /* Supporting Files */,
 				6EC4C4321AC9A1A900314829 /* SimpleRenderer.swift */,
@@ -121,6 +122,8 @@
 		6EC4C4111AC9983000314829 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6EC4C44E1ACCB77B00314829 /* drawarc.json */,
+				6E3FF0AE1AD1D68700AD45AD /* simple_renderer_bluecamera.json */,
 				6EC4C4121AC9983000314829 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -227,6 +230,7 @@
 				6EC4C44F1ACCB77B00314829 /* drawarc.json in Resources */,
 				6EC4C4161AC9983000314829 /* Images.xcassets in Resources */,
 				6EC4C4471ACC46B200314829 /* MainMenu.xib in Resources */,
+				6E3FF0AF1AD1D68700AD45AD /* simple_renderer_bluecamera.json in Resources */,
 				6EC4C44B1ACC481F00314829 /* SimpleRenderer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

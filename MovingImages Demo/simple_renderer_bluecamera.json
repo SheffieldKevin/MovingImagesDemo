@@ -1,0 +1,269 @@
+{
+  "variabledefinitions" :
+  [
+    {
+      "minvalue" : 0.2,
+      "defaultvalue" : 1.0,
+      "maxvalue" : 2.0,
+      "variablekey" : "controlkey1"
+    },
+    {
+      "minvalue" : 20.0,
+      "defaultvalue" : 50.0,
+      "maxvalue" : 200.0,
+      "variablekey" : "controlkey2"
+    }
+  ],
+  "drawinstructions" : 
+  {
+    "elementtype" : "arrayofelements",
+    "strokecolor" :
+    {
+      "red" : 0.0,
+      "alpha" : 1,
+      "colorcolorprofilename" : "kCGColorSpaceGenericRGB",
+      "blue" : 0.6,
+      "green" : 0.1
+    },
+    "linewidth" : 6.0,
+    "fillcolor" :
+    {
+      "red" : 0.5,
+      "alpha" : 1,
+      "colorcolorprofilename" : "kCGColorSpaceGenericRGB",
+      "blue" : 1.0,
+      "green" : 0.6
+    },
+    "contexttransformation" :
+    [
+      {
+        "transformationtype" : "scale",
+        "scale" :
+        {
+          "x" : "$controlkey1",
+          "y" : "$controlkey1"
+        }
+      },
+      {
+        "transformationtype" : "translate",
+        "translation" : {
+          "x" : "$controlkey2",
+          "y" : 130.0
+        }
+      }
+    ],
+    "arrayofelements" :
+    [
+      {
+        "elementtype" : "strokeroundedrectangle",
+        "radius" : 20.0,
+        "rect" :
+        {
+          "origin" :
+          {
+            "x" : 0.0,
+            "y" : 0.0
+          },
+          "size" :
+          {
+            "width" : 400.0,
+            "height" : 250.0
+          }
+        },
+        "shadow" :
+        {
+          "blur" : 15.0,
+          "offset" :
+          {
+            "width" : 7.0,
+            "height" : -10.0
+          },
+          "fillcolor" :
+          {
+            "red" : 0.0,
+            "blue" : 0.5,
+            "green" : 0.05,
+            "alpha" : 1.0,
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB"
+          }
+        }
+      },
+      {
+        "elementtype" : "lineargradientfill",
+        "line" :
+        {
+          "startpoint" :
+          {
+            "x" : 200.0,
+            "y" : 0.0
+          },
+          "endpoint" :
+          {
+            "x" : 200.0,
+            "y" : 250.0
+          }
+        },
+        "startpoint" :
+        {
+          "x" : 0.0,
+          "y" : 0.0
+        },
+        "arrayofpathelements" :
+        [
+          {
+            "elementtype" : "pathroundedrectangle",
+            "rect" :
+            {
+              "size" :
+              {
+                "width" : 400.0,
+                "height" : 250.0
+              },
+              "origin" :
+              {
+                "x" : 0.0,
+                "y" : 0.0
+              }
+            },
+            "radius" : 20.0
+          }
+        ],
+        "arrayoflocations" :
+        [
+          0.0, 0.25, 0.75, 1.0
+        ],
+        "arrayofcolors" :
+        [
+          {
+            "red" : 0.05,
+            "blue" : 0.5,
+            "green" : 0.1,
+            "alpha" : 1.0,
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB"
+          },
+          {
+            "red" : 0.1,
+            "blue" : 0.8,
+            "green" : 0.2,
+            "alpha" : 1.0,
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB"
+          },
+          {
+            "red" : 0.15,
+            "blue" : 0.85,
+            "green" : 0.25,
+            "alpha" : 1.0,
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB"
+          },
+          {
+            "red" : 0.25,
+            "blue" : 1.0,
+            "green" : 0.45,
+            "alpha" : 1.0,
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB"
+          }
+        ]
+      },
+      {
+        "elementtype" : "strokeroundedrectangle",
+        "radius" : 20.0,
+        "rect" :
+        {
+          "origin" :
+          {
+            "x" : 0.0,
+            "y" : 0.0
+          },
+          "size" :
+          {
+            "width" : 400.0,
+            "height" : 250.0
+          }
+        }
+      },
+      {
+        "elementtype" : "filloval",
+        "rect" :
+        {
+          "origin" :
+          {
+            "x" : 205.0,
+            "y" : 64.0
+          },
+          "size" : {
+            "width" : 120.0,
+            "height" : 120.0
+          }
+        },
+        "fillcolor" :
+        {
+          "red" : 0.05,
+          "alpha" : 1,
+          "colorcolorprofilename" : "kCGColorSpaceGenericRGB",
+          "blue" : 0.65,
+          "green" : 0.15
+        }
+      },
+      {
+        "elementtype" : "strokeoval",
+        "linewidth" : 30.0,
+        "rect" :
+        {
+          "origin" : {
+            "x" : 205.0,
+            "y" : 64.0
+          },
+          "size" : {
+            "width" : 120.0,
+            "height" : 120.0
+          }
+        },
+        "shadow" :
+        {
+          "blur" : 25.0,
+          "offset" :
+          {
+            "width" : 15.0,
+            "height" : -20.0
+          },
+          "fillcolor" :
+          {
+            "red" : 0.0,
+            "blue" : 0.5,
+            "green" : 0.05,
+            "alpha" : 1.0,
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB"
+          }
+        }
+      },
+      {
+        "elementtype" : "drawline",
+        "line" :
+        {
+          "startpoint" : {
+            "x" : 30.0,
+            "y" : 256.0
+          },
+          "endpoint" : {
+            "x" : 70.0,
+            "y" : 256.0
+          }
+        }      
+      },
+      {
+        "elementtype" : "drawline",
+        "linewidth" : 10.0,
+        "line" : {
+          "startpoint" : {
+            "x" : 300.0,
+            "y" : 258.0
+          },
+          "endpoint" : {
+            "x" : 380.0,
+            "y" : 258.0
+          }
+        }      
+      }
+    ]
+  }
+}

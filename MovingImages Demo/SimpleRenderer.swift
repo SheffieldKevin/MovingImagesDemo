@@ -1,19 +1,112 @@
-//
 //  SimpleRenderer.swift
 //  MovingImages Demo
-//
-//  Created by Kevin Meaney on 30/03/2015.
-//  Copyright (c) 2015 Kevin Meaney. All rights reserved.
-//
+//  Copyright (c) 2015 Kevin Meaney. 30/03/2015.
 
 import Cocoa
+import MovingImages
+
+/*
+func createDictionaryFromJSONFile(name: String) -> [String:AnyObject]? {
+    let bundle = NSBundle.mainBundle()
+    if let url = bundle.URLForResource(name, withExtension: "json"),
+        let inStream = NSInputStream(URL: url) {
+            inStream.open()
+            if let container:AnyObject? = NSJSONSerialization.JSONObjectWithStream(
+                inStream, options:NSJSONReadingOptions.allZeros, error:nil),
+                let theContainer = container as? [String : AnyObject]
+            {
+                return theContainer
+            }
+            else
+            {
+                return Optional.None
+            }
+    }
+    return Optional.None
+}
+*/
+
+func listOfExamples(#prefix: String) -> [String] {
+    // Find list of JSON file in the first instance in the application
+    // bundle. Might change this to application support as well
+    // at some point which would take precedence.
+    let bundle = NSBundle.mainBundle()
+    let allJSONPaths = bundle.pathsForResourcesOfType("json",
+        inDirectory: Optional.None)
+    let simpleRendererJSONPaths = allJSONPaths.filter() { filePath -> Bool in
+        let fileName = filePath.lastPathComponent
+        if fileName.hasPrefix(prefix) {
+            return true
+        }
+        return false
+    }
+    
+    let examples = simpleRendererJSONPaths.map() { filePath -> String in
+        let fileName = filePath.lastPathComponent
+        let subString = fileName.substringFromIndex(prefix.endIndex)
+        return subString
+    }
+    return examples
+}
+
+func exampleNameToFilePath(exampleName: String, #prefix: String) -> String {
+    let fileName = prefix + exampleName
+    let resourcesURL = NSBundle.mainBundle().resourceURL!
+    let resourceURL = resourcesURL.URLByAppendingPathComponent(fileName)
+    return resourceURL.path!
+}
+
+func readJSONFromFile(filePath: String) -> [String:AnyObject]? {
+    if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
+        if let inStream = NSInputStream(fileAtPath: filePath) {
+            inStream.open()
+            let container:AnyObject? = NSJSONSerialization.JSONObjectWithStream(
+                            inStream,
+                   options: NSJSONReadingOptions.allZeros,
+                     error: nil)
+            if let container:AnyObject = container,
+               let dictionary = container as? [String:AnyObject] {
+                return dictionary
+            }
+            else {
+                println("Failed to create a dictionary from file \(filePath)")
+            }
+        }
+        else {
+            println("Could not read from file \(filePath)")
+        }
+    }
+    else {
+        println("File does not exists: \(filePath)")
+    }
+    return Optional.None
+}
 
 func createDictionaryFromJSONString(jsonString: String) -> [String:AnyObject]? {
     if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding),
         let theDict = NSJSONSerialization.JSONObjectWithData(data,
-            options: NSJSONReadingOptions.allZeros, error:nil) as? [String:AnyObject] {
+            options: NSJSONReadingOptions.allZeros,
+              error:nil) as? [String:AnyObject] {
         return theDict
     }
+    return Optional.None
+}
+
+func makePrettyJSONFromDictionary(dictionary: [String:AnyObject]) -> String? {
+    if !NSJSONSerialization.isValidJSONObject(dictionary) {
+        println("Dictionary is not a valid JSON object")
+        return Optional.None
+    }
+    
+    let data = NSJSONSerialization.dataWithJSONObject(dictionary,
+        options: NSJSONWritingOptions.PrettyPrinted,
+          error: nil)
+    
+    if let data = data,
+        let jsonString = NSString(data: data, encoding: NSUTF8StringEncoding) {
+        return String(jsonString)
+    }
+    println("Could not convert dictionary to a json string")
     return Optional.None
 }
 
@@ -31,23 +124,8 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         variableKeyTwo = sender.stringValue
     }
 
-    var variableKeyOne:String {
-        get {
-            return variableKey1
-        }
-        set(newValue) {
-            variableKey1 = newValue
-        }
-    }
-
-    var variableKeyTwo:String {
-        get {
-            return variableKey2
-        }
-        set(newValue) {
-            variableKey2 = newValue
-        }
-    }
+    var variableKeyOne:String = InitialKeyOne
+    var variableKeyTwo:String = InitialKeyTwo
 
     var minValueOne:Float {
         get {
@@ -91,7 +169,91 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
 
     @IBOutlet weak var spinnerOne: MISpinner!
     @IBOutlet weak var spinnerTwo: MISpinner!
+    @IBOutlet weak var exampleList: NSPopUpButton!
+    @IBOutlet weak var control1Key: NSTextField!
+    @IBOutlet weak var control1Minimum: NSTextField!
+    @IBOutlet weak var control1Maximum: NSTextField!
+    
+    @IBOutlet weak var control2Key: NSTextField!
+    @IBOutlet weak var control2Minimum: NSTextField!
+    @IBOutlet weak var control2Maximum: NSTextField!
+    
+    
+    @IBAction func exampleSelected(sender: AnyObject) {
+        let popup = sender as! NSPopUpButton
+        let selectedTitle = popup.titleOfSelectedItem!
+        let filePath = exampleNameToFilePath(selectedTitle,
+            prefix: "simple_renderer_")
+        if let dictionary = readJSONFromFile(filePath),
+           let instructions:AnyObject = dictionary[MIJSONPropertyDrawInstructions],
+           let drawInstructions = instructions as? [String:AnyObject],
+           let jsonString = makePrettyJSONFromDictionary(drawInstructions) {
+            drawElementJSON.string = jsonString
+            if let theDict = createDictionaryFromJSONString(jsonString) {
+                simpleRenderView.drawDictionary = theDict
+            }
+            if let variableDefinitions:AnyObject = dictionary["variabledefinitions"],
+               let variableDefs = variableDefinitions as? [AnyObject] {
+                if variableDefs.count > 0 {
+                    let variableDef:AnyObject = variableDefs[0]
+                    if let variableDef = variableDef as? [String:AnyObject] {
+                        if let variableKey:AnyObject = variableDef["variablekey"],
+                           let varKey = variableKey as? String {
+                            self.variableKeyOne = varKey
+                            self.control1Key.stringValue = varKey
+                        }
+                        
+                        if let minimumValue:AnyObject = variableDef["minvalue"],
+                           let minValue = minimumValue as? Float {
+                            self.minValueOne = minValue
+                            self.control1Minimum.floatValue = minValue
+                        }
+                        
+                        if let maximumValue:AnyObject = variableDef["maxvalue"],
+                           let maxValue = maximumValue as? Float {
+                            self.maxValueOne = maxValue
+                            self.control1Maximum.floatValue = maxValue
+                        }
 
+                        if let defaultValue:AnyObject = variableDef["defaultvalue"],
+                            let defValue = defaultValue as? Float {
+                                self.spinnerOne.spinnerValue = defValue
+                        }
+                    }
+                    spinnerOne.needsDisplay = true
+                }
+                if variableDefs.count > 1 {
+                    let variableDef:AnyObject = variableDefs[1]
+                    if let variableDef = variableDef as? [String:AnyObject] {
+                        if let variableKey:AnyObject = variableDef["variablekey"],
+                            let varKey = variableKey as? String {
+                                self.variableKeyTwo = varKey
+                                self.control2Key.stringValue = varKey
+                        }
+                        
+                        if let minimumValue:AnyObject = variableDef["minvalue"],
+                            let minValue = minimumValue as? Float {
+                                self.minValueTwo = minValue
+                                self.control2Minimum.floatValue = minValue
+                        }
+                        
+                        if let maximumValue:AnyObject = variableDef["maxvalue"],
+                            let maxValue = maximumValue as? Float {
+                                self.maxValueTwo = maxValue
+                                self.control2Maximum.floatValue = maxValue
+                        }
+                        if let defaultValue:AnyObject = variableDef["defaultvalue"],
+                            let defValue = defaultValue as? Float {
+                                self.spinnerTwo.spinnerValue = defValue
+                        }
+                    }
+                    spinnerTwo.needsDisplay = true
+                }
+                simpleRenderView.needsDisplay = true
+            }
+        }
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         drawElementJSON.delegate = self
@@ -99,6 +261,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         spinnerTwo.spinnerDelegate = self
         drawElementJSON.automaticQuoteSubstitutionEnabled = false
         simpleRenderView.variables = self.variables
+        exampleList.addItemsWithTitles(listOfExamples(prefix: "simple_renderer_"))
     }
     
     func textDidChange(notification: NSNotification) {
@@ -124,7 +287,4 @@ private
             ]
         }
     }
-    
-    var variableKey1:String = InitialKeyOne
-    var variableKey2:String = InitialKeyTwo
 }
