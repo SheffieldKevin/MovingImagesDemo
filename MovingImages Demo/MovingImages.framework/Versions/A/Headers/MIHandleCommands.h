@@ -38,7 +38,7 @@ MIContext *MICreateContext();
  @result A reply dictionary with properties specifying whether the command
  completed successfully or not, and a reply value.
 */
-NSDictionary *MIMovingImagesHandleCommand(__nullable MIContext *context,
+NSDictionary *MIMovingImagesHandleCommand(MIContext * __nullable context,
                                           NSDictionary *command);
 
 /**
@@ -56,7 +56,7 @@ NSDictionary *MIMovingImagesHandleCommand(__nullable MIContext *context,
  results. If the commands are run asychronously then the dictionary will return
  whether setting up the commands to run asynchronously or not was successful.
 */
-NSDictionary *MIMovingImagesHandleCommands(__nullable MIContext *context,
+NSDictionary *MIMovingImagesHandleCommands(MIContext * __nullable context,
         NSDictionary *commands, __nullable MICommandCompletionHandler handler);
 
 /**
@@ -72,9 +72,9 @@ NSDictionary *MIMovingImagesHandleCommands(__nullable MIContext *context,
  @param cantBeThisObject    This object is not available to get the image from
  @result a MICGImage wrapping a CGImageRef and returns nil on failure.
 */
-__nullable MICGImage *MICGImageFromObjectAndOptions(__nullable MIContext *context,
-        NSDictionary *objectDict, __nullable NSDictionary *imageOptions,
-        __nullable id cantBeThisObject);
+ MICGImage * __nullable MICGImageFromObjectAndOptions(MIContext * __nullable context,
+        NSDictionary *objectDict, NSDictionary * __nullable imageOptions,
+        id __nullable cantBeThisObject);
 
 /**
  @brief Generate a MICGImage based on the properties of the image dictionary.
@@ -84,7 +84,7 @@ __nullable MICGImage *MICGImageFromObjectAndOptions(__nullable MIContext *contex
  create the image and get the image options from the image dictionary and then
  call MICGImageFromObjectAndOptions to create the image.
 */
-__nullable MICGImage *MICGImageFromDictionary(__nullable MIContext *context,
-        NSDictionary *imageDict, __nullable id cantBeThisObject);
+MICGImage * __nullable MICGImageFromDictionary(MIContext * __nullable context,
+        NSDictionary *imageDict, id __nullable cantBeThisObject);
 
 #pragma clang assume_nonnull end

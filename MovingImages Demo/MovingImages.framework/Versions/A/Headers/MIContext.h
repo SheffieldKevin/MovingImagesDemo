@@ -1,12 +1,8 @@
-//
 //  MIContext.h
-//  MovieMaker
+//  Zukini.
 //
-//  Created by Kevin Meaney on 19/10/2014.
-//  Copyright (c) 2014 Apple Inc. All rights reserved.
-//
+//  Copyright (c) 2015 Kevin Meaney
 
-// #import <Foundation/Foundation.h>
 @import Foundation;
 @import CoreGraphics;
 

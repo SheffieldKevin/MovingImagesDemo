@@ -54,7 +54,7 @@ NSString *MIGetReplyValuesFromDictionary(NSDictionary *replyDictionary,
                                          MIReplyErrorEnum *returnVal);
 
 /// Get the numeric result value of the command
-__nullable NSNumber *MIGetNumericReplyValueFromDictionary(
+NSNumber * __nullable MIGetNumericReplyValueFromDictionary(
                                                 NSDictionary *replyDictionary);
 
 /// Get the NSNumber error code from reply dictionary.
@@ -71,11 +71,11 @@ MIReplyErrorEnum MIGetErrorCodeFromReplyDictionary(NSDictionary *replyDict);
 NSString *MIGetStringFromReplyDictionary(NSDictionary *replyDictionary);
 
 /// Get the array of string/numeric values from the reply dictionary.
-__nullable NSArray *MIGetStringArrayFromReplyDictionary(
+NSArray * __nullable MIGetStringArrayFromReplyDictionary(
                                                 NSDictionary *replyDictionary);
 
 /// Get the dictionary value from the reply dictionary
-__nullable NSDictionary *MIGetDictionaryValueFromReplyDictionary(
+NSDictionary * __nullable MIGetDictionaryValueFromReplyDictionary(
                                                 NSDictionary *replyDict);
 
 #pragma clang assume_nonnull end

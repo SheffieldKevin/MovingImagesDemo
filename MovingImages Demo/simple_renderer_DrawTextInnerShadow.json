@@ -8,9 +8,9 @@
             "variablekey" : "blur"
         },
         {
-            "minvalue" : 0.0,
+            "minvalue" : -6.0,
             "defaultvalue" : 3.0,
-            "maxvalue" : 10.0,
+            "maxvalue" : 6.0,
             "variablekey" : "offset"
         }
     ],
@@ -196,7 +196,7 @@
             "colorcolorprofilename": "kCGColorSpaceSRGB"
             },
             "shadow": {
-            "blur": 10,
+            "blur": "2 * $blur",
             "fillcolor": {
             "red": 1,
             "green": 0,
@@ -205,8 +205,8 @@
             "colorcolorprofilename": "kCGColorSpaceSRGB"
             },
             "offset": {
-            "width": 6,
-            "height": -6
+            "width": "$offset",
+            "height": "-$offset"
             }
             }
             }
