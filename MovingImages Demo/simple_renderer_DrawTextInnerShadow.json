@@ -1,0 +1,215 @@
+{
+    "variabledefinitions" :
+    [
+        {
+            "minvalue" : 0.1,
+            "defaultvalue" : 3.8,
+            "maxvalue" : 6,
+            "variablekey" : "blur"
+        },
+        {
+            "minvalue" : 0.0,
+            "defaultvalue" : 3.0,
+            "maxvalue" : 10.0,
+            "variablekey" : "offset"
+        }
+    ],
+    "drawinstructions" :
+    {
+        "elementtype": "arrayofelements",
+        "arrayofelements" : [
+            {
+                "elementtype": "drawbasicstring",
+                "postscriptfontname": "AvenirNext-Heavy",
+                "stringtext": "Zukini",
+                "point": {
+                    "x": 0,
+                    "y": 20
+                },
+                "fontsize": 120,
+                "fillcolor": {
+                    "red": 0.5,
+                    "green": 0.5,
+                    "blue": 0.5,
+                    "alpha": 1.0,
+                    "colorcolorprofilename": "kCGColorSpaceSRGB"
+                },
+                "innershadow": {
+                    "fillcolor": {
+                        "red": 0,
+                        "green": 0,
+                        "blue": 0,
+                        "alpha": 1.0,
+                        "colorcolorprofilename": "kCGColorSpaceSRGB"
+                    },
+                    "blur": "$blur",
+                    "offset": {
+                        "width": "-$offset",
+                        "height": "$offset"
+                    }
+                },
+                "textalignment": "kCTTextAlignmentCenter",
+                "arrayofpathelements": [
+                    {
+                        "elementtype": "pathrectangle",
+                        "rect": {
+                            "origin": { "x": 0, "y": 20 },
+                            "size": { "width": 600, "height": 180 }
+                        }
+                    }
+                ]
+            },
+            {
+            "elementtype": "fillpath",
+            "arrayofpathelements": [
+                 {
+                 "elementtype": "pathmoveto",
+                 "point": {
+                 "x": 50.5,
+                 "y": 250.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 117.5,
+                 "y": 300.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 183.5,
+                 "y": 250.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 50.5,
+                 "y": 250.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathclosesubpath"
+                 },
+                 {
+                 "elementtype": "pathmoveto",
+                 "point": {
+                 "x": 250.5,
+                 "y": 270.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 383.5,
+                 "y": 270.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathmoveto",
+                 "point": {
+                 "x": 250.5,
+                 "y": 350.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 317.5,
+                 "y": 300.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 383.5,
+                 "y": 350.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 250.5,
+                 "y": 350.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathclosesubpath"
+                 },
+                 {
+                 "elementtype": "pathmoveto",
+                 "point": {
+                 "x": 50.5,
+                 "y": 220.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 183.5,
+                 "y": 360.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathmoveto",
+                 "point": {
+                 "x": 50.5,
+                 "y": 380.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 117.5,
+                 "y": 430.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 183.5,
+                 "y": 380.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathlineto",
+                 "endpoint": {
+                 "x": 50.5,
+                 "y": 380.5
+                 }
+                 },
+                 {
+                 "elementtype": "pathclosesubpath"
+                 }
+            ],
+            "startpoint": {
+            "x": 50.5,
+            "y": 50.5
+            },
+            "fillcolor": {
+            "red": 0,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+            },
+            "shadow": {
+            "blur": 10,
+            "fillcolor": {
+            "red": 1,
+            "green": 0,
+            "blue": 0,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+            },
+            "offset": {
+            "width": 6,
+            "height": -6
+            }
+            }
+            }
+        ]
+    }
+}

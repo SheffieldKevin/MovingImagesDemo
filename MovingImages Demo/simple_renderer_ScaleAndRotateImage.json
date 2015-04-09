@@ -35,7 +35,7 @@
         [
             {
                 "transformationtype" : "translate",
-                "translation" : { "x" : "$width / 2", "y" : "$height / 2" },
+                "translation" : { "x" : "$width * 0.5", "y" : "$height * 0.5" },
             },
             {
                 "transformationtype" : "scale",

@@ -1,0 +1,44 @@
+{
+    "variabledefinitions" :
+    [
+        {
+            "minvalue" : 150,
+            "defaultvalue" : 160,
+            "maxvalue" : 300,
+            "variablekey" : "textwidth"
+        },
+        {
+            "minvalue" : 0.0,
+            "defaultvalue" : 200.0,
+            "maxvalue" : 350.0,
+            "variablekey" : "verticalposition"
+        }
+    ],
+    "drawinstructions" :
+    {
+        "elementtype" : "drawbasicstring",
+        "point" : { "x" : 40, "y" : "$verticalposition" },
+        "fontsize" : 24,
+        "postscriptfontname" : "Avenir-Medium",
+        "arrayofpathelements" :
+        [
+            {
+                "elementtype" : "pathrectangle",
+                "rect" :
+                {
+                    "origin" : { "x" : 40, "y" : "$verticalposition" },
+                    "size" : { "width" : "$textwidth", "height" : 200 }
+                }
+            }
+        ],
+        "stringtext" : "Hello this is Zukini by Kevin Meaney",
+        "fillcolor" :
+        {
+            "red" : 0.6,
+            "green" : 0.1,
+            "blue" : 0.2,
+            "alpha" : 1.0,
+            "colorcolorprofilename" : "devicergb"
+        }
+    }
+}

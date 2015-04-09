@@ -115,7 +115,8 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="minValueOne" id="faT-T1-5Gq"/>
+                            <action selector="control1MinChanged:" target="-2" id="I8M-qD-pKT"/>
+                            <binding destination="-2" name="value" keyPath="self.minValueOne" id="k5w-Bd-FsM"/>
                         </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Wo-Xq-atp">
@@ -127,6 +128,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <action selector="control1MaxChanged:" target="-2" id="arh-bN-Fga"/>
                             <binding destination="-2" name="value" keyPath="self.maxValueOne" id="8Sy-gh-OZx"/>
                         </connections>
                     </textField>
@@ -175,6 +177,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <action selector="control2MinChanged:" target="-2" id="7Bf-CA-AmP"/>
                             <binding destination="-2" name="value" keyPath="self.minValueTwo" id="UqH-BZ-cvM"/>
                         </connections>
                     </textField>
@@ -187,6 +190,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <action selector="control2MaxChanged:" target="-2" id="E5w-z0-y4g"/>
                             <binding destination="-2" name="value" keyPath="self.maxValueTwo" id="Hd6-lU-4wC"/>
                         </connections>
                     </textField>

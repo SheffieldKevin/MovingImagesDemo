@@ -31,8 +31,31 @@ protocol MISpinnerDelegate: class {
 class MISpinner: NSControl {
 
 internal
-    var minValue:Float = 0.0
-    var maxValue:Float = 1.0
+    var minValue:Float = 0.0 {
+        didSet {
+            if minValue > maxValue {
+                maxValue = minValue + 1.0
+            }
+            
+            if spinnerValue < minValue {
+                spinnerValue = minValue
+            }
+            self.setNeedsDisplay()
+        }
+    }
+    
+    var maxValue:Float = 1.0 {
+        didSet {
+            if maxValue < minValue {
+                minValue = maxValue - 1
+            }
+            
+            if spinnerValue > maxValue {
+                spinnerValue = maxValue
+            }
+            self.setNeedsDisplay()
+        }
+    }
 
     var spinnerValue:Float = 0.5 {
         didSet {
@@ -88,12 +111,16 @@ private
     let simpleRenderer = MISimpleRenderer()
     var drawDictionary:[String:AnyObject]?
 
+    func normalizedControlValue() -> Float {
+        return (spinnerValue - minValue) / (maxValue - minValue)
+    }
+/*
     func resetControlValue() -> Void {
         spinnerValue = 0.0
         minValue = 0.0
         maxValue = 1.0
     }
-    
+
     func normalizedControlValue() -> Float {
         if minValue > maxValue ||
            spinnerValue < minValue ||
@@ -103,4 +130,5 @@ private
         let spread = maxValue - minValue
         return (spinnerValue - minValue) / spread
     }
+*/
 }

@@ -24,9 +24,6 @@
 /// copy this object method.
 -(nonnull instancetype)copy;
 
-/// Retains the cgImage and releases previously owned cgimage.
--(void)setCGImage:(nullable CGImageRef)cgImage;
-
 /// Returns the CGImage.
 -(nullable CGImageRef)CGImage CF_RETURNS_NOT_RETAINED;
 

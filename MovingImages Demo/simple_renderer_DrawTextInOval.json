@@ -1,0 +1,50 @@
+{
+    "variabledefinitions" :
+    [
+        {
+            "minvalue" : 200,
+            "defaultvalue" : 250,
+            "maxvalue" : 500,
+            "variablekey" : "ovalsize"
+        },
+        {
+            "minvalue" : 0.0,
+            "defaultvalue" : 100.0,
+            "maxvalue" : 200,
+            "variablekey" : "verticalposition"
+        }
+    ],
+    "drawinstructions" :
+    {
+        "elementtype": "drawbasicstring",
+        "stringtext": "Draw justified text using the postscript font Baskerville at a size of 22 points in a black color in a rectangle over a number of lines demonstrating drawing text in a shape. This is some extra text to test the text overflowing the box.",
+        "postscriptfontname": "Baskerville",
+        "fontsize": 22.0,
+        "textalignment": "kCTTextAlignmentJustified",
+        "fillcolor": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+        },
+        "arrayofpathelements":
+        [
+            {
+                "elementtype": "pathoval",
+                "rect": {
+                    "origin":
+                    {
+                        "x": "300 - $ovalsize * 0.5",
+                        "y": "$verticalposition"
+                    },
+                    "size": { "width": "$ovalsize", "height": "600 - $ovalsize" }
+                }
+            }
+        ],
+        "point": {
+            "x": 150,
+            "y": "$verticalposition"
+        }
+    }
+}

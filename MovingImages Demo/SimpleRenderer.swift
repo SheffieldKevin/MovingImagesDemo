@@ -111,10 +111,30 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         variableKeyOne = sender.stringValue
     }
     
+    @IBAction func control1MinChanged(sender: AnyObject) {
+        spinnerOne.minValue = sender.floatValue
+        minValueOne = sender.floatValue
+    }
+    
+    @IBAction func control1MaxChanged(sender: AnyObject) {
+        spinnerOne.maxValue = sender.floatValue
+        maxValueOne = sender.floatValue
+    }
+
     @IBAction func controlkey2Changed(sender: AnyObject) {
         variableKeyTwo = sender.stringValue
     }
     
+    @IBAction func control2MinChanged(sender: AnyObject) {
+        spinnerTwo.minValue = sender.floatValue
+        minValueTwo = sender.floatValue
+    }
+
+    @IBAction func control2MaxChanged(sender: AnyObject) {
+        spinnerTwo.maxValue = sender.floatValue
+        maxValueTwo = sender.floatValue
+    }
+
     var variableKeyOne:String = InitialKeyOne
     var variableKeyTwo:String = InitialKeyTwo
 
@@ -206,8 +226,8 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                         }
 
                         if let defaultValue:AnyObject = variableDef["defaultvalue"],
-                            let defValue = defaultValue as? Float {
-                                self.spinnerOne.spinnerValue = defValue
+                           let defValue = defaultValue as? Float {
+                            self.spinnerOne.spinnerValue = defValue
                         }
                     }
                     spinnerOne.needsDisplay = true
@@ -216,25 +236,25 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                     let variableDef:AnyObject = variableDefs[1]
                     if let variableDef = variableDef as? [String:AnyObject] {
                         if let variableKey:AnyObject = variableDef["variablekey"],
-                            let varKey = variableKey as? String {
-                                self.variableKeyTwo = varKey
-                                self.control2Key.stringValue = varKey
+                           let varKey = variableKey as? String {
+                            self.variableKeyTwo = varKey
+                            self.control2Key.stringValue = varKey
                         }
                         
                         if let minimumValue:AnyObject = variableDef["minvalue"],
-                            let minValue = minimumValue as? Float {
-                                self.minValueTwo = minValue
-                                self.control2Minimum.floatValue = minValue
+                           let minValue = minimumValue as? Float {
+                             self.minValueTwo = minValue
+                             self.control2Minimum.floatValue = minValue
                         }
                         
                         if let maximumValue:AnyObject = variableDef["maxvalue"],
-                            let maxValue = maximumValue as? Float {
-                                self.maxValueTwo = maxValue
-                                self.control2Maximum.floatValue = maxValue
+                           let maxValue = maximumValue as? Float {
+                              self.maxValueTwo = maxValue
+                              self.control2Maximum.floatValue = maxValue
                         }
                         if let defaultValue:AnyObject = variableDef["defaultvalue"],
-                            let defValue = defaultValue as? Float {
-                                self.spinnerTwo.spinnerValue = defValue
+                           let defValue = defaultValue as? Float {
+                            self.spinnerTwo.spinnerValue = defValue
                         }
                     }
                     spinnerTwo.needsDisplay = true
