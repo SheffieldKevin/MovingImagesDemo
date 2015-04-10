@@ -1,0 +1,102 @@
+{
+    "variabledefinitions" :
+    [
+        {
+            "minvalue" : -20.0,
+            "defaultvalue" : 10.0,
+            "maxvalue" : 30.0,
+            "variablekey" : "shadowsize"
+        },
+        {
+            "minvalue" : 2.0,
+            "defaultvalue" : 10.0,
+            "maxvalue" : 20.0,
+            "variablekey" : "blur"
+        }
+    ],
+    "drawinstructions" : {
+      "elementtype" : "arrayofelements",
+      "shadow" : {
+        "offset" : {
+          "width" : "$shadowsize",
+          "height" : "-2 * $shadowsize"
+        },
+        "fillcolor" : {
+          "colorcolorprofilename" : "kCGColorSpaceGenericRGB",
+          "red" : 0,
+          "alpha" : 1,
+          "green" : 0,
+          "blue" : 0
+        },
+        "blur" : "$blur"
+      },
+      "arrayofelements" : [
+        {
+          "fillcolor" : {
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB",
+            "red" : 0.1,
+            "alpha" : 1,
+            "green" : 0.2,
+            "blue" : 0.8
+          },
+          "elementtype" : "filloval",
+          "rect" : {
+            "size" : {
+              "width" : 180,
+              "height" : 180
+            },
+            "origin" : {
+              "y" : 20,
+              "x" : 60
+            }
+          }
+        },
+        {
+          "fillcolor" : {
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB",
+            "red" : 0.8,
+            "alpha" : 1,
+            "green" : 0.3,
+            "blue" : 0.1
+          },
+          "elementtype" : "fillrectangle",
+          "rect" : {
+            "size" : {
+              "width" : 180,
+              "height" : 180
+            },
+            "origin" : {
+              "y" : 260,
+              "x" : 300
+            }
+          }
+        },
+        {
+          "fillcolor" : {
+            "colorcolorprofilename" : "kCGColorSpaceGenericRGB",
+            "red" : 0.2,
+            "alpha" : 1,
+            "green" : 0.9,
+            "blue" : 0.1
+          },
+          "rect" : {
+            "size" : {
+              "width" : 180,
+              "height" : 180
+            },
+            "origin" : {
+              "y" : 140,
+              "x" : 180
+            }
+          },
+          "elementtype" : "fillroundedrectangle",
+          "radiuses" : [
+            5,
+            10,
+            20,
+            30
+          ]
+        }
+      ]
+    }
+}

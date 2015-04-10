@@ -1,0 +1,130 @@
+{
+    "variabledefinitions" :
+    [
+        {
+            "minvalue" : 4.0,
+            "defaultvalue" : 20.0,
+            "maxvalue" : 60.0,
+            "variablekey" : "radius2"
+        },
+        {
+            "minvalue" : 2.0,
+            "defaultvalue" : 10.0,
+            "maxvalue" : 40.0,
+            "variablekey" : "radius3"
+        }
+    ],
+    "drawinstructions" : {
+      "elementtype": "arrayofelements",
+      "arrayofelements": [
+        {
+          "elementtype": "lineargradientfill",
+          "startpoint": {
+            "x": 0,
+            "y": 0
+          },
+          "line": {
+            "startpoint": {
+              "x": 20.5,
+              "y": 345.5
+            },
+            "endpoint": {
+              "x": 240.5,
+              "y": 345.5
+            }
+          },
+          "arrayoflocations": [
+            0.0,
+            1.0
+          ],
+          "arrayofcolors": [
+            {
+              "red": 0.9,
+              "green": 0.8,
+              "blue": 0.1,
+              "alpha": 1.0,
+              "colorcolorprofilename": "kCGColorSpaceSRGB"
+            },
+            {
+              "red": 0.95,
+              "green": 0.45,
+              "blue": 0.0,
+              "alpha": 1.0,
+              "colorcolorprofilename": "kCGColorSpaceSRGB"
+            }
+          ],
+          "arrayofpathelements": [
+            {
+              "elementtype": "pathroundedrectangle",
+              "rect": {
+                "origin": {
+                  "x": 20.5,
+                  "y": 260.5
+                },
+                "size": {
+                  "width": 220,
+                  "height": 170
+                }
+              },
+              "radiuses": [
+                40,
+                "$radius2",
+                "$radius3",
+                10
+              ]
+            }
+          ],
+          "shadow": {
+            "blur": 10.0,
+            "fillcolor": {
+              "red": 0.1,
+              "green": 0.05,
+              "blue": 0.7,
+              "alpha": 1.0,
+              "colorcolorprofilename": "kCGColorSpaceSRGB"
+            },
+            "offset": {
+              "width": 8,
+              "height": -16
+            }
+          }
+        },
+        {
+          "elementtype": "radialgradientfill",
+          "centerpoint": {
+            "x": 80,
+            "y": 40.0
+          },
+          "radius": 20,
+          "centerpoint2": {
+            "x": 440,
+            "y": 350.0
+          },
+          "radius2": 80,
+          "arrayoflocations": [
+            0.0,
+            1.0
+          ],
+          "arrayofcolors": [
+            {
+              "red": 0.95,
+              "green": 0.2,
+              "blue": 0.35,
+              "alpha": 1.0,
+              "colorcolorprofilename": "kCGColorSpaceSRGB"
+            },
+            {
+              "red": 0.3,
+              "green": 0.9,
+              "blue": 0.2,
+              "alpha": 0.8,
+              "colorcolorprofilename": "kCGColorSpaceSRGB"
+            }
+          ],
+          "gradientoptions": [
+            "kCGGradientDrawsAfterEndLocation"
+          ]
+        }
+      ]
+    }
+}
