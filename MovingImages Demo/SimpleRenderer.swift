@@ -102,13 +102,15 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         if let dictionary = readJSONFromFile(filePath),
            let instructions:AnyObject = dictionary[MIJSONPropertyDrawInstructions],
            let drawInstructions = instructions as? [String:AnyObject],
-           let jsonString = makePrettyJSONFromDictionary(drawInstructions) {
+           let jsonString = makePrettyJSONFromDictionary(drawInstructions)
+        {
             drawElementJSON.string = jsonString
             if let theDict = createDictionaryFromJSONString(jsonString) {
                 simpleRenderView.drawDictionary = theDict
             }
             if let variableDefinitions:AnyObject = dictionary["variabledefinitions"],
-               let variableDefs = variableDefinitions as? [AnyObject] {
+               let variableDefs = variableDefinitions as? [AnyObject]
+            {
                 if variableDefs.count > 0 {
                     let variableDef:AnyObject = variableDefs[0]
                     if let variableDef = variableDef as? [String:AnyObject] {
@@ -164,9 +166,10 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                     }
                     spinnerTwo.needsDisplay = true
                 }
-                simpleRenderView.needsDisplay = true
             }
+            simpleRenderView.needsDisplay = true
         }
+        simpleRenderView.variables = self.variables
     }
     
     override func windowDidLoad() {
