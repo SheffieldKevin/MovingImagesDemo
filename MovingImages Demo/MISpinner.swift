@@ -114,21 +114,4 @@ private
     func normalizedControlValue() -> Float {
         return (spinnerValue - minValue) / (maxValue - minValue)
     }
-/*
-    func resetControlValue() -> Void {
-        spinnerValue = 0.0
-        minValue = 0.0
-        maxValue = 1.0
-    }
-
-    func normalizedControlValue() -> Float {
-        if minValue > maxValue ||
-           spinnerValue < minValue ||
-           spinnerValue > maxValue {
-            self.resetControlValue()
-        }
-        let spread = maxValue - minValue
-        return (spinnerValue - minValue) / spread
-    }
-*/
 }
