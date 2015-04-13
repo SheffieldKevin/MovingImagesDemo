@@ -1,19 +1,4 @@
 {
-    "variabledefinitions" :
-    [
-        {
-            "minvalue" : 0.2,
-            "defaultvalue" : 1.0,
-            "maxvalue" : 2.0,
-            "variablekey" : "scale"
-        },
-        {
-            "minvalue" : -3.14159,
-            "defaultvalue" : 0.0,
-            "maxvalue" : 3.14159,
-            "variablekey" : "rotate"
-        }
-    ],
     "drawinstructions" :
     {
         "elementtype" : "drawimage",
@@ -43,7 +28,7 @@
             },
             {
                  "transformationtype" : "rotate",
-                 "rotation" : "$rotate",
+                 "rotation" : "$rotation",
             }
         ]
     }

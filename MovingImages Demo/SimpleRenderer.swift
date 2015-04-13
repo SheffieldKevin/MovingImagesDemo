@@ -40,6 +40,23 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         maxValueTwo = sender.floatValue
     }
 
+    @IBAction func handleGesture(gestureRecognizer: NSGestureRecognizer) -> Void {
+        if gestureRecognizer.state == NSGestureRecognizerState.Changed {
+            if let recognizer = gestureRecognizer as?
+                                            NSMagnificationGestureRecognizer {
+                let newMag = self.scale + 0.2 * Double(recognizer.magnification)
+                self.scale = max(0.2, min(4, newMag))
+            }
+            
+            if let recognizer = gestureRecognizer as? NSRotationGestureRecognizer {
+                let newRotation = self.rotation + 0.1 * Double(recognizer.rotation)
+                self.rotation = max(-M_PI, min(M_PI, newRotation))
+            }
+            simpleRenderView.variables = self.variables
+            simpleRenderView.needsDisplay = true
+        }
+    }
+    
     var variableKeyOne:String = InitialKeyOne
     var variableKeyTwo:String = InitialKeyTwo
 
@@ -79,6 +96,9 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         }
     }
 
+    var scale = 1.0
+    var rotation = 0.0
+
     @IBOutlet var drawElementJSON: NSTextView!
     
     @IBOutlet weak var simpleRenderView: SimpleRendererView!
@@ -99,10 +119,13 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         let selectedTitle = popup.titleOfSelectedItem!
         let filePath = exampleNameToFilePath(selectedTitle,
             prefix: "simple_renderer_")
+        self.scale = 1.0
+        self.rotation = 0.0
         if let dictionary = readJSONFromFile(filePath),
            let instructions:AnyObject = dictionary[MIJSONPropertyDrawInstructions],
            let drawInstructions = instructions as? [String:AnyObject],
-           let jsonString = makePrettyJSONFromDictionary(drawInstructions) {
+           let jsonString = makePrettyJSONFromDictionary(drawInstructions)
+        {
             drawElementJSON.string = jsonString
             if let theDict = createDictionaryFromJSONString(jsonString) {
                 simpleRenderView.drawDictionary = theDict
@@ -164,9 +187,10 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                     }
                     spinnerTwo.needsDisplay = true
                 }
-                simpleRenderView.needsDisplay = true
             }
+            simpleRenderView.needsDisplay = true
         }
+        self.simpleRenderView.variables = self.variables
     }
     
     override func windowDidLoad() {
@@ -175,7 +199,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         spinnerOne.spinnerDelegate = self
         spinnerTwo.spinnerDelegate = self
         drawElementJSON.automaticQuoteSubstitutionEnabled = false
-        simpleRenderView.variables = self.variables
+        // simpleRenderView.variables = self.variables
         if let theImage = createCGImage("Sculpture", fileExtension: "jpg") {
             simpleRenderView.assignImage(theImage, identifier: "Sculpture")
         }
@@ -205,7 +229,9 @@ private
                 variableKeyOne : spinnerOne.spinnerValue,
                 variableKeyTwo : spinnerTwo.spinnerValue,
                 MIJSONKeyWidth : simpleRenderView.frame.width - 8,
-                MIJSONKeyHeight : simpleRenderView.frame.height - 8
+                MIJSONKeyHeight : simpleRenderView.frame.height - 8,
+                MIJSONKeyScale : scale,
+                MIJSONKeyRotation : rotation
             ]
         }
     }

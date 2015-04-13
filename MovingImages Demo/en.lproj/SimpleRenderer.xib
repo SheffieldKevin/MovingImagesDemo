@@ -26,7 +26,7 @@
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="64" y="312" width="1200" height="660"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="1200" height="660"/>
             <value key="maxSize" type="size" width="1200" height="660"/>
             <view key="contentView" id="se5-gp-TjO">
@@ -63,6 +63,18 @@
                     </scrollView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cZu-b1-qq6" customClass="SimpleRendererView" customModule="MovingImages_Demo" customModuleProvider="target">
                         <rect key="frame" x="604" y="178" width="576" height="462"/>
+                        <gestureRecognizers>
+                            <magnificationGestureRecognizer delaysMagnificationEvents="YES" magnification="0.0" id="xOV-27-K5b">
+                                <connections>
+                                    <action selector="handleGesture:" target="-2" id="vLL-ML-GND"/>
+                                </connections>
+                            </magnificationGestureRecognizer>
+                            <rotationGestureRecognizer delaysRotationEvents="YES" id="yh0-1D-oUb">
+                                <connections>
+                                    <action selector="handleGesture:" target="-2" id="lpH-HX-hjk"/>
+                                </connections>
+                            </rotationGestureRecognizer>
+                        </gestureRecognizers>
                     </customView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gA0-xU-olj" customClass="MISpinner" customModule="MovingImages_Demo" customModuleProvider="target">
                         <rect key="frame" x="612" y="20" width="140" height="140"/>
