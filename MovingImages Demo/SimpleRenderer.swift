@@ -44,13 +44,18 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         if gestureRecognizer.state == NSGestureRecognizerState.Changed {
             if let recognizer = gestureRecognizer as?
                                             NSMagnificationGestureRecognizer {
-                let newMag = self.scale + 0.2 * Double(recognizer.magnification)
-                self.scale = max(0.2, min(4, newMag))
+                if abs(lastMagnification - Float(recognizer.magnification)) > 0.003 {
+                    let newMag = self.scale * (1.0 + 0.1 * Double(recognizer.magnification))
+                    self.scale = max(0.2, min(4.0, newMag))
+                    lastMagnification = Float(recognizer.magnification)
+                }
             }
             
             if let recognizer = gestureRecognizer as? NSRotationGestureRecognizer {
-                let newRotation = self.rotation + 0.1 * Double(recognizer.rotation)
-                self.rotation = max(-M_PI, min(M_PI, newRotation))
+                if (abs(Float(recognizer.rotation)) > minRotation) {
+                    let newRotation = self.rotation + 0.03 * Double(recognizer.rotation)
+                    self.rotation = max(-M_PI, min(M_PI, newRotation))
+                }
             }
             simpleRenderView.variables = self.variables
             simpleRenderView.needsDisplay = true
@@ -223,6 +228,8 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     }
     
 private
+    var lastMagnification:Float = 1.0
+    let minRotation:Float = 0.02
     var variables:[String:AnyObject] {
         get {
             return [
