@@ -5,30 +5,11 @@
 import Cocoa
 import MovingImages
 
-func createDictionaryFromJSONFile(name: String) -> [String:AnyObject]? {
-    let bundle = NSBundle.mainBundle()
-    if let url = bundle.URLForResource(name, withExtension: "json"),
-       let inStream = NSInputStream(URL: url) {
-        inStream.open()
-        if let container:AnyObject? = NSJSONSerialization.JSONObjectWithStream(
-                inStream, options:NSJSONReadingOptions.allZeros, error:nil),
-           let theContainer = container as? [String : AnyObject]
-        {
-            return theContainer
-        }
-        else
-        {
-            return Optional.None
-        }
-    }
-    return Optional.None
-}
-
 protocol MISpinnerDelegate: class {
     func spinnerValueChanged(#sender: MISpinner) -> Void
 }
 
-class MISpinner: NSControl {
+class MISpinner: NSControl, NSPopoverDelegate {
 
 internal
     var minValue:Float = 0.0 {
