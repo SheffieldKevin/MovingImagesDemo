@@ -23,9 +23,9 @@
       "linewidth": 28,
       "linecap": "kCGLineCapRound",
       "strokecolor": {
-        "red": 0.2,
-        "green": 0.2,
-        "blue": 0.2,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
         "alpha": 1.0,
         "colorcolorprofilename": "kCGColorSpaceSRGB"
       }
@@ -52,9 +52,9 @@
       "linewidth": 20,
       "linecap": "kCGLineCapRound",
       "strokecolor": {
-        "red": 1,
-        "green": 1,
-        "blue": 1,
+        "red": 0.0,
+        "green": 0.0,
+        "blue": 0.0,
         "alpha": 1.0,
         "colorcolorprofilename": "kCGColorSpaceSRGB"
       }
@@ -96,9 +96,9 @@
       "fontsize": 20.0,
       "textalignment": "kCTTextAlignmentCenter",
       "fillcolor": {
-        "red": 0,
-        "green": 0,
-        "blue": 0,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
         "alpha": 1.0,
         "colorcolorprofilename": "kCGColorSpaceSRGB"
       },

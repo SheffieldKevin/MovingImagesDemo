@@ -174,10 +174,20 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     
     override func windowDidLoad() {
         super.windowDidLoad()
+        if let theWindow = self.window {
+            theWindow.backgroundColor = NSColor(deviceWhite: 0.15, alpha: 1.0)
+        }
         drawElementJSON.delegate = self
         spinnerOne.spinnerDelegate = self
         spinnerTwo.spinnerDelegate = self
         drawElementJSON.automaticQuoteSubstitutionEnabled = false
+        drawElementJSON.font = NSFont(name: "Menlo-Regular", size: 11)
+        drawElementJSON.textColor = NSColor(deviceWhite: 0.95, alpha: 1.0)
+        drawElementJSON.backgroundColor = NSColor(deviceWhite: 0.25, alpha: 1.0)
+        drawElementJSON.selectedTextAttributes = [
+            NSBackgroundColorAttributeName : NSColor.lightGrayColor(),
+            NSForegroundColorAttributeName : NSColor.blackColor()
+        ]
         simpleRenderView.variables = self.variables
         if let theImage = createCGImage("Sculpture", fileExtension: "jpg") {
             simpleRenderView.assignImage(theImage, identifier: "Sculpture")
