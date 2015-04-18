@@ -42,7 +42,7 @@ extern const MIBaseReference kMIInvalidElementReference;
 /// Append a dictionary with keys for variable names & their associated values.
 -(void)appendVariables:(NSDictionary *)variables;
 
-/// Drop the last variables dictionary added.
+/// Drop the variables dictionary.
 -(void)dropVariablesDictionary:(NSDictionary *)dictToDrop;
 
 /// Add image with identifier to the the image collection.

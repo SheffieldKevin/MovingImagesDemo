@@ -7,15 +7,20 @@
 //
 
 import Cocoa
+import MovingImages
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    var windowContoller : ZukiniDemoWindowController!
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        MIInitializeCocoaLumberjack()
+        windowContoller = ZukiniDemoWindowController(
+            windowNibName: "ZukiniDemo")
+        windowContoller.showWindow(self)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

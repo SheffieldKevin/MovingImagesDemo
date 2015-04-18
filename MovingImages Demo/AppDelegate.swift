@@ -19,7 +19,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         simpleRendererWindowContoller = SimpleRendererWindowController(
             windowNibName: "SimpleRenderer")
         simpleRendererWindowContoller.showWindow(self)
-        // Insert code here to initialize your application
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

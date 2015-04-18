@@ -1022,7 +1022,7 @@ extern NSString *const MIJSONKeyAsyncCompletionCommands;
 
 /**
  @brief Should the commands after a failed command be executed. "stoponfailure"
- @discussion A property key whose property value is "YES" or "NO". If yes then
+ @discussion A property key whose property value is of type bool. If yes then
  if the running of a command fails then don't run any further commands and
  return. Default value is YES.
 */

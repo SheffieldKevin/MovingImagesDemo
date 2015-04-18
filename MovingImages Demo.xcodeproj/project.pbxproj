@@ -18,6 +18,7 @@
 		6EA4D1761ADE91EC00A33936 /* ZukiniUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */; };
 		6EA4D1771ADE91ED00A33936 /* ZukiniUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */; };
 		6EA4D1791ADED89800A33936 /* MovingImages.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6EC4C4361AC9BB6700314829 /* MovingImages.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6EA4D17B1ADF2B2A00A33936 /* ZukiniDemoWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4D17A1ADF2B2A00A33936 /* ZukiniDemoWindowController.swift */; };
 		6EBC3B8A1AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EBC3B891AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json */; };
 		6EBC3B8C1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EBC3B8B1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json */; };
 		6EC4C4141AC9983000314829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C4131AC9983000314829 /* AppDelegate.swift */; };
@@ -99,6 +100,7 @@
 		6E3FF0B81AD5791A00AD45AD /* simple_renderer_CropImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_CropImage.json; sourceTree = "<group>"; };
 		6E8DE3F91AD59C660029A64D /* simple_renderer_DrawText.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawText.json; sourceTree = "<group>"; };
 		6EA4D1741ADAAC9200A33936 /* simple_renderer_RobotArm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_RobotArm.json; sourceTree = "<group>"; };
+		6EA4D17A1ADF2B2A00A33936 /* ZukiniDemoWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZukiniDemoWindowController.swift; sourceTree = "<group>"; };
 		6EBC3B891AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawTextInOval.json; sourceTree = "<group>"; };
 		6EBC3B8B1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawTextInnerShadow.json; sourceTree = "<group>"; };
 		6EC4C40E1AC9983000314829 /* MovingImages Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovingImages Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,6 +252,7 @@
 				6ECE89C31AD82E6700BE8FB0 /* MainMenu.xib */,
 				6ECE89BD1AD82E6700BE8FB0 /* Supporting Files */,
 				6ECE89E21AD838B200BE8FB0 /* ZukiniDemo.xib */,
+				6EA4D17A1ADF2B2A00A33936 /* ZukiniDemoWindowController.swift */,
 			);
 			path = "Zukini Demo";
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EA4D17B1ADF2B2A00A33936 /* ZukiniDemoWindowController.swift in Sources */,
 				6ECE89DE1AD830B800BE8FB0 /* ZukiniUtilities.swift in Sources */,
 				6ECE89C01AD82E6700BE8FB0 /* AppDelegate.swift in Sources */,
 				6ECE89DA1AD8307300BE8FB0 /* MISpinner.swift in Sources */,

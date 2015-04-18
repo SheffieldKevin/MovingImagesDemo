@@ -7,7 +7,7 @@
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="Zukini Demo" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="129" y="280" width="1200" height="660"/>
@@ -19,30 +19,30 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rpR-1E-J1a">
-                        <rect key="frame" x="13" y="130" width="622" height="524"/>
+                        <rect key="frame" x="13" y="130" width="589" height="524"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Setup" identifier="1" id="LaH-i5-xpL">
                                 <view key="view" id="zre-QZ-duI">
-                                    <rect key="frame" x="10" y="33" width="602" height="478"/>
+                                    <rect key="frame" x="10" y="33" width="569" height="478"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Background" identifier="2" id="xzH-9h-5HU">
                                 <view key="view" id="ael-gp-1AO">
-                                    <rect key="frame" x="10" y="33" width="602" height="478"/>
+                                    <rect key="frame" x="10" y="33" width="569" height="478"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Render" identifier="" id="RwX-oN-Qlu">
                                 <view key="view" id="Rkr-74-D29">
-                                    <rect key="frame" x="10" y="33" width="602" height="478"/>
+                                    <rect key="frame" x="10" y="33" width="569" height="478"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Cleanup" identifier="" id="BXV-mk-WjA">
                                 <view key="view" id="X7f-WM-nGJ">
-                                    <rect key="frame" x="10" y="33" width="602" height="478"/>
+                                    <rect key="frame" x="10" y="33" width="569" height="478"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>

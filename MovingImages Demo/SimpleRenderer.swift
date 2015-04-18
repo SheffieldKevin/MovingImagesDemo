@@ -214,12 +214,12 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
 private
     var variables:[String:AnyObject] {
         get {
-            return [
-                variableKeyOne : spinnerOne.spinnerValue,
-                variableKeyTwo : spinnerTwo.spinnerValue,
-                MIJSONKeyWidth : simpleRenderView.frame.width - 8,
-                MIJSONKeyHeight : simpleRenderView.frame.height - 8
-            ]
+            var theDictionary:[String:AnyObject] = [:]
+            theDictionary[variableKeyOne] = spinnerOne.spinnerValue
+            theDictionary[variableKeyTwo] = spinnerTwo.spinnerValue
+            theDictionary[MIJSONKeyWidth] = simpleRenderView.frame.width - 8
+            theDictionary[MIJSONKeyHeight] = simpleRenderView.frame.height - 8
+            return theDictionary
         }
     }
 }

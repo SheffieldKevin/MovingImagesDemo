@@ -14,13 +14,25 @@
 void MIInitializeCocoaLumberjack();
 
 /**
- @brief Command completion handler block definition. success is async op succeed.
- @discussion For the handle...Command asynchronous methods a completion handler
- can be called. The completion handler takes a single BOOL parameter and this
- parameter reflects whether the asynchronous command completed successfully or
- not.
+ @brief Completion handler block definition for MIMovingImagesHandleCommands()
+ @discussion A block definition to be used as completion handler for the
+ MIMovingImagesHandleCommands function. This is an optional parameter for the
+ MIMovingImagesHandleCommands function. If the commands are to be run
+ asynchronously and completion handler parameter is passed to the function then
+ the completion handler block will be called when the last command is processed.
+ @param replyDict This is the reply dictionary, the same as what is returned
+ by MIMovingImagesHandleCommands if the commands are synchronously.
 */
 typedef void (^MICommandCompletionHandler)(NSDictionary *replyDict);
+
+/**
+ @brief This block is called before each command is processed.
+ @discussion The progress handler callback is an optional parameter for the 
+ MIMovingImagesHandleCommand and if passed in is called before each command
+ is processed. This callback can be used to update the variables dictionary
+ before each command is processed or to update a progress handler.
+*/
+typedef void (^MIProgressHandler)(NSInteger commandIndex);
 
 /**
  @brief Create a MIContext within which base objects can be created.
@@ -57,7 +69,9 @@ NSDictionary *MIMovingImagesHandleCommand(MIContext * __nullable context,
  whether setting up the commands to run asynchronously or not was successful.
 */
 NSDictionary *MIMovingImagesHandleCommands(MIContext * __nullable context,
-        NSDictionary *commands, __nullable MICommandCompletionHandler handler);
+                                NSDictionary *commands,
+                                __nullable MIProgressHandler progressHandler,
+                                __nullable MICommandCompletionHandler handler);
 
 /**
  @brief Generate a MICGImage using object represented by objectDict and options.
