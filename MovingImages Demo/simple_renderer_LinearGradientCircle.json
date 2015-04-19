@@ -1,0 +1,91 @@
+{
+    "variabledefinitions" :
+    [
+     {
+         "minvalue" : 0.0,
+         "defaultvalue" : 0.0,
+         "maxvalue" : 1.0,
+         "variablekey" : "blue"
+     },
+     {
+         "minvalue" : 0.5,
+         "defaultvalue" : 0.5,
+         "maxvalue" : 1.0,
+         "variablekey" : "fraction"
+     }
+    ],
+    "drawinstructions" : {
+        "elementtype" : "lineargradientfill",
+        "line" :
+        {
+            "startpoint" :
+            {
+                "x" : 30.0,
+                "y" : 30.0
+            },
+            "endpoint" :
+            {
+                "x" : "($width - 80.0) * $fraction",
+                "y" : 370.0
+            }
+        },
+        "startpoint" :
+        {
+            "x" : 40.0,
+            "y" : 0.0
+        },
+        "arrayofpathelements" :
+        [
+         {
+             "elementtype" : "pathoval",
+             "rect" :
+             {
+                "size" :
+                {
+                    "width" : "($width - 80.0) * $fraction",
+                    "height" : 340.0
+                },
+                "origin" :
+                {
+                    "x" : 40.0,
+                    "y" : 40.0
+                }
+             }
+         }
+        ],
+        "arrayoflocations" : [ 0.0, 0.25, 0.5, 0.75, 1.0 ],
+        "arrayofcolors" :
+        [
+         {
+             "colorcolorprofilename" : "kCGColorSpaceSRGB",
+             "red" : 1.0,
+             "green" : 0.0,
+             "blue" : "$blue"
+         },
+         {
+             "colorcolorprofilename" : "kCGColorSpaceSRGB",
+             "red" : 0.6,
+             "green" : 0.4,
+             "blue" : "$blue"
+         },
+         {
+             "colorcolorprofilename" : "kCGColorSpaceSRGB",
+             "red" : 0.5,
+             "green" : 0.5,
+             "blue" : "$blue"
+         },
+         {
+             "colorcolorprofilename" : "kCGColorSpaceSRGB",
+             "red" : 0.4,
+             "green" : 0.6,
+             "blue" : "$blue"
+         },
+         {
+             "colorcolorprofilename" : "kCGColorSpaceSRGB",
+             "red" : 0.0,
+             "green" : 1.0,
+             "blue" : "$blue"
+         }
+        ]
+    }
+}
