@@ -121,6 +121,40 @@
         "x": 0,
         "y": 60.0
       }
+    },
+    {
+      "elementtype": "drawbasicstring",
+      "stringtext": "",
+      "textsubstitution": "controllabel",
+      "userinterfacefont": "kCTFontUIFontSystem",
+      "fontsize": 12.0,
+      "textalignment": "kCTTextAlignmentCenter",
+      "fillcolor": {
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
+        "alpha": 1.0,
+        "colorcolorprofilename": "kCGColorSpaceSRGB"
+      },
+      "arrayofpathelements": [
+        {
+          "elementtype": "pathrectangle",
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0.0
+            },
+            "size": {
+              "width": 140.0,
+              "height": 26
+            }
+          }
+        }
+      ],
+      "point": {
+        "x": 0,
+        "y": 60.0
+      }
     }
   ]
 }

@@ -13,7 +13,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     static var InitialKeyTwo = "variable2"
 
     @IBAction func controlkey1Changed(sender: AnyObject) {
-        variableKeyOne = sender.stringValue
+        spinnerOne.label = sender.stringValue
     }
     
     @IBAction func control1MinChanged(sender: AnyObject) {
@@ -27,7 +27,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     }
 
     @IBAction func controlkey2Changed(sender: AnyObject) {
-        variableKeyTwo = sender.stringValue
+        spinnerTwo.label = sender.stringValue
     }
     
     @IBAction func control2MinChanged(sender: AnyObject) {
@@ -39,9 +39,6 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         spinnerTwo.maxValue = sender.floatValue
         maxValueTwo = sender.floatValue
     }
-
-    var variableKeyOne:String = InitialKeyOne
-    var variableKeyTwo:String = InitialKeyTwo
 
     var minValueOne:Float {
         get {
@@ -116,7 +113,8 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                     if let variableDef = variableDef as? [String:AnyObject] {
                         if let variableKey:AnyObject = variableDef["variablekey"],
                            let varKey = variableKey as? String {
-                            self.variableKeyOne = varKey
+                            // self.variableKeyOne = varKey
+                            self.spinnerOne.label = varKey
                             self.control1Key.stringValue = varKey
                         }
                         
@@ -144,7 +142,8 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                     if let variableDef = variableDef as? [String:AnyObject] {
                         if let variableKey:AnyObject = variableDef["variablekey"],
                            let varKey = variableKey as? String {
-                            self.variableKeyTwo = varKey
+                            // self.variableKeyTwo = varKey
+                            self.spinnerTwo.label = varKey
                             self.control2Key.stringValue = varKey
                         }
                         
@@ -215,8 +214,8 @@ private
     var variables:[String:AnyObject] {
         get {
             var theDictionary:[String:AnyObject] = [:]
-            theDictionary[variableKeyOne] = spinnerOne.spinnerValue
-            theDictionary[variableKeyTwo] = spinnerTwo.spinnerValue
+            theDictionary[spinnerTwo.label] = spinnerTwo.spinnerValue
+            theDictionary[spinnerOne.label] = spinnerOne.spinnerValue
             theDictionary[MIJSONKeyWidth] = simpleRenderView.frame.width - 8
             theDictionary[MIJSONKeyHeight] = simpleRenderView.frame.height - 8
             return theDictionary

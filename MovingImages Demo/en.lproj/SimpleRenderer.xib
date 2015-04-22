@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
@@ -79,7 +79,7 @@
                         </textFieldCell>
                         <connections>
                             <action selector="controlkey1Changed:" target="-2" id="lQb-5o-uQx"/>
-                            <binding destination="-2" name="value" keyPath="variableKeyOne" id="FCB-1q-gb3"/>
+                            <binding destination="-2" name="value" keyPath="spinnerOne.label" id="tfh-j0-xDi"/>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgm-Mn-c05">
@@ -130,7 +130,7 @@
                         </textFieldCell>
                         <connections>
                             <action selector="controlkey2Changed:" target="-2" id="9Tw-mb-dFw"/>
-                            <binding destination="-2" name="value" keyPath="self.variableKeyTwo" id="hrh-xR-9uH"/>
+                            <binding destination="-2" name="value" keyPath="spinnerTwo.label" id="mg4-Dv-Kso"/>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McD-pc-Rad">
