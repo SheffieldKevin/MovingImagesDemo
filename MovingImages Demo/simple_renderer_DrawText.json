@@ -11,13 +11,13 @@
             "minvalue" : 0.0,
             "defaultvalue" : 200.0,
             "maxvalue" : 350.0,
-            "variablekey" : "verticalposition"
+            "variablekey" : "vertpos"
         }
     ],
     "drawinstructions" :
     {
         "elementtype" : "drawbasicstring",
-        "point" : { "x" : 40, "y" : "$verticalposition" },
+        "point" : { "x" : 40, "y" : "$vertpos" },
         "fontsize" : 24,
         "postscriptfontname" : "Avenir-Medium",
         "arrayofpathelements" :
@@ -26,7 +26,7 @@
                 "elementtype" : "pathrectangle",
                 "rect" :
                 {
-                    "origin" : { "x" : 40, "y" : "$verticalposition" },
+                    "origin" : { "x" : 40, "y" : "$vertpos" },
                     "size" : { "width" : "$textwidth", "height" : 200 }
                 }
             }

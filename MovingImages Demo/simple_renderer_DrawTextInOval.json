@@ -11,7 +11,7 @@
             "minvalue" : 0.0,
             "defaultvalue" : 100.0,
             "maxvalue" : 200,
-            "variablekey" : "verticalposition"
+            "variablekey" : "vertpos"
         }
     ],
     "drawinstructions" :
@@ -36,7 +36,7 @@
                     "origin":
                     {
                         "x": "300 - $ovalsize * 0.5",
-                        "y": "$verticalposition"
+                        "y": "$vertpos"
                     },
                     "size": { "width": "$ovalsize", "height": "600 - $ovalsize" }
                 }
@@ -44,7 +44,7 @@
         ],
         "point": {
             "x": 150,
-            "y": "$verticalposition"
+            "y": "$vertpos"
         }
     }
 }
