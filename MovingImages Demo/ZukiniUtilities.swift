@@ -5,6 +5,37 @@
 
 import Foundation
 
+extension Double {
+    func stringWithMaxnumberOfFractionAndIntDigits(maxnumber: Int) -> String {
+        let numIntDigits:Int
+        if self > 0.9999 {
+            numIntDigits = Int(log10(self))
+        }
+        else if self < -0.9999 {
+            numIntDigits = Int(log10(-self))
+        }
+        else {
+            numIntDigits = 0
+        }
+        let numDigits:Int = maxnumber
+        let numFractionDigits:Int
+        if numIntDigits > numDigits {
+            numFractionDigits = 0
+        }
+        else {
+            numFractionDigits = numDigits - numIntDigits - 1
+        }
+        let format = String(format: "%%.%if", numFractionDigits)
+        return String(format: format, self)
+    }
+}
+
+extension Float {
+    func stringWithMaxnumberOfFractionAndIntDigits(maxnumber: Int) -> String {
+        return Double(self).stringWithMaxnumberOfFractionAndIntDigits(maxnumber)
+    }
+}
+
 func listOfExamples(#prefix: String) -> [String] {
     // Find list of JSON file in the first instance in the application
     // bundle. Might change this to application support as well

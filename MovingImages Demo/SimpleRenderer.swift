@@ -7,10 +7,7 @@ import MovingImages
 
 
 class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
-                                     MISpinnerDelegate {
-
-    static var InitialKeyOne = "variable1"
-    static var InitialKeyTwo = "variable2"
+                                     MISpinnerDelegate, NSWindowDelegate {
 
     @IBAction func controlkey1Changed(sender: AnyObject) {
         spinnerOne.label = sender.stringValue
@@ -196,6 +193,10 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         self.exampleSelected(exampleList)
     }
     
+    func windowDidResize(notification: NSNotification) {
+        simpleRenderView.variables = self.variables
+    }
+
     func textDidChange(notification: NSNotification) {
         if let jsonText = drawElementJSON.string,
             let theDict = createDictionaryFromJSONString(jsonText) {

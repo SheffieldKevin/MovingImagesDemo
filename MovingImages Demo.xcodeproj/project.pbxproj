@@ -35,6 +35,8 @@
 		6EC4C4501AD02CFB00314829 /* SimpleRendererView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C4381AC9BD6B00314829 /* SimpleRendererView.swift */; };
 		6EC4C4511AD02D0E00314829 /* MovingImages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC4C4361AC9BB6700314829 /* MovingImages.framework */; };
 		6EC4C4521AD03B0500314829 /* MISpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C44C1ACC812100314829 /* MISpinner.swift */; };
+		6EC78FA31AEAAE8100BBE06A /* SpinnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC78FA11AEAAE8100BBE06A /* SpinnerController.swift */; };
+		6EC78FA41AEAAE8100BBE06A /* SpinnerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EC78FA21AEAAE8100BBE06A /* SpinnerController.xib */; };
 		6ECE89B41AD7F0A900BE8FB0 /* simple_renderer_GradientFill.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ECE89B31AD7F0A900BE8FB0 /* simple_renderer_GradientFill.json */; };
 		6ECE89B61AD7F78700BE8FB0 /* simple_renderer_DrawWithTransparencyLayer.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ECE89B51AD7F78700BE8FB0 /* simple_renderer_DrawWithTransparencyLayer.json */; };
 		6ECE89C01AD82E6700BE8FB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECE89BF1AD82E6700BE8FB0 /* AppDelegate.swift */; };
@@ -118,6 +120,8 @@
 		6EC4C44A1ACC481F00314829 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SimpleRenderer.xib; sourceTree = "<group>"; };
 		6EC4C44C1ACC812100314829 /* MISpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MISpinner.swift; sourceTree = "<group>"; };
 		6EC4C44E1ACCB77B00314829 /* drawarc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = drawarc.json; sourceTree = "<group>"; };
+		6EC78FA11AEAAE8100BBE06A /* SpinnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerController.swift; sourceTree = "<group>"; };
+		6EC78FA21AEAAE8100BBE06A /* SpinnerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerController.xib; sourceTree = "<group>"; };
 		6ECE89B31AD7F0A900BE8FB0 /* simple_renderer_GradientFill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_GradientFill.json; sourceTree = "<group>"; };
 		6ECE89B51AD7F78700BE8FB0 /* simple_renderer_DrawWithTransparencyLayer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawWithTransparencyLayer.json; sourceTree = "<group>"; };
 		6ECE89BB1AD82E6700BE8FB0 /* Zukini Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zukini Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +208,8 @@
 				6EC4C4381AC9BD6B00314829 /* SimpleRendererView.swift */,
 				6EC4C44C1ACC812100314829 /* MISpinner.swift */,
 				6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */,
+				6EC78FA11AEAAE8100BBE06A /* SpinnerController.swift */,
+				6EC78FA21AEAAE8100BBE06A /* SpinnerController.xib */,
 			);
 			path = "MovingImages Demo";
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 				6E3FF0B11AD53EE500AD45AD /* simple_renderer_Fillrect.json in Resources */,
 				6EBC3B8A1AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json in Resources */,
 				6EBC3B8C1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json in Resources */,
+				6EC78FA41AEAAE8100BBE06A /* SpinnerController.xib in Resources */,
 				6EC4C4161AC9983000314829 /* Images.xcassets in Resources */,
 				6ECE89B41AD7F0A900BE8FB0 /* simple_renderer_GradientFill.json in Resources */,
 				6E3FF0B51AD5646D00AD45AD /* Sculpture.jpg in Resources */,
@@ -465,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EC4C4341AC9A1A900314829 /* SimpleRenderer.swift in Sources */,
+				6EC78FA31AEAAE8100BBE06A /* SpinnerController.swift in Sources */,
 				6EC4C44D1ACC812100314829 /* MISpinner.swift in Sources */,
 				6ECE89DD1AD830B800BE8FB0 /* ZukiniUtilities.swift in Sources */,
 				6EC4C4391AC9BD6B00314829 /* SimpleRendererView.swift in Sources */,
