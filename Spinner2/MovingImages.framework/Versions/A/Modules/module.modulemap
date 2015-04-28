@@ -1,0 +1,6 @@
+framework module MovingImages {
+  umbrella header "MovingImages.h"
+
+  export *
+  module * { export * }
+}
