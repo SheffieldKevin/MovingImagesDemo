@@ -132,9 +132,16 @@ func createCGImage(name: String, #fileExtension: String) -> CGImage? {
     return Optional.None
 }
 
-func createDictionaryFromJSONFile(name: String) -> [String:AnyObject]? {
-    let bundle = NSBundle.mainBundle()
-    if let url = bundle.URLForResource(name, withExtension: "json"),
+func createDictionaryFromJSONFile(name: String, inBundle: NSBundle? = Optional.None) -> [String:AnyObject]? {
+    let localBundle:NSBundle
+    if let bundle = inBundle {
+        localBundle = bundle
+    }
+    else {
+        localBundle = NSBundle.mainBundle()
+    }
+
+    if let url = localBundle.URLForResource(name, withExtension: "json"),
        let inStream = NSInputStream(URL: url)
     {
         inStream.open()

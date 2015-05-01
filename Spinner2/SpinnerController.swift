@@ -8,9 +8,14 @@ import MovingImages
     func spinnerValueChanged(#sender: SpinnerController) -> Void
 }
 
+@IBDesignable
 class Spinner: NSControl {
-    var spinnerValue:Float = 0.5 {
+    static let scaleFactor:Float = 100.0
+    static let invertedScale:Float = 1.0 / Spinner.scaleFactor
+
+    @IBInspectable var spinnerValue:Float = scaleFactor * 0.5 {
         didSet {
+            spinnerValue = max(min(spinnerValue, Spinner.scaleFactor), 0.0)
             if let controller = self.controller {
                 controller.spinnerValueChanged(spinner: self)
             }
@@ -30,12 +35,15 @@ class Spinner: NSControl {
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        self.drawDictionary = createDictionaryFromJSONFile("drawarc")
+        self.drawDictionary = createDictionaryFromJSONFile("drawarc",
+            inBundle: NSBundle(forClass: self.dynamicType))
+        // bundle = NSBundle(forClass: Class.self)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.drawDictionary = createDictionaryFromJSONFile("drawarc")
+        self.drawDictionary = createDictionaryFromJSONFile("drawarc",
+            inBundle: NSBundle(forClass: self.dynamicType))
     }
     
     override func drawRect(dirtyRect: NSRect) {
@@ -50,7 +58,7 @@ class Spinner: NSControl {
                 text = spinnerValue.stringWithMaxnumberOfFractionAndIntDigits(4)
             }
             let variables:[String:AnyObject] = [
-                "controlvalue" : spinnerValue,
+                "controlvalue" : spinnerValue * Spinner.invertedScale,
                 "controltext" : text,
                 "controllabel" : label
             ]
@@ -62,8 +70,8 @@ class Spinner: NSControl {
     
     override func scrollWheel(theEvent: NSEvent) {
         let deltaY = Float(theEvent.scrollingDeltaY)
-        let newValue = self.spinnerValue - deltaY * 0.0006
-        self.spinnerValue = max(min(newValue, 1.0), 0.0)
+        let newValue = self.spinnerValue - deltaY * 0.06
+        self.spinnerValue = newValue
     }
     
     override func mouseDown(theEvent: NSEvent) {
@@ -73,6 +81,13 @@ class Spinner: NSControl {
             }
         }
     }
+
+    override func prepareForInterfaceBuilder() {
+        if let controller = self.controller {
+            controller.maxValue = Spinner.scaleFactor
+        }
+    }
+
 private
     let simpleRenderer = MISimpleRenderer()
     var drawDictionary:[String:AnyObject]?
@@ -135,14 +150,14 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
     var spinnerValue:Float {
         get {
             if let spinner = self.view as? Spinner {
-                return spinner.spinnerValue * (maxValue - minValue) + minValue
+                return spinner.spinnerValue * (maxValue - minValue) * Spinner.invertedScale + minValue
             }
             return 0.5
         }
         
         set(newValue) {
             if let spinner = self.view as? Spinner {
-                spinner.spinnerValue = (newValue - minValue) / (maxValue - minValue)
+                spinner.spinnerValue = (newValue - minValue) * Spinner.scaleFactor / (maxValue - minValue)
             }
         }
     }
