@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SpinnerPopoverViewController: NSViewController {
+class SpinnerPopoverController: NSViewController {
 
     @IBOutlet weak var controlKey: NSTextField!
     @IBOutlet weak var maxValue: NSTextField!
@@ -18,12 +18,9 @@ class SpinnerPopoverViewController: NSViewController {
     
     @IBAction func handleDone(#sender: NSButton) {
         spinnerController!.dismissPopover()
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        super.view.window?.backgroundColor = NSColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
-        // Do view setup here.
     }
 }
