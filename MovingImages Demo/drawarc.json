@@ -70,7 +70,7 @@
           },
           "radius": 54.0,
           "startangle": 3.9269908169872414,
-          "endangle": "3.9269908169872414 - 4.71238898038469 * $controlValue",
+          "endangle": "3.9269908169872414 - 4.71238898038469 * $controlvalue",
           "clockwise": true
         }
       ],

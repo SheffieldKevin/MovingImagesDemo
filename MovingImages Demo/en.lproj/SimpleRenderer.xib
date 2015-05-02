@@ -15,6 +15,10 @@
                 <outlet property="drawElementJSON" destination="k2u-qq-YDH" id="Nai-oz-hyo"/>
                 <outlet property="exampleList" destination="flh-mG-rbv" id="F8R-Hm-lN3"/>
                 <outlet property="simpleRenderView" destination="cZu-b1-qq6" id="zyq-Zp-oev"/>
+                <outlet property="spinnerFour" destination="eiP-5B-gl5" id="GHu-5g-7I8"/>
+                <outlet property="spinnerOne" destination="sGg-LI-q9V" id="f7t-fK-EOE"/>
+                <outlet property="spinnerThree" destination="dIb-hk-FyC" id="CIB-6T-wR1"/>
+                <outlet property="spinnerTwo" destination="0NG-jc-TBM" id="CNJ-GB-gnI"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -74,7 +78,6 @@
                         </textFieldCell>
                         <connections>
                             <action selector="controlkey1Changed:" target="-2" id="lQb-5o-uQx"/>
-                            <binding destination="-2" name="value" keyPath="spinnerOne.label" id="tfh-j0-xDi"/>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgm-Mn-c05">
@@ -125,7 +128,6 @@
                         </textFieldCell>
                         <connections>
                             <action selector="controlkey2Changed:" target="-2" id="9Tw-mb-dFw"/>
-                            <binding destination="-2" name="value" keyPath="spinnerTwo.label" id="mg4-Dv-Kso"/>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McD-pc-Rad">
@@ -176,25 +178,6 @@
                             <binding destination="-2" name="value" keyPath="self.maxValueTwo" id="Hd6-lU-4wC"/>
                         </connections>
                     </textField>
-                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="flh-mG-rbv">
-                        <rect key="frame" x="83" y="147" width="158" height="19"/>
-                        <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xIt-1H-L9w">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                            <menu key="menu" id="RJn-J9-dXG"/>
-                        </popUpButtonCell>
-                        <connections>
-                            <action selector="exampleSelected:" target="-2" id="ZZ3-vn-HLM"/>
-                        </connections>
-                    </popUpButton>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7J-kt-AmM">
-                        <rect key="frame" x="18" y="149" width="59" height="14"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Examples:" id="vbA-F9-2MK">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ERU-Qy-ZmQ">
                         <rect key="frame" x="18" y="100" width="68" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Control One" id="foh-7f-8Bc">
@@ -219,14 +202,61 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ULL-n6-KJ6">
+                        <rect key="frame" x="604" y="20" width="620" height="140"/>
+                        <subviews>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvy-hU-e28" customClass="Spinner" customModule="MovingImages_Demo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spinnerValue">
+                                        <real key="value" value="27"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tmb-Cf-V6Y" customClass="Spinner" customModule="MovingImages_Demo" customModuleProvider="target">
+                                <rect key="frame" x="160" y="0.0" width="140" height="140"/>
+                            </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHh-0d-vKI" customClass="Spinner" customModule="MovingImages_Demo" customModuleProvider="target">
+                                <rect key="frame" x="320" y="0.0" width="140" height="140"/>
+                            </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lhx-WU-qT6" customClass="Spinner" customModule="MovingImages_Demo" customModuleProvider="target">
+                                <rect key="frame" x="480" y="0.0" width="140" height="140"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="140" id="KSC-Nc-Qk6"/>
+                            <constraint firstAttribute="width" constant="620" id="ebW-Kv-Ncd"/>
+                        </constraints>
+                    </customView>
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="flh-mG-rbv">
+                        <rect key="frame" x="83" y="126" width="158" height="19"/>
+                        <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xIt-1H-L9w">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="RJn-J9-dXG"/>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="exampleSelected:" target="-2" id="ZZ3-vn-HLM"/>
+                        </connections>
+                    </popUpButton>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7J-kt-AmM">
+                        <rect key="frame" x="18" y="128" width="59" height="14"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Examples:" id="vbA-F9-2MK">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="9FT-ds-Cep" secondAttribute="bottom" constant="178" id="3CY-uI-I4s"/>
                     <constraint firstItem="cZu-b1-qq6" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="4Rq-67-NVu"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Dqn-QZ-47q"/>
+                    <constraint firstAttribute="trailing" secondItem="ULL-n6-KJ6" secondAttribute="trailing" constant="20" id="ONt-CB-xHE"/>
                     <constraint firstAttribute="trailing" secondItem="cZu-b1-qq6" secondAttribute="trailing" constant="20" id="WZW-Ep-LSU"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="hjj-Nb-1Me"/>
                     <constraint firstAttribute="bottom" secondItem="cZu-b1-qq6" secondAttribute="bottom" constant="178" id="jT8-Pr-n4o"/>
+                    <constraint firstAttribute="bottom" secondItem="ULL-n6-KJ6" secondAttribute="bottom" constant="20" id="l63-9X-VsX"/>
                     <constraint firstItem="cZu-b1-qq6" firstAttribute="leading" secondItem="9FT-ds-Cep" secondAttribute="trailing" constant="8" id="w4N-kJ-dSB"/>
                 </constraints>
             </view>
@@ -235,5 +265,25 @@
             </connections>
             <point key="canvasLocation" x="633" y="433"/>
         </window>
+        <viewController id="sGg-LI-q9V" userLabel="SpinnerOne" customClass="SpinnerController" customModule="MovingImages_Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Xvy-hU-e28" id="n4U-Na-679"/>
+            </connections>
+        </viewController>
+        <viewController id="0NG-jc-TBM" userLabel="SpinnerTwo" customClass="SpinnerController" customModule="MovingImages_Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Tmb-Cf-V6Y" id="7ym-xz-sBu"/>
+            </connections>
+        </viewController>
+        <viewController id="dIb-hk-FyC" userLabel="SpinnerThree" customClass="SpinnerController" customModule="MovingImages_Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="zHh-0d-vKI" id="eMQ-DZ-QX0"/>
+            </connections>
+        </viewController>
+        <viewController id="eiP-5B-gl5" userLabel="SpinnerFour" customClass="SpinnerController" customModule="MovingImages_Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="lhx-WU-qT6" id="nTJ-h7-nwc"/>
+            </connections>
+        </viewController>
     </objects>
 </document>

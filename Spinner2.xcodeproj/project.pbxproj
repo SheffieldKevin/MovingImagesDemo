@@ -59,7 +59,7 @@
 		6EE896FE1AEE7683009D5D77 /* SpinnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerController.swift; sourceTree = "<group>"; };
 		6EE896FF1AEE7683009D5D77 /* SpinnerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerController.xib; sourceTree = "<group>"; };
 		6EE897031AEE76D2009D5D77 /* ZukiniUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZukiniUtilities.swift; sourceTree = "<group>"; };
-		6EE897071AEE7B6A009D5D77 /* drawarc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = drawarc.json; sourceTree = "<group>"; };
+		6EE897071AEE7B6A009D5D77 /* drawarc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = drawarc.json; path = "../MovingImages Demo/drawarc.json"; sourceTree = "<group>"; };
 		6EE8970F1AEE7F9D009D5D77 /* SpinnerWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerWindowController.swift; sourceTree = "<group>"; };
 		6EE897101AEE7F9D009D5D77 /* SpinnerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerWindowController.xib; sourceTree = "<group>"; };
 		6EE897131AEE8E6D009D5D77 /* SpinnerPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerPopover.xib; sourceTree = "<group>"; };

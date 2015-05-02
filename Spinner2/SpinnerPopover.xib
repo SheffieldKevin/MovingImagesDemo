@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SpinnerPopoverController" customModule="Spinner2" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="SpinnerPopoverController" customModule="MovingImages_Demo" customModuleProvider="target">
             <connections>
                 <outlet property="controlKey" destination="t7V-kF-lvh" id="bPc-ap-mqf"/>
                 <outlet property="maxValue" destination="Q29-KH-6zq" id="Ih6-bx-zxm"/>
@@ -73,6 +73,9 @@
                     <buttonCell key="cell" type="squareTextured" title="Done" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="up1-Z9-G1a">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                     </buttonCell>
                     <connections>
                         <action selector="handleDoneWithSender:" target="-2" id="0dm-2D-fj5"/>

@@ -7,13 +7,13 @@ import MovingImages
 
 
 class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
-                                     MISpinnerDelegate {
+                                     SpinnerDelegate {
 
     static var InitialKeyOne = "variable1"
     static var InitialKeyTwo = "variable2"
 
     @IBAction func controlkey1Changed(sender: AnyObject) {
-        spinnerOne.label = sender.stringValue
+        spinnerOne.variableKey = sender.stringValue
     }
     
     @IBAction func control1MinChanged(sender: AnyObject) {
@@ -27,7 +27,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     }
 
     @IBAction func controlkey2Changed(sender: AnyObject) {
-        spinnerTwo.label = sender.stringValue
+        spinnerTwo.variableKey = sender.stringValue
     }
     
     @IBAction func control2MinChanged(sender: AnyObject) {
@@ -80,8 +80,10 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     
     @IBOutlet weak var simpleRenderView: SimpleRendererView!
 
-    @IBOutlet weak var spinnerOne: MISpinner!
-    @IBOutlet weak var spinnerTwo: MISpinner!
+    @IBOutlet weak var spinnerOne: SpinnerController!
+    @IBOutlet weak var spinnerTwo: SpinnerController!
+    @IBOutlet weak var spinnerThree: SpinnerController!
+    @IBOutlet weak var spinnerFour: SpinnerController!
     @IBOutlet weak var exampleList: NSPopUpButton!
     @IBOutlet weak var control1Key: NSTextField!
     @IBOutlet weak var control1Minimum: NSTextField!
@@ -114,7 +116,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                         if let variableKey:AnyObject = variableDef["variablekey"],
                            let varKey = variableKey as? String {
                             // self.variableKeyOne = varKey
-                            self.spinnerOne.label = varKey
+                            self.spinnerOne.variableKey = varKey
                             self.control1Key.stringValue = varKey
                         }
                         
@@ -135,7 +137,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                             self.spinnerOne.spinnerValue = defValue
                         }
                     }
-                    spinnerOne.needsDisplay = true
+                    // spinnerOne.needsDisplay = true
                 }
                 if variableDefs.count > 1 {
                     let variableDef:AnyObject = variableDefs[1]
@@ -143,7 +145,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                         if let variableKey:AnyObject = variableDef["variablekey"],
                            let varKey = variableKey as? String {
                             // self.variableKeyTwo = varKey
-                            self.spinnerTwo.label = varKey
+                            self.spinnerTwo.variableKey = varKey
                             self.control2Key.stringValue = varKey
                         }
                         
@@ -163,7 +165,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                             self.spinnerTwo.spinnerValue = defValue
                         }
                     }
-                    spinnerTwo.needsDisplay = true
+                    // spinnerTwo.needsDisplay = true
                 }
             }
             simpleRenderView.needsDisplay = true
@@ -177,8 +179,8 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
             theWindow.backgroundColor = NSColor(deviceWhite: 0.15, alpha: 1.0)
         }
         drawElementJSON.delegate = self
-        spinnerOne.spinnerDelegate = self
-        spinnerTwo.spinnerDelegate = self
+        spinnerOne.delegate = self
+        spinnerTwo.delegate = self
         drawElementJSON.automaticQuoteSubstitutionEnabled = false
         drawElementJSON.font = NSFont(name: "Menlo-Regular", size: 11)
         drawElementJSON.textColor = NSColor(deviceWhite: 0.95, alpha: 1.0)
@@ -205,7 +207,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         }
     }
     
-    func spinnerValueChanged(#sender: MISpinner) {
+    func spinnerValueChanged(#sender: SpinnerController) {
         simpleRenderView.variables = self.variables
         simpleRenderView.needsDisplay = true
     }
@@ -214,8 +216,8 @@ private
     var variables:[String:AnyObject] {
         get {
             var theDictionary:[String:AnyObject] = [:]
-            theDictionary[spinnerTwo.label] = spinnerTwo.spinnerValue
-            theDictionary[spinnerOne.label] = spinnerOne.spinnerValue
+            theDictionary[spinnerTwo.variableKey] = spinnerTwo.spinnerValue
+            theDictionary[spinnerOne.variableKey] = spinnerOne.spinnerValue
             theDictionary[MIJSONKeyWidth] = simpleRenderView.frame.width - 8
             theDictionary[MIJSONKeyHeight] = simpleRenderView.frame.height - 8
             return theDictionary
