@@ -207,5 +207,23 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
             delegate.spinnerValueChanged(sender: self)
         }
     }
+    
+    func configureSpinner(#dictionary: [String:AnyObject]) -> Void {
+        if let theKey = dictionary["variablekey"] as? String {
+            self.variableKey = theKey
+        }
+        
+        if let maxValue = dictionary["maxvalue"] as? Float {
+            self.maxValue = maxValue
+        }
+
+        if let minValue = dictionary["minvalue"] as? Float {
+            self.minValue = minValue
+        }
+
+        if let defaultValue = dictionary["defaultvalue"] as? Float {
+            self.spinnerValue = defaultValue
+        }
+    }
 }
 

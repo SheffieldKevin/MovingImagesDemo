@@ -8,74 +8,6 @@ import MovingImages
 
 class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                                      SpinnerDelegate {
-
-    static var InitialKeyOne = "variable1"
-    static var InitialKeyTwo = "variable2"
-
-    @IBAction func controlkey1Changed(sender: AnyObject) {
-        spinnerOne.variableKey = sender.stringValue
-    }
-    
-    @IBAction func control1MinChanged(sender: AnyObject) {
-        spinnerOne.minValue = sender.floatValue
-        minValueOne = sender.floatValue
-    }
-    
-    @IBAction func control1MaxChanged(sender: AnyObject) {
-        spinnerOne.maxValue = sender.floatValue
-        maxValueOne = sender.floatValue
-    }
-
-    @IBAction func controlkey2Changed(sender: AnyObject) {
-        spinnerTwo.variableKey = sender.stringValue
-    }
-    
-    @IBAction func control2MinChanged(sender: AnyObject) {
-        spinnerTwo.minValue = sender.floatValue
-        minValueTwo = sender.floatValue
-    }
-
-    @IBAction func control2MaxChanged(sender: AnyObject) {
-        spinnerTwo.maxValue = sender.floatValue
-        maxValueTwo = sender.floatValue
-    }
-
-    var minValueOne:Float {
-        get {
-            return spinnerOne.minValue
-        }
-        set(newValue) {
-            spinnerOne.minValue = newValue
-        }
-    }
-
-    var maxValueOne:Float {
-        get {
-            return spinnerOne.maxValue
-        }
-        set(newValue) {
-            spinnerOne.maxValue = newValue
-        }
-    }
-
-    var minValueTwo:Float {
-        get {
-            return spinnerTwo.minValue
-        }
-        set(newValue) {
-            spinnerTwo.minValue = newValue
-        }
-    }
-
-    var maxValueTwo:Float {
-        get {
-            return spinnerTwo.maxValue
-        }
-        set(newValue) {
-            spinnerTwo.maxValue = newValue
-        }
-    }
-
     @IBOutlet var drawElementJSON: NSTextView!
     
     @IBOutlet weak var simpleRenderView: SimpleRendererView!
@@ -85,13 +17,6 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     @IBOutlet weak var spinnerThree: SpinnerController!
     @IBOutlet weak var spinnerFour: SpinnerController!
     @IBOutlet weak var exampleList: NSPopUpButton!
-    @IBOutlet weak var control1Key: NSTextField!
-    @IBOutlet weak var control1Minimum: NSTextField!
-    @IBOutlet weak var control1Maximum: NSTextField!
-    
-    @IBOutlet weak var control2Key: NSTextField!
-    @IBOutlet weak var control2Minimum: NSTextField!
-    @IBOutlet weak var control2Maximum: NSTextField!
 
     @IBAction func exampleSelected(sender: AnyObject) {
         let popup = sender as! NSPopUpButton
@@ -103,70 +28,24 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
            let drawInstructions = instructions as? [String:AnyObject],
            let jsonString = makePrettyJSONFromDictionary(drawInstructions)
         {
+            for spinner in spinners {
+                spinner.view.hidden = true
+            }
             drawElementJSON.string = jsonString
             if let theDict = createDictionaryFromJSONString(jsonString) {
                 simpleRenderView.drawDictionary = theDict
             }
+            
             if let variableDefinitions:AnyObject = dictionary["variabledefinitions"],
                let variableDefs = variableDefinitions as? [AnyObject]
             {
-                if variableDefs.count > 0 {
-                    let variableDef:AnyObject = variableDefs[0]
-                    if let variableDef = variableDef as? [String:AnyObject] {
-                        if let variableKey:AnyObject = variableDef["variablekey"],
-                           let varKey = variableKey as? String {
-                            // self.variableKeyOne = varKey
-                            self.spinnerOne.variableKey = varKey
-                            self.control1Key.stringValue = varKey
-                        }
-                        
-                        if let minimumValue:AnyObject = variableDef["minvalue"],
-                           let minValue = minimumValue as? Float {
-                            self.minValueOne = minValue
-                            self.control1Minimum.floatValue = minValue
-                        }
-                        
-                        if let maximumValue:AnyObject = variableDef["maxvalue"],
-                           let maxValue = maximumValue as? Float {
-                            self.maxValueOne = maxValue
-                            self.control1Maximum.floatValue = maxValue
-                        }
+                for (index, variableDefinition) in enumerate(variableDefs) {
+                    if let variableDef = variableDefinition as? [String:AnyObject] {
+                        spinners[index].configureSpinner(dictionary: variableDef)
+                        spinners[index].view.hidden = false
+                    }
+                }
 
-                        if let defaultValue:AnyObject = variableDef["defaultvalue"],
-                           let defValue = defaultValue as? Float {
-                            self.spinnerOne.spinnerValue = defValue
-                        }
-                    }
-                    // spinnerOne.needsDisplay = true
-                }
-                if variableDefs.count > 1 {
-                    let variableDef:AnyObject = variableDefs[1]
-                    if let variableDef = variableDef as? [String:AnyObject] {
-                        if let variableKey:AnyObject = variableDef["variablekey"],
-                           let varKey = variableKey as? String {
-                            // self.variableKeyTwo = varKey
-                            self.spinnerTwo.variableKey = varKey
-                            self.control2Key.stringValue = varKey
-                        }
-                        
-                        if let minimumValue:AnyObject = variableDef["minvalue"],
-                           let minValue = minimumValue as? Float {
-                             self.minValueTwo = minValue
-                             self.control2Minimum.floatValue = minValue
-                        }
-                        
-                        if let maximumValue:AnyObject = variableDef["maxvalue"],
-                           let maxValue = maximumValue as? Float {
-                              self.maxValueTwo = maxValue
-                              self.control2Maximum.floatValue = maxValue
-                        }
-                        if let defaultValue:AnyObject = variableDef["defaultvalue"],
-                           let defValue = defaultValue as? Float {
-                            self.spinnerTwo.spinnerValue = defValue
-                        }
-                    }
-                    // spinnerTwo.needsDisplay = true
-                }
             }
             simpleRenderView.needsDisplay = true
         }
@@ -178,6 +57,11 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         if let theWindow = self.window {
             theWindow.backgroundColor = NSColor(deviceWhite: 0.15, alpha: 1.0)
         }
+        spinners.append(spinnerOne)
+        spinners.append(spinnerTwo)
+        spinners.append(spinnerThree)
+        spinners.append(spinnerFour)
+
         drawElementJSON.delegate = self
         spinnerOne.delegate = self
         spinnerTwo.delegate = self
@@ -213,6 +97,8 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     }
     
 private
+    var spinners = [SpinnerController]()
+    
     var variables:[String:AnyObject] {
         get {
             var theDictionary:[String:AnyObject] = [:]
