@@ -99,10 +99,10 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
     lazy var popover: NSPopover = {
         let popover = NSPopover()
         popover.behavior = .Semitransient
-        self.popoverViewController = SpinnerPopoverViewController(
+        self.popoverController = SpinnerPopoverController(
             nibName: "SpinnerPopover", bundle: nil)
-        self.popoverViewController?.spinnerController = self
-        popover.contentViewController = self.popoverViewController!
+        self.popoverController?.spinnerController = self
+        popover.contentViewController = self.popoverController!
         popover.delegate = self
         popover.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
         return popover
@@ -117,19 +117,19 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
     }
     
     weak var delegate: SpinnerDelegate?
-    var popoverViewController: SpinnerPopoverViewController?
+    var popoverController: SpinnerPopoverController?
     
     func displayPopover(sender: Spinner) -> Void {
         let thePopover = self.popover
         popover.showRelativeToRect(self.view.bounds, ofView: self.view,
             preferredEdge: NSMaxYEdge)
-        popoverViewController?.maxValue?.floatValue = self.maxValue
-        popoverViewController?.minValue?.floatValue = self.minValue
-        popoverViewController?.controlKey?.stringValue = self.variableKey
+        popoverController?.maxValue?.floatValue = self.maxValue
+        popoverController?.minValue?.floatValue = self.minValue
+        popoverController?.controlKey?.stringValue = self.variableKey
     }
 
     func dismissPopover() {
-        if let popoverViewController = popoverViewController {
+        if let popoverViewController = popoverController {
             self.minValue = popoverViewController.minValue!.floatValue
             self.maxValue = popoverViewController.maxValue!.floatValue
             self.variableKey = popoverViewController.controlKey!.stringValue

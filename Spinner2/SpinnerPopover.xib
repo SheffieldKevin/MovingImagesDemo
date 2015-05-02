@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SpinnerPopoverViewController" customModule="Spinner2" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="SpinnerPopoverController" customModule="Spinner2" customModuleProvider="target">
             <connections>
                 <outlet property="controlKey" destination="t7V-kF-lvh" id="bPc-ap-mqf"/>
                 <outlet property="maxValue" destination="Q29-KH-6zq" id="Ih6-bx-zxm"/>
