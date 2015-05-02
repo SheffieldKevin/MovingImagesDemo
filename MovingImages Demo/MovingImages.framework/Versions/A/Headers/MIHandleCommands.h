@@ -62,6 +62,7 @@ NSDictionary *MIMovingImagesHandleCommand(MIContext * __nullable context,
  @param commands A dictionary with option properties & command list property.
  @param context The context within which the commands should be handled. If nil
  then commands will be performed within the default context.
+ @param progressHandler A progress handler, for progress & variables. Can be nil.
  @param handler The completion handler, to be run on main queue. can be nil.
  @result A dictionary. If the commands are run synchronously then dictionary
  returns whether the commands successfully completed, and contains optional

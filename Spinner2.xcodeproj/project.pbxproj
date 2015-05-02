@@ -414,7 +414,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Spinner2Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spinner2.app/Contents/MacOS/Spinner2";
 			};
@@ -430,7 +430,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Spinner2Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spinner2.app/Contents/MacOS/Spinner2";
 			};
