@@ -102,4 +102,24 @@ NSDictionary *MIMovingImagesHandleCommands(MIContext * __nullable context,
 MICGImage * __nullable MICGImageFromDictionary(MIContext * __nullable context,
         NSDictionary *imageDict, id __nullable cantBeThisObject);
 
+/**
+ @brief Get a Integer value from a string. Uses DDMathParser to get the number
+ @param string [IN] The string to parse to get the value from.
+ @param value [OUT] A pointer to a NSInteger that will be assigned the value.
+ @param variablesDict [IN] A dictionary of variables and their values.
+ @return YES on success. NO if fails to obtain NSInteger
+ */
+BOOL MIUtilityGetIntegerFromString(NSString *string, NSInteger *value,
+                                   NSDictionary * __nullable variablesDict);
+
+/**
+ @brief Get a CGFloat value from a string. Uses DDMathParser to get the number
+ @param string [IN] The string to parse to get the value from.
+ @param value [OUT] A pointer to a CGFloat that will be assigned the value.
+ @param variablesDict [IN] A dictionary of variables and their values.
+ @return YES on success. NO if fails to obtain CGFloat
+ */
+BOOL MIUtilityGetFloatFromString(NSString *string, CGFloat *value,
+                                 NSDictionary * __nullable variablesDict);
+
 #pragma clang assume_nonnull end
