@@ -1,160 +1,164 @@
 {
-  "elementtype": "arrayofelements",
-  "arrayofelements": [
-    {
-      "elementtype": "strokepath",
-      "arrayofpathelements": [
+    "valuefrompositionequation":
+      "atan2($x - $controlcenterx, $y - $controlcentery) * 2.0 / (3.0 * 3.14159) + 0.5",
+    "drawinstructions": {
+      "elementtype": "arrayofelements",
+      "arrayofelements": [
         {
-          "elementtype": "patharc",
-          "centerpoint": {
-            "x": 70.0,
-            "y": 70.0
-          },
-          "radius": 54.0,
-          "startangle": 3.9269908169872414,
-          "endangle": -0.7853981633974483,
-          "clockwise": true
-        }
-      ],
-      "startpoint": {
-        "x": 31.81623381592643,
-        "y": 31.816233815926438
-      },
-      "linewidth": 28,
-      "linecap": "kCGLineCapRound",
-      "strokecolor": {
-        "red": 1.0,
-        "green": 1.0,
-        "blue": 1.0,
-        "alpha": 1.0,
-        "colorcolorprofilename": "kCGColorSpaceSRGB"
-      }
-    },
-    {
-      "elementtype": "strokepath",
-      "arrayofpathelements": [
-        {
-          "elementtype": "patharc",
-          "centerpoint": {
-            "x": 70.0,
-            "y": 70.0
-          },
-          "radius": 54.0,
-          "startangle": 3.9269908169872414,
-          "endangle": -0.7853981633974483,
-          "clockwise": true
-        }
-      ],
-      "startpoint": {
-        "x": 31.81623381592643,
-        "y": 31.816233815926438
-      },
-      "linewidth": 20,
-      "linecap": "kCGLineCapRound",
-      "strokecolor": {
-        "red": 0.0,
-        "green": 0.0,
-        "blue": 0.0,
-        "alpha": 1.0,
-        "colorcolorprofilename": "kCGColorSpaceSRGB"
-      }
-    },
-    {
-      "elementtype": "strokepath",
-      "arrayofpathelements": [
-        {
-          "elementtype": "patharc",
-          "centerpoint": {
-            "x": 70.0,
-            "y": 70.0
-          },
-          "radius": 54.0,
-          "startangle": 3.9269908169872414,
-          "endangle": "3.9269908169872414 - 4.71238898038469 * $controlvalue",
-          "clockwise": true
-        }
-      ],
-      "startpoint": {
-        "x": 31.81623381592643,
-        "y": 31.816233815926438
-      },
-      "linewidth": 14,
-      "linecap": "kCGLineCapRound",
-      "strokecolor": {
-        "red": 0.2,
-        "green": 0.85,
-        "blue": 0.1,
-        "alpha": 1.0,
-        "colorcolorprofilename": "kCGColorSpaceSRGB"
-      }
-    },
-    {
-      "elementtype": "drawbasicstring",
-      "stringtext": "Baskerville",
-      "textsubstitution": "controltext",
-      "userinterfacefont": "kCTFontUIFontSystem",
-      "fontsize": 20.0,
-      "textalignment": "kCTTextAlignmentCenter",
-      "fillcolor": {
-        "red": 1.0,
-        "green": 1.0,
-        "blue": 1.0,
-        "alpha": 1.0,
-        "colorcolorprofilename": "kCGColorSpaceSRGB"
-      },
-      "arrayofpathelements": [
-        {
-          "elementtype": "pathrectangle",
-          "rect": {
-            "origin": {
-              "x": 0,
-              "y": 64.0
-            },
-            "size": {
-              "width": 140.0,
-              "height": 26
+          "elementtype": "strokepath",
+          "arrayofpathelements": [
+            {
+              "elementtype": "patharc",
+              "centerpoint": {
+                "x": 70.0,
+                "y": 70.0
+              },
+              "radius": 54.0,
+              "startangle": 3.9269908169872414,
+              "endangle": -0.7853981633974483,
+              "clockwise": true
             }
+          ],
+          "startpoint": {
+            "x": 31.81623381592643,
+            "y": 31.816233815926438
+          },
+          "linewidth": 28,
+          "linecap": "kCGLineCapRound",
+          "strokecolor": {
+            "red": 1.0,
+            "green": 1.0,
+            "blue": 1.0,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          }
+        },
+        {
+          "elementtype": "strokepath",
+          "arrayofpathelements": [
+            {
+              "elementtype": "patharc",
+              "centerpoint": {
+                "x": 70.0,
+                "y": 70.0
+              },
+              "radius": 54.0,
+              "startangle": 3.9269908169872414,
+              "endangle": -0.7853981633974483,
+              "clockwise": true
+            }
+          ],
+          "startpoint": {
+            "x": 31.81623381592643,
+            "y": 31.816233815926438
+          },
+          "linewidth": 20,
+          "linecap": "kCGLineCapRound",
+          "strokecolor": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          }
+        },
+        {
+          "elementtype": "strokepath",
+          "arrayofpathelements": [
+            {
+              "elementtype": "patharc",
+              "centerpoint": {
+                "x": 70.0,
+                "y": 70.0
+              },
+              "radius": 54.0,
+              "startangle": 3.9269908169872414,
+              "endangle": "3.9269908169872414 - 4.71238898038469 * $controlvalue",
+              "clockwise": true
+            }
+          ],
+          "startpoint": {
+            "x": 31.81623381592643,
+            "y": 31.816233815926438
+          },
+          "linewidth": 14,
+          "linecap": "kCGLineCapRound",
+          "strokecolor": {
+            "red": 0.2,
+            "green": 0.85,
+            "blue": 0.1,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          }
+        },
+        {
+          "elementtype": "drawbasicstring",
+          "stringtext": "Baskerville",
+          "textsubstitution": "controltext",
+          "userinterfacefont": "kCTFontUIFontSystem",
+          "fontsize": 20.0,
+          "textalignment": "kCTTextAlignmentCenter",
+          "fillcolor": {
+            "red": 1.0,
+            "green": 1.0,
+            "blue": 1.0,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofpathelements": [
+            {
+              "elementtype": "pathrectangle",
+              "rect": {
+                "origin": {
+                  "x": 0,
+                  "y": 64.0
+                },
+                "size": {
+                  "width": 140.0,
+                  "height": 26
+                }
+              }
+            }
+          ],
+          "point": {
+            "x": 0,
+            "y": 60.0
+          }
+        },
+        {
+          "elementtype": "drawbasicstring",
+          "stringtext": "",
+          "textsubstitution": "controllabel",
+          "userinterfacefont": "kCTFontUIFontSystem",
+          "fontsize": 12.0,
+          "textalignment": "kCTTextAlignmentCenter",
+          "fillcolor": {
+            "red": 1.0,
+            "green": 1.0,
+            "blue": 1.0,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofpathelements": [
+            {
+              "elementtype": "pathrectangle",
+              "rect": {
+                "origin": {
+                  "x": 0,
+                  "y": 42.0
+                },
+                "size": {
+                  "width": 140.0,
+                  "height": 26
+                }
+              }
+            }
+          ],
+          "point": {
+            "x": 0,
+            "y": 60.0
           }
         }
-      ],
-      "point": {
-        "x": 0,
-        "y": 60.0
-      }
-    },
-    {
-      "elementtype": "drawbasicstring",
-      "stringtext": "",
-      "textsubstitution": "controllabel",
-      "userinterfacefont": "kCTFontUIFontSystem",
-      "fontsize": 12.0,
-      "textalignment": "kCTTextAlignmentCenter",
-      "fillcolor": {
-        "red": 1.0,
-        "green": 1.0,
-        "blue": 1.0,
-        "alpha": 1.0,
-        "colorcolorprofilename": "kCGColorSpaceSRGB"
-      },
-      "arrayofpathelements": [
-        {
-          "elementtype": "pathrectangle",
-          "rect": {
-            "origin": {
-              "x": 0,
-              "y": 42.0
-            },
-            "size": {
-              "width": 140.0,
-              "height": 26
-            }
-          }
-        }
-      ],
-      "point": {
-        "x": 0,
-        "y": 60.0
-      }
+      ]
     }
-  ]
 }

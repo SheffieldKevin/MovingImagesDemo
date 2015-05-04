@@ -34,35 +34,36 @@ class Spinner: NSControl {
     weak var controller: SpinnerController?
 
     override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-        self.drawDictionary = createDictionaryFromJSONFile("drawarc",
+        let theDictionary = createDictionaryFromJSONFile("drawarc",
             inBundle: NSBundle(forClass: self.dynamicType))
+        drawDictionary = theDictionary?[MIJSONPropertyDrawInstructions] as? [String:AnyObject]
+        equation = theDictionary?["valuefrompositionequation"] as? String
+        super.init(frame: frameRect)
         // bundle = NSBundle(forClass: Class.self)
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.drawDictionary = createDictionaryFromJSONFile("drawarc",
+        let theDictionary = createDictionaryFromJSONFile("drawarc",
             inBundle: NSBundle(forClass: self.dynamicType))
+        drawDictionary = theDictionary?[MIJSONPropertyDrawInstructions] as? [String:AnyObject]
+        equation = theDictionary?["valuefrompositionequation"] as? String
+        super.init(coder: coder)
+    }
+
+    override func awakeFromNib() {
+        let trackingArea = NSTrackingArea(rect: visibleRect,
+            options: NSTrackingAreaOptions.MouseEnteredAndExited |
+                    NSTrackingAreaOptions.MouseMoved |
+                    NSTrackingAreaOptions.InVisibleRect |
+                    NSTrackingAreaOptions.ActiveAlways,
+            owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea)
     }
     
     override func drawRect(dirtyRect: NSRect) {
         if let drawDict = self.drawDictionary {
             let theContext = NSGraphicsContext.currentContext()!.CGContext
-            let text:String
-            if let controller = self.controller {
-                let value = controller.spinnerValue
-                text = value.stringWithMaxnumberOfFractionAndIntDigits(4)
-            }
-            else {
-                text = spinnerValue.stringWithMaxnumberOfFractionAndIntDigits(4)
-            }
-            let variables:[String:AnyObject] = [
-                "controlvalue" : spinnerValue * Spinner.invertedScale,
-                "controltext" : text,
-                "controllabel" : label
-            ]
-            self.simpleRenderer.variables = variables
+            simpleRenderer.variables = createVariablesDictionaryForDrawing()
             CGContextSetTextMatrix(theContext, CGAffineTransformIdentity)
             simpleRenderer.drawDictionary(drawDict, intoCGContext: theContext)
         }
@@ -74,11 +75,22 @@ class Spinner: NSControl {
         self.spinnerValue = newValue
     }
     
+    override func mouseMoved(theEvent: NSEvent) {
+        if (theEvent.modifierFlags.rawValue & NSEventModifierFlags.CommandKeyMask.rawValue) != 0 {
+            let clickLocation: CGPoint = self.convertPoint(
+                theEvent.locationInWindow, fromView: nil)
+            setValueFromLocation(clickLocation)
+        }
+    }
+    
     override func mouseDown(theEvent: NSEvent) {
-        if let controller = self.controller {
-            if (theEvent.modifierFlags.rawValue & NSEventModifierFlags.AlternateKeyMask.rawValue) != 0 {
-                controller.displayPopover(self)
-            }
+        if (theEvent.modifierFlags.rawValue & NSEventModifierFlags.AlternateKeyMask.rawValue) != 0 {
+            controller?.displayPopover(self)
+        }
+        else {
+            let clickLocation: CGPoint = self.convertPoint(
+                theEvent.locationInWindow, fromView: nil)
+            setValueFromLocation(clickLocation)
         }
     }
 
@@ -89,9 +101,52 @@ class Spinner: NSControl {
     }
 
 private
-    let simpleRenderer = MISimpleRenderer()
-    var drawDictionary:[String:AnyObject]?
+    final func setValueFromLocation(location: CGPoint) -> Void {
+        if let equation = self.equation {
+            let valueDict = createVariablesDictionaryForValue(location)
+            var newValue: CGFloat = 0.0
+            if (MIUtilityGetFloatFromString(equation, &newValue, valueDict))
+            {
+                self.spinnerValue = Float(newValue) * Spinner.scaleFactor
+            }
+        }
+    }
     
+    final func createVariablesDictionaryForDrawing() -> [String:AnyObject] {
+        let text:String
+        if let controller = self.controller {
+            let value = controller.spinnerValue
+            text = value.stringWithMaxnumberOfFractionAndIntDigits(4)
+        }
+        else {
+            text = spinnerValue.stringWithMaxnumberOfFractionAndIntDigits(4)
+        }
+
+        return [
+            "controlvalue" : spinnerValue * Spinner.invertedScale,
+            "controllabel" : self.label,
+            MIJSONKeyWidth : self.bounds.width,
+            MIJSONKeyHeight : self.bounds.height,
+            "controlcenterx" : self.bounds.width * 0.5,
+            "controlcentery" : self.bounds.height * 0.5,
+            "controltext" : text
+        ]
+    }
+
+    final func createVariablesDictionaryForValue(mouseDown: CGPoint) -> [String:AnyObject] {
+        return [
+            MIJSONKeyWidth : self.bounds.width,
+            MIJSONKeyHeight : self.bounds.height,
+            MIJSONKeyX : mouseDown.x,
+            MIJSONKeyY : mouseDown.y,
+            "controlcenterx" : self.bounds.width * 0.5,
+            "controlcentery" : self.bounds.height * 0.5
+        ]
+    }
+
+    let simpleRenderer = MISimpleRenderer()
+    let drawDictionary:[String:AnyObject]?
+    let equation:String?
 }
 
 class SpinnerController: NSViewController, NSPopoverDelegate {
@@ -144,6 +199,7 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
             self.minValue = -1.0
             self.maxValue = 1.0
             self.variableKey = "test"
+            self.view.window?.acceptsMouseMovedEvents = true
         }
     }
 

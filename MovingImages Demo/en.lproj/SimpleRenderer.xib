@@ -71,7 +71,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="spinnerValue">
-                                        <real key="value" value="-5"/>
+                                        <real key="value" value="27"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </customView>
