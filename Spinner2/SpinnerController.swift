@@ -39,7 +39,7 @@ class Spinner: NSControl {
         drawDictionary = theDictionary?[MIJSONPropertyDrawInstructions] as? [String:AnyObject]
         equation = theDictionary?["valuefrompositionequation"] as? String
         super.init(frame: frameRect)
-        // bundle = NSBundle(forClass: Class.self)
+        // bundle = NSBundle(forClass: Spinner.self)
     }
     
     required init?(coder: NSCoder) {

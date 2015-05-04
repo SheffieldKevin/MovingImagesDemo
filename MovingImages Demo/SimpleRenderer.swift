@@ -101,11 +101,15 @@ private
     
     var variables:[String:AnyObject] {
         get {
-            var theDictionary:[String:AnyObject] = [:]
-            theDictionary[spinnerTwo.variableKey] = spinnerTwo.spinnerValue
-            theDictionary[spinnerOne.variableKey] = spinnerOne.spinnerValue
-            theDictionary[MIJSONKeyWidth] = simpleRenderView.frame.width - 8
-            theDictionary[MIJSONKeyHeight] = simpleRenderView.frame.height - 8
+            var theDictionary:[String:AnyObject] = [
+                MIJSONKeyWidth : simpleRenderView.frame.width - 8,
+                MIJSONKeyHeight : simpleRenderView.frame.height - 8
+            ]
+            for spinner in spinners {
+                if !spinner.view.hidden {
+                    theDictionary[spinner.variableKey] = spinner.spinnerValue
+                }
+            }
             return theDictionary
         }
     }
