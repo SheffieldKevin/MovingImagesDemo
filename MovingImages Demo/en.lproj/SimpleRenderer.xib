@@ -6,8 +6,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SimpleRendererWindowController" customModule="MovingImages_Demo" customModuleProvider="target">
             <connections>
+                <outlet property="addSpinner" destination="aTT-g8-03A" id="QYG-m1-9IJ"/>
                 <outlet property="drawElementJSON" destination="k2u-qq-YDH" id="Nai-oz-hyo"/>
                 <outlet property="exampleList" destination="flh-mG-rbv" id="F8R-Hm-lN3"/>
+                <outlet property="removeSpinner" destination="FcI-kL-9jH" id="loz-Rm-mfz"/>
                 <outlet property="simpleRenderView" destination="cZu-b1-qq6" id="zyq-Zp-oev"/>
                 <outlet property="spinnerFour" destination="eiP-5B-gl5" id="GHu-5g-7I8"/>
                 <outlet property="spinnerOne" destination="sGg-LI-q9V" id="f7t-fK-EOE"/>
@@ -20,17 +22,17 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="0.0" y="217" width="1244" height="660"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <value key="minSize" type="size" width="1244" height="660"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="66" y="350" width="1228" height="677"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <value key="minSize" type="size" width="1228" height="677"/>
             <value key="maxSize" type="size" width="1980" height="1080"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="1244" height="660"/>
+                <rect key="frame" x="0.0" y="0.0" width="1228" height="677"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView borderType="groove" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9FT-ds-Cep">
-                        <rect key="frame" x="20" y="46" width="576" height="594"/>
+                        <rect key="frame" x="20" y="46" width="532" height="611"/>
                         <clipView key="contentView" id="HaF-Th-u8R">
                             <rect key="frame" x="1" y="1" width="223" height="133"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,35 +42,32 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="572" height="590"/>
+                                    <size key="minSize" width="528" height="607"/>
                                     <size key="maxSize" width="10000000" height="10000000"/>
                                     <color key="insertionPointColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="572" height="590"/>
+                                    <size key="minSize" width="528" height="607"/>
                                     <size key="maxSize" width="10000000" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
                         <constraints>
-                            <constraint firstAttribute="width" constant="576" id="x8Q-Ey-pFg"/>
+                            <constraint firstAttribute="width" constant="532" id="Otp-GK-Y5P"/>
                         </constraints>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="11d-4j-RNC">
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="11d-4j-RNC">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="U94-NQ-qkF">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="U94-NQ-qkF">
                             <rect key="frame" x="224" y="1" width="15" height="133"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="cZu-b1-qq6" customClass="SimpleRendererView" customModule="MovingImages_Demo" customModuleProvider="target">
-                        <rect key="frame" x="604" y="178" width="620" height="462"/>
-                    </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="ULL-n6-KJ6">
-                        <rect key="frame" x="604" y="20" width="620" height="140"/>
+                        <rect key="frame" x="560" y="20" width="648" height="140"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvy-hU-e28" customClass="Spinner" customModule="MovingImages_Demo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                <rect key="frame" x="28" y="0.0" width="140" height="140"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="spinnerValue">
                                         <real key="value" value="27"/>
@@ -76,18 +75,38 @@
                                 </userDefinedRuntimeAttributes>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tmb-Cf-V6Y" customClass="Spinner" customModule="MovingImages_Demo" customModuleProvider="target">
-                                <rect key="frame" x="160" y="0.0" width="140" height="140"/>
+                                <rect key="frame" x="188" y="0.0" width="140" height="140"/>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHh-0d-vKI" customClass="Spinner" customModule="MovingImages_Demo" customModuleProvider="target">
-                                <rect key="frame" x="320" y="0.0" width="140" height="140"/>
+                                <rect key="frame" x="348" y="0.0" width="140" height="140"/>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lhx-WU-qT6" customClass="Spinner" customModule="MovingImages_Demo" customModuleProvider="target">
-                                <rect key="frame" x="480" y="0.0" width="140" height="140"/>
+                                <rect key="frame" x="508" y="0.0" width="140" height="140"/>
                             </customView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aTT-g8-03A">
+                                <rect key="frame" x="-6" y="109" width="32" height="32"/>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tgb-ca-ndI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addSpinner:" target="-2" id="idI-7X-YFD"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FcI-kL-9jH">
+                                <rect key="frame" x="-6" y="82" width="32" height="32"/>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cgk-Im-zPO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="removeSpinner:" target="-2" id="AaC-M5-EBv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="height" constant="140" id="KSC-Nc-Qk6"/>
-                            <constraint firstAttribute="width" constant="620" id="ebW-Kv-Ncd"/>
+                            <constraint firstAttribute="width" constant="648" id="TMu-04-EgC"/>
                         </constraints>
                     </customView>
                     <popUpButton verticalHuggingPriority="750" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="flh-mG-rbv">
@@ -109,27 +128,30 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="cZu-b1-qq6" customClass="SimpleRendererView" customModule="MovingImages_Demo" customModuleProvider="target">
+                        <rect key="frame" x="560" y="178" width="648" height="479"/>
+                    </customView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="cZu-b1-qq6" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="4Rq-67-NVu"/>
+                    <constraint firstItem="ULL-n6-KJ6" firstAttribute="leading" secondItem="cZu-b1-qq6" secondAttribute="leading" id="1Ku-Hl-7LO"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Dqn-QZ-47q"/>
                     <constraint firstItem="flh-mG-rbv" firstAttribute="leading" secondItem="h7J-kt-AmM" secondAttribute="trailing" constant="8" id="GMq-WL-1zq"/>
-                    <constraint firstAttribute="trailing" secondItem="ULL-n6-KJ6" secondAttribute="trailing" constant="20" id="ONt-CB-xHE"/>
                     <constraint firstItem="h7J-kt-AmM" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Rcl-4v-keS"/>
                     <constraint firstAttribute="bottom" secondItem="9FT-ds-Cep" secondAttribute="bottom" constant="46" id="SNT-AM-sfS"/>
-                    <constraint firstAttribute="trailing" secondItem="cZu-b1-qq6" secondAttribute="trailing" constant="20" id="WZW-Ep-LSU"/>
+                    <constraint firstItem="cZu-b1-qq6" firstAttribute="top" secondItem="9FT-ds-Cep" secondAttribute="top" id="X9E-7J-a2v"/>
+                    <constraint firstItem="cZu-b1-qq6" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="560" id="d2s-pg-GiP"/>
+                    <constraint firstItem="ULL-n6-KJ6" firstAttribute="top" secondItem="cZu-b1-qq6" secondAttribute="bottom" constant="18" id="fDT-Oy-CFm"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="hjj-Nb-1Me"/>
-                    <constraint firstAttribute="bottom" secondItem="cZu-b1-qq6" secondAttribute="bottom" constant="178" id="jT8-Pr-n4o"/>
+                    <constraint firstAttribute="trailing" secondItem="cZu-b1-qq6" secondAttribute="trailing" constant="20" id="i91-Vq-g4N"/>
                     <constraint firstAttribute="bottom" secondItem="ULL-n6-KJ6" secondAttribute="bottom" constant="20" id="l63-9X-VsX"/>
                     <constraint firstAttribute="bottom" secondItem="h7J-kt-AmM" secondAttribute="bottom" constant="21" id="mFv-BF-fBG"/>
-                    <constraint firstItem="cZu-b1-qq6" firstAttribute="leading" secondItem="9FT-ds-Cep" secondAttribute="trailing" constant="8" id="w4N-kJ-dSB"/>
                     <constraint firstAttribute="bottom" secondItem="flh-mG-rbv" secondAttribute="bottom" constant="20" id="xlZ-RH-jMB"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="633" y="433"/>
+            <point key="canvasLocation" x="625" y="441.5"/>
         </window>
         <viewController id="sGg-LI-q9V" userLabel="SpinnerOne" customClass="SpinnerController" customModule="MovingImages_Demo" customModuleProvider="target">
             <connections>
@@ -152,4 +174,8 @@
             </connections>
         </viewController>
     </objects>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+    </resources>
 </document>
