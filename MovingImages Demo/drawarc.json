@@ -1,6 +1,6 @@
 {
     "valuefrompositionequation":
-      "atan2($x - $controlcenterx, $y - $controlcentery) * 2.0 / (3.0 * 3.14159) + 0.5",
+      "atan2($x - $controlcenterx, $y - $controlcentery) * 2.0 / (3.0 * pi) + 0.5",
     "drawinstructions": {
       "elementtype": "arrayofelements",
       "arrayofelements": [
