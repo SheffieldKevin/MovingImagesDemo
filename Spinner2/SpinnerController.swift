@@ -293,5 +293,14 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
             self.spinnerValue = defaultValue
         }
     }
+    
+    func spinnerDictionary() -> [String:AnyObject] {
+        var theDict = [String:AnyObject]()
+        theDict["variablekey"] = self.variableKey
+        theDict["maxvalue"] = self.maxValue
+        theDict["minvalue"] = self.minValue
+        theDict["defaultvalue"] = self.spinnerValue
+        return theDict
+    }
 }
 

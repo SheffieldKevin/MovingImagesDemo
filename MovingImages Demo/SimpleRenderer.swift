@@ -43,60 +43,54 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         updateSpinnersEditingControls()
     }
 
-    @IBAction func saveAsJSON(sender: AnyObject) {
-        var jsonDict = [String:AnyObject]()
-        jsonDict[MIJSONPropertyDrawInstructions] =
-                    createDictionaryFromJSONString(drawElementJSON.string!)
-        var variablesArray = [[String:AnyObject]]()
-        for spinner in spinners {
-            if !spinner.view.hidden {
-                var variablesDict = [String:AnyObject]()
-                variablesDict["maxvalue"] = spinner.maxValue
-                variablesDict["minvalue"] = spinner.minValue
-                variablesDict["defaultvalue"] = spinner.spinnerValue
-                variablesArray.append(variablesDict)
-            }
-        }
-        jsonDict[SimpleRendererWindowController.variableDefinitions] = variablesArray
-        writeJSONToFile(jsonDict, filePath: "/Users/ktam/Desktop/simple_renderer_newimage.json")
-    }
-    
     @IBAction func exampleSelected(sender: AnyObject) {
         let popup = sender as! NSPopUpButton
         let selectedTitle = popup.titleOfSelectedItem!
         let filePath = exampleNameToFilePath(selectedTitle,
             prefix: "simple_renderer_")
-        if let dictionary = readJSONFromFile(filePath),
-           let instructions:AnyObject = dictionary[MIJSONPropertyDrawInstructions],
-           let drawInstructions = instructions as? [String:AnyObject],
-           let jsonString = makePrettyJSONFromDictionary(drawInstructions)
-        {
-            for spinner in spinners {
-                spinner.view.hidden = true
-            }
-            drawElementJSON.string = jsonString
-            if let theDict = createDictionaryFromJSONString(jsonString) {
-                simpleRenderView.drawDictionary = theDict
-            }
-            
-            if let variableDefinitions:AnyObject =
-                dictionary[SimpleRendererWindowController.variableDefinitions],
-               let variableDefs = variableDefinitions as? [AnyObject]
-            {
-                for (index, variableDefinition) in enumerate(variableDefs) {
-                    if let variableDef = variableDefinition as? [String:AnyObject] {
-                        spinners[index].configureSpinner(dictionary: variableDef)
-                        spinners[index].view.hidden = false
-                    }
-                }
-
-            }
-            simpleRenderView.needsDisplay = true
+        if let dictionary = readJSONFromFile(filePath) {
+            configureWithJSON(dictionary)
         }
-        simpleRenderView.variables = self.variables
-        updateSpinnersEditingControls()
     }
 
+    @IBAction func exportJSON(#sender: AnyObject) {
+        let savePanel = NSSavePanel()
+        savePanel.allowedFileTypes = ["public.json"]
+        savePanel.beginSheetModalForWindow(window!, completionHandler: { result in
+            if result == NSModalResponseOK {
+                let theDict = self.createDictionary()
+                if let filePath = savePanel.URL!.path {
+                    writeJSONToFile(theDict, filePath: filePath)
+                }
+                else {
+                    println("Invalid file path for exporting moving images source")
+                }
+            }
+        })
+    }
+    
+    @IBAction func importJSON(#sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        // openPanel.directoryURL = Optional.None
+        openPanel.allowsMultipleSelection = false
+        openPanel.beginSheetModalForWindow(window!, completionHandler: { result in
+            if result == NSModalResponseOK {
+                if let theURL = openPanel.URLs[0] as? NSURL,
+                    let thePath = theURL.path {
+                        if let jsonDict = readJSONFromFile(thePath) {
+                            self.configureWithJSON(jsonDict)
+                        }
+                        else {
+                            println("Invaid JSON dictionary")
+                        }
+                }
+                else {
+                    println("Invalid file path for importing moving images source")
+                }
+            }
+        })
+    }
+    
     // MARK: Internal properties
     
     dynamic var addSpinnersEnabled = true
@@ -158,8 +152,54 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         simpleRenderView.needsDisplay = true
     }
     
+    // MARK: Internal methods
+
+    func configureWithJSON(jsonDictionary: [String:AnyObject]) {
+        if let instructions: AnyObject = jsonDictionary[MIJSONPropertyDrawInstructions],
+            let drawInstructions = instructions as? [String:AnyObject],
+            let jsonString = makePrettyJSONFromDictionary(drawInstructions) {
+                for spinner in spinners {
+                    spinner.view.hidden = true
+                }
+                drawElementJSON.string = jsonString
+                if let theDict = createDictionaryFromJSONString(jsonString) {
+                    simpleRenderView.drawDictionary = theDict
+                }
+                
+                if let variableDefinitions:AnyObject =
+                    jsonDictionary[SimpleRendererWindowController.variableDefinitions],
+                    let variableDefs = variableDefinitions as? [AnyObject]
+                {
+                    for (index, variableDefinition) in enumerate(variableDefs) {
+                        if let variableDef = variableDefinition as? [String:AnyObject] {
+                            spinners[index].configureSpinner(dictionary: variableDef)
+                            spinners[index].view.hidden = false
+                        }
+                    }
+                    
+                }
+                simpleRenderView.needsDisplay = true
+        }
+        simpleRenderView.variables = self.variables
+        updateSpinnersEditingControls()
+    }
+    
+    func createDictionary() -> [String:AnyObject] {
+        var jsonDict = [String:AnyObject]()
+        jsonDict[MIJSONPropertyDrawInstructions] =
+            createDictionaryFromJSONString(drawElementJSON.string!)
+        var variablesArray = [[String:AnyObject]]()
+        for spinner in spinners {
+            if !spinner.view.hidden {
+                variablesArray.append(spinner.spinnerDictionary())
+            }
+        }
+        jsonDict[SimpleRendererWindowController.variableDefinitions] = variablesArray
+        return jsonDict
+    }
+
     // MARK: Private methods
-    func evaluateEnabledStateForAddSpinnersButtons() -> Bool {
+    private func evaluateEnabledStateForAddSpinnersButtons() -> Bool {
         var numberOfSpinners = 0
         for spinner in spinners {
             if !spinner.view.hidden {
@@ -169,7 +209,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         return !(numberOfSpinners == maximumNumberOfSpinners)
     }
 
-    func evaluateEnabledStateForRemoveSpinnersButton() -> Bool {
+    private func evaluateEnabledStateForRemoveSpinnersButton() -> Bool {
         var numberOfSpinners = 0
         for spinner in spinners {
             if spinner.view.hidden {
@@ -179,7 +219,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         return !(numberOfSpinners == 4)
     }
 
-    func updateSpinnersEditingControls() {
+    private func updateSpinnersEditingControls() {
         addSpinnersEnabled = evaluateEnabledStateForAddSpinnersButtons()
         removeSpinnersEnabled = evaluateEnabledStateForRemoveSpinnersButton()
     }

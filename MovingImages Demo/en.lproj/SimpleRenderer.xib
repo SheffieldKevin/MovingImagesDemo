@@ -144,25 +144,37 @@
                         <rect key="frame" x="560" y="178" width="648" height="479"/>
                     </customView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6hE-YR-T1e">
-                        <rect key="frame" x="492" y="13" width="64" height="28"/>
-                        <buttonCell key="cell" type="push" title="Save…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XCr-i7-gAp">
+                        <rect key="frame" x="484" y="13" width="73" height="28"/>
+                        <buttonCell key="cell" type="push" title="Export…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XCr-i7-gAp">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <action selector="saveAsJSON:" target="-2" id="adK-Rs-uaQ"/>
+                            <action selector="exportJSONWithSender:" target="-2" id="MgK-5j-u3X"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="spP-D9-dhu">
+                        <rect key="frame" x="413" y="13" width="73" height="28"/>
+                        <buttonCell key="cell" type="push" title="Import…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tq8-0v-Nwx">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="importJSONWithSender:" target="-2" id="8dj-hR-ETO"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ULL-n6-KJ6" firstAttribute="leading" secondItem="cZu-b1-qq6" secondAttribute="leading" id="1Ku-Hl-7LO"/>
+                    <constraint firstAttribute="bottom" secondItem="spP-D9-dhu" secondAttribute="bottom" constant="19" id="7uI-GF-cXl"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Dqn-QZ-47q"/>
                     <constraint firstItem="flh-mG-rbv" firstAttribute="leading" secondItem="h7J-kt-AmM" secondAttribute="trailing" constant="8" id="GMq-WL-1zq"/>
                     <constraint firstAttribute="bottom" secondItem="6hE-YR-T1e" secondAttribute="bottom" constant="19" id="IZu-r5-FKd"/>
+                    <constraint firstItem="6hE-YR-T1e" firstAttribute="leading" secondItem="spP-D9-dhu" secondAttribute="trailing" constant="8" id="LRf-0j-ek8"/>
                     <constraint firstItem="h7J-kt-AmM" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Rcl-4v-keS"/>
                     <constraint firstAttribute="bottom" secondItem="9FT-ds-Cep" secondAttribute="bottom" constant="46" id="SNT-AM-sfS"/>
                     <constraint firstItem="cZu-b1-qq6" firstAttribute="top" secondItem="9FT-ds-Cep" secondAttribute="top" id="X9E-7J-a2v"/>
-                    <constraint firstItem="6hE-YR-T1e" firstAttribute="trailing" secondItem="9FT-ds-Cep" secondAttribute="trailing" constant="-1" id="Y7a-nG-fTK"/>
+                    <constraint firstItem="6hE-YR-T1e" firstAttribute="trailing" secondItem="9FT-ds-Cep" secondAttribute="trailing" id="Y7a-nG-fTK"/>
                     <constraint firstItem="cZu-b1-qq6" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="560" id="d2s-pg-GiP"/>
                     <constraint firstItem="ULL-n6-KJ6" firstAttribute="top" secondItem="cZu-b1-qq6" secondAttribute="bottom" constant="18" id="fDT-Oy-CFm"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="hjj-Nb-1Me"/>
