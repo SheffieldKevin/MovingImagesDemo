@@ -102,6 +102,17 @@ func createDictionaryFromJSONString(jsonString: String) -> [String:AnyObject]? {
     return Optional.None
 }
 
+func writeJSONToFile(jsonObject: [String:AnyObject], #filePath: String) -> Void {
+    if NSJSONSerialization.isValidJSONObject(jsonObject) {
+        if let outputStream = NSOutputStream(toFileAtPath: filePath, append: false) {
+            outputStream.open()
+            NSJSONSerialization.writeJSONObject(jsonObject, toStream: outputStream,
+                options: NSJSONWritingOptions.PrettyPrinted, error:nil)
+            outputStream.close()
+        }
+    }
+}
+
 func makePrettyJSONFromDictionary(dictionary: [String:AnyObject]) -> String? {
     if !NSJSONSerialization.isValidJSONObject(dictionary) {
         println("Dictionary is not a valid JSON object")

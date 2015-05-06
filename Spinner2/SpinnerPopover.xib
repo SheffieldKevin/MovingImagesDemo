@@ -78,7 +78,7 @@ DQ
 </string>
                     </buttonCell>
                     <connections>
-                        <action selector="handleDoneWithSender:" target="-2" id="0dm-2D-fj5"/>
+                        <action selector="handleDoneWithSender:" target="-2" id="Ecn-2F-kFo"/>
                     </connections>
                 </button>
             </subviews>

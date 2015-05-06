@@ -8,6 +8,8 @@ import MovingImages
 
 class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                                      NSWindowDelegate, SpinnerDelegate {
+    static let variableDefinitions = "variabledefinitions"
+    // MARK: @IBOutlets
     @IBOutlet var drawElementJSON: NSTextView!
     
     @IBOutlet weak var simpleRenderView: SimpleRendererView!
@@ -20,6 +22,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     @IBOutlet weak var addSpinner: NSButton!
     @IBOutlet weak var removeSpinner: NSButton!
 
+    // MARK: @IBActions
     @IBAction func addSpinner(sender: AnyObject) {
         for spinner in spinners {
             if spinner.view.hidden {
@@ -27,6 +30,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                 break
             }
         }
+        updateSpinnersEditingControls()
     }
     
     @IBAction func removeSpinner(sender: AnyObject) {
@@ -36,6 +40,25 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                 break
             }
         }
+        updateSpinnersEditingControls()
+    }
+
+    @IBAction func saveAsJSON(sender: AnyObject) {
+        var jsonDict = [String:AnyObject]()
+        jsonDict[MIJSONPropertyDrawInstructions] =
+                    createDictionaryFromJSONString(drawElementJSON.string!)
+        var variablesArray = [[String:AnyObject]]()
+        for spinner in spinners {
+            if !spinner.view.hidden {
+                var variablesDict = [String:AnyObject]()
+                variablesDict["maxvalue"] = spinner.maxValue
+                variablesDict["minvalue"] = spinner.minValue
+                variablesDict["defaultvalue"] = spinner.spinnerValue
+                variablesArray.append(variablesDict)
+            }
+        }
+        jsonDict[SimpleRendererWindowController.variableDefinitions] = variablesArray
+        writeJSONToFile(jsonDict, filePath: "/Users/ktam/Desktop/simple_renderer_newimage.json")
     }
     
     @IBAction func exampleSelected(sender: AnyObject) {
@@ -56,7 +79,8 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                 simpleRenderView.drawDictionary = theDict
             }
             
-            if let variableDefinitions:AnyObject = dictionary["variabledefinitions"],
+            if let variableDefinitions:AnyObject =
+                dictionary[SimpleRendererWindowController.variableDefinitions],
                let variableDefs = variableDefinitions as? [AnyObject]
             {
                 for (index, variableDefinition) in enumerate(variableDefs) {
@@ -70,8 +94,18 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
             simpleRenderView.needsDisplay = true
         }
         simpleRenderView.variables = self.variables
+        updateSpinnersEditingControls()
     }
+
+    // MARK: Internal properties
     
+    dynamic var addSpinnersEnabled = true
+    dynamic var removeSpinnersEnabled = true
+    
+    // MARK: Private properties
+    private let maximumNumberOfSpinners = 4
+
+    // MARK: NSWindowController overrides.
     override func windowDidLoad() {
         super.windowDidLoad()
         if let theWindow = self.window {
@@ -103,10 +137,12 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         self.exampleSelected(exampleList)
     }
     
+    // MARK: NSWindowDelegate protocol methods.
     func windowDidResize(notification: NSNotification) {
         simpleRenderView.variables = self.variables
     }
     
+    // MARK: NSTextViewDelegate protocol methods.
     func textDidChange(notification: NSNotification) {
         if let jsonText = drawElementJSON.string,
             let theDict = createDictionaryFromJSONString(jsonText) {
@@ -116,15 +152,42 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         }
     }
     
+    // MARK: SpinnerDelegate
     func spinnerValueChanged(#sender: SpinnerController) {
         simpleRenderView.variables = self.variables
         simpleRenderView.needsDisplay = true
     }
     
-private
-    var spinners = [SpinnerController]()
+    // MARK: Private methods
+    func evaluateEnabledStateForAddSpinnersButtons() -> Bool {
+        var numberOfSpinners = 0
+        for spinner in spinners {
+            if !spinner.view.hidden {
+                numberOfSpinners++
+            }
+        }
+        return !(numberOfSpinners == maximumNumberOfSpinners)
+    }
+
+    func evaluateEnabledStateForRemoveSpinnersButton() -> Bool {
+        var numberOfSpinners = 0
+        for spinner in spinners {
+            if spinner.view.hidden {
+                numberOfSpinners++
+            }
+        }
+        return !(numberOfSpinners == 4)
+    }
+
+    func updateSpinnersEditingControls() {
+        addSpinnersEnabled = evaluateEnabledStateForAddSpinnersButtons()
+        removeSpinnersEnabled = evaluateEnabledStateForRemoveSpinnersButton()
+    }
     
-    var variables:[String:AnyObject] {
+    // MARK: Private properties
+    private var spinners = [SpinnerController]()
+    
+    private var variables:[String:AnyObject] {
         get {
             var theDictionary:[String:AnyObject] = [
                 MIJSONKeyWidth : simpleRenderView.frame.width - 8,

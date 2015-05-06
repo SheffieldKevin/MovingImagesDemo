@@ -4,14 +4,17 @@
 import Cocoa
 import MovingImages
 
+// MARK: SpinnerDelegate protocol declaration
 @objc protocol SpinnerDelegate {
     func spinnerValueChanged(#sender: SpinnerController) -> Void
 }
 
+// MARK: Spinner Class
 @IBDesignable
 class Spinner: NSControl {
-    static let scaleFactor:Float = 100.0
-    static let invertedScale:Float = 1.0 / Spinner.scaleFactor
+    // MARK: Spinner Class properties
+    private static let scaleFactor:Float = 100.0
+    private static let invertedScale:Float = 1.0 / Spinner.scaleFactor
 
     @IBInspectable var spinnerValue:Float = scaleFactor * 0.5 {
         didSet {
@@ -23,16 +26,18 @@ class Spinner: NSControl {
         }
     }
 
-    var label:String = "" {
-        didSet {
-            self.needsDisplay = true
-        }
-    }
-    
-    override var acceptsFirstResponder: Bool { return true }
-    
-    weak var controller: SpinnerController?
+    private weak var controller: SpinnerController?
 
+    // MARK: Required init
+    required init?(coder: NSCoder) {
+        let theDictionary = createDictionaryFromJSONFile("drawarc",
+            inBundle: NSBundle(forClass: self.dynamicType))
+        drawDictionary = theDictionary?[MIJSONPropertyDrawInstructions] as? [String:AnyObject]
+        equation = theDictionary?["valuefrompositionequation"] as? String
+        super.init(coder: coder)
+    }
+
+    // MARK: NSView method and property overrides.
     override init(frame frameRect: NSRect) {
         let theDictionary = createDictionaryFromJSONFile("drawarc",
             inBundle: NSBundle(forClass: self.dynamicType))
@@ -42,14 +47,8 @@ class Spinner: NSControl {
         // bundle = NSBundle(forClass: Spinner.self)
     }
     
-    required init?(coder: NSCoder) {
-        let theDictionary = createDictionaryFromJSONFile("drawarc",
-            inBundle: NSBundle(forClass: self.dynamicType))
-        drawDictionary = theDictionary?[MIJSONPropertyDrawInstructions] as? [String:AnyObject]
-        equation = theDictionary?["valuefrompositionequation"] as? String
-        super.init(coder: coder)
-    }
-
+    override var acceptsFirstResponder: Bool { return true }
+    
     override func awakeFromNib() {
         let trackingArea = NSTrackingArea(rect: visibleRect,
             options: NSTrackingAreaOptions.MouseEnteredAndExited |
@@ -84,7 +83,8 @@ class Spinner: NSControl {
     }
     
     override func mouseDown(theEvent: NSEvent) {
-        if (theEvent.modifierFlags.rawValue & NSEventModifierFlags.AlternateKeyMask.rawValue) != 0 {
+        if (theEvent.modifierFlags.rawValue &
+            NSEventModifierFlags.AlternateKeyMask.rawValue) != 0 {
             controller?.displayPopover(self)
         }
         else {
@@ -100,8 +100,8 @@ class Spinner: NSControl {
         }
     }
 
-private
-    final func setValueFromLocation(location: CGPoint) -> Void {
+    // MARK: Private and Final instance methods.
+    private final func setValueFromLocation(location: CGPoint) -> Void {
         if let equation = self.equation {
             let valueDict = createVariablesDictionaryForValue(location)
             var newValue: CGFloat = 0.0
@@ -112,7 +112,7 @@ private
         }
     }
     
-    final func createVariablesDictionaryForDrawing() -> [String:AnyObject] {
+    private final func createVariablesDictionaryForDrawing() -> [String:AnyObject] {
         let text:String
         if let controller = self.controller {
             let value = controller.spinnerValue
@@ -133,7 +133,8 @@ private
         ]
     }
 
-    final func createVariablesDictionaryForValue(mouseDown: CGPoint) -> [String:AnyObject] {
+    private final func createVariablesDictionaryForValue(mouseDown: CGPoint) ->
+        [String:AnyObject] {
         return [
             MIJSONKeyWidth : self.bounds.width,
             MIJSONKeyHeight : self.bounds.height,
@@ -144,52 +145,28 @@ private
         ]
     }
 
-    let simpleRenderer = MISimpleRenderer()
-    let drawDictionary:[String:AnyObject]?
-    let equation:String?
+    // MARK: Private instance properties
+    private var label:String = "" {
+        didSet {
+            self.needsDisplay = true
+        }
+    }
+    private let simpleRenderer = MISimpleRenderer()
+    private let drawDictionary:[String:AnyObject]?
+    private let equation:String?
 }
 
+// MARK: SpinnerController Class
 class SpinnerController: NSViewController, NSPopoverDelegate {
 
-    lazy var popover: NSPopover = {
-        let popover = NSPopover()
-        popover.behavior = .Semitransient
-        self.popoverController = SpinnerPopoverController(
-            nibName: "SpinnerPopover", bundle: nil)
-        self.popoverController?.spinnerController = self
-        popover.contentViewController = self.popoverController!
-        popover.delegate = self
-        popover.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
-        return popover
-    }()
-    
-    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-
+    // MARK: SpinnerController required init
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    weak var delegate: SpinnerDelegate?
-    var popoverController: SpinnerPopoverController?
-    
-    func displayPopover(sender: Spinner) -> Void {
-        let thePopover = self.popover
-        popover.showRelativeToRect(self.view.bounds, ofView: self.view,
-            preferredEdge: NSMaxYEdge)
-        popoverController?.maxValue?.floatValue = self.maxValue
-        popoverController?.minValue?.floatValue = self.minValue
-        popoverController?.controlKey?.stringValue = self.variableKey
-    }
-
-    func dismissPopover() {
-        if let popoverViewController = popoverController {
-            self.minValue = popoverViewController.minValue!.floatValue
-            self.maxValue = popoverViewController.maxValue!.floatValue
-            self.variableKey = popoverViewController.controlKey!.stringValue
-            self.popover.performClose(self)
-        }
+    // MARK: SpinnerController NSControl/NSView method overrides
+    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
     override func viewDidLoad() {
@@ -202,7 +179,23 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
             self.view.window?.acceptsMouseMovedEvents = true
         }
     }
-
+    
+    // MARK: Public instance properties
+    weak var delegate: SpinnerDelegate?
+    var popoverController: SpinnerPopoverController?
+    
+    lazy var popover: NSPopover = {
+        let popover = NSPopover()
+        popover.behavior = .Semitransient
+        self.popoverController = SpinnerPopoverController(
+            nibName: "SpinnerPopover", bundle: nil)
+        self.popoverController?.spinnerController = self
+        popover.contentViewController = self.popoverController!
+        popover.delegate = self
+        popover.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
+        return popover
+    }()
+    
     var spinnerValue:Float {
         get {
             if let spinner = self.view as? Spinner {
@@ -255,6 +248,25 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
             if let spinner = self.view as? Spinner {
                 spinner.label = newValue
             }
+        }
+    }
+
+    // MARK: Public instance methods.
+    func displayPopover(sender: Spinner) -> Void {
+        let thePopover = self.popover
+        popover.showRelativeToRect(self.view.bounds, ofView: self.view,
+            preferredEdge: NSMaxYEdge)
+        popoverController?.maxValue?.floatValue = self.maxValue
+        popoverController?.minValue?.floatValue = self.minValue
+        popoverController?.controlKey?.stringValue = self.variableKey
+    }
+    
+    func dismissPopover() {
+        if let popoverViewController = popoverController {
+            self.minValue = popoverViewController.minValue!.floatValue
+            self.maxValue = popoverViewController.maxValue!.floatValue
+            self.variableKey = popoverViewController.controlKey!.stringValue
+            self.popover.performClose(self)
         }
     }
     
