@@ -21,6 +21,8 @@
 		6E61EE161AF5003A000DAB79 /* SpinnerPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E61EE141AF5003A000DAB79 /* SpinnerPopover.xib */; };
 		6E61EE181AF5004A000DAB79 /* SpinnerPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E61EE171AF5004A000DAB79 /* SpinnerPopoverController.swift */; };
 		6E61EE191AF5004A000DAB79 /* SpinnerPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E61EE171AF5004A000DAB79 /* SpinnerPopoverController.swift */; };
+		6E61EE251AFB667F000DAB79 /* simple_renderer_DrawArc.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E61EE241AFB667F000DAB79 /* simple_renderer_DrawArc.json */; };
+		6E61EE261AFB667F000DAB79 /* simple_renderer_DrawArc.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E61EE241AFB667F000DAB79 /* simple_renderer_DrawArc.json */; };
 		6E8DE3FA1AD59C660029A64D /* simple_renderer_DrawText.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E8DE3F91AD59C660029A64D /* simple_renderer_DrawText.json */; };
 		6EA4D1751ADAAC9200A33936 /* simple_renderer_RobotArm.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EA4D1741ADAAC9200A33936 /* simple_renderer_RobotArm.json */; };
 		6EA4D1761ADE91EC00A33936 /* ZukiniUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */; };
@@ -107,6 +109,7 @@
 		6E61EE111AF5001C000DAB79 /* SpinnerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpinnerController.xib; path = Spinner2/SpinnerController.xib; sourceTree = SOURCE_ROOT; };
 		6E61EE141AF5003A000DAB79 /* SpinnerPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpinnerPopover.xib; path = Spinner2/SpinnerPopover.xib; sourceTree = SOURCE_ROOT; };
 		6E61EE171AF5004A000DAB79 /* SpinnerPopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpinnerPopoverController.swift; path = Spinner2/SpinnerPopoverController.swift; sourceTree = SOURCE_ROOT; };
+		6E61EE241AFB667F000DAB79 /* simple_renderer_DrawArc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawArc.json; sourceTree = "<group>"; };
 		6E8DE3F91AD59C660029A64D /* simple_renderer_DrawText.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawText.json; sourceTree = "<group>"; };
 		6EA4D1741ADAAC9200A33936 /* simple_renderer_RobotArm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_RobotArm.json; sourceTree = "<group>"; };
 		6EA4D17A1ADF2B2A00A33936 /* ZukiniDemoWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZukiniDemoWindowController.swift; sourceTree = "<group>"; };
@@ -223,6 +226,7 @@
 			children = (
 				6EC4C44E1ACCB77B00314829 /* drawarc.json */,
 				6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */,
+				6E61EE241AFB667F000DAB79 /* simple_renderer_DrawArc.json */,
 				6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */,
 				6E3FF0B21AD544E700AD45AD /* simple_renderer_Strokeoval.json */,
 				6E3FF0B61AD56C0700AD45AD /* simple_renderer_ScaleAndRotateImage.json */,
@@ -423,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EC4C44F1ACCB77B00314829 /* drawarc.json in Resources */,
+				6E61EE251AFB667F000DAB79 /* simple_renderer_DrawArc.json in Resources */,
 				6EDC147B1AE41CA500C1DEA7 /* simple_renderer_LinearGradientCircle.json in Resources */,
 				6E3FF0B11AD53EE500AD45AD /* simple_renderer_Fillrect.json in Resources */,
 				6EBC3B8A1AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json in Resources */,
@@ -457,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6ECE89C21AD82E6700BE8FB0 /* Images.xcassets in Resources */,
+				6E61EE261AFB667F000DAB79 /* simple_renderer_DrawArc.json in Resources */,
 				6E61EE131AF5001C000DAB79 /* SpinnerController.xib in Resources */,
 				6ECE89E41AD838B200BE8FB0 /* ZukiniDemo.xib in Resources */,
 				6E61EE161AF5003A000DAB79 /* SpinnerPopover.xib in Resources */,

@@ -5,9 +5,8 @@
     "elementtype" : "arrayofelements",
     "arrayofelements" : [
       {
-        "comment" : "Drawn transparent, left in so easy to turn on & off",
         "fillcolor" : {
-          "alpha" : 0,
+          "alpha" : 1,
           "gray" : 0.15,
           "colorcolorprofilename" : "kCGColorSpaceGenericGray"
         },

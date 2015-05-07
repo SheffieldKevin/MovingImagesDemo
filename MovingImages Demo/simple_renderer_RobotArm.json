@@ -1,387 +1,399 @@
 {
-    "variabledefinitions" :
-    [
-        {
-            "minvalue" : -1.9,
-            "defaultvalue" : 0.0,
-            "maxvalue" : 1.9,
-            "variablekey" : "firstangle"
+  "drawinstructions" : {
+    "linewidth" : 2,
+    "fillcolor" : {
+      "red" : 1,
+      "alpha" : 1,
+      "colorcolorprofilename" : "kCGColorSpaceSRGB",
+      "blue" : 1,
+      "green" : 1
+    },
+    "contexttransformation" : [
+      {
+        "scale" : {
+          "x" : "$scale",
+          "y" : "$scale"
         },
-        {
-            "minvalue" : -2.0,
-            "defaultvalue" : 0.0,
-            "maxvalue" : 2.0,
-            "variablekey" : "secondangle"
+        "transformationtype" : "scale"
+      },
+      {
+        "transformationtype" : "translate",
+        "translation" : {
+          "x" : 80,
+          "y" : 40
         }
+      },
+      {
+        "transformationtype" : "rotate",
+        "rotation" : -0.5235987755982988
+      }
     ],
-    "drawinstructions" : {
-        "elementtype": "arrayofelements",
-        "linewidth": 2.0,
-        "strokecolor": {
-        "red": 0.6,
-        "green": 0.6,
-        "blue": 0.6,
-        "alpha": 1.0,
-        "colorcolorprofilename": "kCGColorSpaceSRGB"
+    "elementtype" : "arrayofelements",
+    "strokecolor" : {
+      "red" : 0.6,
+      "alpha" : 1,
+      "colorcolorprofilename" : "kCGColorSpaceSRGB",
+      "blue" : 0.6,
+      "green" : 0.6
+    },
+    "arrayofelements" : [
+      {
+        "startpoint" : {
+          "x" : -40,
+          "y" : 0
         },
-        "fillcolor": {
-        "red": 1,
-        "green": 1,
-        "blue": 1,
-        "alpha": 1.0,
-        "colorcolorprofilename": "kCGColorSpaceSRGB"
-        },
-        "arrayofelements": [
-            {
-              "elementtype": "fillandstrokepath",
-              "startpoint": {
-                "x": -40.0,
-                "y": 0
-              },
-              "arrayofpathelements": [
-                {
-                  "elementtype": "patharc",
-                  "centerpoint": {
-                    "x": 0,
-                    "y": 160.0
-                  },
-                  "radius": 30.0,
-                  "startangle": 3.141592653589793,
-                  "endangle": 0,
-                  "clockwise": true
-                },
-                {
-                  "elementtype": "patharc",
-                  "centerpoint": {
-                    "x": 0,
-                    "y": 0
-                  },
-                  "radius": 40.0,
-                  "startangle": 0,
-                  "endangle": -3.141592653589793,
-                  "clockwise": true
-                },
-                {
-                  "elementtype": "pathclosesubpath"
-                }
-              ]
+        "elementtype" : "fillandstrokepath",
+        "arrayofpathelements" : [
+          {
+            "elementtype" : "patharc",
+            "startangle" : 3.141592653589793,
+            "centerpoint" : {
+              "x" : 0,
+              "y" : 160
             },
-            {
-              "elementtype": "arrayofelements",
-              "arrayofelements": [
-                {
-                  "elementtype": "strokeoval",
-                  "rect": {
-                    "origin": {
-                      "x": -10.0,
-                      "y": -10.0
-                    },
-                    "size": {
-                      "width": 20.0,
-                      "height": 20.0
-                    }
-                  }
-                },
-                {
-                  "elementtype": "drawlines",
-                  "points": [
-                    {
-                      "x": 0,
-                      "y": -10.0
-                    },
-                    {
-                      "x": 0,
-                      "y": 10.0
-                    },
-                    {
-                      "x": -10.0,
-                      "y": 0
-                    },
-                    {
-                      "x": 10.0,
-                      "y": 0
-                    }
-                  ]
-                }
-              ]
+            "clockwise" : true,
+            "endangle" : 0,
+            "radius" : 30
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : 0,
+            "centerpoint" : {
+              "x" : 0,
+              "y" : 0
             },
-            {
-              "elementtype": "arrayofelements",
-              "arrayofelements": [
-                {
-                  "elementtype": "arrayofelements",
-                  "linewidth": 2.0,
-                  "strokecolor": {
-                    "red": 0.6,
-                    "green": 0.6,
-                    "blue": 0.6,
-                    "alpha": 1.0,
-                    "colorcolorprofilename": "kCGColorSpaceSRGB"
-                  },
-                  "fillcolor": {
-                    "red": 1,
-                    "green": 1,
-                    "blue": 1,
-                    "alpha": 1.0,
-                    "colorcolorprofilename": "kCGColorSpaceSRGB"
-                  },
-                  "arrayofelements": [
-                    {
-                      "elementtype": "fillandstrokepath",
-                      "startpoint": {
-                        "x": -20.0,
-                        "y": 0
-                      },
-                      "arrayofpathelements": [
-                        {
-                          "elementtype": "patharc",
-                          "centerpoint": {
-                            "x": 0,
-                            "y": 80.0
-                          },
-                          "radius": 10.0,
-                          "startangle": 3.141592653589793,
-                          "endangle": 0,
-                          "clockwise": true
-                        },
-                        {
-                          "elementtype": "patharc",
-                          "centerpoint": {
-                            "x": 0,
-                            "y": 0
-                          },
-                          "radius": 20.0,
-                          "startangle": 0,
-                          "endangle": -3.141592653589793,
-                          "clockwise": true
-                        },
-                        {
-                          "elementtype": "pathclosesubpath"
-                        }
-                      ]
-                    },
-                    {
-                      "elementtype": "arrayofelements",
-                      "arrayofelements": [
-                        {
-                          "elementtype": "strokeoval",
-                          "rect": {
-                            "origin": {
-                              "x": -8.0,
-                              "y": -8.0
-                            },
-                            "size": {
-                              "width": 16,
-                              "height": 16
-                            }
-                          }
-                        },
-                        {
-                          "elementtype": "drawlines",
-                          "points": [
-                            {
-                              "x": 0,
-                              "y": -8.0
-                            },
-                            {
-                              "x": 0,
-                              "y": 8.0
-                            },
-                            {
-                              "x": -8.0,
-                              "y": 0
-                            },
-                            {
-                              "x": 8.0,
-                              "y": 0
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ],
-                  "contexttransformation": [
-                    {
-                      "transformationtype": "translate",
-                      "translation": {
-                        "x": 0,
-                        "y": 110
-                      }
-                    },
-                    {
-                      "transformationtype": "rotate",
-                      "rotation": "$secondangle"
-                    }
-                  ]
-                },
-                {
-                  "elementtype": "fillandstrokepath",
-                  "startpoint": {
-                    "x": -30.0,
-                    "y": 0
-                  },
-                  "arrayofpathelements": [
-                    {
-                      "elementtype": "patharc",
-                      "centerpoint": {
-                        "x": 0,
-                        "y": 110.0
-                      },
-                      "radius": 20.0,
-                      "startangle": 3.141592653589793,
-                      "endangle": 0,
-                      "clockwise": true
-                    },
-                    {
-                      "elementtype": "patharc",
-                      "centerpoint": {
-                        "x": 0,
-                        "y": 0
-                      },
-                      "radius": 30.0,
-                      "startangle": 0,
-                      "endangle": -3.141592653589793,
-                      "clockwise": true
-                    },
-                    {
-                      "elementtype": "pathclosesubpath"
-                    }
-                  ]
-                },
-                {
-                  "elementtype": "arrayofelements",
-                  "arrayofelements": [
-                    {
-                      "elementtype": "strokeoval",
-                      "rect": {
-                        "origin": {
-                          "x": -9.0,
-                          "y": -9.0
-                        },
-                        "size": {
-                          "width": 18,
-                          "height": 18
-                        }
-                      }
-                    },
-                    {
-                      "elementtype": "drawlines",
-                      "points": [
-                        {
-                          "x": 0,
-                          "y": -9.0
-                        },
-                        {
-                          "x": 0,
-                          "y": 9.0
-                        },
-                        {
-                          "x": -9.0,
-                          "y": 0
-                        },
-                        {
-                          "x": 9.0,
-                          "y": 0
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "elementtype": "arrayofelements",
-                  "arrayofelements": [
-                    {
-                      "elementtype": "strokeoval",
-                      "rect": {
-                        "origin": {
-                          "x": -8.0,
-                          "y": -8.0
-                        },
-                        "size": {
-                          "width": 16.0,
-                          "height": 16.0
-                        }
-                      }
-                    },
-                    {
-                      "elementtype": "drawlines",
-                      "points": [
-                        {
-                          "x": 0,
-                          "y": -8.0
-                        },
-                        {
-                          "x": 0,
-                          "y": 8.0
-                        },
-                        {
-                          "x": -8.0,
-                          "y": 0
-                        },
-                        {
-                          "x": 8.0,
-                          "y": 0
-                        }
-                      ]
-                    }
-                  ],
-                  "contexttransformation": [
-                    {
-                      "transformationtype": "translate",
-                      "translation": {
-                        "x": 0,
-                        "y": 110.0
-                      }
-                    },
-                    {
-                      "transformationtype": "rotate",
-                      "rotation": "$secondangle"
-                    }
-                  ]
-                }
-              ],
-              "linewidth": 2.0,
-              "strokecolor": {
-                "red": 0.6,
-                "green": 0.6,
-                "blue": 0.6,
-                "alpha": 1.0,
-                "colorcolorprofilename": "kCGColorSpaceSRGB"
-              },
-              "fillcolor": {
-                "red": 1,
-                "green": 1,
-                "blue": 1,
-                "alpha": 1.0,
-                "colorcolorprofilename": "kCGColorSpaceSRGB"
-              },
-              "contexttransformation": [
-                {
-                  "transformationtype": "translate",
-                  "translation": {
-                    "x": 0,
-                    "y": 160.0
-                  }
-                },
-                {
-                  "transformationtype": "rotate",
-                  "rotation": "$firstangle"
-                }
-              ]
-            }
-        ],
-        "contexttransformation": [
-            {
-              "transformationtype": "translate",
-              "translation": {
-                "x": 80,
-                "y": 40
-              }
-            },
-            {
-              "transformationtype": "rotate",
-              "rotation": -0.5235987755982988
-            }
+            "clockwise" : true,
+            "endangle" : -3.141592653589793,
+            "radius" : 40
+          },
+          {
+            "elementtype" : "pathclosesubpath"
+          }
         ]
+      },
+      {
+        "arrayofelements" : [
+          {
+            "elementtype" : "strokeoval",
+            "rect" : {
+              "origin" : {
+                "x" : -10,
+                "y" : -10
+              },
+              "size" : {
+                "width" : 20,
+                "height" : 20
+              }
+            }
+          },
+          {
+            "points" : [
+              {
+                "x" : 0,
+                "y" : -10
+              },
+              {
+                "x" : 0,
+                "y" : 10
+              },
+              {
+                "x" : -10,
+                "y" : 0
+              },
+              {
+                "x" : 10,
+                "y" : 0
+              }
+            ],
+            "elementtype" : "drawlines"
+          }
+        ],
+        "elementtype" : "arrayofelements"
+      },
+      {
+        "linewidth" : 2,
+        "elementtype" : "arrayofelements",
+        "strokecolor" : {
+          "red" : 0.6,
+          "alpha" : 1,
+          "colorcolorprofilename" : "kCGColorSpaceSRGB",
+          "blue" : 0.6,
+          "green" : 0.6
+        },
+        "contexttransformation" : [
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : 0,
+              "y" : 160
+            }
+          },
+          {
+            "transformationtype" : "rotate",
+            "rotation" : "$firstangle"
+          }
+        ],
+        "fillcolor" : {
+          "red" : 1,
+          "alpha" : 1,
+          "colorcolorprofilename" : "kCGColorSpaceSRGB",
+          "blue" : 1,
+          "green" : 1
+        },
+        "arrayofelements" : [
+          {
+            "fillcolor" : {
+              "red" : 1,
+              "alpha" : 1,
+              "colorcolorprofilename" : "kCGColorSpaceSRGB",
+              "blue" : 1,
+              "green" : 1
+            },
+            "elementtype" : "arrayofelements",
+            "strokecolor" : {
+              "red" : 0.6,
+              "alpha" : 1,
+              "colorcolorprofilename" : "kCGColorSpaceSRGB",
+              "blue" : 0.6,
+              "green" : 0.6
+            },
+            "arrayofelements" : [
+              {
+                "startpoint" : {
+                  "x" : -20,
+                  "y" : 0
+                },
+                "elementtype" : "fillandstrokepath",
+                "arrayofpathelements" : [
+                  {
+                    "elementtype" : "patharc",
+                    "startangle" : 3.141592653589793,
+                    "centerpoint" : {
+                      "x" : 0,
+                      "y" : 80
+                    },
+                    "clockwise" : true,
+                    "endangle" : 0,
+                    "radius" : 10
+                  },
+                  {
+                    "elementtype" : "patharc",
+                    "startangle" : 0,
+                    "centerpoint" : {
+                      "x" : 0,
+                      "y" : 0
+                    },
+                    "clockwise" : true,
+                    "endangle" : -3.141592653589793,
+                    "radius" : 20
+                  },
+                  {
+                    "elementtype" : "pathclosesubpath"
+                  }
+                ]
+              },
+              {
+                "arrayofelements" : [
+                  {
+                    "elementtype" : "strokeoval",
+                    "rect" : {
+                      "origin" : {
+                        "x" : -8,
+                        "y" : -8
+                      },
+                      "size" : {
+                        "width" : 16,
+                        "height" : 16
+                      }
+                    }
+                  },
+                  {
+                    "points" : [
+                      {
+                        "x" : 0,
+                        "y" : -8
+                      },
+                      {
+                        "x" : 0,
+                        "y" : 8
+                      },
+                      {
+                        "x" : -8,
+                        "y" : 0
+                      },
+                      {
+                        "x" : 8,
+                        "y" : 0
+                      }
+                    ],
+                    "elementtype" : "drawlines"
+                  }
+                ],
+                "elementtype" : "arrayofelements"
+              }
+            ],
+            "contexttransformation" : [
+              {
+                "transformationtype" : "translate",
+                "translation" : {
+                  "x" : 0,
+                  "y" : 110
+                }
+              },
+              {
+                "transformationtype" : "rotate",
+                "rotation" : "$secondangle"
+              }
+            ],
+            "linewidth" : 2
+          },
+          {
+            "startpoint" : {
+              "x" : -30,
+              "y" : 0
+            },
+            "elementtype" : "fillandstrokepath",
+            "arrayofpathelements" : [
+              {
+                "elementtype" : "patharc",
+                "startangle" : 3.141592653589793,
+                "centerpoint" : {
+                  "x" : 0,
+                  "y" : 110
+                },
+                "clockwise" : true,
+                "endangle" : 0,
+                "radius" : 20
+              },
+              {
+                "elementtype" : "patharc",
+                "startangle" : 0,
+                "centerpoint" : {
+                  "x" : 0,
+                  "y" : 0
+                },
+                "clockwise" : true,
+                "endangle" : -3.141592653589793,
+                "radius" : 30
+              },
+              {
+                "elementtype" : "pathclosesubpath"
+              }
+            ]
+          },
+          {
+            "arrayofelements" : [
+              {
+                "elementtype" : "strokeoval",
+                "rect" : {
+                  "origin" : {
+                    "x" : -9,
+                    "y" : -9
+                  },
+                  "size" : {
+                    "width" : 18,
+                    "height" : 18
+                  }
+                }
+              },
+              {
+                "points" : [
+                  {
+                    "x" : 0,
+                    "y" : -9
+                  },
+                  {
+                    "x" : 0,
+                    "y" : 9
+                  },
+                  {
+                    "x" : -9,
+                    "y" : 0
+                  },
+                  {
+                    "x" : 9,
+                    "y" : 0
+                  }
+                ],
+                "elementtype" : "drawlines"
+              }
+            ],
+            "elementtype" : "arrayofelements"
+          },
+          {
+            "arrayofelements" : [
+              {
+                "elementtype" : "strokeoval",
+                "rect" : {
+                  "origin" : {
+                    "x" : -8,
+                    "y" : -8
+                  },
+                  "size" : {
+                    "width" : 16,
+                    "height" : 16
+                  }
+                }
+              },
+              {
+                "points" : [
+                  {
+                    "x" : 0,
+                    "y" : -8
+                  },
+                  {
+                    "x" : 0,
+                    "y" : 8
+                  },
+                  {
+                    "x" : -8,
+                    "y" : 0
+                  },
+                  {
+                    "x" : 8,
+                    "y" : 0
+                  }
+                ],
+                "elementtype" : "drawlines"
+              }
+            ],
+            "elementtype" : "arrayofelements",
+            "contexttransformation" : [
+              {
+                "transformationtype" : "translate",
+                "translation" : {
+                  "x" : 0,
+                  "y" : 110
+                }
+              },
+              {
+                "transformationtype" : "rotate",
+                "rotation" : "$secondangle"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "variabledefinitions" : [
+    {
+      "maxvalue" : 1.9,
+      "variablekey" : "firstangle",
+      "defaultvalue" : 1.878925,
+      "minvalue" : -1.9
+    },
+    {
+      "maxvalue" : 2,
+      "variablekey" : "secondangle",
+      "defaultvalue" : -1.368373,
+      "minvalue" : -2
+    },
+    {
+      "maxvalue" : 2,
+      "variablekey" : "scale",
+      "defaultvalue" : 1.20135,
+      "minvalue" : 0.4
     }
+  ]
 }

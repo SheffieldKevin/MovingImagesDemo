@@ -13,10 +13,10 @@ import MovingImages
 @IBDesignable
 class Spinner: NSControl {
     // MARK: Spinner Class properties
-    private static let scaleFactor:Float = 100.0
-    private static let invertedScale:Float = 1.0 / Spinner.scaleFactor
+    private static let scaleFactor:Double = 100.0
+    private static let invertedScale:Double = 1.0 / Spinner.scaleFactor
 
-    @IBInspectable var spinnerValue:Float = scaleFactor * 0.5 {
+    @IBInspectable var spinnerValue:Double = scaleFactor * 0.5 {
         didSet {
             spinnerValue = max(min(spinnerValue, Spinner.scaleFactor), 0.0)
             if let controller = self.controller {
@@ -69,7 +69,7 @@ class Spinner: NSControl {
     }
     
     override func scrollWheel(theEvent: NSEvent) {
-        let deltaY = Float(theEvent.scrollingDeltaY)
+        let deltaY = Double(theEvent.scrollingDeltaY)
         let newValue = self.spinnerValue - deltaY * 0.06
         self.spinnerValue = newValue
     }
@@ -107,7 +107,7 @@ class Spinner: NSControl {
             var newValue: CGFloat = 0.0
             if (MIUtilityGetFloatFromString(equation, &newValue, valueDict))
             {
-                self.spinnerValue = Float(newValue) * Spinner.scaleFactor
+                self.spinnerValue = Double(newValue) * Spinner.scaleFactor
             }
         }
     }
@@ -196,7 +196,7 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
         return popover
     }()
     
-    var spinnerValue:Float {
+    var spinnerValue:Double {
         get {
             if let spinner = self.view as? Spinner {
                 return spinner.spinnerValue * (maxValue - minValue) * Spinner.invertedScale + minValue
@@ -211,7 +211,7 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
         }
     }
 
-    var minValue:Float = 0.0 {
+    var minValue:Double = 0.0 {
         didSet {
             if minValue > maxValue {
                 maxValue = minValue + 1.0
@@ -224,7 +224,7 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
         }
     }
     
-    var maxValue:Float = 1.0 {
+    var maxValue:Double = 1.0 {
         didSet {
             if maxValue < minValue {
                 minValue = maxValue - 1
@@ -256,24 +256,24 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
         let thePopover = self.popover
         popover.showRelativeToRect(self.view.bounds, ofView: self.view,
             preferredEdge: NSMaxYEdge)
-        popoverController?.maxValue?.floatValue = self.maxValue
-        popoverController?.minValue?.floatValue = self.minValue
+        popoverController?.maxValue?.doubleValue = self.maxValue
+        popoverController?.minValue?.doubleValue = self.minValue
         popoverController?.controlKey?.stringValue = self.variableKey
     }
     
     func dismissPopover() {
         if let popoverViewController = popoverController {
-            self.minValue = popoverViewController.minValue!.floatValue
-            self.maxValue = popoverViewController.maxValue!.floatValue
+            self.minValue = popoverViewController.minValue!.doubleValue
+            self.maxValue = popoverViewController.maxValue!.doubleValue
             self.variableKey = popoverViewController.controlKey!.stringValue
             self.popover.performClose(self)
+            self.view.needsDisplay = true
+            delegate?.spinnerValueChanged(sender: self)
         }
     }
     
     func spinnerValueChanged(#spinner: Spinner) -> Void {
-        if let delegate = self.delegate {
-            delegate.spinnerValueChanged(sender: self)
-        }
+        delegate?.spinnerValueChanged(sender: self)
     }
     
     func configureSpinner(#dictionary: [String:AnyObject]) -> Void {
@@ -281,15 +281,15 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
             self.variableKey = theKey
         }
         
-        if let maxValue = dictionary["maxvalue"] as? Float {
+        if let maxValue = dictionary["maxvalue"] as? Double {
             self.maxValue = maxValue
         }
 
-        if let minValue = dictionary["minvalue"] as? Float {
+        if let minValue = dictionary["minvalue"] as? Double {
             self.minValue = minValue
         }
 
-        if let defaultValue = dictionary["defaultvalue"] as? Float {
+        if let defaultValue = dictionary["defaultvalue"] as? Double {
             self.spinnerValue = defaultValue
         }
     }

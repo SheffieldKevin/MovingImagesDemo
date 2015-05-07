@@ -27,6 +27,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         for spinner in spinners {
             if spinner.view.hidden {
                 spinner.view.hidden = false
+                self.spinnerValueChanged(sender: spinner)
                 break
             }
         }

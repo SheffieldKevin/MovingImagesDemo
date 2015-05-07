@@ -1,44 +1,54 @@
 {
-    "variabledefinitions" :
-    [
-        {
-            "minvalue" : 150,
-            "defaultvalue" : 160,
-            "maxvalue" : 300,
-            "variablekey" : "textwidth"
-        },
-        {
-            "minvalue" : 0.0,
-            "defaultvalue" : 200.0,
-            "maxvalue" : 350.0,
-            "variablekey" : "vertpos"
+  "drawinstructions" : {
+    "stringtext" : "Hello this is Zukini by Kevin Meaney",
+    "fontsize" : "$fontsize",
+    "elementtype" : "drawbasicstring",
+    "point" : {
+      "x" : 40,
+      "y" : "$vertpos"
+    },
+    "fillcolor" : {
+      "red" : 0.6,
+      "alpha" : 1,
+      "colorcolorprofilename" : "devicergb",
+      "blue" : 0.2,
+      "green" : 0.1
+    },
+    "postscriptfontname" : "Avenir-Medium",
+    "arrayofpathelements" : [
+      {
+        "elementtype" : "pathrectangle",
+        "rect" : {
+          "origin" : {
+            "x" : 40,
+            "y" : "$vertpos"
+          },
+          "size" : {
+            "width" : "$textwidth",
+            "height" : 200
+          }
         }
-    ],
-    "drawinstructions" :
+      }
+    ]
+  },
+  "variabledefinitions" : [
     {
-        "elementtype" : "drawbasicstring",
-        "point" : { "x" : 40, "y" : "$vertpos" },
-        "fontsize" : 24,
-        "postscriptfontname" : "Avenir-Medium",
-        "arrayofpathelements" :
-        [
-            {
-                "elementtype" : "pathrectangle",
-                "rect" :
-                {
-                    "origin" : { "x" : 40, "y" : "$vertpos" },
-                    "size" : { "width" : "$textwidth", "height" : 200 }
-                }
-            }
-        ],
-        "stringtext" : "Hello this is Zukini by Kevin Meaney",
-        "fillcolor" :
-        {
-            "red" : 0.6,
-            "green" : 0.1,
-            "blue" : 0.2,
-            "alpha" : 1.0,
-            "colorcolorprofilename" : "devicergb"
-        }
+      "maxvalue" : 300,
+      "variablekey" : "textwidth",
+      "defaultvalue" : 160,
+      "minvalue" : 150
+    },
+    {
+      "maxvalue" : 350,
+      "variablekey" : "vertpos",
+      "defaultvalue" : 200,
+      "minvalue" : 0
+    },
+    {
+      "maxvalue" : 40,
+      "variablekey" : "fontsize",
+      "defaultvalue" : 26.91458,
+      "minvalue" : 12
     }
+  ]
 }
