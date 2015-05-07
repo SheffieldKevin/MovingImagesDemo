@@ -144,7 +144,7 @@
             "gray" : 0.2,
             "colorcolorprofilename" : "kCGColorSpaceGenericGray"
           },
-          "blur" : 8
+          "blur" : 4
         },
         "linewidth" : 14,
         "elementtype" : "strokepath",

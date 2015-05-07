@@ -48,8 +48,8 @@ private
         let innerInsetRect = CGRectInset(insetRect, 1.0, 1.0)
         NSColor(deviceWhite: 0.9, alpha: 1.0).setFill()
         CGContextFillRect(context, innerInsetRect)
-        let clipRect = CGRectInset(self.bounds, 2.0, 2.0)
+        let clipRect = CGRectInset(self.bounds, 4.0, 4.0)
         CGContextClipToRect(context, clipRect)
-        CGContextTranslateCTM(context, 2.0, 2.0)
+        CGContextTranslateCTM(context, 4.0, 4.0)
     }
 }
