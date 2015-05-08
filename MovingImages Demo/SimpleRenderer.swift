@@ -145,6 +145,9 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
             simpleRenderView.variables = self.variables
             simpleRenderView.needsDisplay = true
         }
+        else {
+            println("\(__FUNCTION__) failed to convert json text to dictionary")
+        }
     }
     
     // MARK: SpinnerDelegate
