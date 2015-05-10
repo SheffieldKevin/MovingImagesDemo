@@ -1,0 +1,228 @@
+{
+  "drawinstructions" : {
+    "elementtype" : "arrayofelements",
+    "fillcolor" : {
+      "red" : 0.1,
+      "alpha" : 1,
+      "colorcolorprofilename" : "kCGColorSpaceSRGB",
+      "blue" : 0.1,
+      "green" : 0.4
+    },
+    "arrayofelements" : [
+      {
+        "elementtype" : "fillpath",
+        "contexttransformation" : [
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "$logowidth * (1.0 - $fraction * 1.5)",
+              "y" : 0
+            }
+          },
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "$fraction * $logowidth * 1.5 * 0.5",
+              "y" : "$fraction * $logowidth * 0.5"
+            }
+          },
+          {
+            "transformationtype" : "rotate",
+            "rotation" : 0
+          },
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "- $fraction * $logowidth * 1.5 * 0.5",
+              "y" : "- $fraction * $logowidth * 0.5"
+            }
+          }
+        ],
+        "arrayofpathelements" : [
+          {
+            "elementtype" : "patharc",
+            "startangle" : -1.570796326794897,
+            "centerpoint" : {
+              "x" : "$fraction * $logowidth",
+              "y" : "$fraction * $logowidth * 0.5"
+            },
+            "clockwise" : false,
+            "endangle" : 1.570796326794897,
+            "radius" : "$fraction * $logowidth * 0.5"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : 1.570796326794897,
+            "centerpoint" : {
+              "x" : "$fraction * $logowidth * 0.70",
+              "y" : "$logowidth * $fraction - 0.10296 * $logowidth"
+            },
+            "clockwise" : false,
+            "endangle" : 2.638937829015426,
+            "radius" : "0.10296 * $logowidth"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : 2.638937829015426,
+            "centerpoint" : {
+              "x" : "0.01584 * $logowidth",
+              "y" : "0.01584 * $logowidth"
+            },
+            "clockwise" : false,
+            "endangle" : -1.570796326794897,
+            "radius" : "0.01584 * $logowidth"
+          },
+          {
+            "elementtype" : "pathclosesubpath"
+          }
+        ],
+        "startpoint" : {
+          "x" : "0.01584 * $logowidth",
+          "y" : 0
+        }
+      },
+      {
+        "elementtype" : "fillpath",
+        "contexttransformation" : [
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : 0,
+              "y" : "$logowidth * (1.08 - $fraction)"
+            }
+          },
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "$fraction * $logowidth * 1.5 * 0.5",
+              "y" : "$fraction * $logowidth * 0.5"
+            }
+          },
+          {
+            "transformationtype" : "rotate",
+            "rotation" : 3.141592653589793
+          },
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "- $fraction * $logowidth * 1.5 * 0.5",
+              "y" : "- $fraction * $logowidth * 0.5"
+            }
+          }
+        ],
+        "arrayofpathelements" : [
+          {
+            "elementtype" : "patharc",
+            "startangle" : -1.570796326794897,
+            "centerpoint" : {
+              "x" : "$fraction * $logowidth",
+              "y" : "$fraction * $logowidth * 0.5"
+            },
+            "clockwise" : false,
+            "endangle" : 1.570796326794897,
+            "radius" : "$fraction * $logowidth * 0.5"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : 1.570796326794897,
+            "centerpoint" : {
+              "x" : "$fraction * $logowidth * 0.70",
+              "y" : "$logowidth * $fraction - 0.10296 * $logowidth"
+            },
+            "clockwise" : false,
+            "endangle" : 2.638937829015426,
+            "radius" : "0.10296 * $logowidth"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : 2.638937829015426,
+            "centerpoint" : {
+              "x" : "0.01584 * $logowidth",
+              "y" : "0.01584 * $logowidth"
+            },
+            "clockwise" : false,
+            "endangle" : -1.570796326794897,
+            "radius" : "0.01584 * $logowidth"
+          },
+          {
+            "elementtype" : "pathclosesubpath"
+          }
+        ],
+        "startpoint" : {
+          "x" : "0.01584 * $logowidth",
+          "y" : 0
+        }
+      },
+      {
+        "startpoint" : {
+          "x" : "0.04 * $fraction * $logowidth",
+          "y" : 0
+        },
+        "elementtype" : "fillpath",
+        "arrayofpathelements" : [
+          {
+            "elementtype" : "patharc",
+            "startangle" : -1.570796326794897,
+            "centerpoint" : {
+              "x" : "$logowidth * 0.32",
+              "y" : "0.10296 * $logowidth"
+            },
+            "clockwise" : false,
+            "endangle" : -0.5026548245743669,
+            "radius" : "0.10296 * $logowidth"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : -0.5026548245743669,
+            "centerpoint" : {
+              "x" : "$logowidth * 0.98416",
+              "y" : "$logowidth * 1.0642"
+            },
+            "clockwise" : false,
+            "endangle" : 1.570796326794897,
+            "radius" : "0.01584 * $logowidth"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : 1.570796326794897,
+            "centerpoint" : {
+              "x" : "$logowidth * 0.68",
+              "y" : "$logowidth * 0.97704"
+            },
+            "clockwise" : false,
+            "endangle" : 2.638937829015426,
+            "radius" : "0.10296 * $logowidth"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : 2.638937829015426,
+            "centerpoint" : {
+              "x" : "0.01584 * $logowidth",
+              "y" : "0.01584 * $logowidth"
+            },
+            "clockwise" : false,
+            "endangle" : -1.570796326794897,
+            "radius" : "0.01584 * $logowidth"
+          },
+          {
+            "elementtype" : "pathclosesubpath"
+          }
+        ]
+      }
+    ]
+  },
+  "variabledefinitions" : [
+    {
+      "maxvalue" : 600,
+      "variablekey" : "logowidth",
+      "defaultvalue" : 430.3800000000001,
+      "minvalue" : 50
+    },
+    {
+      "maxvalue" : 0.6,
+      "variablekey" : "fraction",
+      "defaultvalue" : 0.37664,
+      "minvalue" : 0.2
+    }
+  ]
+}

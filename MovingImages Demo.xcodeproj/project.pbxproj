@@ -55,6 +55,8 @@
 		6ECE89DE1AD830B800BE8FB0 /* ZukiniUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */; };
 		6ECE89E31AD838B200BE8FB0 /* ZukiniDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ECE89E21AD838B200BE8FB0 /* ZukiniDemo.xib */; };
 		6ECE89E41AD838B200BE8FB0 /* ZukiniDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ECE89E21AD838B200BE8FB0 /* ZukiniDemo.xib */; };
+		6ED901A81AFFA7E10011D286 /* simple_renderer_AZukini.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED901A71AFFA7E10011D286 /* simple_renderer_AZukini.json */; };
+		6ED901A91AFFA7E10011D286 /* simple_renderer_AZukini.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED901A71AFFA7E10011D286 /* simple_renderer_AZukini.json */; };
 		6EDC147B1AE41CA500C1DEA7 /* simple_renderer_LinearGradientCircle.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EDC147A1AE41CA500C1DEA7 /* simple_renderer_LinearGradientCircle.json */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +142,7 @@
 		6ECE89D01AD82E6700BE8FB0 /* Zukini_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zukini_DemoTests.swift; sourceTree = "<group>"; };
 		6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZukiniUtilities.swift; path = ../Spinner2/ZukiniUtilities.swift; sourceTree = "<group>"; };
 		6ECE89E21AD838B200BE8FB0 /* ZukiniDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZukiniDemo.xib; sourceTree = "<group>"; };
+		6ED901A71AFFA7E10011D286 /* simple_renderer_AZukini.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_AZukini.json; sourceTree = "<group>"; };
 		6EDC147A1AE41CA500C1DEA7 /* simple_renderer_LinearGradientCircle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_LinearGradientCircle.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				6EC4C44E1ACCB77B00314829 /* drawarc.json */,
+				6ED901A71AFFA7E10011D286 /* simple_renderer_AZukini.json */,
 				6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */,
 				6E61EE241AFB667F000DAB79 /* simple_renderer_DrawArc.json */,
 				6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */,
@@ -430,6 +434,7 @@
 				6E61EE251AFB667F000DAB79 /* simple_renderer_DrawArc.json in Resources */,
 				6EDC147B1AE41CA500C1DEA7 /* simple_renderer_LinearGradientCircle.json in Resources */,
 				6E3FF0B11AD53EE500AD45AD /* simple_renderer_Fillrect.json in Resources */,
+				6ED901A81AFFA7E10011D286 /* simple_renderer_AZukini.json in Resources */,
 				6EBC3B8A1AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json in Resources */,
 				6EBC3B8C1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json in Resources */,
 				6E61EE121AF5001C000DAB79 /* SpinnerController.xib in Resources */,
@@ -466,6 +471,7 @@
 				6E61EE131AF5001C000DAB79 /* SpinnerController.xib in Resources */,
 				6ECE89E41AD838B200BE8FB0 /* ZukiniDemo.xib in Resources */,
 				6E61EE161AF5003A000DAB79 /* SpinnerPopover.xib in Resources */,
+				6ED901A91AFFA7E10011D286 /* simple_renderer_AZukini.json in Resources */,
 				6ECE89C51AD82E6700BE8FB0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
