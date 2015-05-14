@@ -26,6 +26,7 @@ class Spinner: NSControl {
         }
     }
 
+    private static let toolTip = "Option click to configure, Scroll action or command key & mouse move to change value"
     private weak var controller: SpinnerController?
 
     // MARK: Required init
@@ -35,6 +36,7 @@ class Spinner: NSControl {
         drawDictionary = theDictionary?[MIJSONPropertyDrawInstructions] as? [String:AnyObject]
         equation = theDictionary?["valuefrompositionequation"] as? String
         super.init(coder: coder)
+        self.toolTip = Spinner.toolTip
     }
 
     // MARK: NSView method and property overrides.
@@ -45,6 +47,7 @@ class Spinner: NSControl {
         equation = theDictionary?["valuefrompositionequation"] as? String
         super.init(frame: frameRect)
         // bundle = NSBundle(forClass: Spinner.self)
+        self.toolTip = Spinner.toolTip
     }
     
     override var acceptsFirstResponder: Bool { return true }
@@ -69,6 +72,7 @@ class Spinner: NSControl {
     }
     
     override func scrollWheel(theEvent: NSEvent) {
+        self.toolTip = .None
         let deltaY = Double(theEvent.scrollingDeltaY)
         let newValue = self.spinnerValue - deltaY * 0.06
         self.spinnerValue = newValue
@@ -76,9 +80,17 @@ class Spinner: NSControl {
     
     override func mouseMoved(theEvent: NSEvent) {
         if (theEvent.modifierFlags.rawValue & NSEventModifierFlags.CommandKeyMask.rawValue) != 0 {
+            if self.toolTip != .None {
+                self.toolTip = .None
+            }
             let clickLocation: CGPoint = self.convertPoint(
                 theEvent.locationInWindow, fromView: nil)
             setValueFromLocation(clickLocation)
+        }
+        else {
+            if self.toolTip == .None {
+                self.toolTip = Spinner.toolTip
+            }
         }
     }
     

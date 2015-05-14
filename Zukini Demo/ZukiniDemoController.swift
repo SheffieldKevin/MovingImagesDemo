@@ -1,19 +1,32 @@
-//  SimpleRenderer.swift
-//  MovingImages Demo
-//  Copyright (c) 2015 Kevin Meaney. 30/03/2015.
+//  ZukiniDemoController.swift
+//  Zukini Demo
+//  Copyright (c) 2015 Kevin Meaney
 
 import Cocoa
 import MovingImages
 
-
-class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
-                                     NSWindowDelegate, SpinnerDelegate {
+class ZukiniDemoController: NSWindowController {
     static let variableDefinitions = "variabledefinitions"
+    
+    static let setupDictionaryKey = "setup"
+    static let processDictionaryKey = "process"
+    static let drawInstructionsDictionaryKey = "drawinstructions"
+    static let finalizeDictionaryKey = "finalize"
+    static let variablesKey = "variables"
+
+    static let segmentTagDictionary: [Int:String] = [
+        0 : setupDictionaryKey,
+        1 : processDictionaryKey,
+        2 : drawInstructionsDictionaryKey,
+        3 : finalizeDictionaryKey,
+        4 : variablesKey
+    ]
+    
     // MARK: @IBOutlets
-    @IBOutlet var drawElementJSON: NSTextView!
+    @IBOutlet var jsonTextView: NSTextView!
     
     @IBOutlet weak var simpleRenderView: SimpleRendererView!
-
+    
     @IBOutlet weak var spinnerOne: SpinnerController!
     @IBOutlet weak var spinnerTwo: SpinnerController!
     @IBOutlet weak var spinnerThree: SpinnerController!
@@ -21,7 +34,8 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     @IBOutlet weak var exampleList: NSPopUpButton!
     @IBOutlet weak var addSpinner: NSButton!
     @IBOutlet weak var removeSpinner: NSButton!
-
+    @IBOutlet weak var commandSegments: NSSegmentedControl!
+    
     // MARK: @IBActions
     @IBAction func addSpinner(sender: AnyObject) {
         for spinner in spinners {
@@ -43,17 +57,18 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         }
         updateSpinnersEditingControls()
     }
-
-    @IBAction func exampleSelected(#sender: AnyObject) {
+    
+    @IBAction func exampleSelected(sender: AnyObject) {
         let popup = sender as! NSPopUpButton
-        let selectedTitle = popup.titleOfSelectedItem!
-        let filePath = exampleNameToFilePath(selectedTitle,
-            prefix: "simple_renderer_")
-        if let dictionary = readJSONFromFile(filePath) {
-            configureWithJSON(dictionary)
+        if let selectedTitle = popup.titleOfSelectedItem {
+            let filePath = exampleNameToFilePath(selectedTitle,
+                prefix: "renderer_")
+            if let dictionary = readJSONFromFile(filePath) {
+                configureWithJSONDict(dictionary)
+            }
         }
     }
-
+    
     @IBAction func exportJSON(#sender: AnyObject) {
         let savePanel = NSSavePanel()
         savePanel.allowedFileTypes = ["public.json"]
@@ -79,7 +94,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                 if let theURL = openPanel.URLs[0] as? NSURL,
                     let thePath = theURL.path {
                         if let jsonDict = readJSONFromFile(thePath) {
-                            self.configureWithJSON(jsonDict)
+                            self.configureWithJSONDict(jsonDict)
                         }
                         else {
                             println("Invaid JSON dictionary")
@@ -92,19 +107,18 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         })
     }
     
+    @IBAction func selectSegmentCommands(#sender: AnyObject) {
+        
+    }
+
     // MARK: Internal properties
-    
     dynamic var addSpinnersEnabled = true
     dynamic var removeSpinnersEnabled = true
-    let importButtonTooltip = "Import MovingImages JSON Draw instructions"
-    let exportButtonTooltip = "Export MovingImages JSON Draw instructions"
-    let inbuiltExamplesTooltip = "Select from a list of example draw instructions"
-    let addAnotherControllerTooltip = "Add another spinner control"
-    let removeLastSpinnerControllerTooltip = "Remove last spinner control"
+    
     
     // MARK: Private properties
     private let maximumNumberOfSpinners = 4
-
+    
     // MARK: NSWindowController overrides.
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -115,16 +129,16 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         spinners.append(spinnerTwo)
         spinners.append(spinnerThree)
         spinners.append(spinnerFour)
-
+        
         for spinner in spinners {
             spinner.delegate = self
         }
-        drawElementJSON.delegate = self
-        drawElementJSON.automaticQuoteSubstitutionEnabled = false
-        drawElementJSON.font = NSFont(name: "Menlo-Regular", size: 11)
-        drawElementJSON.textColor = NSColor(deviceWhite: 0.95, alpha: 1.0)
-        drawElementJSON.backgroundColor = NSColor(deviceWhite: 0.25, alpha: 1.0)
-        drawElementJSON.selectedTextAttributes = [
+        // drawElementJSON.delegate = self
+        jsonTextView.automaticQuoteSubstitutionEnabled = false
+        jsonTextView.font = NSFont(name: "Menlo-Regular", size: 11)
+        jsonTextView.textColor = NSColor(deviceWhite: 0.95, alpha: 1.0)
+        jsonTextView.backgroundColor = NSColor(deviceWhite: 0.25, alpha: 1.0)
+        jsonTextView.selectedTextAttributes = [
             NSBackgroundColorAttributeName : NSColor.lightGrayColor(),
             NSForegroundColorAttributeName : NSColor.blackColor()
         ]
@@ -133,79 +147,87 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
             simpleRenderView.assignImage(theImage, identifier: "Sculpture")
         }
         
-        exampleList.addItemsWithTitles(listOfExamples(prefix: "simple_renderer_"))
-        self.exampleSelected(sender: exampleList)
-    }
-    
-    // MARK: NSWindowDelegate protocol methods.
-    func windowDidResize(notification: NSNotification) {
-        simpleRenderView.variables = self.variables
-    }
-    
-    // MARK: NSTextViewDelegate protocol methods.
-    func textDidChange(notification: NSNotification) {
-        if let jsonText = drawElementJSON.string,
-            let theDict = createDictionaryFromJSONString(jsonText) {
-            simpleRenderView.drawDictionary = theDict
-            simpleRenderView.variables = self.variables
-            simpleRenderView.needsDisplay = true
-        }
-        else {
-            println("\(__FUNCTION__) failed to convert json text to dictionary")
-        }
-    }
-    
-    // MARK: SpinnerDelegate
-    func spinnerValueChanged(#sender: SpinnerController) {
-        simpleRenderView.variables = self.variables
-        simpleRenderView.needsDisplay = true
+        exampleList.addItemsWithTitles(listOfExamples(prefix: "renderer_"))
+        self.exampleSelected(exampleList)
     }
     
     // MARK: Private methods
-    private func configureWithJSON(jsonDictionary: [String:AnyObject]) {
-        if let instructions: AnyObject = jsonDictionary[MIJSONPropertyDrawInstructions],
-            let drawInstructions = instructions as? [String:AnyObject],
-            let jsonString = makePrettyJSONFromJSONObject(drawInstructions) {
-                for spinner in spinners {
-                    spinner.view.hidden = true
-                }
-                drawElementJSON.string = jsonString
-                if let theDict = createDictionaryFromJSONString(jsonString) {
-                    simpleRenderView.drawDictionary = theDict
-                }
-                
-                if let varDefs:AnyObject =
-                    jsonDictionary[SimpleRendererWindowController.variableDefinitions],
-                    let variableDefs = varDefs as? [AnyObject]
-                {
-                    for (index, variableDefinition) in enumerate(variableDefs) {
-                        if let variableDef = variableDefinition as? [String:AnyObject] {
-                            spinners[index].configureSpinner(dictionary: variableDef)
-                            spinners[index].view.hidden = false
-                        }
-                    }
-                    
-                }
-                simpleRenderView.needsDisplay = true
+
+    // makePrettyJSONFromDictionary
+    private func stringForCurrentSegment() -> String? {
+        // segmentTagDictionary
+        let jsonObject:AnyObject?
+        switch commandSegments.tag {
+            case 0:
+                jsonObject = setupDictionary
+            
+            case 1:
+                jsonObject = processDictionary
+            
+            case 2:
+                jsonObject = drawDictionary
+            
+            case 3:
+                jsonObject = finalizeDictionary
+
+            case 4:
+                jsonObject = variablesArray
+            
+            default:
+                jsonObject = .None
         }
-        simpleRenderView.variables = self.variables
-        updateSpinnersEditingControls()
+        
+        let jsonString:String?
+        if let jsonObject: AnyObject = jsonObject {
+            jsonString = makePrettyJSONFromJSONObject(jsonObject)
+        }
+        else {
+            jsonString = .None
+        }
+        return jsonString
     }
-    
+
     private func createDictionary() -> [String:AnyObject] {
         var jsonDict = [String:AnyObject]()
         jsonDict[MIJSONPropertyDrawInstructions] =
-            createDictionaryFromJSONString(drawElementJSON.string!)
+            createDictionaryFromJSONString(jsonTextView.string!)
         var variablesArray = [[String:AnyObject]]()
         for spinner in spinners {
             if !spinner.view.hidden {
                 variablesArray.append(spinner.spinnerDictionary())
             }
         }
-        jsonDict[SimpleRendererWindowController.variableDefinitions] = variablesArray
+        jsonDict[self.dynamicType.variableDefinitions] = variablesArray
         return jsonDict
     }
 
+    private func configureWithJSONDict(jsonDictionary: [String:AnyObject]) {
+        setupDictionary = .None
+        if let theSetup: AnyObject = jsonDictionary[ZukiniDemoController.setupDictionaryKey]  {
+            setupDictionary = theSetup as? [String:AnyObject]
+        }
+        
+        processDictionary = .None
+        if let process: AnyObject = jsonDictionary[ZukiniDemoController.processDictionaryKey]  {
+            processDictionary = process as? [String:AnyObject]
+        }
+
+        drawDictionary = .None
+        if let draw: AnyObject = jsonDictionary[ZukiniDemoController.drawInstructionsDictionaryKey] {
+            drawDictionary = draw as? [String:AnyObject]
+        }
+        
+        finalizeDictionary = .None
+        if let finalize: AnyObject = jsonDictionary[ZukiniDemoController.finalizeDictionaryKey] {
+            finalizeDictionary = finalize as? [String:AnyObject]
+        }
+        
+        variablesArray = .None
+        if let varArray: AnyObject = jsonDictionary[ZukiniDemoController.variablesKey] {
+            variablesArray = varArray as? [[String:AnyObject]]
+        }
+    }
+    
     private func evaluateEnabledStateForAddSpinnersButtons() -> Bool {
         var numberOfSpinners = 0
         for spinner in spinners {
@@ -215,7 +237,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         }
         return !(numberOfSpinners == maximumNumberOfSpinners)
     }
-
+    
     private func evaluateEnabledStateForRemoveSpinnersButton() -> Bool {
         var numberOfSpinners = 0
         for spinner in spinners {
@@ -225,7 +247,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         }
         return !(numberOfSpinners == 4)
     }
-
+    
     private func updateSpinnersEditingControls() {
         addSpinnersEnabled = evaluateEnabledStateForAddSpinnersButtons()
         removeSpinnersEnabled = evaluateEnabledStateForRemoveSpinnersButton()
@@ -247,5 +269,24 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
             }
             return theDictionary
         }
+    }
+    
+    private var setupDictionary:[String:AnyObject]?
+    private var processDictionary:[String:AnyObject]?
+    private var drawDictionary:[String:AnyObject]?
+    private var finalizeDictionary:[String:AnyObject]?
+    private var variablesArray:[[String:AnyObject]]?
+}
+
+extension ZukiniDemoController: SpinnerDelegate {
+    func spinnerValueChanged(#sender: SpinnerController) {
+        simpleRenderView.variables = self.variables
+        simpleRenderView.needsDisplay = true
+    }
+}
+
+extension ZukiniDemoController: NSWindowDelegate {
+    func windowDidResize(notification: NSNotification) {
+        simpleRenderView.variables = self.variables
     }
 }

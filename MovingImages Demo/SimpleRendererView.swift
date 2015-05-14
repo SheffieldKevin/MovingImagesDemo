@@ -8,7 +8,30 @@ import MovingImages
 class SimpleRendererView: NSView {
 
     var drawDictionary:[String:AnyObject]?
-    
+    var drawWidth:CGFloat {
+        get {
+            let theWidth = self.frame.width - 8.0
+            if theWidth < 0.0 {
+                return 0
+            }
+            else {
+                return theWidth
+            }
+        }
+    }
+
+    var drawHeight:CGFloat {
+        get {
+            let theHeight = self.frame.height - 8.0
+            if theHeight < 0.0 {
+                return 0
+            }
+            else {
+                return theHeight
+            }
+        }
+    }
+
     var variables:[String:AnyObject]? {
         get {
             let theDict = self.simpleRenderer.variables

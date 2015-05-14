@@ -13,12 +13,12 @@ import MovingImages
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-    var windowContoller : ZukiniDemoWindowController!
+    var windowContoller : ZukiniDemoController!
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         MIInitializeCocoaLumberjack()
-        windowContoller = ZukiniDemoWindowController(
+        windowContoller = ZukiniDemoController(
             windowNibName: "ZukiniDemo")
         windowContoller.showWindow(self)
     }
