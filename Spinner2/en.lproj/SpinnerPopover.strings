@@ -1,0 +1,18 @@
+
+/* Class = "NSTextFieldCell"; placeholderString = "maximum value"; ObjectID = "5JS-dg-Jz2"; */
+"5JS-dg-Jz2.placeholderString" = "maximum value";
+
+/* Class = "NSTextFieldCell"; title = "Maximum:"; ObjectID = "71V-oC-2hk"; */
+"71V-oC-2hk.title" = "Maximum:";
+
+/* Class = "NSTextFieldCell"; title = "Minimum:"; ObjectID = "C9w-00-c0s"; */
+"C9w-00-c0s.title" = "Minimum:";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Minimum value"; ObjectID = "cUe-EB-jLh"; */
+"cUe-EB-jLh.placeholderString" = "Minimum value";
+
+/* Class = "NSButtonCell"; title = "Done"; ObjectID = "up1-Z9-G1a"; */
+"up1-Z9-G1a.title" = "Done";
+
+/* Class = "NSTextFieldCell"; title = "Key:"; ObjectID = "xs1-1T-AG8"; */
+"xs1-1T-AG8.title" = "Key:";

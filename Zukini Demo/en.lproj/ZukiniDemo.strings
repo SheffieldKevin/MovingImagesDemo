@@ -1,0 +1,30 @@
+
+/* Class = "NSSegmentedCell"; Fpr-Vt-NYK.ibShadowedLabels[0] = "Setup"; ObjectID = "Fpr-Vt-NYK"; */
+"Fpr-Vt-NYK.ibShadowedLabels[0]" = "Setup";
+
+/* Class = "NSSegmentedCell"; Fpr-Vt-NYK.ibShadowedLabels[1] = "Process"; ObjectID = "Fpr-Vt-NYK"; */
+"Fpr-Vt-NYK.ibShadowedLabels[1]" = "Process";
+
+/* Class = "NSSegmentedCell"; Fpr-Vt-NYK.ibShadowedLabels[2] = "Display"; ObjectID = "Fpr-Vt-NYK"; */
+"Fpr-Vt-NYK.ibShadowedLabels[2]" = "Display";
+
+/* Class = "NSSegmentedCell"; Fpr-Vt-NYK.ibShadowedLabels[3] = "Finalize"; ObjectID = "Fpr-Vt-NYK"; */
+"Fpr-Vt-NYK.ibShadowedLabels[3]" = "Finalize";
+
+/* Class = "NSButtonCell"; title = "Import…"; ObjectID = "Tq8-0v-Nwx"; */
+"Tq8-0v-Nwx.title" = "Import…";
+
+/* Class = "NSTextFieldCell"; title = "Input2:"; ObjectID = "WDo-RQ-Gnx"; */
+"WDo-RQ-Gnx.title" = "Input2:";
+
+/* Class = "NSButtonCell"; title = "Export…"; ObjectID = "XCr-i7-gAp"; */
+"XCr-i7-gAp.title" = "Export…";
+
+/* Class = "NSTextFieldCell"; title = "Input1:"; ObjectID = "csT-hK-K1f"; */
+"csT-hK-K1f.title" = "Input1:";
+
+/* Class = "NSButtonCell"; title = "Destination…"; ObjectID = "h0b-Hm-pR2"; */
+"h0b-Hm-pR2.title" = "Destination…";
+
+/* Class = "NSTextFieldCell"; title = "Examples:"; ObjectID = "vbA-F9-2MK"; */
+"vbA-F9-2MK.title" = "Examples:";

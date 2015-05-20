@@ -11,7 +11,7 @@
                 <outlet property="exampleList" destination="flh-mG-rbv" id="F8R-Hm-lN3"/>
                 <outlet property="jsonTextView" destination="k2u-qq-YDH" id="xXr-Io-Ylw"/>
                 <outlet property="removeSpinner" destination="FcI-kL-9jH" id="loz-Rm-mfz"/>
-                <outlet property="simpleRenderView" destination="cZu-b1-qq6" id="zyq-Zp-oev"/>
+                <outlet property="rendererView" destination="cZu-b1-qq6" id="Uar-JM-ZBl"/>
                 <outlet property="spinnerFour" destination="eiP-5B-gl5" id="GHu-5g-7I8"/>
                 <outlet property="spinnerOne" destination="sGg-LI-q9V" id="f7t-fK-EOE"/>
                 <outlet property="spinnerThree" destination="dIb-hk-FyC" id="CIB-6T-wR1"/>
@@ -25,7 +25,7 @@
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="61" y="121" width="1228" height="677"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <value key="minSize" type="size" width="1228" height="677"/>
             <value key="maxSize" type="size" width="1980" height="1080"/>
             <view key="contentView" id="se5-gp-TjO">
@@ -48,6 +48,9 @@
                                     <color key="insertionPointColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="528" height="517"/>
                                     <size key="maxSize" width="10000000" height="10000000"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="jWE-Jn-VDG"/>
+                                    </connections>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,7 +144,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="cZu-b1-qq6" customClass="SimpleRendererView" customModule="Zukini_Demo" customModuleProvider="target">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="cZu-b1-qq6" customClass="ZukiniRendererView" customModule="Zukini_Demo" customModuleProvider="target">
                         <rect key="frame" x="560" y="178" width="648" height="461"/>
                     </customView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6hE-YR-T1e">
@@ -165,7 +168,7 @@
                         </connections>
                     </button>
                     <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13a-3F-sWT">
-                        <rect key="frame" x="20" y="638" width="287" height="21"/>
+                        <rect key="frame" x="20" y="638" width="222" height="21"/>
                         <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="smallSquare" trackingMode="selectOne" id="Fpr-Vt-NYK">
                             <font key="font" metaFont="smallSystem"/>
                             <segments>
@@ -173,14 +176,13 @@
                                 <segment label="Process" selected="YES" tag="1"/>
                                 <segment label="Display" tag="2"/>
                                 <segment label="Finalize" tag="3"/>
-                                <segment label="Variables" tag="4"/>
                             </segments>
                         </segmentedCell>
                         <connections>
-                            <action selector="selectSegmentCommandsWithSender:" target="-2" id="rJn-f0-NQ1"/>
+                            <action selector="selectSegmentCommandWithSender:" target="-2" id="T9y-vs-gSf"/>
                         </connections>
                     </segmentedControl>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="leB-cp-iFV">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="leB-cp-iFV">
                         <rect key="frame" x="459" y="41" width="98" height="28"/>
                         <buttonCell key="cell" type="push" title="Destination…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="h0b-Hm-pR2">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -247,12 +249,14 @@
                     <constraint firstItem="cZu-b1-qq6" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="560" id="d2s-pg-GiP"/>
                     <constraint firstAttribute="bottom" secondItem="k6c-GA-xAv" secondAttribute="bottom" constant="93" id="ddW-tV-qz8"/>
                     <constraint firstItem="ULL-n6-KJ6" firstAttribute="top" secondItem="cZu-b1-qq6" secondAttribute="bottom" constant="18" id="fDT-Oy-CFm"/>
+                    <constraint firstAttribute="bottom" secondItem="leB-cp-iFV" secondAttribute="bottom" constant="47" id="gij-Xb-hmu"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="38" id="hjj-Nb-1Me"/>
                     <constraint firstAttribute="trailing" secondItem="cZu-b1-qq6" secondAttribute="trailing" constant="20" id="i91-Vq-g4N"/>
                     <constraint firstItem="9rI-Gj-bKv" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="iZw-J6-fkC"/>
                     <constraint firstAttribute="bottom" secondItem="bl8-Eq-7pY" secondAttribute="bottom" constant="67" id="iu9-VF-fGj"/>
                     <constraint firstAttribute="bottom" secondItem="ULL-n6-KJ6" secondAttribute="bottom" constant="20" id="l63-9X-VsX"/>
                     <constraint firstAttribute="bottom" secondItem="h7J-kt-AmM" secondAttribute="bottom" constant="21" id="mFv-BF-fBG"/>
+                    <constraint firstItem="leB-cp-iFV" firstAttribute="trailing" secondItem="9FT-ds-Cep" secondAttribute="trailing" id="scV-X3-Ohy"/>
                     <constraint firstItem="bl8-Eq-7pY" firstAttribute="leading" secondItem="9rI-Gj-bKv" secondAttribute="trailing" constant="8" id="xaY-NV-sM9"/>
                     <constraint firstAttribute="bottom" secondItem="flh-mG-rbv" secondAttribute="bottom" constant="20" id="xlZ-RH-jMB"/>
                 </constraints>

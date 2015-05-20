@@ -5,27 +5,65 @@
 import Cocoa
 import MovingImages
 
-class ZukiniDemoController: NSWindowController {
-    static let variableDefinitions = "variabledefinitions"
-    
-    static let setupDictionaryKey = "setup"
-    static let processDictionaryKey = "process"
-    static let drawInstructionsDictionaryKey = "drawinstructions"
-    static let finalizeDictionaryKey = "finalize"
-    static let variablesKey = "variables"
+enum JSONSegment: Int {
+    //    case Setup = 0, Process, DrawInstructions, Finalize, Variables
+    case Setup = 0, Process, DrawInstructions, Finalize
+    static var firstSegment = JSONSegment.Setup
 
-    static let segmentTagDictionary: [Int:String] = [
-        0 : setupDictionaryKey,
-        1 : processDictionaryKey,
-        2 : drawInstructionsDictionaryKey,
-        3 : finalizeDictionaryKey,
-        4 : variablesKey
-    ]
+    private static var firstValue = Setup.rawValue
+    private static var lastValue = Finalize.rawValue
     
+    var stringValue: String {
+        get {
+            switch (self) {
+            case Setup:
+                return "setup"
+            case Process:
+                return "process"
+            case DrawInstructions:
+                return "drawinstructions"
+            case Finalize:
+                return "finalize"
+//            case Variables:
+//                return "variables"
+            }
+        }
+    }
+
+    init?(stringValue:String) {
+        var foundSegment: JSONSegment? = .None
+        for index in JSONSegment.firstValue...JSONSegment.lastValue {
+            let segment = JSONSegment(rawValue: index)!
+            if segment.stringValue == stringValue {
+                foundSegment = segment
+                break
+            }
+        }
+        
+        if let segment = foundSegment {
+            self = segment
+        }
+        else {
+            return nil
+        }
+    }
+
+    func next() -> JSONSegment? {
+        return JSONSegment(rawValue: self.rawValue + 1)
+    }
+}
+
+class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
+                            NSWindowDelegate, SpinnerDelegate {
+    static let variableDefinitions = "variabledefinitions"
+
+    var jsonSegmentStrings: [Int:String] = [:]
+    var lastSelectedSegment: Int = JSONSegment.Setup.rawValue
+
     // MARK: @IBOutlets
     @IBOutlet var jsonTextView: NSTextView!
     
-    @IBOutlet weak var simpleRenderView: SimpleRendererView!
+    @IBOutlet weak var rendererView: ZukiniRendererView!
     
     @IBOutlet weak var spinnerOne: SpinnerController!
     @IBOutlet weak var spinnerTwo: SpinnerController!
@@ -60,6 +98,7 @@ class ZukiniDemoController: NSWindowController {
     
     @IBAction func exampleSelected(sender: AnyObject) {
         let popup = sender as! NSPopUpButton
+        
         if let selectedTitle = popup.titleOfSelectedItem {
             let filePath = exampleNameToFilePath(selectedTitle,
                 prefix: "renderer_")
@@ -91,30 +130,37 @@ class ZukiniDemoController: NSWindowController {
         openPanel.allowsMultipleSelection = false
         openPanel.beginSheetModalForWindow(window!, completionHandler: { result in
             if result == NSModalResponseOK {
-                if let theURL = openPanel.URLs[0] as? NSURL,
-                    let thePath = theURL.path {
-                        if let jsonDict = readJSONFromFile(thePath) {
-                            self.configureWithJSONDict(jsonDict)
-                        }
-                        else {
-                            println("Invaid JSON dictionary")
-                        }
-                }
-                else {
-                    println("Invalid file path for importing moving images source")
-                }
+                self.configureWithJSONFile(openPanel.URLs[0] as? NSURL)
+            }
+            else {
+                println("Invalid file path for importing moving images source")
             }
         })
     }
-    
-    @IBAction func selectSegmentCommands(#sender: AnyObject) {
-        
+
+    @IBAction func selectSegmentCommand(#sender: AnyObject) {
+        if let theText = jsonTextView.string {
+            jsonSegmentStrings[lastSelectedSegment] = theText
+        }
+        else {
+            lastSelectedSegment = commandSegments.selectedSegment
+            jsonTextView.string = jsonSegmentStrings[lastSelectedSegment]
+        }
     }
 
-    // MARK: Internal properties
+    // MARK: NSTextViewDelegate protocol methods.
+    func textDidChange(notification: NSNotification) {
+        if let theText = jsonTextView.string {
+            jsonSegmentStrings[lastSelectedSegment] = theText
+            if lastSelectedSegment == JSONSegment.DrawInstructions.rawValue {
+                rendererView.drawDictionary = createDictionaryFromJSONString(theText)
+            }
+        }
+    }
+    
+    // MARK: Internal properties - bindings in Interface Builder
     dynamic var addSpinnersEnabled = true
     dynamic var removeSpinnersEnabled = true
-    
     
     // MARK: Private properties
     private let maximumNumberOfSpinners = 4
@@ -125,6 +171,8 @@ class ZukiniDemoController: NSWindowController {
         if let theWindow = self.window {
             theWindow.backgroundColor = NSColor(deviceWhite: 0.15, alpha: 1.0)
         }
+        
+        // Setup the spinner controls.
         spinners.append(spinnerOne)
         spinners.append(spinnerTwo)
         spinners.append(spinnerThree)
@@ -142,53 +190,36 @@ class ZukiniDemoController: NSWindowController {
             NSBackgroundColorAttributeName : NSColor.lightGrayColor(),
             NSForegroundColorAttributeName : NSColor.blackColor()
         ]
-        // simpleRenderView.variables = self.variables
-        if let theImage = createCGImage("Sculpture", fileExtension: "jpg") {
-            simpleRenderView.assignImage(theImage, identifier: "Sculpture")
-        }
+        rendererView.makeNewRenderer(miContext: miContext)
         
         exampleList.addItemsWithTitles(listOfExamples(prefix: "renderer_"))
         self.exampleSelected(exampleList)
+        let jsonString = jsonSegmentStrings[JSONSegment.DrawInstructions.rawValue]
+        if let jsonString = jsonString {
+            rendererView.drawDictionary = createDictionaryFromJSONString(jsonString)
+        }
     }
     
     // MARK: Private methods
 
-    // makePrettyJSONFromDictionary
-    private func stringForCurrentSegment() -> String? {
-        // segmentTagDictionary
-        let jsonObject:AnyObject?
-        switch commandSegments.tag {
-            case 0:
-                jsonObject = setupDictionary
-            
-            case 1:
-                jsonObject = processDictionary
-            
-            case 2:
-                jsonObject = drawDictionary
-            
-            case 3:
-                jsonObject = finalizeDictionary
-
-            case 4:
-                jsonObject = variablesArray
-            
-            default:
-                jsonObject = .None
-        }
-        
-        let jsonString:String?
-        if let jsonObject: AnyObject = jsonObject {
-            jsonString = makePrettyJSONFromJSONObject(jsonObject)
+    private func configureWithJSONFile(fileURL: NSURL?) {
+        if let theURL = fileURL,
+            let thePath = theURL.path,
+            let jsonDict = readJSONFromFile(thePath) {
+                self.configureWithJSONDict(jsonDict)
         }
         else {
-            jsonString = .None
+            println("Invaid JSON file: \(fileURL)")
         }
-        return jsonString
+    }
+    
+    private func stringForCurrentSegment() -> String? {
+        return jsonSegmentStrings[commandSegments.selectedSegment]
     }
 
     private func createDictionary() -> [String:AnyObject] {
-        var jsonDict = [String:AnyObject]()
+        // TODO: Needs rewriting from the MovingImages Demo version.
+        var jsonDict:[String:AnyObject] = [:]
         jsonDict[MIJSONPropertyDrawInstructions] =
             createDictionaryFromJSONString(jsonTextView.string!)
         var variablesArray = [[String:AnyObject]]()
@@ -198,34 +229,42 @@ class ZukiniDemoController: NSWindowController {
             }
         }
         jsonDict[self.dynamicType.variableDefinitions] = variablesArray
+        var currentSegment: JSONSegment? = JSONSegment.firstSegment
+        while currentSegment != nil {
+            let theSegment = currentSegment!
+            jsonDict[theSegment.stringValue] = createDictionaryFromJSONString(
+                                jsonSegmentStrings[theSegment.rawValue]!)
+            currentSegment = theSegment.next()
+        }
         return jsonDict
     }
 
-    private func configureWithJSONDict(jsonDictionary: [String:AnyObject]) {
-        setupDictionary = .None
-        if let theSetup: AnyObject = jsonDictionary[ZukiniDemoController.setupDictionaryKey]  {
-            setupDictionary = theSetup as? [String:AnyObject]
+    private func configureWithJSONDict(jsonDict: [String:AnyObject]) {
+        var currentSegment: JSONSegment? = JSONSegment.firstSegment
+        while currentSegment != nil {
+            let theSegment = currentSegment!
+            jsonSegmentStrings[theSegment.rawValue] =
+                    makePrettyJSONFromJSONObject(jsonDict[theSegment.stringValue])
+            currentSegment = theSegment.next()
         }
-        
-        processDictionary = .None
-        if let process: AnyObject = jsonDictionary[ZukiniDemoController.processDictionaryKey]  {
-            processDictionary = process as? [String:AnyObject]
+        for spinner in spinners {
+            spinner.view.hidden = true
         }
 
-        drawDictionary = .None
-        if let draw: AnyObject = jsonDictionary[ZukiniDemoController.drawInstructionsDictionaryKey] {
-            drawDictionary = draw as? [String:AnyObject]
+        if let varDefs:AnyObject =
+            jsonDict[ZukiniDemoController.variableDefinitions],
+            let variableDefs = varDefs as? [AnyObject]
+        {
+            for (index, variableDefinition) in enumerate(variableDefs) {
+                if let variableDef = variableDefinition as? [String:AnyObject] {
+                    spinners[index].configureSpinner(dictionary: variableDef)
+                    spinners[index].view.hidden = false
+                }
+            }
+            
         }
-        
-        finalizeDictionary = .None
-        if let finalize: AnyObject = jsonDictionary[ZukiniDemoController.finalizeDictionaryKey] {
-            finalizeDictionary = finalize as? [String:AnyObject]
-        }
-        
-        variablesArray = .None
-        if let varArray: AnyObject = jsonDictionary[ZukiniDemoController.variablesKey] {
-            variablesArray = varArray as? [[String:AnyObject]]
-        }
+        rendererView.needsDisplay = true
+        updateSpinnersEditingControls()
     }
     
     private func evaluateEnabledStateForAddSpinnersButtons() -> Bool {
@@ -259,8 +298,8 @@ class ZukiniDemoController: NSWindowController {
     private var variables:[String:AnyObject] {
         get {
             var theDictionary:[String:AnyObject] = [
-                MIJSONKeyWidth : simpleRenderView.drawWidth,
-                MIJSONKeyHeight : simpleRenderView.drawHeight
+                MIJSONKeyWidth : rendererView.drawWidth,
+                MIJSONKeyHeight : rendererView.drawHeight
             ]
             for spinner in spinners {
                 if !spinner.view.hidden {
@@ -270,23 +309,19 @@ class ZukiniDemoController: NSWindowController {
             return theDictionary
         }
     }
-    
-    private var setupDictionary:[String:AnyObject]?
-    private var processDictionary:[String:AnyObject]?
-    private var drawDictionary:[String:AnyObject]?
-    private var finalizeDictionary:[String:AnyObject]?
-    private var variablesArray:[[String:AnyObject]]?
+
+    private var miContext:MIContext = MIContext()
 }
 
 extension ZukiniDemoController: SpinnerDelegate {
     func spinnerValueChanged(#sender: SpinnerController) {
-        simpleRenderView.variables = self.variables
-        simpleRenderView.needsDisplay = true
+        rendererView.variables = self.variables
+        rendererView.needsDisplay = true
     }
 }
 
 extension ZukiniDemoController: NSWindowDelegate {
     func windowDidResize(notification: NSNotification) {
-        simpleRenderView.variables = self.variables
+        rendererView.variables = self.variables
     }
 }
