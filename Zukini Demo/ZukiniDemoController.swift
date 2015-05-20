@@ -142,9 +142,12 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
         if let theText = jsonTextView.string {
             jsonSegmentStrings[lastSelectedSegment] = theText
         }
-        else {
-            lastSelectedSegment = commandSegments.selectedSegment
+        lastSelectedSegment = commandSegments.selectedSegment
+        if let theText = jsonSegmentStrings[lastSelectedSegment] {
             jsonTextView.string = jsonSegmentStrings[lastSelectedSegment]
+        }
+        else {
+            jsonTextView.string = ""
         }
     }
 
@@ -154,6 +157,7 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
             jsonSegmentStrings[lastSelectedSegment] = theText
             if lastSelectedSegment == JSONSegment.DrawInstructions.rawValue {
                 rendererView.drawDictionary = createDictionaryFromJSONString(theText)
+                rendererView.needsDisplay = true
             }
         }
     }
