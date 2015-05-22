@@ -55,19 +55,19 @@ def make_teardroppath()
   centerPoint = MIShapes.make_point(0, 0)
   thePath.add_arc(centerPoint: centerPoint,
          radius: "$logowidth * $fraction * $r1",
-     startAngle: "pi_2() - asin($r1 - $r2)",
-       endAngle: "asin($r1 - $r2) - pi_2()")
+     startAngle: "pi_2() - asin($r1 - 0.04)",
+       endAngle: "asin($r1 - 0.04) - pi_2()")
 
   centerPoint2 = MIShapes.make_point("$logowidth * $fraction", 0)
   thePath.add_arc(centerPoint: centerPoint2,
-         radius: "$logowidth * $fraction * $r2",
-     startAngle: "asin($r1 - $r2) - pi_2()",
-       endAngle: "pi_2() - asin($r1 - $r2)")
+         radius: "$logowidth * $fraction * 0.04",
+     startAngle: "asin($r1 - 0.04) - pi_2()",
+       endAngle: "pi_2() - asin($r1 - 0.04)")
   thePath.add_closesubpath()
-  
+
   startPoint = MIShapes.make_point(
-        "$logowidth * $fraction * (1.0 + $r2 * ($r1 - $r2))",
-        "$logowidth * $fraction * $r2 * cos(asin($r1 - $r2))")
+        "$logowidth * $fraction * (1.0 + 0.04 * ($r1 - 0.04))",
+        "$logowidth * $fraction * 0.04 * cos(asin($r1 - 0.04))")
   return startPoint, thePath
 end
 
@@ -88,7 +88,7 @@ def make_drawlogo()
   offset = MIShapes.make_point("$logowidth * (1.027 - $fraction * $r1)",
                                "$fraction * $logowidth * $r1")
   MITransformations.add_translatetransform(transformations1, offset)
-  angle = "asin($r1 - $r2) - pi()"
+  angle = "asin($r1 - 0.04) - pi()"
   MITransformations.add_rotatetransform(transformations1, angle)
   drawElement1 = make_drawteardrop(transformations1)
   
@@ -97,7 +97,7 @@ def make_drawlogo()
   offset2 = MIShapes.make_point("$fraction * $logowidth * (0.1 + $r1)",
                                 "$logowidth * (1.0 - $fraction * $r1)")
   MITransformations.add_translatetransform(transformations2, offset2)
-  angle2 = "asin($r1 - $r2)"
+  angle2 = "asin($r1 - 0.04)"
   MITransformations.add_rotatetransform(transformations2, angle2)
   drawElement2 = make_drawteardrop(transformations2)
   drawLogo.add_drawelement_toarrayofelements(drawElement2)
