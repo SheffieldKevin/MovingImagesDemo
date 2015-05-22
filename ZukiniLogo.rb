@@ -13,12 +13,15 @@ def make_zstroke()
   
   thePath = MIPath.new
   centerPoint = MIShapes.make_point(
-            "$logowidth * 0.26",
-            "0.10296 * $logowidth")
+#            "$logowidth * 0.26",
+#            "0.10296 * $logowidth")
+            "$logowidth * 0.285",
+            "0.0515 * $logowidth")
   thePath.add_arc(centerPoint: centerPoint,
-                       radius: "0.10296 * $logowidth",
+#                       radius: "0.10296 * $logowidth",
+                       radius: "0.0515 * $logowidth",
                    startAngle: -0.5 * Math::PI,
-                     endAngle: -0.19 * Math::PI)
+                     endAngle: -0.20 * Math::PI)
   centerPoint2 = MIShapes.make_point(
 #            "$logowidth * 0.98416",
 #            "$logowidth * 0.98416")
@@ -31,12 +34,16 @@ def make_zstroke()
   centerPoint3 = MIShapes.make_point(
 #            "$logowidth * 0.74",
 #            "$logowidth * 0.897")
-            "$logowidth * 0.815",
-            "$logowidth * 0.897")
+#            "$logowidth * 0.815",
+#            "$logowidth * 0.897")
+            "$logowidth * 0.7915",
+            "$logowidth * 0.95")
   thePath.add_arc(centerPoint: centerPoint3,
-                       radius: "0.103 * $logowidth",
+#                       radius: "0.103 * $logowidth",
+                       radius: "0.0515 * $logowidth",
                    startAngle: 0.5 * Math::PI,
-                     endAngle: 0.81 * Math::PI)
+#                     endAngle: 0.81 * Math::PI)
+                     endAngle: 0.8 * Math::PI)
   centerPoint4 = MIShapes.make_point(
             "0.01584 * $logowidth",
             "0.01584 * $logowidth")
@@ -86,7 +93,7 @@ end
 
 def make_drawlogo()
   drawLogo = MIDrawElement.new(:arrayofelements)
-  drawLogo.fillcolor = MIColor.make_rgbacolor(0.1, 0.4, 0.1)
+  drawLogo.fillcolor = MIColor.make_rgbacolor(0.05, 0.35, 0.05)
 
   transformations1 = MITransformations.make_contexttransformation()
 #  offset = MIShapes.make_point("$logowidth * (0.957 - $fraction * $r1)",
