@@ -18,21 +18,25 @@ def make_zstroke()
   thePath.add_arc(centerPoint: centerPoint,
                        radius: "0.10296 * $logowidth",
                    startAngle: -0.5 * Math::PI,
-                     endAngle: -0.16 * Math::PI)
+                     endAngle: -0.19 * Math::PI)
   centerPoint2 = MIShapes.make_point(
-            "$logowidth * 0.98416",
+#            "$logowidth * 0.98416",
+#            "$logowidth * 0.98416")
+            "$logowidth * 1.06",
             "$logowidth * 0.98416")
   thePath.add_arc(centerPoint: centerPoint2,
                        radius: "0.01584 * $logowidth",
                    startAngle: -0.16 * Math::PI,
                      endAngle: 0.5 * Math::PI)
   centerPoint3 = MIShapes.make_point(
-            "$logowidth * 0.74",
+#            "$logowidth * 0.74",
+#            "$logowidth * 0.897")
+            "$logowidth * 0.815",
             "$logowidth * 0.897")
   thePath.add_arc(centerPoint: centerPoint3,
                        radius: "0.103 * $logowidth",
                    startAngle: 0.5 * Math::PI,
-                     endAngle: 0.84 * Math::PI)
+                     endAngle: 0.81 * Math::PI)
   centerPoint4 = MIShapes.make_point(
             "0.01584 * $logowidth",
             "0.01584 * $logowidth")
@@ -85,7 +89,8 @@ def make_drawlogo()
   drawLogo.fillcolor = MIColor.make_rgbacolor(0.1, 0.4, 0.1)
 
   transformations1 = MITransformations.make_contexttransformation()
-  offset = MIShapes.make_point("$logowidth * (0.957 - $fraction * $r1)",
+#  offset = MIShapes.make_point("$logowidth * (0.957 - $fraction * $r1)",
+  offset = MIShapes.make_point("$logowidth * (1.027 - $fraction * $r1)",
                                "$fraction * $logowidth * $r1")
   MITransformations.add_translatetransform(transformations1, offset)
   angle = "asin($r1 - $r2) - pi()"
