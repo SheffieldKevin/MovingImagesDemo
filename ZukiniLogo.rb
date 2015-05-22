@@ -85,7 +85,7 @@ def make_drawlogo()
   drawLogo.fillcolor = MIColor.make_rgbacolor(0.1, 0.4, 0.1)
 
   transformations1 = MITransformations.make_contexttransformation()
-  offset = MIShapes.make_point("$logowidth * (0.96 - $fraction * $r1)",
+  offset = MIShapes.make_point("$logowidth * (0.957 - $fraction * $r1)",
                                "$fraction * $logowidth * $r1")
   MITransformations.add_translatetransform(transformations1, offset)
   angle = "asin($r1 - $r2) - pi()"
