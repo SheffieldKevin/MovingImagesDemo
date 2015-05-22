@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E0294621B0FDF9D00D88559 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EC4C4451ACC46B200314829 /* MainMenu.xib */; };
 		6E3FF0AF1AD1D68700AD45AD /* simple_renderer_Bluecamera.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */; };
 		6E3FF0B11AD53EE500AD45AD /* simple_renderer_Fillrect.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */; };
 		6E3FF0B31AD544E700AD45AD /* simple_renderer_Strokeoval.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B21AD544E700AD45AD /* simple_renderer_Strokeoval.json */; };
@@ -28,7 +29,6 @@
 		6E61EE181AF5004A000DAB79 /* SpinnerPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E61EE171AF5004A000DAB79 /* SpinnerPopoverController.swift */; };
 		6E61EE191AF5004A000DAB79 /* SpinnerPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E61EE171AF5004A000DAB79 /* SpinnerPopoverController.swift */; };
 		6E61EE251AFB667F000DAB79 /* simple_renderer_DrawArc.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E61EE241AFB667F000DAB79 /* simple_renderer_DrawArc.json */; };
-		6E74B3071B0CA22C00015E68 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EC4C4451ACC46B200314829 /* MainMenu.xib */; };
 		6E74B3091B0CA24100015E68 /* SimpleRenderer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EC4C4491ACC481F00314829 /* SimpleRenderer.xib */; };
 		6E74B30A1B0CA24900015E68 /* SpinnerPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E74B3041B0C9D1300015E68 /* SpinnerPopover.xib */; };
 		6E74B3111B0CA34400015E68 /* SpinnerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E74B3141B0CA34400015E68 /* SpinnerController.xib */; };
@@ -121,13 +121,7 @@
 		6E74B3031B0C9D1300015E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SpinnerPopover.xib; sourceTree = "<group>"; };
 		6E74B3051B0CA10500015E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6E74B3061B0CA12200015E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SimpleRenderer.xib; sourceTree = "<group>"; };
-		6E74B30C1B0CA30B00015E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
-		6E74B30E1B0CA32B00015E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SimpleRenderer.strings; sourceTree = "<group>"; };
-		6E74B3101B0CA33200015E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SpinnerPopover.strings; sourceTree = "<group>"; };
 		6E74B3131B0CA34400015E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SpinnerController.xib; sourceTree = "<group>"; };
-		6E74B3161B0CA34700015E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SpinnerController.strings; sourceTree = "<group>"; };
-		6E74B3181B0CA39400015E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ZukiniDemo.strings; sourceTree = "<group>"; };
-		6E74B31A1B0CA39E00015E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		6E74B31C1B0CC03400015E68 /* renderer_AZukini.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_AZukini.json; sourceTree = "<group>"; };
 		6E74B31E1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_AZukiniLogo.json; sourceTree = "<group>"; };
 		6E8DE3F91AD59C660029A64D /* simple_renderer_DrawText.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawText.json; sourceTree = "<group>"; };
@@ -415,6 +409,7 @@
 					};
 					6ECE89BA1AD82E6700BE8FB0 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = U6TV63RN87;
 					};
 					6ECE89C91AD82E6700BE8FB0 = {
 						CreatedOnToolsVersion = 6.3;
@@ -423,7 +418,7 @@
 				};
 			};
 			buildConfigurationList = 6EC4C4091AC9983000314829 /* Build configuration list for PBXProject "MovingImages Demo" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -448,6 +443,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E0294621B0FDF9D00D88559 /* MainMenu.xib in Resources */,
 				6EC4C44F1ACCB77B00314829 /* drawarc.json in Resources */,
 				6E61EE251AFB667F000DAB79 /* simple_renderer_DrawArc.json in Resources */,
 				6EDC147B1AE41CA500C1DEA7 /* simple_renderer_LinearGradientCircle.json in Resources */,
@@ -469,7 +465,6 @@
 				6E74B3091B0CA24100015E68 /* SimpleRenderer.xib in Resources */,
 				6E8DE3FA1AD59C660029A64D /* simple_renderer_DrawText.json in Resources */,
 				6E3FF0B31AD544E700AD45AD /* simple_renderer_Strokeoval.json in Resources */,
-				6E74B3071B0CA22C00015E68 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,7 +569,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				6E5CBB621B023E9D00BF8FB7 /* Base */,
-				6E74B3181B0CA39400015E68 /* en */,
 			);
 			name = ZukiniDemo.xib;
 			sourceTree = "<group>";
@@ -583,7 +577,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				6E74B3031B0C9D1300015E68 /* Base */,
-				6E74B3101B0CA33200015E68 /* en */,
 			);
 			name = SpinnerPopover.xib;
 			path = Spinner2;
@@ -593,7 +586,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				6E74B3131B0CA34400015E68 /* Base */,
-				6E74B3161B0CA34700015E68 /* en */,
 			);
 			name = SpinnerController.xib;
 			path = Spinner2;
@@ -603,7 +595,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				6E74B3051B0CA10500015E68 /* Base */,
-				6E74B30C1B0CA30B00015E68 /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -612,7 +603,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				6E74B3061B0CA12200015E68 /* Base */,
-				6E74B30E1B0CA32B00015E68 /* en */,
 			);
 			name = SimpleRenderer.xib;
 			sourceTree = "<group>";
@@ -621,7 +611,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				6ECE89C41AD82E6700BE8FB0 /* Base */,
-				6E74B31A1B0CA39E00015E68 /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -783,6 +772,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -802,6 +792,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
