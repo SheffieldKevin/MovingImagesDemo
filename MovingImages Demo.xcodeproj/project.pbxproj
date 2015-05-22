@@ -35,6 +35,7 @@
 		6E74B3121B0CA34400015E68 /* SpinnerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E74B3141B0CA34400015E68 /* SpinnerController.xib */; };
 		6E74B31B1B0CA3C100015E68 /* SpinnerPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E74B3041B0C9D1300015E68 /* SpinnerPopover.xib */; };
 		6E74B31D1B0CC03400015E68 /* renderer_AZukini.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E74B31C1B0CC03400015E68 /* renderer_AZukini.json */; };
+		6E74B31F1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E74B31E1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json */; };
 		6E8DE3FA1AD59C660029A64D /* simple_renderer_DrawText.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E8DE3F91AD59C660029A64D /* simple_renderer_DrawText.json */; };
 		6EA4D1751ADAAC9200A33936 /* simple_renderer_RobotArm.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EA4D1741ADAAC9200A33936 /* simple_renderer_RobotArm.json */; };
 		6EA4D1761ADE91EC00A33936 /* ZukiniUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */; };
@@ -128,6 +129,7 @@
 		6E74B3181B0CA39400015E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ZukiniDemo.strings; sourceTree = "<group>"; };
 		6E74B31A1B0CA39E00015E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		6E74B31C1B0CC03400015E68 /* renderer_AZukini.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_AZukini.json; sourceTree = "<group>"; };
+		6E74B31E1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_AZukiniLogo.json; sourceTree = "<group>"; };
 		6E8DE3F91AD59C660029A64D /* simple_renderer_DrawText.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawText.json; sourceTree = "<group>"; };
 		6EA4D1741ADAAC9200A33936 /* simple_renderer_RobotArm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_RobotArm.json; sourceTree = "<group>"; };
 		6EBC3B891AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawTextInOval.json; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				6EC4C44E1ACCB77B00314829 /* drawarc.json */,
 				6ED901A71AFFA7E10011D286 /* simple_renderer_AZukini.json */,
+				6E74B31E1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json */,
 				6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */,
 				6E61EE241AFB667F000DAB79 /* simple_renderer_DrawArc.json */,
 				6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */,
@@ -451,6 +454,7 @@
 				6E3FF0B11AD53EE500AD45AD /* simple_renderer_Fillrect.json in Resources */,
 				6ED901A81AFFA7E10011D286 /* simple_renderer_AZukini.json in Resources */,
 				6E74B3111B0CA34400015E68 /* SpinnerController.xib in Resources */,
+				6E74B31F1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json in Resources */,
 				6EBC3B8A1AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json in Resources */,
 				6EBC3B8C1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json in Resources */,
 				6EC4C4161AC9983000314829 /* Images.xcassets in Resources */,
