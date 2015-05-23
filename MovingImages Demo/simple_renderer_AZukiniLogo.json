@@ -30,7 +30,7 @@
           },
           {
             "transformationtype" : "rotate",
-            "rotation" : "$angle + asin($r1 - 0.04) - pi()"
+            "rotation" : "max($angle, 2.02) * 2.0 - 4.04 + asin($r1 - 0.04) - pi()"
           }
         ],
         "arrayofpathelements" : [
@@ -77,7 +77,7 @@
           },
           {
             "transformationtype" : "rotate",
-            "rotation" : "$angle + asin($r1 - 0.04)"
+            "rotation" : "min($angle, 2.02) * 2.0 + asin($r1 - 0.04)"
           }
         ],
         "arrayofpathelements" : [
@@ -174,23 +174,23 @@
     {
       "maxvalue" : 600,
       "variablekey" : "logowidth",
-      "defaultvalue" : 425.1759925357851,
+      "defaultvalue" : 438.2997017317825,
       "minvalue" : 50
     },
     {
       "maxvalue" : 0.55,
       "variablekey" : "fraction",
-      "defaultvalue" : 0.4225306608731199,
+      "defaultvalue" : 0.4226693606654051,
       "minvalue" : 0.35
     },
     {
       "maxvalue" : 0.6,
       "variablekey" : "r1",
-      "defaultvalue" : 0.4792323775893949,
+      "defaultvalue" : 0.4788055294080087,
       "minvalue" : 0.4
     },
     {
-      "maxvalue" : 4.1,
+      "maxvalue" : 4.04,
       "variablekey" : "angle",
       "defaultvalue" : 0,
       "minvalue" : 0
