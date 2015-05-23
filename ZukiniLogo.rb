@@ -88,7 +88,7 @@ def make_drawlogo()
   offset = MIShapes.make_point("$logowidth * (1.027 - $fraction * $r1)",
                                "$fraction * $logowidth * $r1")
   MITransformations.add_translatetransform(transformations1, offset)
-  angle = "asin($r1 - 0.04) - pi()"
+  angle = "$angle + asin($r1 - 0.04) - pi()"
   MITransformations.add_rotatetransform(transformations1, angle)
   drawElement1 = make_drawteardrop(transformations1)
   
@@ -97,11 +97,16 @@ def make_drawlogo()
   offset2 = MIShapes.make_point("$fraction * $logowidth * (0.1 + $r1)",
                                 "$logowidth * (1.0 - $fraction * $r1)")
   MITransformations.add_translatetransform(transformations2, offset2)
-  angle2 = "asin($r1 - 0.04)"
+  angle2 = "$angle + asin($r1 - 0.04)"
   MITransformations.add_rotatetransform(transformations2, angle2)
   drawElement2 = make_drawteardrop(transformations2)
   drawLogo.add_drawelement_toarrayofelements(drawElement2)
   drawLogo.add_drawelement_toarrayofelements(make_zstroke())
+  transformations3 = MITransformations.make_contexttransformation()
+  offset3 = MIShapes.make_point("($width - $logowidth) * 0.5",
+                                "($height - $logowidth) * 0.5")
+  MITransformations.add_translatetransform(transformations3, offset3)
+  drawLogo.contexttransformations = transformations3
   drawLogo
 end
 
