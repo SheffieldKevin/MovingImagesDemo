@@ -1,0 +1,329 @@
+{
+  "drawinstructions" : {
+    "fillcolor" : {
+      "red" : 0.82,
+      "alpha" : 1,
+      "colorcolorprofilename" : "kCGColorSpaceSRGB",
+      "blue" : 0.1,
+      "green" : 0.53
+    },
+    "contexttransformation" : [
+      {
+        "transformationtype" : "translate",
+        "translation" : {
+          "x" : "$width * 0.5",
+          "y" : "$height * 0.5"
+        }
+      },
+      {
+        "transformationtype" : "rotate",
+        "rotation" : "$angle"
+      }
+    ],
+    "elementtype" : "arrayofelements",
+    "arrayofelements" : [
+      {
+        "elementtype" : "fillpath",
+        "contexttransformation" : [
+          {
+            "transformationtype" : "rotate",
+            "rotation" : 0
+          },
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "-$iconwidth * ($scalefactor + 2.0) * 0.1667",
+              "y" : 0
+            }
+          }
+        ],
+        "arrayofpathelements" : [
+          {
+            "elementtype" : "patharc",
+            "startangle" : "pi_2() - asin(0.479 - 0.04)",
+            "centerpoint" : {
+              "x" : 0,
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "asin(0.479 - 0.04) - pi_2()",
+            "radius" : "0.479 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : "asin(0.479 - 0.04) - pi_2()",
+            "centerpoint" : {
+              "x" : "$iconwidth \/ (2.966 * $scalefactor)",
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "pi_2() - asin(0.479 - 0.04)",
+            "radius" : "0.04 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "pathclosesubpath"
+          }
+        ],
+        "startpoint" : {
+          "x" : "$iconwidth \/ (2.966 * $scalefactor) * (1.0 + 0.04 * (0.479 - 0.04))",
+          "y" : "$iconwidth \/ (2.966 * $scalefactor) * 0.04 * cos(asin(0.479 - 0.04))"
+        }
+      },
+      {
+        "elementtype" : "fillpath",
+        "contexttransformation" : [
+          {
+            "transformationtype" : "rotate",
+            "rotation" : 1.047197551196598
+          },
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "-$iconwidth * ($scalefactor + 2.0) * 0.1667",
+              "y" : 0
+            }
+          }
+        ],
+        "arrayofpathelements" : [
+          {
+            "elementtype" : "patharc",
+            "startangle" : "pi_2() - asin(0.479 - 0.04)",
+            "centerpoint" : {
+              "x" : 0,
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "asin(0.479 - 0.04) - pi_2()",
+            "radius" : "0.479 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : "asin(0.479 - 0.04) - pi_2()",
+            "centerpoint" : {
+              "x" : "$iconwidth \/ (2.966 * $scalefactor)",
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "pi_2() - asin(0.479 - 0.04)",
+            "radius" : "0.04 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "pathclosesubpath"
+          }
+        ],
+        "startpoint" : {
+          "x" : "$iconwidth \/ (2.966 * $scalefactor) * (1.0 + 0.04 * (0.479 - 0.04))",
+          "y" : "$iconwidth \/ (2.966 * $scalefactor) * 0.04 * cos(asin(0.479 - 0.04))"
+        }
+      },
+      {
+        "elementtype" : "fillpath",
+        "contexttransformation" : [
+          {
+            "transformationtype" : "rotate",
+            "rotation" : 2.094395102393195
+          },
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "-$iconwidth * ($scalefactor + 2.0) * 0.1667",
+              "y" : 0
+            }
+          }
+        ],
+        "arrayofpathelements" : [
+          {
+            "elementtype" : "patharc",
+            "startangle" : "pi_2() - asin(0.479 - 0.04)",
+            "centerpoint" : {
+              "x" : 0,
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "asin(0.479 - 0.04) - pi_2()",
+            "radius" : "0.479 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : "asin(0.479 - 0.04) - pi_2()",
+            "centerpoint" : {
+              "x" : "$iconwidth \/ (2.966 * $scalefactor)",
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "pi_2() - asin(0.479 - 0.04)",
+            "radius" : "0.04 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "pathclosesubpath"
+          }
+        ],
+        "startpoint" : {
+          "x" : "$iconwidth \/ (2.966 * $scalefactor) * (1.0 + 0.04 * (0.479 - 0.04))",
+          "y" : "$iconwidth \/ (2.966 * $scalefactor) * 0.04 * cos(asin(0.479 - 0.04))"
+        }
+      },
+      {
+        "elementtype" : "fillpath",
+        "contexttransformation" : [
+          {
+            "transformationtype" : "rotate",
+            "rotation" : 3.141592653589793
+          },
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "-$iconwidth * ($scalefactor + 2.0) * 0.1667",
+              "y" : 0
+            }
+          }
+        ],
+        "arrayofpathelements" : [
+          {
+            "elementtype" : "patharc",
+            "startangle" : "pi_2() - asin(0.479 - 0.04)",
+            "centerpoint" : {
+              "x" : 0,
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "asin(0.479 - 0.04) - pi_2()",
+            "radius" : "0.479 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : "asin(0.479 - 0.04) - pi_2()",
+            "centerpoint" : {
+              "x" : "$iconwidth \/ (2.966 * $scalefactor)",
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "pi_2() - asin(0.479 - 0.04)",
+            "radius" : "0.04 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "pathclosesubpath"
+          }
+        ],
+        "startpoint" : {
+          "x" : "$iconwidth \/ (2.966 * $scalefactor) * (1.0 + 0.04 * (0.479 - 0.04))",
+          "y" : "$iconwidth \/ (2.966 * $scalefactor) * 0.04 * cos(asin(0.479 - 0.04))"
+        }
+      },
+      {
+        "elementtype" : "fillpath",
+        "contexttransformation" : [
+          {
+            "transformationtype" : "rotate",
+            "rotation" : 4.188790204786391
+          },
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "-$iconwidth * ($scalefactor + 2.0) * 0.1667",
+              "y" : 0
+            }
+          }
+        ],
+        "arrayofpathelements" : [
+          {
+            "elementtype" : "patharc",
+            "startangle" : "pi_2() - asin(0.479 - 0.04)",
+            "centerpoint" : {
+              "x" : 0,
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "asin(0.479 - 0.04) - pi_2()",
+            "radius" : "0.479 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : "asin(0.479 - 0.04) - pi_2()",
+            "centerpoint" : {
+              "x" : "$iconwidth \/ (2.966 * $scalefactor)",
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "pi_2() - asin(0.479 - 0.04)",
+            "radius" : "0.04 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "pathclosesubpath"
+          }
+        ],
+        "startpoint" : {
+          "x" : "$iconwidth \/ (2.966 * $scalefactor) * (1.0 + 0.04 * (0.479 - 0.04))",
+          "y" : "$iconwidth \/ (2.966 * $scalefactor) * 0.04 * cos(asin(0.479 - 0.04))"
+        }
+      },
+      {
+        "elementtype" : "fillpath",
+        "contexttransformation" : [
+          {
+            "transformationtype" : "rotate",
+            "rotation" : 5.235987755982989
+          },
+          {
+            "transformationtype" : "translate",
+            "translation" : {
+              "x" : "-$iconwidth * ($scalefactor + 2.0) * 0.1667",
+              "y" : 0
+            }
+          }
+        ],
+        "arrayofpathelements" : [
+          {
+            "elementtype" : "patharc",
+            "startangle" : "pi_2() - asin(0.479 - 0.04)",
+            "centerpoint" : {
+              "x" : 0,
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "asin(0.479 - 0.04) - pi_2()",
+            "radius" : "0.479 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "patharc",
+            "startangle" : "asin(0.479 - 0.04) - pi_2()",
+            "centerpoint" : {
+              "x" : "$iconwidth \/ (2.966 * $scalefactor)",
+              "y" : 0
+            },
+            "clockwise" : false,
+            "endangle" : "pi_2() - asin(0.479 - 0.04)",
+            "radius" : "0.04 * $iconwidth \/ (2.966 * $scalefactor)"
+          },
+          {
+            "elementtype" : "pathclosesubpath"
+          }
+        ],
+        "startpoint" : {
+          "x" : "$iconwidth \/ (2.966 * $scalefactor) * (1.0 + 0.04 * (0.479 - 0.04))",
+          "y" : "$iconwidth \/ (2.966 * $scalefactor) * 0.04 * cos(asin(0.479 - 0.04))"
+        }
+      }
+    ]
+  },
+  "variabledefinitions" : [
+    {
+      "maxvalue" : 600,
+      "variablekey" : "iconwidth",
+      "defaultvalue" : 330.6406727793723,
+      "minvalue" : 50
+    },
+    {
+      "maxvalue" : 1.2,
+      "variablekey" : "scalefactor",
+      "defaultvalue" : 0.8465995758071936,
+      "minvalue" : 0.75
+    },
+    {
+      "maxvalue" : 6.283,
+      "variablekey" : "angle",
+      "defaultvalue" : 1.604577395088831,
+      "minvalue" : 0
+    }
+  ]
+}
