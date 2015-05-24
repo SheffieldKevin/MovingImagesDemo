@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E0294701B1204D600D88559 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E02946D1B1204D600D88559 /* MainMenu.xib */; };
+		6E0294711B1204D600D88559 /* SpinnerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E02946E1B1204D600D88559 /* SpinnerController.xib */; };
+		6E0294741B12058A00D88559 /* SpinnerPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E0294731B12058A00D88559 /* SpinnerPopover.xib */; };
 		6EE896E31AEE75E8009D5D77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE896E21AEE75E8009D5D77 /* AppDelegate.swift */; };
 		6EE896E51AEE75E8009D5D77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EE896E41AEE75E8009D5D77 /* Images.xcassets */; };
-		6EE896E81AEE75E8009D5D77 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EE896E61AEE75E8009D5D77 /* MainMenu.xib */; };
 		6EE896F41AEE75E8009D5D77 /* Spinner2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE896F31AEE75E8009D5D77 /* Spinner2Tests.swift */; };
 		6EE897001AEE7683009D5D77 /* MovingImages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE896FD1AEE7683009D5D77 /* MovingImages.framework */; };
 		6EE897011AEE7683009D5D77 /* SpinnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE896FE1AEE7683009D5D77 /* SpinnerController.swift */; };
-		6EE897021AEE7683009D5D77 /* SpinnerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EE896FF1AEE7683009D5D77 /* SpinnerController.xib */; };
 		6EE897041AEE76D2009D5D77 /* ZukiniUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE897031AEE76D2009D5D77 /* ZukiniUtilities.swift */; };
 		6EE897061AEE77F6009D5D77 /* MovingImages.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6EE896FD1AEE7683009D5D77 /* MovingImages.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EE897081AEE7B6A009D5D77 /* drawarc.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EE897071AEE7B6A009D5D77 /* drawarc.json */; };
 		6EE897111AEE7F9D009D5D77 /* SpinnerWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8970F1AEE7F9D009D5D77 /* SpinnerWindowController.swift */; };
 		6EE897121AEE7F9D009D5D77 /* SpinnerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EE897101AEE7F9D009D5D77 /* SpinnerWindowController.xib */; };
-		6EE897151AEE8E6D009D5D77 /* SpinnerPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EE897131AEE8E6D009D5D77 /* SpinnerPopover.xib */; };
 		6EE897161AEE8E6D009D5D77 /* SpinnerPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE897141AEE8E6D009D5D77 /* SpinnerPopoverController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,22 +47,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6E02946D1B1204D600D88559 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		6E02946E1B1204D600D88559 /* SpinnerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerController.xib; sourceTree = "<group>"; };
+		6E0294731B12058A00D88559 /* SpinnerPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerPopover.xib; sourceTree = SOURCE_ROOT; };
 		6EE896DD1AEE75E8009D5D77 /* Spinner2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spinner2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EE896E11AEE75E8009D5D77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EE896E21AEE75E8009D5D77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EE896E41AEE75E8009D5D77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6EE896E71AEE75E8009D5D77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6EE896ED1AEE75E8009D5D77 /* Spinner2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Spinner2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EE896F21AEE75E8009D5D77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EE896F31AEE75E8009D5D77 /* Spinner2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner2Tests.swift; sourceTree = "<group>"; };
 		6EE896FD1AEE7683009D5D77 /* MovingImages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MovingImages.framework; sourceTree = "<group>"; };
 		6EE896FE1AEE7683009D5D77 /* SpinnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerController.swift; sourceTree = "<group>"; };
-		6EE896FF1AEE7683009D5D77 /* SpinnerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerController.xib; sourceTree = "<group>"; };
 		6EE897031AEE76D2009D5D77 /* ZukiniUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZukiniUtilities.swift; sourceTree = "<group>"; };
 		6EE897071AEE7B6A009D5D77 /* drawarc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = drawarc.json; path = "../MovingImages Demo/drawarc.json"; sourceTree = "<group>"; };
 		6EE8970F1AEE7F9D009D5D77 /* SpinnerWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerWindowController.swift; sourceTree = "<group>"; };
 		6EE897101AEE7F9D009D5D77 /* SpinnerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerWindowController.xib; sourceTree = "<group>"; };
-		6EE897131AEE8E6D009D5D77 /* SpinnerPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerPopover.xib; sourceTree = "<group>"; };
 		6EE897141AEE8E6D009D5D77 /* SpinnerPopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerPopoverController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,14 +109,14 @@
 				6EE896FD1AEE7683009D5D77 /* MovingImages.framework */,
 				6EE896E21AEE75E8009D5D77 /* AppDelegate.swift */,
 				6EE896E41AEE75E8009D5D77 /* Images.xcassets */,
-				6EE896E61AEE75E8009D5D77 /* MainMenu.xib */,
+				6E02946D1B1204D600D88559 /* MainMenu.xib */,
+				6E02946E1B1204D600D88559 /* SpinnerController.xib */,
 				6EE896E01AEE75E8009D5D77 /* Supporting Files */,
 				6EE896FE1AEE7683009D5D77 /* SpinnerController.swift */,
-				6EE896FF1AEE7683009D5D77 /* SpinnerController.xib */,
+				6E0294731B12058A00D88559 /* SpinnerPopover.xib */,
 				6EE8970F1AEE7F9D009D5D77 /* SpinnerWindowController.swift */,
 				6EE897101AEE7F9D009D5D77 /* SpinnerWindowController.xib */,
 				6EE897141AEE8E6D009D5D77 /* SpinnerPopoverController.swift */,
-				6EE897131AEE8E6D009D5D77 /* SpinnerPopover.xib */,
 				6EE897031AEE76D2009D5D77 /* ZukiniUtilities.swift */,
 			);
 			path = Spinner2;
@@ -229,12 +229,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E0294711B1204D600D88559 /* SpinnerController.xib in Resources */,
+				6E0294741B12058A00D88559 /* SpinnerPopover.xib in Resources */,
 				6EE897081AEE7B6A009D5D77 /* drawarc.json in Resources */,
-				6EE897151AEE8E6D009D5D77 /* SpinnerPopover.xib in Resources */,
 				6EE896E51AEE75E8009D5D77 /* Images.xcassets in Resources */,
 				6EE897121AEE7F9D009D5D77 /* SpinnerWindowController.xib in Resources */,
-				6EE897021AEE7683009D5D77 /* SpinnerController.xib in Resources */,
-				6EE896E81AEE75E8009D5D77 /* MainMenu.xib in Resources */,
+				6E0294701B1204D600D88559 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,17 +277,6 @@
 			targetProxy = 6EE896EE1AEE75E8009D5D77 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		6EE896E61AEE75E8009D5D77 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6EE896E71AEE75E8009D5D77 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6EE896F51AEE75E8009D5D77 /* Debug */ = {
