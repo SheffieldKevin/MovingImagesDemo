@@ -12,6 +12,7 @@
 		6E0294761B1205BC00D88559 /* SpinnerPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E0294751B1205BC00D88559 /* SpinnerPopover.xib */; };
 		6E0294771B1205BC00D88559 /* SpinnerPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E0294751B1205BC00D88559 /* SpinnerPopover.xib */; };
 		6E0294791B12372C00D88559 /* simple_renderer_AZukiniIcon.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E0294781B12372C00D88559 /* simple_renderer_AZukiniIcon.json */; };
+		6E02947B1B13CDA800D88559 /* renderer_AZukiniLogo.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E02947A1B13CDA800D88559 /* renderer_AZukiniLogo.json */; };
 		6E3FF0AF1AD1D68700AD45AD /* simple_renderer_Bluecamera.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */; };
 		6E3FF0B11AD53EE500AD45AD /* simple_renderer_Fillrect.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */; };
 		6E3FF0B31AD544E700AD45AD /* simple_renderer_Strokeoval.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B21AD544E700AD45AD /* simple_renderer_Strokeoval.json */; };
@@ -33,7 +34,6 @@
 		6E61EE181AF5004A000DAB79 /* SpinnerPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E61EE171AF5004A000DAB79 /* SpinnerPopoverController.swift */; };
 		6E61EE191AF5004A000DAB79 /* SpinnerPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E61EE171AF5004A000DAB79 /* SpinnerPopoverController.swift */; };
 		6E61EE251AFB667F000DAB79 /* simple_renderer_DrawArc.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E61EE241AFB667F000DAB79 /* simple_renderer_DrawArc.json */; };
-		6E74B31D1B0CC03400015E68 /* renderer_AZukini.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E74B31C1B0CC03400015E68 /* renderer_AZukini.json */; };
 		6E74B31F1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E74B31E1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json */; };
 		6E8DE3FA1AD59C660029A64D /* simple_renderer_DrawText.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E8DE3F91AD59C660029A64D /* simple_renderer_DrawText.json */; };
 		6EA4D1751ADAAC9200A33936 /* simple_renderer_RobotArm.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EA4D1741ADAAC9200A33936 /* simple_renderer_RobotArm.json */; };
@@ -109,6 +109,7 @@
 		6E02946B1B11D4DB00D88559 /* SimpleRenderer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleRenderer.xib; sourceTree = "<group>"; };
 		6E0294751B1205BC00D88559 /* SpinnerPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerPopover.xib; sourceTree = SOURCE_ROOT; };
 		6E0294781B12372C00D88559 /* simple_renderer_AZukiniIcon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_AZukiniIcon.json; sourceTree = "<group>"; };
+		6E02947A1B13CDA800D88559 /* renderer_AZukiniLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_AZukiniLogo.json; sourceTree = "<group>"; };
 		6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_Bluecamera.json; sourceTree = "<group>"; };
 		6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_Fillrect.json; sourceTree = "<group>"; };
 		6E3FF0B21AD544E700AD45AD /* simple_renderer_Strokeoval.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_Strokeoval.json; sourceTree = "<group>"; };
@@ -291,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				6E74B31C1B0CC03400015E68 /* renderer_AZukini.json */,
+				6E02947A1B13CDA800D88559 /* renderer_AZukiniLogo.json */,
 				6ECE89BE1AD82E6700BE8FB0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -479,10 +481,10 @@
 			files = (
 				6E5CBB651B023FA200BF8FB7 /* drawarc.json in Resources */,
 				6ECE89C21AD82E6700BE8FB0 /* Images.xcassets in Resources */,
+				6E02947B1B13CDA800D88559 /* renderer_AZukiniLogo.json in Resources */,
 				6E5CBB631B023E9D00BF8FB7 /* ZukiniDemo.xib in Resources */,
 				6E0294771B1205BC00D88559 /* SpinnerPopover.xib in Resources */,
 				6ECE89C51AD82E6700BE8FB0 /* MainMenu.xib in Resources */,
-				6E74B31D1B0CC03400015E68 /* renderer_AZukini.json in Resources */,
 				6E5CBB661B023FC400BF8FB7 /* Sculpture.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -249,6 +249,9 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
             let theSegment = currentSegment!
             jsonSegmentStrings[theSegment.rawValue] =
                     makePrettyJSONFromJSONObject(jsonDict[theSegment.stringValue])
+            if theSegment == JSONSegment.DrawInstructions {
+                rendererView.drawDictionary = jsonDict[theSegment.stringValue] as? [String:AnyObject]
+            }
             currentSegment = theSegment.next()
         }
         for spinner in spinners {
@@ -265,7 +268,7 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
                     spinners[index].view.hidden = false
                 }
             }
-            
+            rendererView.variables = self.variables
         }
         rendererView.needsDisplay = true
         updateSpinnersEditingControls()
