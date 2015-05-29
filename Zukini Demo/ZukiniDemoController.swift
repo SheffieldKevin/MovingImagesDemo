@@ -6,7 +6,7 @@ import Cocoa
 import MovingImages
 
 enum JSONSegment: Int {
-    //    case Setup = 0, Process, DrawInstructions, Finalize, Variables
+    // case Setup = 0, Process, DrawInstructions, Finalize, Variables
     case Setup = 0, Process, DrawInstructions, Finalize
     static var firstSegment = JSONSegment.Setup
 
@@ -151,6 +151,19 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
         }
     }
 
+    @IBAction func doSetupCommands(#sender: AnyObject) {
+        self.performSetupCommands()
+    }
+    
+    @IBAction func doProcessCommands(#sender: AnyObject) {
+        self.performProcessCommands(progressHandler: self.progressHandler,
+            completionHandler: self.processCompletion)
+    }
+
+    @IBAction func doFinalizeCommands(#sender: AnyObject) {
+        self.performFinalizeCommands()
+    }
+
     // MARK: NSTextViewDelegate protocol methods.
     func textDidChange(notification: NSNotification) {
         if let theText = jsonTextView.string {
@@ -165,9 +178,6 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
     // MARK: Internal properties - bindings in Interface Builder
     dynamic var addSpinnersEnabled = true
     dynamic var removeSpinnersEnabled = true
-    
-    // MARK: Private properties
-    private let maximumNumberOfSpinners = 4
     
     // MARK: NSWindowController overrides.
     override func windowDidLoad() {
@@ -194,7 +204,7 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
             NSBackgroundColorAttributeName : NSColor.lightGrayColor(),
             NSForegroundColorAttributeName : NSColor.blackColor()
         ]
-        rendererView.makeNewRenderer(miContext: miContext)
+        rendererView.makeNewRenderer(miContext: self.miContext)
         
         exampleList.addItemsWithTitles(listOfExamples(prefix: "renderer_"))
         self.exampleSelected(exampleList)
@@ -205,6 +215,54 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
     }
     
     // MARK: Private methods
+    
+    // Returns true on success.
+    
+    private func performJSONCommands(jsonString: String?) -> Bool {
+        if let jsonString = jsonString,
+            let jsonDict = createDictionaryFromJSONString(jsonString) {
+            let resultDict = MIMovingImagesHandleCommands(self.miContext,
+                jsonDict, .None, .None)
+            return MIGetErrorCodeFromReplyDictionary(resultDict) == MIReplyErrorEnum.NoError
+        }
+        return false
+    }
+    
+    private func progressHandler(commandIndex: NSInteger) -> Void {
+        dispatch_async(dispatch_get_main_queue(), { self.rendererView.needsDisplay = true })
+    }
+    
+    private func processCompletion(replyDictionary: [NSObject:AnyObject]) -> Void {
+        processingCommands = false
+    }
+
+    private func performSetupCommands() -> Bool {
+        let result = performJSONCommands(jsonSegmentStrings[JSONSegment.Setup.rawValue])
+        self.canProcesss = true
+        return result
+    }
+
+    private func performFinalizeCommands() -> Bool {
+        self.canProcesss = false
+        return performJSONCommands(jsonSegmentStrings[JSONSegment.Finalize.rawValue])
+    }
+
+    private func performProcessCommands(progressHandler: MIProgressHandler? = .None,
+                        completionHandler: MICommandCompletionHandler? = .None) -> Bool {
+        if let jsonString = jsonSegmentStrings[JSONSegment.Process.rawValue],
+            let jsonDict = createDictionaryFromJSONString(jsonString)
+        {
+            let runsAsync = jsonDict[MIJSONKeyRunAsynchronously] as? Bool ?? false
+            processingCommands = true
+            let resultDict = MIMovingImagesHandleCommands(self.miContext, jsonDict,
+                progressHandler, completionHandler)
+            if !runsAsync {
+                processingCommands = false
+            }
+            return MIGetErrorCodeFromReplyDictionary(resultDict) == MIReplyErrorEnum.NoError
+        }
+        return false
+    }
 
     private func configureWithJSONFile(fileURL: NSURL?) {
         if let theURL = fileURL,
@@ -213,7 +271,7 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
                 self.configureWithJSONDict(jsonDict)
         }
         else {
-            println("Invaid JSON file: \(fileURL)")
+            println("Invalid JSON file: \(fileURL)")
         }
     }
     
@@ -300,6 +358,7 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
     }
     
     // MARK: Private properties
+    private let maximumNumberOfSpinners = 4
     private var spinners = [SpinnerController]()
     
     private var variables:[String:AnyObject] {
@@ -318,11 +377,20 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
     }
 
     private var miContext:MIContext = MIContext()
+    
+    private var lastEvaluatedVariables:[String:AnyObject]?
+    
+    private var processingCommands = false
+    private var canProcesss = false
 }
 
 extension ZukiniDemoController: SpinnerDelegate {
     func spinnerValueChanged(#sender: SpinnerController) {
-        rendererView.variables = self.variables
+        if let previouslyEvaluated = lastEvaluatedVariables {
+            self.miContext.dropVariablesDictionary(previouslyEvaluated)
+        }
+        lastEvaluatedVariables = self.variables
+        self.miContext.appendVariables(lastEvaluatedVariables)
         rendererView.needsDisplay = true
     }
 }
