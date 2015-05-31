@@ -74,6 +74,11 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
     @IBOutlet weak var removeSpinner: NSButton!
     @IBOutlet weak var commandSegments: NSSegmentedControl!
     
+    @IBOutlet weak var movieInput1: NSPopUpButton!
+    @IBOutlet weak var movieInput2: NSPopUpButton!
+    @IBOutlet weak var imageInput1: NSPopUpButton!
+    @IBOutlet weak var imageInput2: NSPopUpButton!
+    
     // MARK: @IBActions
     @IBAction func addSpinner(sender: AnyObject) {
         for spinner in spinners {
@@ -104,6 +109,46 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
                 prefix: "renderer_")
             if let dictionary = readJSONFromFile(filePath) {
                 configureWithJSONDict(dictionary)
+            }
+        }
+    }
+    
+    private func movieNameToPath(name: String) -> String {
+        let fileName = name.stringByAppendingPathExtension("mov")!
+        let moviePath = "Movies".stringByAppendingPathComponent(fileName)
+        let theBundle = NSBundle(forClass: self.dynamicType)
+        return theBundle.resourcePath!.stringByAppendingPathExtension(moviePath)!
+    }
+
+    @IBAction func movieSelected(sender: AnyObject) {
+        let popup = sender as! NSPopUpButton
+        if let selectedTitle = popup.titleOfSelectedItem {
+            let filePath = movieNameToPath(selectedTitle)
+            if popup == movieInput1 {
+                movie1Filepath = filePath
+            }
+            else {
+                movie2Filepath = filePath
+            }
+        }
+    }
+
+    private func imageNameToPath(name: String) -> String {
+        let fileName = name.stringByAppendingPathExtension("jpg")!
+        let moviePath = "Images".stringByAppendingPathComponent(fileName)
+        let theBundle = NSBundle(forClass: self.dynamicType)
+        return theBundle.resourcePath!.stringByAppendingPathExtension(moviePath)!
+    }
+    
+    @IBAction func imageSelected(sender: AnyObject) {
+        let popup = sender as! NSPopUpButton
+        if let selectedTitle = popup.titleOfSelectedItem {
+            let filePath = movieNameToPath(selectedTitle)
+            if popup == movieInput1 {
+                movie1Filepath = filePath
+            }
+            else {
+                movie2Filepath = filePath
             }
         }
     }
@@ -207,6 +252,20 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
         rendererView.makeNewRenderer(miContext: self.miContext)
         
         exampleList.addItemsWithTitles(listOfExamples(prefix: "renderer_"))
+        let moviesList = ZukiniDemoController.listOfMovies()
+        movieInput1.addItemsWithTitles(moviesList)
+        movieInput2.addItemsWithTitles(moviesList)
+        let firstMoviePath = movieNameToPath(moviesList.first!)
+        movie1Filepath = firstMoviePath
+        movie1Filepath = firstMoviePath
+        
+        let imagesList = ZukiniDemoController.listOfImages()
+        imageInput1.addItemsWithTitles(imagesList)
+        imageInput2.addItemsWithTitles(imagesList)
+        let firstImagePath = imageNameToPath(imagesList.first!)
+        movie1Filepath = firstImagePath
+        movie1Filepath = firstImagePath
+
         self.exampleSelected(exampleList)
         let jsonString = jsonSegmentStrings[JSONSegment.DrawInstructions.rawValue]
         if let jsonString = jsonString {
@@ -215,9 +274,6 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
     }
     
     // MARK: Private methods
-    
-    // Returns true on success.
-    
     private func performJSONCommands(jsonString: String?) -> Bool {
         if let jsonString = jsonString,
             let jsonDict = createDictionaryFromJSONString(jsonString) {
@@ -262,6 +318,26 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
             return MIGetErrorCodeFromReplyDictionary(resultDict) == MIReplyErrorEnum.NoError
         }
         return false
+    }
+
+    private class func listOfMovies() -> [String] {
+        let bundle = NSBundle(forClass: self.dynamicType)
+        let moviePaths = bundle.pathsForResourcesOfType("mov", inDirectory: "Movies")
+        
+        let movies = moviePaths.map() { filePath -> String in
+            return filePath.lastPathComponent.stringByDeletingPathExtension
+        }
+        return movies
+    }
+
+    private class func listOfImages() -> [String] {
+        let bundle = NSBundle(forClass: self.dynamicType)
+        let moviePaths = bundle.pathsForResourcesOfType("jpg", inDirectory: "Pictures")
+        
+        let examples = moviePaths.map() {
+            filePath -> String in return filePath.lastPathComponent.stringByDeletingPathExtension
+        }
+        return examples
     }
 
     private func configureWithJSONFile(fileURL: NSURL?) {
@@ -361,11 +437,21 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
     private let maximumNumberOfSpinners = 4
     private var spinners = [SpinnerController]()
     
+    private var movie1Filepath:String = ""
+    private var movie2Filepath:String = ""
+    private var image1Filepath:String = ""
+    private var image2Filepath:String = ""
+    private var destination:String = ""
+    
     private var variables:[String:AnyObject] {
         get {
             var theDictionary:[String:AnyObject] = [
                 MIJSONKeyWidth : rendererView.drawWidth,
-                MIJSONKeyHeight : rendererView.drawHeight
+                MIJSONKeyHeight : rendererView.drawHeight,
+                "movie1path" : movie1Filepath,
+                "movie2path" : movie2Filepath,
+                "image1path" : image1Filepath,
+                "image2path" : image2Filepath
             ]
             for spinner in spinners {
                 if !spinner.view.hidden {
