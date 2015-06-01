@@ -4,16 +4,13 @@ include MovingImages
 include MICGDrawing
 
 def make_zstroke()
-  # The logo height is about 8% larger than width
-  # radius1 is same as radius1 for the alternate tear drop.
-  # radius2 is same as radius2 for the alternate tear drop.
   startPoint = MIShapes.make_point("0.01692 * $logowidth", 0)
   pathDrawElement = MIDrawElement.new(:fillpath)
   pathDrawElement.startpoint = startPoint
   
   thePath = MIPath.new
   centerPoint = MIShapes.make_point(
-            "$logowidth * 0.285",
+            "0.285 * $logowidth",
             "0.0515 * $logowidth")
   thePath.add_arc(centerPoint: centerPoint,
                        radius: "0.0515 * $logowidth",
@@ -55,19 +52,19 @@ def make_teardroppath()
   centerPoint = MIShapes.make_point(0, 0)
   thePath.add_arc(centerPoint: centerPoint,
          radius: "$logowidth * 0.20262",
-     startAngle: "pi_2() - 0.4545",
-       endAngle: "0.4545 - pi_2()")
+     startAngle: Math::PI * 0.5 - 0.4545,
+       endAngle: 0.4545 - Math::PI * 0.5)
 
   centerPoint2 = MIShapes.make_point("$logowidth * 0.423", 0)
   thePath.add_arc(centerPoint: centerPoint2,
          radius: "$logowidth * 0.01692",
-     startAngle: "0.4545 - pi_2()",
-       endAngle: "pi_2() - 0.4545")
+     startAngle: 0.4545 - Math::PI * 0.5,
+       endAngle: Math::PI * 0.5 - 0.4545)
   thePath.add_closesubpath()
 
   startPoint = MIShapes.make_point(
-        "$logowidth * 0.423 * (1.0 + 0.04 * 0.439)",
-        "$logowidth * 0.423 * 0.04 * cos(0.4545)")
+        "$logowidth * 0.43043",
+        "$logowidth * 0.01520")
   return startPoint, thePath
 end
 
@@ -88,7 +85,7 @@ def make_drawlogo()
   offset = MIShapes.make_point("$logowidth * 0.82438",
                                "0.20262 * $logowidth")
   MITransformations.add_translatetransform(transformations1, offset)
-  angle = "max($angle, 2.02) * 2.0 - 4.04 + 0.4545 - pi()"
+  angle = "max($angle, 2.02) * 2.0 - 6.7271"
   MITransformations.add_rotatetransform(transformations1, angle)
   drawElement1 = make_drawteardrop(transformations1)
   
