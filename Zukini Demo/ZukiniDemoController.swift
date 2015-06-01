@@ -53,8 +53,7 @@ enum JSONSegment: Int {
     }
 }
 
-class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
-                            NSWindowDelegate, SpinnerDelegate {
+class ZukiniDemoController: NSWindowController {
     static let variableDefinitions = "variabledefinitions"
 
     var jsonSegmentStrings: [Int:String] = [:]
@@ -113,46 +112,6 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
         }
     }
     
-    private func movieNameToPath(name: String) -> String {
-        let fileName = name.stringByAppendingPathExtension("mov")!
-        let moviePath = "Movies".stringByAppendingPathComponent(fileName)
-        let theBundle = NSBundle(forClass: self.dynamicType)
-        return theBundle.resourcePath!.stringByAppendingPathExtension(moviePath)!
-    }
-
-    @IBAction func movieSelected(sender: AnyObject) {
-        let popup = sender as! NSPopUpButton
-        if let selectedTitle = popup.titleOfSelectedItem {
-            let filePath = movieNameToPath(selectedTitle)
-            if popup == movieInput1 {
-                movie1Filepath = filePath
-            }
-            else {
-                movie2Filepath = filePath
-            }
-        }
-    }
-
-    private func imageNameToPath(name: String) -> String {
-        let fileName = name.stringByAppendingPathExtension("jpg")!
-        let moviePath = "Images".stringByAppendingPathComponent(fileName)
-        let theBundle = NSBundle(forClass: self.dynamicType)
-        return theBundle.resourcePath!.stringByAppendingPathExtension(moviePath)!
-    }
-    
-    @IBAction func imageSelected(sender: AnyObject) {
-        let popup = sender as! NSPopUpButton
-        if let selectedTitle = popup.titleOfSelectedItem {
-            let filePath = movieNameToPath(selectedTitle)
-            if popup == movieInput1 {
-                movie1Filepath = filePath
-            }
-            else {
-                movie2Filepath = filePath
-            }
-        }
-    }
-    
     @IBAction func exportJSON(#sender: AnyObject) {
         let savePanel = NSSavePanel()
         savePanel.allowedFileTypes = ["public.json"]
@@ -202,24 +161,13 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
     
     @IBAction func doProcessCommands(#sender: AnyObject) {
         self.performProcessCommands(progressHandler: self.progressHandler,
-            completionHandler: self.processCompletion)
+            completionHandler: self.processCompletionHandler)
     }
 
     @IBAction func doFinalizeCommands(#sender: AnyObject) {
         self.performFinalizeCommands()
     }
 
-    // MARK: NSTextViewDelegate protocol methods.
-    func textDidChange(notification: NSNotification) {
-        if let theText = jsonTextView.string {
-            jsonSegmentStrings[lastSelectedSegment] = theText
-            if lastSelectedSegment == JSONSegment.DrawInstructions.rawValue {
-                rendererView.drawDictionary = createDictionaryFromJSONString(theText)
-                rendererView.needsDisplay = true
-            }
-        }
-    }
-    
     // MARK: Internal properties - bindings in Interface Builder
     dynamic var addSpinnersEnabled = true
     dynamic var removeSpinnersEnabled = true
@@ -257,14 +205,14 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
         movieInput2.addItemsWithTitles(moviesList)
         let firstMoviePath = movieNameToPath(moviesList.first!)
         movie1Filepath = firstMoviePath
-        movie1Filepath = firstMoviePath
+        movie2Filepath = firstMoviePath
         
         let imagesList = ZukiniDemoController.listOfImages()
         imageInput1.addItemsWithTitles(imagesList)
         imageInput2.addItemsWithTitles(imagesList)
         let firstImagePath = imageNameToPath(imagesList.first!)
-        movie1Filepath = firstImagePath
-        movie1Filepath = firstImagePath
+        image1Filepath = firstImagePath
+        image2Filepath = firstImagePath
 
         self.exampleSelected(exampleList)
         let jsonString = jsonSegmentStrings[JSONSegment.DrawInstructions.rawValue]
@@ -272,7 +220,7 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
             rendererView.drawDictionary = createDictionaryFromJSONString(jsonString)
         }
     }
-    
+
     // MARK: Private methods
     private func performJSONCommands(jsonString: String?) -> Bool {
         if let jsonString = jsonString,
@@ -288,42 +236,53 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
         dispatch_async(dispatch_get_main_queue(), { self.rendererView.needsDisplay = true })
     }
     
-    private func processCompletion(replyDictionary: [NSObject:AnyObject]) -> Void {
+    private func processCompleted() -> Void {
         processingCommands = false
+        self.rendererView.needsDisplay = true
+    }
+    
+    private func processCompletionHandler(replyDictionary: [NSObject:AnyObject]) -> Void {
+        processCompleted()
     }
 
     private func performSetupCommands() -> Bool {
         let result = performJSONCommands(jsonSegmentStrings[JSONSegment.Setup.rawValue])
-        self.canProcesss = true
+        self.canProcess = true
         return result
     }
 
     private func performFinalizeCommands() -> Bool {
-        self.canProcesss = false
+        self.canProcess = false
         return performJSONCommands(jsonSegmentStrings[JSONSegment.Finalize.rawValue])
     }
 
     private func performProcessCommands(progressHandler: MIProgressHandler? = .None,
-                        completionHandler: MICommandCompletionHandler? = .None) -> Bool {
-        if let jsonString = jsonSegmentStrings[JSONSegment.Process.rawValue],
-            let jsonDict = createDictionaryFromJSONString(jsonString)
-        {
-            let runsAsync = jsonDict[MIJSONKeyRunAsynchronously] as? Bool ?? false
-            processingCommands = true
-            let resultDict = MIMovingImagesHandleCommands(self.miContext, jsonDict,
-                progressHandler, completionHandler)
-            if !runsAsync {
-                processingCommands = false
+        completionHandler: MICommandCompletionHandler? = .None) -> Bool {
+
+        var runsAsync:Bool = false
+        var result:Bool = false
+
+        if self.canProcess {
+            let jsonString = jsonSegmentStrings[JSONSegment.Process.rawValue]            
+            if let jsonDict = createDictionaryFromJSONString(jsonString)
+            {
+                runsAsync = jsonDict[MIJSONKeyRunAsynchronously] as? Bool ?? false
+                processingCommands = true
+                let resultDict = MIMovingImagesHandleCommands(self.miContext, jsonDict,
+                    progressHandler, completionHandler)
+                result = MIGetErrorCodeFromReplyDictionary(resultDict) == MIReplyErrorEnum.NoError
             }
-            return MIGetErrorCodeFromReplyDictionary(resultDict) == MIReplyErrorEnum.NoError
         }
-        return false
+
+        if !runsAsync {
+            processCompleted()
+        }
+        return result
     }
 
     private class func listOfMovies() -> [String] {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = NSBundle(forClass: ZukiniDemoController.self)
         let moviePaths = bundle.pathsForResourcesOfType("mov", inDirectory: "Movies")
-        
         let movies = moviePaths.map() { filePath -> String in
             return filePath.lastPathComponent.stringByDeletingPathExtension
         }
@@ -331,7 +290,7 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
     }
 
     private class func listOfImages() -> [String] {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = NSBundle(forClass: self)
         let moviePaths = bundle.pathsForResourcesOfType("jpg", inDirectory: "Pictures")
         
         let examples = moviePaths.map() {
@@ -377,6 +336,14 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
         return jsonDict
     }
 
+    private func updateVariables() -> Void {
+        if let previouslyEvaluated = lastEvaluatedVariables {
+            self.miContext.dropVariablesDictionary(previouslyEvaluated)
+        }
+        self.lastEvaluatedVariables = self.variables
+        self.miContext.appendVariables(lastEvaluatedVariables)
+    }
+    
     private func configureWithJSONDict(jsonDict: [String:AnyObject]) {
         var currentSegment: JSONSegment? = JSONSegment.firstSegment
         while currentSegment != nil {
@@ -402,10 +369,11 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
                     spinners[index].view.hidden = false
                 }
             }
-            rendererView.variables = self.variables
+            // rendererView.variables = self.variables
+            self.updateVariables()
         }
         rendererView.needsDisplay = true
-        updateSpinnersEditingControls()
+        self.updateSpinnersEditingControls()
     }
     
     private func evaluateEnabledStateForAddSpinnersButtons() -> Bool {
@@ -467,22 +435,76 @@ class ZukiniDemoController: NSWindowController, NSTextViewDelegate,
     private var lastEvaluatedVariables:[String:AnyObject]?
     
     private var processingCommands = false
-    private var canProcesss = false
+    private var canProcess = false
 }
 
+// MARK: ZukiniDemoController extension managing resources.
+extension ZukiniDemoController {
+    private func movieNameToPath(name: String) -> String {
+        let fileName = name.stringByAppendingPathExtension("mov")!
+        let moviePath = "Movies".stringByAppendingPathComponent(fileName)
+        let theBundle = NSBundle(forClass: self.dynamicType)
+        return theBundle.resourcePath!.stringByAppendingPathExtension(moviePath)!
+    }
+    
+    @IBAction func movieSelected(sender: AnyObject) {
+        let popup = sender as! NSPopUpButton
+        if let selectedTitle = popup.titleOfSelectedItem {
+            let filePath = movieNameToPath(selectedTitle)
+            if popup == movieInput1 {
+                movie1Filepath = filePath
+            }
+            else {
+                movie2Filepath = filePath
+            }
+        }
+    }
+    
+    private func imageNameToPath(name: String) -> String {
+        let fileName = name.stringByAppendingPathExtension("jpg")!
+        let moviePath = "Images".stringByAppendingPathComponent(fileName)
+        let theBundle = NSBundle(forClass: self.dynamicType)
+        return theBundle.resourcePath!.stringByAppendingPathExtension(moviePath)!
+    }
+    
+    @IBAction func imageSelected(sender: AnyObject) {
+        let popup = sender as! NSPopUpButton
+        if let selectedTitle = popup.titleOfSelectedItem {
+            let filePath = imageNameToPath(selectedTitle)
+            if popup == imageInput1 {
+                image1Filepath = filePath
+            }
+            else {
+                image2Filepath = filePath
+            }
+        }
+    }
+}
+
+// MARK: ZukiniDemoController. Delegate protocol extensions.
 extension ZukiniDemoController: SpinnerDelegate {
     func spinnerValueChanged(#sender: SpinnerController) {
-        if let previouslyEvaluated = lastEvaluatedVariables {
-            self.miContext.dropVariablesDictionary(previouslyEvaluated)
-        }
-        lastEvaluatedVariables = self.variables
-        self.miContext.appendVariables(lastEvaluatedVariables)
+        self.updateVariables()
         rendererView.needsDisplay = true
     }
 }
 
 extension ZukiniDemoController: NSWindowDelegate {
     func windowDidResize(notification: NSNotification) {
-        rendererView.variables = self.variables
+        self.updateVariables()
+        self.performProcessCommands(progressHandler: self.progressHandler,
+            completionHandler: self.processCompletionHandler)
+    }
+}
+
+extension ZukiniDemoController: NSTextViewDelegate {
+    func textDidChange(notification: NSNotification) {
+        if let theText = jsonTextView.string {
+            jsonSegmentStrings[lastSelectedSegment] = theText
+            if lastSelectedSegment == JSONSegment.DrawInstructions.rawValue {
+                rendererView.drawDictionary = createDictionaryFromJSONString(theText)
+                rendererView.needsDisplay = true
+            }
+        }
     }
 }

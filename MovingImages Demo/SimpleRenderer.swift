@@ -129,9 +129,11 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
             NSForegroundColorAttributeName : NSColor.blackColor()
         ]
         // simpleRenderView.variables = self.variables
+        
         if let theImage = createCGImage("Sculpture", fileExtension: "jpg") {
-            simpleRenderView.assignImage(theImage, identifier: "Sculpture")
+            self.miContext.assignCGImage(theImage, identifier: "Sculpture")
         }
+        self.simpleRenderView.callFromWindowDidLoad(self.miContext)
         
         exampleList.addItemsWithTitles(listOfExamples(prefix: "simple_renderer_"))
         self.exampleSelected(sender: exampleList)
@@ -232,6 +234,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     }
     
     // MARK: Private properties
+    private var miContext = MIContext()
     private var spinners = [SpinnerController]()
     
     private var variables:[String:AnyObject] {

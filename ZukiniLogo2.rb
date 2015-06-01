@@ -7,7 +7,7 @@ def make_zstroke()
   # The logo height is about 8% larger than width
   # radius1 is same as radius1 for the alternate tear drop.
   # radius2 is same as radius2 for the alternate tear drop.
-  startPoint = MIShapes.make_point("0.04 * $fraction * $logowidth", 0)
+  startPoint = MIShapes.make_point("0.01692 * $logowidth", 0)
   pathDrawElement = MIDrawElement.new(:fillpath)
   pathDrawElement.startpoint = startPoint
   
@@ -54,20 +54,20 @@ def make_teardroppath()
   thePath = MIPath.new
   centerPoint = MIShapes.make_point(0, 0)
   thePath.add_arc(centerPoint: centerPoint,
-         radius: "$logowidth * $fraction * $r1",
-     startAngle: "pi_2() - asin($r1 - 0.04)",
-       endAngle: "asin($r1 - 0.04) - pi_2()")
+         radius: "$logowidth * 0.20262",
+     startAngle: "pi_2() - 0.4545",
+       endAngle: "0.4545 - pi_2()")
 
-  centerPoint2 = MIShapes.make_point("$logowidth * $fraction", 0)
+  centerPoint2 = MIShapes.make_point("$logowidth * 0.423", 0)
   thePath.add_arc(centerPoint: centerPoint2,
-         radius: "$logowidth * $fraction * 0.04",
-     startAngle: "asin($r1 - 0.04) - pi_2()",
-       endAngle: "pi_2() - asin($r1 - 0.04)")
+         radius: "$logowidth * 0.01692",
+     startAngle: "0.4545 - pi_2()",
+       endAngle: "pi_2() - 0.4545")
   thePath.add_closesubpath()
 
   startPoint = MIShapes.make_point(
-        "$logowidth * $fraction * (1.0 + 0.04 * ($r1 - 0.04))",
-        "$logowidth * $fraction * 0.04 * cos(asin($r1 - 0.04))")
+        "$logowidth * 0.423 * (1.0 + 0.04 * 0.439)",
+        "$logowidth * 0.423 * 0.04 * cos(0.4545)")
   return startPoint, thePath
 end
 
@@ -85,19 +85,19 @@ def make_drawlogo()
   drawLogo.fillcolor = MIColor.make_rgbacolor(0.05, 0.35, 0.05)
 
   transformations1 = MITransformations.make_contexttransformation()
-  offset = MIShapes.make_point("$logowidth * (1.027 - $fraction * $r1)",
-                               "$fraction * $logowidth * $r1")
+  offset = MIShapes.make_point("$logowidth * 0.82438",
+                               "0.20262 * $logowidth")
   MITransformations.add_translatetransform(transformations1, offset)
-  angle = "max($angle, 2.02) * 2.0 - 4.04 + asin($r1 - 0.04) - pi()"
+  angle = "max($angle, 2.02) * 2.0 - 4.04 + 0.4545 - pi()"
   MITransformations.add_rotatetransform(transformations1, angle)
   drawElement1 = make_drawteardrop(transformations1)
   
   drawLogo.add_drawelement_toarrayofelements(drawElement1)
   transformations2 = MITransformations.make_contexttransformation()
-  offset2 = MIShapes.make_point("$fraction * $logowidth * (0.1 + $r1)",
-                                "$logowidth * (1.0 - $fraction * $r1)")
+  offset2 = MIShapes.make_point("0.2449 * $logowidth",
+                                "$logowidth * 0.79738")
   MITransformations.add_translatetransform(transformations2, offset2)
-  angle2 = "min($angle, 2.02) * 2.0 + asin($r1 - 0.04)"
+  angle2 = "min($angle, 2.02) * 2.0 + 0.4545"
   MITransformations.add_rotatetransform(transformations2, angle2)
   drawElement2 = make_drawteardrop(transformations2)
   drawLogo.add_drawelement_toarrayofelements(drawElement2)

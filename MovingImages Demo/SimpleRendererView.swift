@@ -34,36 +34,50 @@ class SimpleRendererView: NSView {
 
     var variables:[String:AnyObject]? {
         get {
-            let theDict = self.simpleRenderer.variables
-            if let theDict = theDict {
+            if let renderer = self.simpleRenderer,
+                let theDict = renderer.variables
+            {
                 return theDict as? [String:AnyObject]
             }
             return Optional.None
         }
         
         set(newVariables) {
-            self.simpleRenderer.variables = newVariables
+            if let renderer = self.simpleRenderer {
+                renderer.variables = newVariables
+            }
         }
     }
     
-    override func drawRect(dirtyRect: NSRect) {
+    func callFromWindowDidLoad(context: MIContext) {
+        self.simpleRenderer = MISimpleRenderer(MIContext: context)
+    }
+    
+    override func drawRect(dirtyRect: NSRect) -> Void {
         let theContext = NSGraphicsContext.currentContext()!.CGContext
         CGContextSetTextMatrix(theContext, CGAffineTransformIdentity)
         drawOutlineAndInsetDrawing(theContext)
-        if let drawDict = self.drawDictionary {
-            simpleRenderer.drawDictionary(drawDict, intoCGContext: theContext)
+        if let drawDict = self.drawDictionary,
+            let renderer = self.simpleRenderer
+        {
+            renderer.drawDictionary(drawDict, intoCGContext: theContext)
         }
     }
-
+/*
     func assignImage(image: CGImage, identifier: String) -> Void {
-        simpleRenderer.assignImage(image, withIdentifier: identifier)
+        self.simpleRenderer.assignImage(image, withIdentifier: identifier)
     }
 
-private
-    let simpleRenderer = MISimpleRenderer()
+    var miContext:MIContext = MIContext.defaultContext() {
+        didSet {
+            self.simpleRenderer = MISimpleRenderer(MIContext: self.miContext)
+        }
+    }
+*/
+    private var simpleRenderer:MISimpleRenderer?
 
     // Only call from within drawRect.
-    func drawOutlineAndInsetDrawing(context: CGContextRef) -> Void {
+    private func drawOutlineAndInsetDrawing(context: CGContextRef) -> Void {
         let insetRect = CGRectInset(self.bounds, 1.0, 1.0)
         NSColor.lightGrayColor().setStroke()
         CGContextSetLineWidth(context, 2.0)

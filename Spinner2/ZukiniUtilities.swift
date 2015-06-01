@@ -92,8 +92,8 @@ func readJSONFromFile(filePath: String) -> [String:AnyObject]? {
     return Optional.None
 }
 
-func createDictionaryFromJSONString(jsonString: String) -> [String:AnyObject]? {
-    if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding),
+func createDictionaryFromJSONString(jsonString: String?) -> [String:AnyObject]? {
+    if let data = jsonString?.dataUsingEncoding(NSUTF8StringEncoding),
         let theDict = NSJSONSerialization.JSONObjectWithData(data,
             options: NSJSONReadingOptions.allZeros,
             error:nil) as? [String:AnyObject] {

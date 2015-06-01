@@ -146,7 +146,7 @@
             "startangle" : 1.570796326794897,
             "centerpoint" : {
               "x" : "$logowidth * 0.7915",
-              "y" : "$logowidth * 0.95"
+              "y" : "$logowidth * 0.9485"
             },
             "clockwise" : false,
             "endangle" : 2.513274122871834,

@@ -54,8 +54,10 @@ class ZukiniRendererView: NSView {
         let theContext = NSGraphicsContext.currentContext()!.CGContext
         CGContextSetTextMatrix(theContext, CGAffineTransformIdentity)
         drawOutlineAndInsetDrawing(theContext)
-        if let drawDict = self.drawDictionary {
-            simpleRenderer?.drawDictionary(drawDict, intoCGContext: theContext)
+        if let drawDict = self.drawDictionary,
+            let theRenderer = self.simpleRenderer
+        {
+            theRenderer.drawDictionary(drawDict, intoCGContext: theContext)
         }
     }
 
