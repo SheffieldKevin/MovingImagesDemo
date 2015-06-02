@@ -42,11 +42,6 @@ def make_zstroke()
   pathDrawElement
 end
 
-# Variables for teardrop.
-#  * logowidth: the width of the logo in pixels
-#  * fraction: size of teardrop main stroke as fraction of logowidth. 0.2 - 0.6
-#  * r1: Radius of large arc, as a fraction of fraction. 0.2 - 0.5
-#  * r2: Radius of small arc, as a fraction of fraction. 0.05 - 0.2
 def make_teardroppath()
   thePath = MIPath.new
   centerPoint = MIShapes.make_point(0, 0)
