@@ -7,13 +7,17 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ZukiniDemoController" customModule="Zukini_Demo" customModuleProvider="target">
             <connections>
                 <outlet property="addSpinner" destination="aTT-g8-03A" id="QYG-m1-9IJ"/>
+                <outlet property="assignDestinationButton" destination="leB-cp-iFV" id="vQl-g2-E28"/>
                 <outlet property="commandSegments" destination="13a-3F-sWT" id="Cr4-bE-xpm"/>
+                <outlet property="doSetupButton" destination="spP-D9-dhu" id="Ev8-s2-b2H"/>
                 <outlet property="exampleList" destination="flh-mG-rbv" id="F8R-Hm-lN3"/>
+                <outlet property="finalizeButton" destination="Z4d-Jj-ETc" id="avs-5b-vB8"/>
                 <outlet property="imageInput1" destination="bl8-Eq-7pY" id="ZX0-u6-l1h"/>
                 <outlet property="imageInput2" destination="4eF-jx-dDP" id="x4k-0u-MyQ"/>
                 <outlet property="jsonTextView" destination="k2u-qq-YDH" id="xXr-Io-Ylw"/>
                 <outlet property="movieInput1" destination="vgj-KH-5A3" id="6MB-Sz-gqr"/>
                 <outlet property="movieInput2" destination="rkd-Q2-yKR" id="WRo-qd-vFw"/>
+                <outlet property="processButton" destination="fTT-3F-TcR" id="N4D-5f-Dl0"/>
                 <outlet property="removeSpinner" destination="FcI-kL-9jH" id="loz-Rm-mfz"/>
                 <outlet property="rendererView" destination="cZu-b1-qq6" id="Uar-JM-ZBl"/>
                 <outlet property="spinnerFour" destination="eiP-5B-gl5" id="GHu-5g-7I8"/>

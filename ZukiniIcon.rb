@@ -73,7 +73,6 @@ def make_transparentpngicon()
   
   # Command list setup
   logoCommands = SmigCommands.new
-  logoCommands.saveresultstype = :lastcommandresult
   
   # Make the create bitmap context command
   bitmap = logoCommands.make_createbitmapcontext(size: bitmapSize,

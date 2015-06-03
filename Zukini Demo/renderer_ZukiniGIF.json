@@ -1,0 +1,3666 @@
+{
+  "setup": {
+    "commands": [
+      {
+        "command": "create",
+        "objecttype": "bitmapcontext",
+        "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4",
+        "size": {
+          "width": 400,
+          "height": 400
+        },
+        "preset": "PlatformDefaultBitmapContext"
+      },
+      {
+        "command": "create",
+        "objecttype": "imageexporter",
+        "file": "~/Desktop/ZukiniLogoAnimated.gif",
+        "utifiletype": "com.compuserve.gif",
+        "objectname": "027b9f3a-cfb5-4307-99ec-790149d0f089"
+      },
+      {
+        "command": "setproperty",
+        "receiverobject": {
+          "objecttype": "imageexporter",
+          "objectname": "027b9f3a-cfb5-4307-99ec-790149d0f089"
+        },
+        "propertykey": "dictionary",
+        "propertyvalue": {
+          "{GIF}": {
+            "LoopCount": 0
+          }
+        },
+        "getdatatype": "dictionaryobject"
+      }
+    ]
+  },
+  "process": {
+    "commands": [
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.6871
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 0.4545
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.6871
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 0.4545
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.6871
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 1.6087857142857143
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.6871
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 2.763071428571428
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.6871
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 3.917357142857143
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.1099571428571435
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 4.4945
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -0.9556714285714296
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 4.4945
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 0.19861428571428608
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 4.4945
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 1.3529
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 4.4945
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 1.3529
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 4.4945
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 0.19861428571428608
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 4.4945
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -0.9556714285714278
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 4.4945
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.1099571428571426
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 4.4945
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.6871
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 3.9173571428571434
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.6871
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 2.7630714285714295
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.6871
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 1.6087857142857138
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "fillrectangle",
+          "fillcolor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "rect": {
+            "origin": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 400,
+              "height": 400
+            }
+          },
+          "blendmode": "kCGBlendModeCopy"
+        }
+      },
+      {
+        "command": "drawelement",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "drawinstructions": {
+          "elementtype": "arrayofelements",
+          "fillcolor": {
+            "red": 0.05,
+            "green": 0.35,
+            "blue": 0.05,
+            "alpha": 1.0,
+            "colorcolorprofilename": "kCGColorSpaceSRGB"
+          },
+          "arrayofelements": [
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 214.3388,
+                    "y": 52.6812
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": -2.6871
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 52.6812,
+                  "startangle": 1.1162963267948967,
+                  "endangle": -1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 109.97999999999999,
+                    "y": 0
+                  },
+                  "radius": 4.3992,
+                  "startangle": -1.1162963267948967,
+                  "endangle": 1.1162963267948967,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ],
+              "startpoint": {
+                "x": 111.9118,
+                "y": 3.952
+              },
+              "contexttransformation": [
+                {
+                  "transformationtype": "translate",
+                  "translation": {
+                    "x": 63.674,
+                    "y": 207.31879999999998
+                  }
+                },
+                {
+                  "transformationtype": "rotate",
+                  "rotation": 0.4545
+                }
+              ]
+            },
+            {
+              "elementtype": "fillpath",
+              "startpoint": {
+                "x": 4.3992,
+                "y": 0
+              },
+              "arrayofpathelements": [
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 74.1,
+                    "y": 13.389999999999999
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": -1.5707963267948966,
+                  "endangle": -0.6283185307179586,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 275.6,
+                    "y": 255.88160000000002
+                  },
+                  "radius": 4.1184,
+                  "startangle": -0.5026548245743669,
+                  "endangle": 1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 205.79,
+                    "y": 246.532
+                  },
+                  "radius": 13.389999999999999,
+                  "startangle": 1.5707963267948966,
+                  "endangle": 2.5132741228718345,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "patharc",
+                  "centerpoint": {
+                    "x": 4.1184,
+                    "y": 4.1184
+                  },
+                  "radius": 4.1184,
+                  "startangle": 2.638937829015426,
+                  "endangle": -1.5707963267948966,
+                  "clockwise": false
+                },
+                {
+                  "elementtype": "pathclosesubpath"
+                }
+              ]
+            }
+          ],
+          "contexttransformation": [
+            {
+              "transformationtype": "translate",
+              "translation": {
+                "x": 60.900000000000006,
+                "y": 70.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "8f3305e2-e59c-4e13-bcf2-8d1d5b86efe4"
+        },
+        "imageidentifier": "renderedimage"
+      }
+    ],
+    "runasynchronously": true
+  },
+  "drawinstructions": {
+    "elementtype": "drawimage",
+    "imageidentifier": "renderedimage",
+    "destinationrectangle": {
+      "origin": {
+        "x": "($width - 400) * 0.5",
+        "y": "($height - 400) * 0.5"
+      },
+      "size": {
+        "width": 400,
+        "height": 400
+      }
+    }
+  }
+}

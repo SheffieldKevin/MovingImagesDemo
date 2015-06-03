@@ -104,7 +104,6 @@ def make_pnglogo()
   
   # Command list setup
   logoCommands = SmigCommands.new
-  logoCommands.saveresultstype = :lastcommandresult
   
   # Make the create bitmap context command
   bitmap = logoCommands.make_createbitmapcontext(size: bitmapSize,
@@ -145,7 +144,6 @@ def make_transparentpnglogo()
   
   # Command list setup
   logoCommands = SmigCommands.new
-  logoCommands.saveresultstype = :lastcommandresult
   
   # Make the create bitmap context command
   bitmap = logoCommands.make_createbitmapcontext(size: bitmapSize,
@@ -178,6 +176,119 @@ def make_transparentpnglogo()
   Smig.perform_commands(logoCommands)
 end
 
+def make_gifinstructions()
+  # Constants
+  logoSize = 400
+  bitmapSize = MIShapes.make_size(logoSize, logoSize)
+
+  setupCommands = SmigCommands.new
+  # Make the create bitmap context command
+  bitmap = setupCommands.make_createbitmapcontext(
+                          size: bitmapSize,
+                        preset: :PlatformDefaultBitmapContext,
+                  addtocleanup: false)
+
+  # Make the create export command.
+  exporter = setupCommands.make_createexporter(
+                                "~/Desktop/ZukiniLogoAnimated.gif",
+                   export_type: :'com.compuserve.gif',
+                  addtocleanup: false)
+
+  # A loopcount of 0 means repeat indefinitely.
+  fileproperties = { '{GIF}' => { LoopCount: 0 } }
+  addGIFFileproperty = CommandModule.make_set_objectproperty(exporter,
+                  propertykey: :dictionary,
+                propertyvalue: fileproperties)
+  setupCommands.add_command(addGIFFileproperty)
+
+  instructionHash = { setup: setupCommands.commandshash }
+  
+  processCommands = SmigCommands.new
+  processCommands.run_asynchronously = true
+  # Create the drawing commands
+  drawLogo = make_drawlogo(0.0, logoSize, 0.65)
+  drawCommand = CommandModule.make_drawelement(bitmap,
+                             drawinstructions: drawLogo)
+  processCommands.add_command(drawCommand)
+
+  # Add the image to the exporter object
+#  add_image = CommandModule.make_addimage(exporter, bitmap)
+#  processCommands.add_command(add_image)
+
+  add_image = CommandModule.make_assignimage_tocollection(
+                                          bitmap,
+                              identifier: :renderedimage)
+  processCommands.add_command(add_image)
+#  addFrameProperty = CommandModule.make_set_objectproperties(exporter, 
+#      firstFrameHash, imageindex: 0)
+#  processCommands.add_command(addFrameProperty)
+
+  rect = MIShapes.make_rectangle(xloc: 0, yloc: 0, size: bitmapSize)
+  bColor = MIColor.make_rgbacolor(1,1,1, a: 1)
+  drawBackElement = make_fillbackground_drawelement(bitmap, bitmapSize, bColor)
+
+  numFrames = 8
+  numFramesFInv = 1.0 / (numFrames.to_f - 1.0)
+  numFrames.times do |i|
+    # Create the drawing commands
+    setBackground = CommandModule.make_drawelement(bitmap,
+                                              drawinstructions: drawBackElement)
+    processCommands.add_command(setBackground)
+    drawLogo = make_drawlogo(4.04 * i.to_f * numFramesFInv, logoSize, 0.65)
+    drawCommand = CommandModule.make_drawelement(bitmap,
+                               drawinstructions: drawLogo)
+    processCommands.add_command(drawCommand)
+
+    # Add the image to the exporter object
+#    add_image = CommandModule.make_addimage(exporter, bitmap)
+#    processCommands.add_command(add_image)
+
+    add_image = CommandModule.make_assignimage_tocollection(
+                                          bitmap,
+                              identifier: :renderedimage)
+    processCommands.add_command(add_image)
+
+#    addFrameProperty = CommandModule.make_set_objectproperties(exporter, 
+#        frameHash, imageindex: i + 1)
+#    processCommands.add_command(addFrameProperty)
+  end
+
+  numFrames.times do |i|
+    # Create the drawing commands
+    setBackground = CommandModule.make_drawelement(bitmap,
+                                              drawinstructions: drawBackElement)
+    processCommands.add_command(setBackground)
+    drawLogo = make_drawlogo(4.04 - 4.04 * i.to_f * numFramesFInv,
+      logoSize, 0.65)
+    drawCommand = CommandModule.make_drawelement(bitmap,
+                               drawinstructions: drawLogo)
+    processCommands.add_command(drawCommand)
+
+    # Add the image to the exporter object
+#    add_image = CommandModule.make_addimage(exporter, bitmap)
+#    processCommands.add_command(add_image)
+
+    add_image = CommandModule.make_assignimage_tocollection(
+                                          bitmap,
+                              identifier: :renderedimage)
+    processCommands.add_command(add_image)
+
+#    addFrameProperty = CommandModule.make_set_objectproperties(exporter, 
+#        frameHash, imageindex: i + numFrames + 1)
+#    processCommands.add_command(addFrameProperty)
+  end
+
+  instructionHash[:process] = processCommands.commandshash
+  drawImageElement = MIDrawImageElement.new
+  drawImageElement.set_imagecollection_imagesource(identifier: :renderedimage)
+  destinationRect = MIShapes.make_rectangle(size: bitmapSize,
+                                      xloc: "($width - #{logoSize}) * 0.5",
+                                      yloc: "($height - #{logoSize}) * 0.5")
+  drawImageElement.destinationrectangle = destinationRect
+  instructionHash[:drawinstructions] = drawImageElement.elementhash
+  instructionHash
+end
+
 def make_giflogo()
   # Constants
   logoSize = 400
@@ -185,7 +296,6 @@ def make_giflogo()
   
   # Command list setup
   logoCommands = SmigCommands.new
-  logoCommands.saveresultstype = :lastcommandresult
   
   # Make the create bitmap context command
   bitmap = logoCommands.make_createbitmapcontext(size: bitmapSize,
@@ -271,8 +381,10 @@ def make_giflogo()
 end
 
 # make_pnglogo()
-make_transparentpnglogo()
+# make_transparentpnglogo()
 # make_giflogo()
 
 # drawLogo = make_drawlogo(0, 600)
 # puts JSON.pretty_generate(drawLogo.elementhash)
+
+puts JSON.pretty_generate(make_gifinstructions())

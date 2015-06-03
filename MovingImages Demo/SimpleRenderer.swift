@@ -167,28 +167,29 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     private func configureWithJSON(jsonDictionary: [String:AnyObject]) {
         if let instructions: AnyObject = jsonDictionary[MIJSONPropertyDrawInstructions],
             let drawInstructions = instructions as? [String:AnyObject],
-            let jsonString = makePrettyJSONFromJSONObject(drawInstructions) {
-                for spinner in spinners {
-                    spinner.view.hidden = true
-                }
-                drawElementJSON.string = jsonString
-                if let theDict = createDictionaryFromJSONString(jsonString) {
-                    simpleRenderView.drawDictionary = theDict
+            let jsonString = makePrettyJSONFromJSONObject(drawInstructions)
+        {
+            for spinner in spinners {
+                spinner.view.hidden = true
+            }
+            drawElementJSON.string = jsonString
+            if let theDict = createDictionaryFromJSONString(jsonString) {
+                simpleRenderView.drawDictionary = theDict
+            }
+            
+            if let varDefs:AnyObject =
+                jsonDictionary[SimpleRendererWindowController.variableDefinitions],
+                let variableDefs = varDefs as? [AnyObject]
+            {
+                for (index, variableDefinition) in enumerate(variableDefs) {
+                    if let variableDef = variableDefinition as? [String:AnyObject] {
+                        spinners[index].configureSpinner(dictionary: variableDef)
+                        spinners[index].view.hidden = false
+                    }
                 }
                 
-                if let varDefs:AnyObject =
-                    jsonDictionary[SimpleRendererWindowController.variableDefinitions],
-                    let variableDefs = varDefs as? [AnyObject]
-                {
-                    for (index, variableDefinition) in enumerate(variableDefs) {
-                        if let variableDef = variableDefinition as? [String:AnyObject] {
-                            spinners[index].configureSpinner(dictionary: variableDef)
-                            spinners[index].view.hidden = false
-                        }
-                    }
-                    
-                }
-                simpleRenderView.needsDisplay = true
+            }
+            simpleRenderView.needsDisplay = true
         }
         simpleRenderView.variables = self.variables
         updateSpinnersEditingControls()

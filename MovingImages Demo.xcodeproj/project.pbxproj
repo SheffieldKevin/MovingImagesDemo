@@ -42,6 +42,7 @@
 		6EA4D1761ADE91EC00A33936 /* ZukiniUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */; };
 		6EA4D1771ADE91ED00A33936 /* ZukiniUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */; };
 		6EA4D1791ADED89800A33936 /* MovingImages.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6EC4C4361AC9BB6700314829 /* MovingImages.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6EA6803E1B1F28DB00C88104 /* renderer_ZukiniGIF.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EA6803D1B1F28DB00C88104 /* renderer_ZukiniGIF.json */; };
 		6EBC3B8A1AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EBC3B891AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json */; };
 		6EBC3B8C1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EBC3B8B1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json */; };
 		6EC4C4141AC9983000314829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C4131AC9983000314829 /* AppDelegate.swift */; };
@@ -129,6 +130,7 @@
 		6E74B31E1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_AZukiniLogo.json; sourceTree = "<group>"; };
 		6E8DE3F91AD59C660029A64D /* simple_renderer_DrawText.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawText.json; sourceTree = "<group>"; };
 		6EA4D1741ADAAC9200A33936 /* simple_renderer_RobotArm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_RobotArm.json; sourceTree = "<group>"; };
+		6EA6803D1B1F28DB00C88104 /* renderer_ZukiniGIF.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_ZukiniGIF.json; sourceTree = "<group>"; };
 		6EBC3B891AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawTextInOval.json; sourceTree = "<group>"; };
 		6EBC3B8B1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawTextInnerShadow.json; sourceTree = "<group>"; };
 		6EC4C40E1AC9983000314829 /* MovingImages Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovingImages Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -297,6 +299,7 @@
 			children = (
 				6E02947E1B1B46A400D88559 /* Movies */,
 				6E02947F1B1B46A400D88559 /* Pictures */,
+				6EA6803D1B1F28DB00C88104 /* renderer_ZukiniGIF.json */,
 				6E74B31C1B0CC03400015E68 /* renderer_AZukini.json */,
 				6E02947A1B13CDA800D88559 /* renderer_AZukiniLogo.json */,
 				6ECE89BE1AD82E6700BE8FB0 /* Info.plist */,
@@ -485,6 +488,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EA6803E1B1F28DB00C88104 /* renderer_ZukiniGIF.json in Resources */,
 				6E0294811B1B46A400D88559 /* Pictures in Resources */,
 				6E5CBB651B023FA200BF8FB7 /* drawarc.json in Resources */,
 				6E0294801B1B46A400D88559 /* Movies in Resources */,

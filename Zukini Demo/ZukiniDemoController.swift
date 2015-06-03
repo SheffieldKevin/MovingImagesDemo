@@ -78,6 +78,11 @@ class ZukiniDemoController: NSWindowController {
     @IBOutlet weak var imageInput1: NSPopUpButton!
     @IBOutlet weak var imageInput2: NSPopUpButton!
     
+    @IBOutlet weak var doSetupButton: NSButton!
+    @IBOutlet weak var processButton: NSButton!
+    @IBOutlet weak var finalizeButton: NSButton!
+    @IBOutlet weak var assignDestinationButton: NSButton!
+    
     // MARK: @IBActions
     @IBAction func addSpinner(sender: AnyObject) {
         for spinner in spinners {
@@ -348,10 +353,13 @@ class ZukiniDemoController: NSWindowController {
         var currentSegment: JSONSegment? = JSONSegment.firstSegment
         while currentSegment != nil {
             let theSegment = currentSegment!
-            jsonSegmentStrings[theSegment.rawValue] =
-                    makePrettyJSONFromJSONObject(jsonDict[theSegment.stringValue])
+            let prettyJSON = makePrettyJSONFromJSONObject(jsonDict[theSegment.stringValue]) ?? ""
+            jsonSegmentStrings[theSegment.rawValue] = prettyJSON
             if theSegment == JSONSegment.DrawInstructions {
                 rendererView.drawDictionary = jsonDict[theSegment.stringValue] as? [String:AnyObject]
+            }
+            if theSegment.rawValue == self.lastSelectedSegment {
+                jsonTextView.string = jsonSegmentStrings[lastSelectedSegment]
             }
             currentSegment = theSegment.next()
         }
