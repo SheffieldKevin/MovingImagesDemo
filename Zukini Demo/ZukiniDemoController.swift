@@ -1,6 +1,7 @@
 //  ZukiniDemoController.swift
 //  Zukini Demo
-//  Copyright (c) 2015 Kevin Meaney
+//
+//  Copyright (c) 2015 Zukini Ltd.
 
 import Cocoa
 import MovingImages

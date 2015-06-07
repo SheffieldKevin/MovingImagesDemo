@@ -1,10 +1,7 @@
-//
 //  SpinnerPopoverViewController.swift
 //  MovingImages Demo
 //
-//  Created by Kevin Meaney on 26/04/2015.
-//  Copyright (c) 2015 Kevin Meaney. All rights reserved.
-//
+//  Copyright (c) 2015 Zukini Ltd.
 
 import Cocoa
 

@@ -1,10 +1,7 @@
-//
 //  MovingImages_DemoTests.swift
 //  MovingImages DemoTests
 //
-//  Created by Kevin Meaney on 30/03/2015.
-//  Copyright (c) 2015 Kevin Meaney. All rights reserved.
-//
+//  Copyright (c) 2015 Zukini Ltd.
 
 import Cocoa
 import XCTest

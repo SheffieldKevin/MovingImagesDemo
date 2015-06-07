@@ -1,6 +1,7 @@
 //  SimpleRenderer.swift
 //  MovingImages Demo
-//  Copyright (c) 2015 Kevin Meaney. 30/03/2015.
+//
+//  Copyright (c) 2015 Zukini Ltd.
 
 import Cocoa
 import MovingImages

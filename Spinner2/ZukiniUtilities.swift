@@ -1,7 +1,7 @@
 //  ZukiniUtilities.swift
 //  MovingImages Demo
 //
-//  Copyright (c) 2015 Kevin Meaney.
+//  Copyright (c) 2015 Zukini Ltd.
 
 import Foundation
 

@@ -25,7 +25,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2015 Kevin Meaney. All rights reserved.</string>
+	<string>Copyright © 2015 Zukini Ltd.</string>
 	<key>NSMainNibFile</key>
 	<string>MovingImagesDemo</string>
 	<key>NSPrincipalClass</key>
