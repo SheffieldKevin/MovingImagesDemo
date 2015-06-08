@@ -120,16 +120,6 @@ class ZukiniDemoController: NSWindowController {
                 configureWithJSONDict(dictionary)
             }
         }
-        self.hasSetupRun = false
-        self.canProcess = false
-        self.canDoFinalize = false
-        
-        if self.emptySetup {
-            self.canDoSetup = false
-            self.canProcess = true
-            self.canDoFinalize = true
-        }
-        self.updateDoCommandsButtons()
     }
     
     @IBAction func exportJSON(#sender: AnyObject) {
@@ -290,7 +280,7 @@ class ZukiniDemoController: NSWindowController {
 
     private func performSetupCommands() -> Bool {
         let result = performJSONCommands(jsonSegmentStrings[JSONSegment.Setup.rawValue])
-        self.hasSetupRun = false
+        self.hasSetupRun = true
         self.updateDoCommandsButtons()
         return result
     }
@@ -307,13 +297,13 @@ class ZukiniDemoController: NSWindowController {
 
         var runsAsync:Bool = false
         var result:Bool = false
-
         if self.canProcess {
             let jsonString = jsonSegmentStrings[JSONSegment.Process.rawValue]            
             if let jsonDict = createDictionaryFromJSONString(jsonString)
             {
-                runsAsync = jsonDict[MIJSONKeyRunAsynchronously] as? Bool ?? false
                 self.processingCommands = true
+                self.updateVariables()
+                runsAsync = jsonDict[MIJSONKeyRunAsynchronously] as? Bool ?? false
                 let resultDict = MIMovingImagesHandleCommands(self.miContext, jsonDict,
                     progressHandler, completionHandler)
                 result = MIGetErrorCodeFromReplyDictionary(resultDict) == MIReplyErrorEnum.NoError
@@ -408,6 +398,8 @@ class ZukiniDemoController: NSWindowController {
             spinner.view.hidden = true
         }
 
+        self.exportFileName = jsonDict["exportfilename"] as? String
+
         if let varDefs:AnyObject =
             jsonDict[ZukiniDemoController.variableDefinitions],
             let variableDefs = varDefs as? [AnyObject]
@@ -418,9 +410,23 @@ class ZukiniDemoController: NSWindowController {
                     spinners[index].view.hidden = false
                 }
             }
+
             // rendererView.variables = self.variables
             self.updateVariables()
         }
+        
+        
+        self.hasSetupRun = false
+        self.canProcess = false
+        self.canDoFinalize = false
+        
+        if self.emptySetup {
+            self.canDoSetup = false
+            self.canProcess = true
+            self.canDoFinalize = true
+        }
+        self.updateDoCommandsButtons()
+
         rendererView.needsDisplay = true
         self.updateSpinnersEditingControls()
     }
@@ -457,6 +463,7 @@ class ZukiniDemoController: NSWindowController {
         }
     }
 
+    private var exportFileName:String?
     private var hasSetupRun = false
 
     dynamic private var canDoSetup = false
@@ -489,12 +496,18 @@ class ZukiniDemoController: NSWindowController {
                 "movie1path" : movie1Filepath,
                 "movie2path" : movie2Filepath,
                 "image1path" : image1Filepath,
-                "image2path" : image2Filepath
+                "image2path" : image2Filepath,
             ]
             for spinner in spinners {
                 if !spinner.view.hidden {
                     theDictionary[spinner.variableKey] = spinner.spinnerValue
                 }
+            }
+            
+            if let fileName = self.exportFileName
+            {
+                let filePath = self.exportFolderLocation.stringByAppendingPathComponent(fileName)
+                theDictionary["exportfilepath"] = filePath
             }
             return theDictionary
         }
@@ -552,7 +565,8 @@ extension ZukiniDemoController {
 extension ZukiniDemoController: SpinnerDelegate {
     func spinnerValueChanged(#sender: SpinnerController) {
         self.updateVariables()
-        rendererView.needsDisplay = true
+        self.performProcessCommands(progressHandler: self.progressHandler,
+            completionHandler: self.processCompletionHandler)
     }
 }
 

@@ -181,8 +181,8 @@
                         <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="smallSquare" trackingMode="selectOne" id="Fpr-Vt-NYK">
                             <font key="font" metaFont="smallSystem"/>
                             <segments>
-                                <segment label="Setup"/>
-                                <segment label="Process" selected="YES" tag="1"/>
+                                <segment label="Setup" selected="YES"/>
+                                <segment label="Process" tag="1"/>
                                 <segment label="Display" tag="2"/>
                                 <segment label="Finalize" tag="3"/>
                             </segments>
