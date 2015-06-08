@@ -64,17 +64,7 @@ class SimpleRendererView: NSView {
             renderer.drawDictionary(drawDict, intoCGContext: theContext)
         }
     }
-/*
-    func assignImage(image: CGImage, identifier: String) -> Void {
-        self.simpleRenderer.assignImage(image, withIdentifier: identifier)
-    }
 
-    var miContext:MIContext = MIContext.defaultContext() {
-        didSet {
-            self.simpleRenderer = MISimpleRenderer(MIContext: self.miContext)
-        }
-    }
-*/
     private var simpleRenderer:MISimpleRenderer?
 
     // Only call from within drawRect.

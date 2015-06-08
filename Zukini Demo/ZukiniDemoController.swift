@@ -108,7 +108,11 @@ class ZukiniDemoController: NSWindowController {
     
     @IBAction func exampleSelected(sender: AnyObject) {
         let popup = sender as! NSPopUpButton
-        
+
+        if self.canDoFinalize {
+            self.doFinalizeCommands(sender: self)
+        }
+
         if let selectedTitle = popup.titleOfSelectedItem {
             let filePath = exampleNameToFilePath(selectedTitle,
                 prefix: "renderer_")
@@ -116,6 +120,16 @@ class ZukiniDemoController: NSWindowController {
                 configureWithJSONDict(dictionary)
             }
         }
+        self.hasSetupRun = false
+        self.canProcess = false
+        self.canDoFinalize = false
+        
+        if self.emptySetup {
+            self.canDoSetup = false
+            self.canProcess = true
+            self.canDoFinalize = true
+        }
+        self.updateDoCommandsButtons()
     }
     
     @IBAction func exportJSON(#sender: AnyObject) {
@@ -174,6 +188,25 @@ class ZukiniDemoController: NSWindowController {
         self.performFinalizeCommands()
     }
 
+    @IBAction func exportDestination(#sender: AnyObject) {
+        let chooseFolderPanel = NSOpenPanel.new()
+        chooseFolderPanel.canChooseDirectories = true
+        chooseFolderPanel.canChooseFiles = false
+        chooseFolderPanel.beginSheetModalForWindow(window!, completionHandler:
+        { result in
+            if result == NSModalResponseOK {
+                if let theURL = chooseFolderPanel.URLs[0] as? NSURL,
+                    let path = theURL.path
+                {
+                    self.exportFolderLocation = path
+                }
+                else {
+                    println("Invalid file path for exporting moving images source")
+                }
+            }
+        })
+    }
+    
     // MARK: Internal properties - bindings in Interface Builder
     dynamic var addSpinnersEnabled = true
     dynamic var removeSpinnersEnabled = true
@@ -225,6 +258,8 @@ class ZukiniDemoController: NSWindowController {
         if let jsonString = jsonString {
             rendererView.drawDictionary = createDictionaryFromJSONString(jsonString)
         }
+        
+        self.exportFolderLocation = self.exportFolderLocation.stringByExpandingTildeInPath
     }
 
     // MARK: Private methods
@@ -243,7 +278,9 @@ class ZukiniDemoController: NSWindowController {
     }
     
     private func processCompleted() -> Void {
-        processingCommands = false
+        self.processingCommands = false
+        // self.canProcess = false
+        self.updateDoCommandsButtons()
         self.rendererView.needsDisplay = true
     }
     
@@ -253,13 +290,16 @@ class ZukiniDemoController: NSWindowController {
 
     private func performSetupCommands() -> Bool {
         let result = performJSONCommands(jsonSegmentStrings[JSONSegment.Setup.rawValue])
-        self.canProcess = true
+        self.hasSetupRun = false
+        self.updateDoCommandsButtons()
         return result
     }
 
     private func performFinalizeCommands() -> Bool {
-        self.canProcess = false
-        return performJSONCommands(jsonSegmentStrings[JSONSegment.Finalize.rawValue])
+        let result = performJSONCommands(jsonSegmentStrings[JSONSegment.Finalize.rawValue])
+        self.hasSetupRun = false
+        self.updateDoCommandsButtons()
+        return result
     }
 
     private func performProcessCommands(progressHandler: MIProgressHandler? = .None,
@@ -273,7 +313,7 @@ class ZukiniDemoController: NSWindowController {
             if let jsonDict = createDictionaryFromJSONString(jsonString)
             {
                 runsAsync = jsonDict[MIJSONKeyRunAsynchronously] as? Bool ?? false
-                processingCommands = true
+                self.processingCommands = true
                 let resultDict = MIMovingImagesHandleCommands(self.miContext, jsonDict,
                     progressHandler, completionHandler)
                 result = MIGetErrorCodeFromReplyDictionary(resultDict) == MIReplyErrorEnum.NoError
@@ -411,6 +451,27 @@ class ZukiniDemoController: NSWindowController {
     }
     
     // MARK: Private properties
+    private var emptySetup: Bool {
+        get {
+            return self.jsonSegmentStrings[JSONSegment.Setup.rawValue]!.isEmpty
+        }
+    }
+
+    private var hasSetupRun = false
+
+    dynamic private var canDoSetup = false
+    dynamic private var canProcess = false
+    dynamic private var canDoFinalize = false
+
+    private var processingCommands = false
+
+    private func updateDoCommandsButtons() -> Void {
+        self.canDoSetup = !(self.hasSetupRun || self.emptySetup)
+        self.canProcess = self.hasSetupRun || self.emptySetup
+        self.canDoFinalize = (self.hasSetupRun || self.emptySetup) && !self.processingCommands
+    }
+    
+    private var exportFolderLocation = "~/Desktop"
     private let maximumNumberOfSpinners = 4
     private var spinners = [SpinnerController]()
     
@@ -442,9 +503,6 @@ class ZukiniDemoController: NSWindowController {
     private var miContext:MIContext = MIContext()
     
     private var lastEvaluatedVariables:[String:AnyObject]?
-    
-    private var processingCommands = false
-    private var canProcess = false
 }
 
 // MARK: ZukiniDemoController extension managing resources.

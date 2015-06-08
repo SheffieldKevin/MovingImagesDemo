@@ -173,6 +173,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="doSetupCommandsWithSender:" target="-2" id="Pbc-e0-ZxV"/>
+                            <binding destination="-2" name="enabled" keyPath="self.canDoSetup" id="Azc-xD-rSB"/>
                         </connections>
                     </button>
                     <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13a-3F-sWT">
@@ -196,6 +197,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="exportDestinationWithSender:" target="-2" id="DXH-6S-kMo"/>
+                        </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vgj-KH-5A3">
                         <rect key="frame" x="83" y="81" width="152" height="19"/>
@@ -243,6 +247,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="doProcessCommandsWithSender:" target="-2" id="lKa-1P-rvE"/>
+                            <binding destination="-2" name="enabled" keyPath="self.canProcess" id="S2d-vp-5oJ"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z4d-Jj-ETc">
@@ -253,6 +258,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="doFinalizeCommandsWithSender:" target="-2" id="y9j-lN-k7x"/>
+                            <binding destination="-2" name="enabled" keyPath="self.canDoFinalize" id="vWw-sa-DLe"/>
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rkd-Q2-yKR">
