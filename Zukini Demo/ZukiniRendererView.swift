@@ -32,7 +32,8 @@ class ZukiniRendererView: NSView {
             }
         }
     }
-    
+
+/*
     var variables:[String:AnyObject]? {
         get {
             if let theRenderer = self.simpleRenderer,
@@ -46,7 +47,7 @@ class ZukiniRendererView: NSView {
             self.simpleRenderer?.variables = newVariables
         }
     }
-    
+*/
     func makeNewRenderer(#miContext:MIContext) {
         simpleRenderer = MISimpleRenderer(MIContext: miContext)
     }

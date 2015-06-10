@@ -279,6 +279,7 @@ class ZukiniDemoController: NSWindowController {
     }
 
     private func performSetupCommands() -> Bool {
+        self.updateVariables()
         let result = performJSONCommands(jsonSegmentStrings[JSONSegment.Setup.rawValue])
         self.hasSetupRun = true
         self.updateDoCommandsButtons()
@@ -286,6 +287,7 @@ class ZukiniDemoController: NSWindowController {
     }
 
     private func performFinalizeCommands() -> Bool {
+        self.updateVariables()
         let result = performJSONCommands(jsonSegmentStrings[JSONSegment.Finalize.rawValue])
         self.hasSetupRun = false
         self.updateDoCommandsButtons()
@@ -297,12 +299,13 @@ class ZukiniDemoController: NSWindowController {
 
         var runsAsync:Bool = false
         var result:Bool = false
+        self.updateVariables()
         if self.canProcess {
             let jsonString = jsonSegmentStrings[JSONSegment.Process.rawValue]            
             if let jsonDict = createDictionaryFromJSONString(jsonString)
             {
                 self.processingCommands = true
-                self.updateVariables()
+                self.updateDoCommandsButtons()
                 runsAsync = jsonDict[MIJSONKeyRunAsynchronously] as? Bool ?? false
                 let resultDict = MIMovingImagesHandleCommands(self.miContext, jsonDict,
                     progressHandler, completionHandler)
@@ -474,7 +477,7 @@ class ZukiniDemoController: NSWindowController {
 
     private func updateDoCommandsButtons() -> Void {
         self.canDoSetup = !(self.hasSetupRun || self.emptySetup)
-        self.canProcess = self.hasSetupRun || self.emptySetup
+        self.canProcess = (self.hasSetupRun || self.emptySetup) && !self.processingCommands
         self.canDoFinalize = (self.hasSetupRun || self.emptySetup) && !self.processingCommands
     }
     
@@ -524,7 +527,7 @@ extension ZukiniDemoController {
         let fileName = name.stringByAppendingPathExtension("mov")!
         let moviePath = "Movies".stringByAppendingPathComponent(fileName)
         let theBundle = NSBundle(forClass: self.dynamicType)
-        return theBundle.resourcePath!.stringByAppendingPathExtension(moviePath)!
+        return theBundle.resourcePath!.stringByAppendingPathComponent(moviePath)
     }
     
     @IBAction func movieSelected(sender: AnyObject) {

@@ -1,6 +1,5 @@
 //  MIHandleCommands.h
-//  Created by Kevin Meaney on 23/07/2013.
-//  Copyright (c) 2014 Kevin Meaney. All rights reserved.
+//  Copyright (c) 2015 Zukini Ltd.
 
 @import Foundation;
 @import CoreGraphics;
@@ -58,7 +57,9 @@ NSDictionary *MIMovingImagesHandleCommand(MIContext * __nullable context,
  @discussion If commands are to be run asynchronously then you can also pass
  in a completion handler which will be run on the main queue when the commands
  complete. If the commands are to be run synchronously or don't need to run a
- completion handler then just pass in nil.
+ completion handler then just pass in nil. The progress handler is called 
+ synchronously and on the same queue that the commands are being processed on.
+ The completion handler is called asynchronously on the main queue.
  @param commands A dictionary with option properties & command list property.
  @param context The context within which the commands should be handled. If nil
  then commands will be performed within the default context.
