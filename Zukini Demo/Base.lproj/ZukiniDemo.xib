@@ -11,6 +11,7 @@
                 <outlet property="commandSegments" destination="13a-3F-sWT" id="Cr4-bE-xpm"/>
                 <outlet property="doSetupButton" destination="spP-D9-dhu" id="Ev8-s2-b2H"/>
                 <outlet property="exampleList" destination="flh-mG-rbv" id="F8R-Hm-lN3"/>
+                <outlet property="exportMediaFilename" destination="1Dh-2W-k04" id="cMX-6k-SdW"/>
                 <outlet property="finalizeButton" destination="Z4d-Jj-ETc" id="avs-5b-vB8"/>
                 <outlet property="imageInput1" destination="bl8-Eq-7pY" id="ZX0-u6-l1h"/>
                 <outlet property="imageInput2" destination="4eF-jx-dDP" id="x4k-0u-MyQ"/>
@@ -33,7 +34,7 @@
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="36" y="166" width="1228" height="678"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <value key="minSize" type="size" width="1228" height="677"/>
             <value key="maxSize" type="size" width="1980" height="1080"/>
             <view key="contentView" id="se5-gp-TjO">
@@ -299,6 +300,17 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Dh-2W-k04">
+                        <rect key="frame" x="20" y="108" width="194" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="194" id="eOz-FY-Bzj"/>
+                        </constraints>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Media file name" drawsBackground="YES" id="q0Y-7K-qd6">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="DeA-sX-xgH" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="0qk-VA-p33"/>
@@ -337,9 +349,11 @@
                     <constraint firstAttribute="bottom" secondItem="h7J-kt-AmM" secondAttribute="bottom" constant="21" id="mFv-BF-fBG"/>
                     <constraint firstAttribute="bottom" secondItem="4eF-jx-dDP" secondAttribute="bottom" constant="57" id="naR-ld-XQq"/>
                     <constraint firstAttribute="bottom" secondItem="spP-D9-dhu" secondAttribute="bottom" constant="108" id="srC-7P-f31"/>
+                    <constraint firstAttribute="bottom" secondItem="1Dh-2W-k04" secondAttribute="bottom" constant="108" id="uuh-YE-oi1"/>
                     <constraint firstItem="bl8-Eq-7pY" firstAttribute="leading" secondItem="9rI-Gj-bKv" secondAttribute="trailing" constant="8" id="xaY-NV-sM9"/>
                     <constraint firstAttribute="bottom" secondItem="flh-mG-rbv" secondAttribute="bottom" constant="20" id="xlZ-RH-jMB"/>
                     <constraint firstItem="4eF-jx-dDP" firstAttribute="leading" secondItem="nMm-0D-5tA" secondAttribute="trailing" constant="8" id="ylV-gF-grz"/>
+                    <constraint firstItem="1Dh-2W-k04" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="zii-se-a4q"/>
                 </constraints>
             </view>
             <connections>

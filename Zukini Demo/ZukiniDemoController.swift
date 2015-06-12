@@ -79,6 +79,8 @@ class ZukiniDemoController: NSWindowController {
     @IBOutlet weak var imageInput1: NSPopUpButton!
     @IBOutlet weak var imageInput2: NSPopUpButton!
     
+    @IBOutlet weak var exportMediaFilename: NSTextField!
+    
     @IBOutlet weak var doSetupButton: NSButton!
     @IBOutlet weak var processButton: NSButton!
     @IBOutlet weak var finalizeButton: NSButton!
@@ -401,7 +403,10 @@ class ZukiniDemoController: NSWindowController {
             spinner.view.hidden = true
         }
 
-        self.exportFileName = jsonDict["exportfilename"] as? String
+        // self.exportFileName = jsonDict["exportfilename"] as? String
+        if let fileName = jsonDict["exportfilename"] as? String {
+            self.exportMediaFilename.stringValue = fileName
+        }
 
         if let varDefs:AnyObject =
             jsonDict[ZukiniDemoController.variableDefinitions],
@@ -466,7 +471,7 @@ class ZukiniDemoController: NSWindowController {
         }
     }
 
-    private var exportFileName:String?
+    // private var exportFileName:String?
     private var hasSetupRun = false
 
     dynamic private var canDoSetup = false
@@ -507,11 +512,9 @@ class ZukiniDemoController: NSWindowController {
                 }
             }
             
-            if let fileName = self.exportFileName
-            {
-                let filePath = self.exportFolderLocation.stringByAppendingPathComponent(fileName)
-                theDictionary["exportfilepath"] = filePath
-            }
+            let fileName = self.exportMediaFilename.stringValue
+            let filePath = self.exportFolderLocation.stringByAppendingPathComponent(fileName)
+            theDictionary["exportfilepath"] = filePath
             return theDictionary
         }
     }
@@ -576,8 +579,9 @@ extension ZukiniDemoController: SpinnerDelegate {
 extension ZukiniDemoController: NSWindowDelegate {
     func windowDidResize(notification: NSNotification) {
         self.updateVariables()
-        self.performProcessCommands(progressHandler: self.progressHandler,
-            completionHandler: self.processCompletionHandler)
+        self.rendererView.needsDisplay = true
+//    self.performProcessCommands(progressHandler: self.progressHandler,
+//    completionHandler: self.processCompletionHandler)
     }
 }
 
