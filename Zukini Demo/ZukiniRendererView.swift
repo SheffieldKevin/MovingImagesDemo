@@ -33,21 +33,6 @@ class ZukiniRendererView: NSView {
         }
     }
 
-/*
-    var variables:[String:AnyObject]? {
-        get {
-            if let theRenderer = self.simpleRenderer,
-                let theDict = theRenderer.variables {
-                return theDict as? [String:AnyObject]
-            }
-            return Optional.None
-        }
-        
-        set(newVariables) {
-            self.simpleRenderer?.variables = newVariables
-        }
-    }
-*/
     func makeNewRenderer(#miContext:MIContext) {
         simpleRenderer = MISimpleRenderer(MIContext: miContext)
     }
@@ -62,12 +47,6 @@ class ZukiniRendererView: NSView {
             theRenderer.drawDictionary(drawDict, intoCGContext: theContext)
         }
     }
-
-    /*
-    func assignImage(image: CGImage, identifier: String) -> Void {
-        simpleRenderer?.assignImage(image, withIdentifier: identifier)
-    }
-    */
 
     private
     var simpleRenderer:MISimpleRenderer?
