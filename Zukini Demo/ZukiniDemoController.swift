@@ -56,6 +56,17 @@ enum JSONSegment: Int {
 
 class ZukiniDemoController: NSWindowController {
     static let variableDefinitions = "variabledefinitions"
+    static let exportFolderPathDefaultsKey = "exportfolderpath"
+    static let windowWidthKey = "windowwidth"
+    static let windowHeightKey = "windowheight"
+    static let windowXKey = "windowx"
+    static let windowYKey = "windowy"
+    static let windowFullScreenKey = "windowfullscreen"
+    
+    static let windowWidth = 1278
+    static let windowHeight = 678
+    static let windowX = 0
+    static let windowY = 20
 
     var jsonSegmentStrings: [Int:String] = [:]
     var lastSelectedSegment: Int = JSONSegment.Setup.rawValue
@@ -107,7 +118,7 @@ class ZukiniDemoController: NSWindowController {
         }
         updateSpinnersEditingControls()
     }
-    
+
     @IBAction func exampleSelected(sender: AnyObject) {
         let popup = sender as! NSPopUpButton
 
@@ -191,6 +202,8 @@ class ZukiniDemoController: NSWindowController {
                     let path = theURL.path
                 {
                     self.exportFolderLocation = path
+                    NSUserDefaults.standardUserDefaults().setObject(path,
+                        forKey: ZukiniDemoController.exportFolderPathDefaultsKey)
                 }
                 else {
                     println("Invalid file path for exporting moving images source")
@@ -250,8 +263,33 @@ class ZukiniDemoController: NSWindowController {
         if let jsonString = jsonString {
             rendererView.drawDictionary = createDictionaryFromJSONString(jsonString)
         }
-        
-        self.exportFolderLocation = self.exportFolderLocation.stringByExpandingTildeInPath
+        let folderPath = self.exportFolderLocation.stringByExpandingTildeInPath
+        let defaultsDict:[NSObject : AnyObject] =
+            [ZukiniDemoController.exportFolderPathDefaultsKey : folderPath,
+            ZukiniDemoController.windowWidthKey : ZukiniDemoController.windowWidth,
+            ZukiniDemoController.windowHeightKey : ZukiniDemoController.windowHeight,
+            ZukiniDemoController.windowXKey : ZukiniDemoController.windowX,
+            ZukiniDemoController.windowYKey : ZukiniDemoController.windowY,
+            ZukiniDemoController.windowFullScreenKey : false]
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.registerDefaults(defaultsDict)
+        if let theWindow = self.window {
+            let fullScreen = defaults.boolForKey(ZukiniDemoController.windowFullScreenKey)
+            let windowWidth = defaults.integerForKey(ZukiniDemoController.windowWidthKey)
+            let windowHeight = defaults.integerForKey(ZukiniDemoController.windowHeightKey)
+            let windowX = defaults.integerForKey(ZukiniDemoController.windowXKey)
+            let windowY = defaults.integerForKey(ZukiniDemoController.windowYKey)
+            let windowSize = CGSize(width: windowWidth, height: windowHeight)
+            let windowOrigin = CGPoint(x: windowX, y: windowY)
+            theWindow.setFrame(NSRect(origin: windowOrigin, size: windowSize), display: true)
+            if fullScreen {
+                theWindow.toggleFullScreen(self)
+            }
+            // println("Window collection Behaviour \(theWindow.collectionBehavior.rawValue)")
+        }
+        self.updateVariables()
+        self.exportFolderLocation = defaults.objectForKey(
+                    ZukiniDemoController.exportFolderPathDefaultsKey)! as! String
     }
 
     // MARK: Private methods
@@ -579,9 +617,60 @@ extension ZukiniDemoController: SpinnerDelegate {
 extension ZukiniDemoController: NSWindowDelegate {
     func windowDidResize(notification: NSNotification) {
         self.updateVariables()
-        self.rendererView.needsDisplay = true
-//    self.performProcessCommands(progressHandler: self.progressHandler,
-//    completionHandler: self.processCompletionHandler)
+        // self.rendererView.needsDisplay = true
+        if let theWindow = self.window {
+            let windowWidth = theWindow.frame.width
+            let windowHeight = theWindow.frame.height
+            let windowX = theWindow.frame.origin.x
+            let windowY = theWindow.frame.origin.y
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setInteger(Int(windowWidth),
+                forKey: ZukiniDemoController.windowWidthKey)
+            defaults.setInteger(Int(windowHeight),
+                forKey: ZukiniDemoController.windowHeightKey)
+            defaults.setInteger(Int(windowX),
+                forKey: ZukiniDemoController.windowXKey)
+            defaults.setInteger(Int(windowY),
+                forKey: ZukiniDemoController.windowYKey)
+
+//            println("x POSITION \(theWindow.frame.origin.x)")
+// defaults.setInteger(Int(theWindow.collectionBehavior.rawValue),
+//    forKey: ZukiniDemoController.windowBehaviourKey)
+        }
+    }
+
+    func windowDidMove(notification: NSNotification) {
+        if let theWindow = self.window {
+            let windowWidth = theWindow.frame.width
+            let windowHeight = theWindow.frame.height
+            let windowX = theWindow.frame.origin.x
+            let windowY = theWindow.frame.origin.y
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setInteger(Int(windowWidth),
+                forKey: ZukiniDemoController.windowWidthKey)
+            defaults.setInteger(Int(windowHeight),
+                forKey: ZukiniDemoController.windowHeightKey)
+            defaults.setInteger(Int(windowX),
+                forKey: ZukiniDemoController.windowXKey)
+            defaults.setInteger(Int(windowY),
+                forKey: ZukiniDemoController.windowYKey)
+        }
+    }
+    
+    func windowDidEnterFullScreen(notification: NSNotification) {
+        self.updateVariables()
+        if let theWindow = self.window {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setBool(true, forKey: ZukiniDemoController.windowFullScreenKey)
+        }
+    }
+
+    func windowDidExitFullScreen(notification: NSNotification) {
+        self.updateVariables()
+        if let theWindow = self.window {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setBool(false, forKey: ZukiniDemoController.windowFullScreenKey)
+        }
     }
 }
 
