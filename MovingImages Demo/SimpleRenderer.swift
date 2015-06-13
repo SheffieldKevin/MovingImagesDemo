@@ -28,7 +28,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         for spinner in spinners {
             if spinner.view.hidden {
                 spinner.view.hidden = false
-                self.spinnerValueChanged(sender: spinner)
+                self.spinnerValueChanged()
                 break
             }
         }
@@ -148,7 +148,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     // MARK: NSTextViewDelegate protocol methods.
     func textDidChange(notification: NSNotification) {
         if let jsonText = drawElementJSON.string,
-            let theDict = createDictionaryFromJSONString(jsonText) {
+            let theDict = createJSONObjectFromJSONString(jsonText) as? [String:AnyObject] {
             simpleRenderView.drawDictionary = theDict
             simpleRenderView.variables = self.variables
             simpleRenderView.needsDisplay = true
@@ -159,7 +159,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     }
     
     // MARK: SpinnerDelegate
-    func spinnerValueChanged(#sender: SpinnerController) {
+    func spinnerValueChanged() {
         simpleRenderView.variables = self.variables
         simpleRenderView.needsDisplay = true
     }
@@ -174,8 +174,8 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                 spinner.view.hidden = true
             }
             drawElementJSON.string = jsonString
-            if let theDict = createDictionaryFromJSONString(jsonString) {
-                simpleRenderView.drawDictionary = theDict
+            if let dict = createJSONObjectFromJSONString(jsonString) as? [String:AnyObject] {
+                simpleRenderView.drawDictionary = dict
             }
             
             if let varDefs:AnyObject =
@@ -199,7 +199,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     private func createDictionary() -> [String:AnyObject] {
         var jsonDict = [String:AnyObject]()
         jsonDict[MIJSONPropertyDrawInstructions] =
-            createDictionaryFromJSONString(drawElementJSON.string!)
+        createJSONObjectFromJSONString(drawElementJSON.string!) as? [String:AnyObject]
         var variablesArray = [[String:AnyObject]]()
         for spinner in spinners {
             if !spinner.view.hidden {

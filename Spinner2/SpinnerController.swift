@@ -6,7 +6,9 @@ import MovingImages
 
 // MARK: SpinnerDelegate protocol declaration
 @objc protocol SpinnerDelegate {
-    func spinnerValueChanged(#sender: SpinnerController) -> Void
+    func spinnerValueChanged() -> Void
+    
+    optional func spinnersModified() -> Void
 }
 
 // MARK: Spinner Class
@@ -284,12 +286,13 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
             self.variableKey = popoverViewController.controlKey!.stringValue
             self.popover.performClose(self)
             self.view.needsDisplay = true
-            delegate?.spinnerValueChanged(sender: self)
+            delegate?.spinnerValueChanged()
+            delegate?.spinnersModified?()
         }
     }
     
     func spinnerValueChanged(#spinner: Spinner) -> Void {
-        delegate?.spinnerValueChanged(sender: self)
+        delegate?.spinnerValueChanged()
     }
     
     func configureSpinner(#dictionary: [String:AnyObject]) -> Void {

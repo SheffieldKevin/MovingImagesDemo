@@ -35,7 +35,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="36" y="166" width="1228" height="678"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <value key="minSize" type="size" width="1228" height="678"/>
             <value key="maxSize" type="size" width="1980" height="1080"/>
             <view key="contentView" id="se5-gp-TjO">
@@ -179,7 +179,7 @@
                         </connections>
                     </button>
                     <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13a-3F-sWT">
-                        <rect key="frame" x="20" y="638" width="222" height="21"/>
+                        <rect key="frame" x="20" y="638" width="287" height="21"/>
                         <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="smallSquare" trackingMode="selectOne" id="Fpr-Vt-NYK">
                             <font key="font" metaFont="smallSystem"/>
                             <segments>
@@ -187,6 +187,7 @@
                                 <segment label="Process" tag="1"/>
                                 <segment label="Display" tag="2"/>
                                 <segment label="Finalize" tag="3"/>
+                                <segment label="Variables"/>
                             </segments>
                         </segmentedCell>
                         <connections>
@@ -203,8 +204,8 @@
                             <action selector="exportDestinationWithSender:" target="-2" id="DXH-6S-kMo"/>
                         </connections>
                     </button>
-                    <popUpButton verticalHuggingPriority="750" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vgj-KH-5A3">
-                        <rect key="frame" x="83" y="81" width="152" height="19"/>
+                    <popUpButton verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vgj-KH-5A3">
+                        <rect key="frame" x="104" y="81" width="152" height="19"/>
                         <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0fS-ca-QPk">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -214,8 +215,8 @@
                             <action selector="movieSelected:" target="-2" id="m6e-Tx-9Wp"/>
                         </connections>
                     </popUpButton>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="k6c-GA-xAv">
-                        <rect key="frame" x="18" y="83" width="59" height="14"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="k6c-GA-xAv">
+                        <rect key="frame" x="18" y="83" width="80" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Movie Input1:" id="csT-hK-K1f">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
@@ -233,8 +234,8 @@
                             <action selector="imageSelected:" target="-2" id="o7l-XR-VXR"/>
                         </connections>
                     </popUpButton>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="9rI-Gj-bKv">
-                        <rect key="frame" x="335" y="83" width="59" height="14"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="9rI-Gj-bKv">
+                        <rect key="frame" x="316" y="83" width="78" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Image Input1:" id="WDo-RQ-Gnx">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
@@ -263,19 +264,8 @@
                             <binding destination="-2" name="enabled" keyPath="self.canDoFinalize" id="vWw-sa-DLe"/>
                         </connections>
                     </button>
-                    <popUpButton verticalHuggingPriority="750" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rkd-Q2-yKR">
-                        <rect key="frame" x="83" y="56" width="152" height="19"/>
-                        <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNH-OB-8Eu">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                            <menu key="menu" id="IDN-w0-asp"/>
-                        </popUpButtonCell>
-                        <connections>
-                            <action selector="movieSelected:" target="-2" id="xef-u9-AKb"/>
-                        </connections>
-                    </popUpButton>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-sX-xgH">
-                        <rect key="frame" x="18" y="58" width="59" height="14"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-sX-xgH">
+                        <rect key="frame" x="18" y="58" width="80" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Movie Input2:" id="tIY-cH-Pds">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
@@ -293,8 +283,8 @@
                             <action selector="imageSelected:" target="-2" id="S4U-cC-ayC"/>
                         </connections>
                     </popUpButton>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="nMm-0D-5tA">
-                        <rect key="frame" x="335" y="58" width="59" height="14"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="nMm-0D-5tA">
+                        <rect key="frame" x="316" y="58" width="78" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Image input2:" id="Tcn-sP-3Ta">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
@@ -312,6 +302,27 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XIu-sy-yrV">
+                        <rect key="frame" x="413" y="13" width="73" height="28"/>
+                        <buttonCell key="cell" type="push" title="Import…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dHW-4R-sbb">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="importJSONWithSender:" target="-2" id="KVL-Cn-ZcM"/>
+                        </connections>
+                    </button>
+                    <popUpButton verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rkd-Q2-yKR">
+                        <rect key="frame" x="104" y="56" width="152" height="19"/>
+                        <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNH-OB-8Eu">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="IDN-w0-asp"/>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="movieSelected:" target="-2" id="xef-u9-AKb"/>
+                        </connections>
+                    </popUpButton>
                 </subviews>
                 <constraints>
                     <constraint firstItem="DeA-sX-xgH" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="0qk-VA-p33"/>
@@ -322,6 +333,7 @@
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Dqn-QZ-47q"/>
                     <constraint firstItem="flh-mG-rbv" firstAttribute="leading" secondItem="h7J-kt-AmM" secondAttribute="trailing" constant="8" id="GMq-WL-1zq"/>
                     <constraint firstItem="rkd-Q2-yKR" firstAttribute="leading" secondItem="DeA-sX-xgH" secondAttribute="trailing" constant="8" id="GaS-JQ-qJo"/>
+                    <constraint firstAttribute="bottom" secondItem="XIu-sy-yrV" secondAttribute="bottom" constant="19" id="HNS-7G-Job"/>
                     <constraint firstItem="cZu-b1-qq6" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="38" id="HuW-Xb-bF9"/>
                     <constraint firstAttribute="bottom" secondItem="6hE-YR-T1e" secondAttribute="bottom" constant="19" id="IZu-r5-FKd"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="trailing" secondItem="bl8-Eq-7pY" secondAttribute="trailing" id="MV7-8i-KVf"/>
@@ -333,6 +345,7 @@
                     <constraint firstAttribute="bottom" secondItem="9FT-ds-Cep" secondAttribute="bottom" constant="134" id="SNT-AM-sfS"/>
                     <constraint firstItem="6hE-YR-T1e" firstAttribute="trailing" secondItem="9FT-ds-Cep" secondAttribute="trailing" id="Y7a-nG-fTK"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="trailing" secondItem="Z4d-Jj-ETc" secondAttribute="trailing" id="YiF-bX-Ajc"/>
+                    <constraint firstItem="6hE-YR-T1e" firstAttribute="leading" secondItem="XIu-sy-yrV" secondAttribute="trailing" constant="8" id="b67-PE-SbA"/>
                     <constraint firstItem="fTT-3F-TcR" firstAttribute="leading" secondItem="spP-D9-dhu" secondAttribute="trailing" constant="8" id="bg5-16-y57"/>
                     <constraint firstItem="spP-D9-dhu" firstAttribute="leading" secondItem="leB-cp-iFV" secondAttribute="trailing" constant="8" id="cSt-jp-20N"/>
                     <constraint firstItem="cZu-b1-qq6" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="560" id="d2s-pg-GiP"/>
