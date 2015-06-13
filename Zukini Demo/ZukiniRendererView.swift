@@ -48,11 +48,10 @@ class ZukiniRendererView: NSView {
         }
     }
 
-    private
-    var simpleRenderer:MISimpleRenderer?
+    private var simpleRenderer:MISimpleRenderer?
     
     // Only call from within drawRect.
-    func drawOutlineAndInsetDrawing(context: CGContextRef) -> Void {
+    private func drawOutlineAndInsetDrawing(context: CGContextRef) -> Void {
         let insetRect = CGRectInset(self.bounds, 1.0, 1.0)
         NSColor.lightGrayColor().setStroke()
         CGContextSetLineWidth(context, 2.0)

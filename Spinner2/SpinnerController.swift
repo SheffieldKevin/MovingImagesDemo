@@ -13,6 +13,10 @@ import MovingImages
 @IBDesignable
 class Spinner: NSControl {
     // MARK: Spinner Class properties
+    // These two properties are only needed for @IBDesignable. The spinner control works with a value
+    // range from 0 to 1. This is scaled to any range required for users of this control but
+    // @IBDesignable in Interface Builder only increments in steps of 1 making Spinner range
+    // unhelpful for Interface Builder. These class properties give Interface Builder a range of 0 to 100
     private static let scaleFactor:Double = 100.0
     private static let invertedScale:Double = 1.0 / Spinner.scaleFactor
 
@@ -26,15 +30,15 @@ class Spinner: NSControl {
         }
     }
 
-    private static let toolTip = "Option click to configure, Scroll action or command key & mouse move to change value"
+    private static let toolTip = "Option click to configure. Use scroll action or command key & mouse move to change value"
     private weak var controller: SpinnerController?
 
     // MARK: Required init
     required init?(coder: NSCoder) {
         let theDictionary = createDictionaryFromJSONFile("drawarc",
             inBundle: NSBundle(forClass: self.dynamicType))
-        drawDictionary = theDictionary?[MIJSONPropertyDrawInstructions] as? [String:AnyObject]
-        equation = theDictionary?["valuefrompositionequation"] as? String
+        self.drawDictionary = theDictionary?[MIJSONPropertyDrawInstructions] as? [String:AnyObject]
+        self.equation = theDictionary?["valuefrompositionequation"] as? String
         super.init(coder: coder)
         self.toolTip = Spinner.toolTip
     }
