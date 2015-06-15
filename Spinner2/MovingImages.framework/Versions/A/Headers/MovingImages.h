@@ -1,10 +1,7 @@
-//
 //  MovingImages.h
 //  MovieMaker
 //
-//  Created by Kevin Meaney on 01/10/2014.
-//  Copyright (c) 2014 Kevin Meaney. All rights reserved.
-//
+//  Copyright (c) 2015 Zukini Ltd.
 
 #import <MovingImages/MIHandleCommands.h>
 #import <MovingImages/MICGImage.h>

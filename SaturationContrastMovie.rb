@@ -88,31 +88,18 @@ def make_applyfilter()
     # frames a second that is 300 frames to process. There are two videos at
     # a slightly lower frame rate but I'm asking for frames at specific times
     # so every 10th frame will be repeated in output video.
-    numFrames = 295
+    numFrames = 299
     
     numFrames.times do |i|
       frameTime = MovieTime.make_movietime(timevalue: 1001 * i,
                                            timescale: 30000)
       nextFrame = MovieTime.make_movietime_nextsample()
-#      drawImageElement = MIDrawImageElement.new
-#      drawImageElement.destinationrectangle = destRect
-#      drawImageElement.set_moviefile_imagesource(source_object: movieImporter, 
-##                                                     frametime: frameTime, 
-#                                                     frametime: nextFrame, 
-#                                                        tracks: [ track_id ])
-#      drawImageCommand = CommandModule.make_drawelement(bitmap, 
-#                                drawinstructions: drawImageElement,
-#                                     createimage: false)
-#      processCommands.add_command(drawImageCommand)
 
       assignImage = CommandModule.make_assignimage_frommovie_tocollection(
                                         movieImporter,
                              frametime: frameTime,
-#                             frametime: nextFrame,
                                 tracks: [ track_id ],
                             identifier: $sourceImageFilterChainID)
-#      assignImage = CommandModule.make_assignimage_tocollection(bitmap,
-#                             identifier: $sourceImageFilterChainID)
       processCommands.add_command(assignImage)
 
       renderFilter = MIFilterChainRender.new

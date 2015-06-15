@@ -1,12 +1,9 @@
-//
 //  MISimpleRenderer.h
 //  MovieMaker
 //
 //  Created by Kevin Meaney on 03/11/2014.
-//  Copyright (c) 2014 Apple Inc. All rights reserved.
-//
+//  Copyright (c) 2015 Zukini Ltd.
 
-// #import <Foundation/Foundation.h>
 @import Foundation;
 @import QuartzCore;
 

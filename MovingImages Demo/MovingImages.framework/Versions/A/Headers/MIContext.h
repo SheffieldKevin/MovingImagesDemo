@@ -1,7 +1,7 @@
 //  MIContext.h
 //  Zukini.
 //
-//  Copyright (c) 2015 Kevin Meaney
+//  Copyright (c) 2015 Zukini Ltd.
 
 @import Foundation;
 @import CoreGraphics;
@@ -44,6 +44,10 @@ extern const MIBaseReference kMIInvalidElementReference;
 
 /// Drop the variables dictionary.
 -(void)dropVariablesDictionary:(NSDictionary *)dictToDrop;
+
+/// Drop one variables dictionary and append a new variables dictionary.
+-(void)dropVariablesDictionary:(NSDictionary *)dropDict
+           appendNewDictionary:(NSDictionary *)newDict;
 
 /// Add image with identifier to the the image collection.
 -(BOOL)assignCGImage:(CGImageRef)theImage identifier:(NSString *)identifier;

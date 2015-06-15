@@ -1,8 +1,7 @@
 //  MIJSONConstants.h
 //  MovingImages
 //
-//  Created by Kevin Meaney on 10/09/2013.
-//  Copyright (c) 2013-2014 Kevin Meaney. All rights reserved.
+//  Copyright (c) 2015 Zukini Ltd.
 
 // In the comments if a parameter is shown in [] like [blendmode] then it means
 // that is an optional property. If an optional property is not specified then

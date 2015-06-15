@@ -1,7 +1,6 @@
 //  MIConstants.h
 //
-//  Created by Kevin Meaney on 31/07/2013.
-//  Copyright (c) 2013-2014 Kevin Meaney. All rights reserved.
+//  Copyright (c) 2015 Zukini Ltd.
 
 @import Foundation;
 

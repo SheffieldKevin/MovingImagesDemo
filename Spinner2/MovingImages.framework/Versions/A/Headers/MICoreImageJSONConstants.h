@@ -1,9 +1,7 @@
 //  MICoreImageJSONConstants.h
 //  Moving Images
 //
-//  Created by Kevin Meaney on 30/01/2014.
-//  Copyright (c) 2014 Kevin Meaney. All rights reserved.
-//
+//  Copyright (c) 2015 Zukini Ltd.
 
 @import Foundation;
 
