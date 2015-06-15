@@ -310,7 +310,12 @@ class ZukiniDemoController: NSWindowController {
         {
             let resultDict = MIMovingImagesHandleCommands(self.miContext,
                 jsonDict, .None, .None)
-            return MIGetErrorCodeFromReplyDictionary(resultDict) == MIReplyErrorEnum.NoError
+            
+            let result = MIGetErrorCodeFromReplyDictionary(resultDict) == MIReplyErrorEnum.NoError
+            if !result {
+                println("Error result: \(resultDict)")
+            }
+            return result
         }
         return false
     }
@@ -321,13 +326,17 @@ class ZukiniDemoController: NSWindowController {
     
     private func processCompleted() -> Void {
         self.processingCommands = false
-        // self.canProcess = false
+        
         self.updateDoCommandsButtons()
         self.rendererView.needsDisplay = true
     }
     
     private func processCompletionHandler(replyDictionary: [NSObject:AnyObject]) -> Void {
         processCompleted()
+        let result = MIGetErrorCodeFromReplyDictionary(replyDictionary) == MIReplyErrorEnum.NoError
+        if !result {
+            println("Error result: \(replyDictionary)")
+        }
     }
 
     private func performSetupCommands() -> Bool {
@@ -419,11 +428,8 @@ class ZukiniDemoController: NSWindowController {
     }
 
     private func updateVariables() -> Void {
-        if let previouslyEvaluated = lastEvaluatedVariables {
-            self.miContext.dropVariablesDictionary(previouslyEvaluated)
-        }
-        self.lastEvaluatedVariables = self.variables
-        self.miContext.appendVariables(lastEvaluatedVariables)
+        self.miContext.dropVariablesDictionary(self.lastEvaluatedVariables,
+            appendNewDictionary: self.variables)
     }
     
     private func configureWithJSONDict(jsonDict: [String:AnyObject]) {
@@ -612,8 +618,9 @@ extension ZukiniDemoController {
 extension ZukiniDemoController: SpinnerDelegate {
     func spinnerValueChanged() {
         self.updateVariables()
-        self.performProcessCommands(progressHandler: self.progressHandler,
-            completionHandler: self.processCompletionHandler)
+        self.rendererView.needsDisplay = true
+    //    self.performProcessCommands(progressHandler: self.progressHandler,
+    //    completionHandler: self.processCompletionHandler)
     }
     
     func spinnersModified() {
