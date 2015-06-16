@@ -93,7 +93,7 @@ def make_applyfilter()
     numFrames.times do |i|
       frameTime = MovieTime.make_movietime(timevalue: 1001 * i,
                                            timescale: 30000)
-      nextFrame = MovieTime.make_movietime_nextsample()
+#      nextFrame = MovieTime.make_movietime_nextsample()
 
       assignImage = CommandModule.make_assignimage_frommovie_tocollection(
                                         movieImporter,
