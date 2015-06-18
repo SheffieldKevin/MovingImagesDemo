@@ -20,26 +20,22 @@ def make_perspectivetransformfilter(sourceBitmap, targetBitmap)
 
   filter.add_inputimage_property(sourceBitmap)
 
-# topLeftPoint = MIShapes.make_point("(#{$videoWidth} - $topwidth) * 0.5", 720)
-  topLeftPoint = MIShapes.make_point("(#{$videoWidth} - 200) * 0.5", 720)
+  topLeftPoint = MIShapes.make_point("(#{$videoWidth} - $topwidth) * 0.5", 720)
   topLeft = MIFilterProperty.make_civectorproperty_frompoint(
             key: :inputTopLeft, value: topLeftPoint)
   filter.add_property(topLeft)
 
-# topRightPoint = MIShapes.make_point("(#{$videoWidth} + $topwidth) * 0.5", 720)
-  topRightPoint = MIShapes.make_point("(#{$videoWidth} + 200) * 0.5",720)
+  topRightPoint = MIShapes.make_point("(#{$videoWidth} + $topwidth) * 0.5", 720)
   topRight = MIFilterProperty.make_civectorproperty_frompoint(
             key: :inputTopRight, value: topRightPoint)
   filter.add_property(topRight)
 
-#  bottomLeftPoint = MIShapes.make_point(10, "$bottom")
-  bottomLeftPoint = MIShapes.make_point(10, 360)
+  bottomLeftPoint = MIShapes.make_point(0, 0)
   bottomLeft = MIFilterProperty.make_civectorproperty_frompoint(
             key: :inputBottomLeft, value: bottomLeftPoint)
   filter.add_property(bottomLeft)
 
-#  bottomRightPoint = MIShapes.make_point(1270, "$bottom")
-  bottomRightPoint = MIShapes.make_point(1270, 360)
+  bottomRightPoint = MIShapes.make_point(1280, 0)
   bottomRight = MIFilterProperty.make_civectorproperty_frompoint(
             key: :inputBottomRight, value: bottomRightPoint)
   filter.add_property(bottomRight)
@@ -52,40 +48,34 @@ def render_filterchain(filterChain)
   renderFilter = MIFilterChainRender.new
 
   topLeftPoint = MIShapes.make_point("(#{$videoWidth} - $topwidth) * 0.5", 720)
-  tL = MIFilterRenderProperty.make_renderproperty_withfilternameid(
+  tL = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
                                key: :inputTopLeft,
-                             value: { point: topLeftPoint },
-                       value_class: :CIVector,
+                             point: topLeftPoint,
                      filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(tL)
 
-  topRightPoint = MIShapes.make_point("(#{$videoWidth} + $topwidth) * 0.5",720)
-  tR = MIFilterRenderProperty.make_renderproperty_withfilternameid(
+  topRightPoint = MIShapes.make_point("(#{$videoWidth} + $topwidth) * 0.5", 720)
+  tR = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
                                key: :inputTopRight,
-                             value: { point: topRightPoint },
-                       value_class: :CIVector,
+                             point: topRightPoint,
                      filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(tR)
 
-#  bottomLeftPoint = MIShapes.make_point(0, "$bottom")
   bottomLeftPoint = MIShapes.make_point(0, 0)
-  bL = MIFilterRenderProperty.make_renderproperty_withfilternameid(
+  bL = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
                                key: :inputBottomLeft,
-                             value: { point: bottomLeftPoint },
-                       value_class: :CIVector,
+                             point: bottomLeftPoint,
                      filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(bL)
 
-#  bottomRightPoint = MIShapes.make_point(1280, "$bottom")
   bottomRightPoint = MIShapes.make_point(1280, 0)
-  bR = MIFilterRenderProperty.make_renderproperty_withfilternameid(
+  bR = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
                                key: :inputBottomRight,
-                             value: { point: bottomRightPoint },
-                       value_class: :CIVector,
+                             point: bottomRightPoint,
                      filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(bR)
   theRect = MIShapes.make_rectangle(xloc: 0, yloc: "$bottom",
-                                   width: 1280, height: "720 - $bottom")
+                                   width: 1280, height: "$top - $bottom")
   renderFilter.destinationrectangle = theRect
   renderCommand = CommandModule.make_renderfilterchain(filterChain,
     renderinstructions: renderFilter)
@@ -121,7 +111,7 @@ def draw_textbitmap(textBitmap, progress)
   makeTransparentElement.fillcolor = transparentColor
   drawElements.add_drawelement_toarrayofelements(makeTransparentElement)
   
-  moveDistance = 800.0
+  moveDistance = 740.0
   textToDraw = [
     "Not very long ago",
     "In a garden",
@@ -138,7 +128,8 @@ def draw_textbitmap(textBitmap, progress)
   numTexts = textToDraw.count.to_f
   progressBase = moveDistance * progress
   textToDraw.count.times do |i|
-    textBase = progressBase - i.to_f * moveDistance / numTexts
+#    textBase = progressBase - i.to_f * moveDistance / numTexts
+    textBase = progressBase - i.to_f * 80
     drawStringElement = draw_text(textToDraw[i], textBase)
     drawElements.add_drawelement_toarrayofelements(drawStringElement)
   end
@@ -281,6 +272,12 @@ def make_applyfilter()
         variablekey: :bottom,
         defaultvalue: 0.0,
         minvalue: 0.0
+      },
+      {
+        maxvalue: 720.0,
+        variablekey: :top,
+        defaultvalue: 730.0,
+        minvalue: 420.0
       }
     ]
 
