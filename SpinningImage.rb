@@ -5,9 +5,15 @@ include MICGDrawing
 include CommandModule
 include MIMovie
 
+# Variables are:
+# $camera Distance of camera from plane of projection. min 600, max 2000.
+
 $perspectiveTransformFilterID = :'perspectivetransform.filter'
-$videoWidth = 1280
-$videoHeight = 720
+$videoWidth = 1280.0
+$videoHeight = 720.0
+
+$zukiniLogoSize = 256.0
+$zukiniLogoSizeSq = $zukiniLogoSize * $zukiniLogoSize
 
 def make_zstroke(logowidth)
   startPoint = MIShapes.make_point(0.01692 * logowidth, 0)
@@ -70,21 +76,30 @@ def make_drawteardrop(transformations, logowidth)
   pathDrawElement
 end
 
-def make_drawlogo(inAngle, logoSize, centerPoint)
-  logowidth = logoSize * 1.0
+def make_drawlogo(inAngle, logowidth)
   drawLogo = MIDrawElement.new(:arrayofelements)
+
+  bScale = 1.5
+  logowidth = logowidth / bScale
+  centerPoint = MIShapes.make_point(logowidth * 0.22, logowidth * 0.25)
+  backgroundRectangle = MIShapes.make_rectangle(
+                                       width: logowidth * bScale,
+                                      height: logowidth * bScale,
+                                        xloc: -0.44 * (bScale - 1.0) *logowidth,
+                                        yloc: -0.5 * (bScale - 1.0) * logowidth)
+
+  drawElement = MIDrawElement.new(:fillrectangle)
+  drawElement.fillcolor = color = MIColor.make_rgbacolor(0,0,0, a: 0)
+  drawElement.rectangle = backgroundRectangle
+  drawElement.blendmode = :kCGBlendModeCopy
+  drawLogo.add_drawelement_toarrayofelements(drawElement)
+
   drawLogo.fillcolor = MIColor.make_rgbacolor(0.05, 0.35, 0.05)
 
   drawBackgroundElement = MIDrawElement.new(:fillroundedrectangle)
   drawBackgroundElement.radius = 16
   backgroundColor = MIColor.make_rgbacolor(0.9, 0.9, 0.9, a: 0.5)
   drawBackgroundElement.fillcolor = backgroundColor
-  bScale = 1.5
-  backgroundRectangle = MIShapes.make_rectangle(
-                                       width: logoSize * bScale,
-                                      height: logoSize * bScale,
-                                        xloc: -0.44 * (bScale - 1.0) * logoSize,
-                                        yloc: -0.5 * (bScale - 1.0) * logoSize)
   drawBackgroundElement.rectangle = backgroundRectangle
   drawLogo.add_drawelement_toarrayofelements(drawBackgroundElement)
 
@@ -155,98 +170,72 @@ def make_perspectivetransformfilter(sourceBitmap, targetBitmap)
   filterChain
 end
 
-def render_filterchain(filterChain)
+def render_filterchain(filterChain, angle)
   renderFilter = MIFilterChainRender.new
 
-  topLeftPoint = MIShapes.make_point("(#{$videoWidth} - $topwidth) * 0.5", 720)
+  d = $zukiniLogoSize * 0.5 * Math.sin(angle)
+  # max_d = $zukiniLogoSize ** 2 * 0.5 / (2 * $camera - $zukiniLogoSize)
+  
+  yLoc = "-#{$zukiniLogoSizeSq} * 0.25 / (2.0 * $camera - #{$zukiniLogoSize})"
+  height = "#{$zukiniLogoSize} + #{$zukiniLogoSizeSq} * 0.5 / (2.0 * $camera - #{$zukiniLogoSize})"
+  
+  sourceRect = MIShapes.make_rectangle(xloc: 0,
+                                      width: $zukiniLogoSize,
+                                       yloc: yLoc,
+                                     height: height)
+  renderFilter.sourcerectangle = sourceRect
+
+  # Need to evaluate the source rect. The width of the source rect is unchanged
+  # But the height will change. Lets go for constant height for now.
+  topLeftPoint = MIShapes.make_point(
+    $zukiniLogoSize * 0.5 * (1.0 - Math.cos(angle)),
+    "#{$zukiniLogoSize} + #{d * $zukiniLogoSize} * 0.5 / ($camera - #{d})")
   tL = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
                                key: :inputTopLeft,
                              point: topLeftPoint,
                      filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(tL)
 
-  topRightPoint = MIShapes.make_point("(#{$videoWidth} + $topwidth) * 0.5", 720)
+# topRightPoint = MIShapes.make_point("(#{$videoWidth} + $topwidth) * 0.5", 720)
+  topRightPoint = MIShapes.make_point(
+    $zukiniLogoSize * 0.5 * Math.cos(angle),
+    "#{$zukiniLogoSize} - #{d * $zukiniLogoSize} * 0.5 / ($camera + #{d})")
   tR = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
                                key: :inputTopRight,
                              point: topRightPoint,
                      filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(tR)
 
-  bottomLeftPoint = MIShapes.make_point(0, 0)
+  bottomLeftPoint = MIShapes.make_point(
+    $zukiniLogoSize * 0.5 * (1.0 - Math.cos(angle)),
+    "- #{d * $zukiniLogoSize} * 0.5 / ($camera - #{d})")
   bL = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
                                key: :inputBottomLeft,
                              point: bottomLeftPoint,
                      filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(bL)
 
-  bottomRightPoint = MIShapes.make_point(1280, 0)
+  bottomRightPoint = MIShapes.make_point(
+    $zukiniLogoSize * 0.5 * Math.cos(angle),
+    "#{d * $zukiniLogoSize} * 0.5 / ($camera + #{d})")
   bR = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
                                key: :inputBottomRight,
                              point: bottomRightPoint,
                      filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(bR)
-  theRect = MIShapes.make_rectangle(xloc: 0, yloc: "$bottom",
-                                   width: 1280, height: "$top - $bottom")
+
+  yLocD = "#{($videoWidth - $zukiniLogoSize) * 0.5} - #{$zukiniLogoSizeSq} * 0.25 / (2.0 * $camera - #{$zukiniLogoSize})"
+#  height = "#{zukiniLogoSize} + #{$zukiniLogoSize}**2 / (2.0 * $camera - #{$zukiniLogoSize})"
+
+  theRect = MIShapes.make_rectangle(xloc: ($videoWidth - $zukiniLogoSize) * 0.5,
+                                   width: $zukiniLogoSize,
+                                    yloc: yLocD,
+                                  height: height)
+
   renderFilter.destinationrectangle = theRect
   renderCommand = CommandModule.make_renderfilterchain(filterChain,
     renderinstructions: renderFilter)
   renderCommand
-end
-
-def draw_text(theText, textBottom)
-  drawStringElement = MIDrawBasicStringElement.new
-  textBox = MIShapes.make_rectangle(xloc: 10,
-                                    yloc: textBottom,
-                                   width: 1260,
-                                  height: 100)
-  drawStringElement.boundingbox = textBox
-  drawStringElement.fontsize = 72
-  drawStringElement.fillcolor = MIColor.make_rgbacolor(1,1,1)
-  drawStringElement.stringtext = theText
-  drawStringElement.postscriptfontname = :'Tahoma-Bold'
-  drawStringElement.textalignment = :kCTTextAlignmentCenter
-  drawStringElement
-end
-
-# progress is a value from 0.0 to 1.0 and reflects how far through the
-# video we are.
-def draw_textbitmap(textBitmap, progress)
-  drawElements = MIDrawElement.new(:arrayofelements)
-  
-  # First thing is need to make black transparent.
-  makeTransparentElement = MIDrawElement.new(:fillrectangle)
-  drawRect = MIShapes.make_rectangle(xloc: 0, yloc: 0, width: 1280, height: 720)
-  makeTransparentElement.rectangle = drawRect
-  makeTransparentElement.blendmode = :kCGBlendModeCopy
-  transparentColor = MIColor.make_rgbacolor(0,0,0, a: 0)
-  makeTransparentElement.fillcolor = transparentColor
-  drawElements.add_drawelement_toarrayofelements(makeTransparentElement)
-  
-  moveDistance = 740.0
-  textToDraw = [
-    "Not very long ago",
-    "In a garden",
-    "close by, there was",
-    "a shady border.",
-    "",
-    "The shady border",
-    "contained plants like",
-    "Astrantia, Damson,",
-    "Sarcococca confusa",
-    "Epimediums and Ferns"
-  ]
-  
-  numTexts = textToDraw.count.to_f
-  progressBase = moveDistance * progress
-  textToDraw.count.times do |i|
-#    textBase = progressBase - i.to_f * moveDistance / numTexts
-    textBase = progressBase - i.to_f * 80
-    drawStringElement = draw_text(textToDraw[i], textBase)
-    drawElements.add_drawelement_toarrayofelements(drawStringElement)
-  end
-  drawCommand = CommandModule.make_drawelement(textBitmap,
-                             drawinstructions: drawElements)
-  drawCommand
 end
 
 def drawmovieframe_tobitmap(movie, bitmap, frametime)
@@ -279,12 +268,13 @@ def make_applyfilter()
                             preset: :PlatformDefaultBitmapContext,
                       addtocleanup: false)
 
-    textBitmap = setupCommands.make_createbitmapcontext(
-                              size: frameSize,
+    logoSize = MIShapes.make_size($zukiniLogoSize, $zukiniLogoSize)
+    logoBitmap = setupCommands.make_createbitmapcontext(
+                              size: logoSize,
                             preset: :PlatformDefaultBitmapContext,
                       addtocleanup: false)
 
-    perspectiveFilter = make_perspectivetransformfilter(textBitmap, bitmap)
+    perspectiveFilter = make_perspectivetransformfilter(logoBitmap, bitmap)
     filterChain = setupCommands.make_createimagefilterchain(perspectiveFilter,
                                             addtocleanup: false)
 
@@ -316,29 +306,36 @@ def make_applyfilter()
     imageIdentifier = SecureRandom.uuid
     assignImageToCollection = CommandModule.make_assignimage_tocollection(
                                                     bitmap,
-#                                                    textBitmap,
                                         identifier: imageIdentifier)
     setupCommands.add_command(assignImageToCollection)
 
     processCommands = SmigCommands.new
     processCommands.run_asynchronously = true
 
+    logoCenter = MIShapes.make_point($videoWidth * 0.5, $videoHeight * 0.5)
+
     # All the demo videos are 10 seconds long and at a frame rate of 29.97
     # frames a second that is 300 frames to process. There are two videos at
     # a slightly lower frame rate but I'm asking for frames at specific times
     # so every 10th frame will be repeated in output video.
-    numFrames = 299
+    numFrames = 200
     
     numFrames.times do |i|
+      angle = Math::PI * 2.0 * i.to_f / (numFrames - 1.0)
       fT = MovieTime.make_movietime(timevalue: 1001 * i,
-                                           timescale: 30000)
+                                    timescale: 30000)
       # nextFrame = MovieTime.make_movietime_nextsample()
       drawFrameCommand = drawmovieframe_tobitmap(movieImporter, bitmap, fT)
       processCommands.add_command(drawFrameCommand)
       progress = i.to_f / numFrames.to_f
-      drawTextCommand = draw_textbitmap(textBitmap, progress)
-      processCommands.add_command(drawTextCommand)
-      processCommands.add_command(render_filterchain(filterChain))
+      # drawTextCommand = draw_textbitmap(textBitmap, progress)
+      # processCommands.add_command(drawTextCommand)
+      
+      drawLogoElement = make_drawlogo(angle * 2.02 / Math::PI, $zukiniLogoSize)
+      drawLogoCommand = CommandModule.make_drawelement(logoBitmap,
+        drawinstructions: drawLogoElement)
+      processCommands.add_command(drawLogoCommand)
+      processCommands.add_command(render_filterchain(filterChain, angle))
 
       processCommands.add_command(assignImageToCollection)
       # All the drawing is done now. Need to add the drawing to the video writer
@@ -354,15 +351,15 @@ def make_applyfilter()
     finalizeCommands.add_command(saveMovie)
     finalizeCommands.add_tocleanupcommands_closeobject(movieImporter)
     finalizeCommands.add_tocleanupcommands_closeobject(bitmap)
-    finalizeCommands.add_tocleanupcommands_closeobject(textBitmap)
+    finalizeCommands.add_tocleanupcommands_closeobject(logoBitmap)
     finalizeCommands.add_tocleanupcommands_closeobject(movieWriter)
     finalizeCommands.add_tocleanupcommands_closeobject(filterChain)
     finalizeCommands.add_tocleanupcommands_removeimagefromcollection(
                                                           imageIdentifier)
     drawToView = MIDrawImageElement.new
+=begin
     drawToView.set_imagecollection_imagesource(
                                   identifier: imageIdentifier)
-
     scaleFactor = $videoHeight.to_f / $videoWidth.to_f
     destinationRect = MIShapes.make_rectangle(
                        width: "$width",
@@ -370,25 +367,23 @@ def make_applyfilter()
                         xloc: 0,
                         yloc: "($height - $width * #{scaleFactor}) * 0.5")
     drawToView.destinationrectangle = destinationRect
+=end
+    drawToView.set_bitmap_imagesource(source_object: logoBitmap)
+    scaleFactor = $videoHeight.to_f / $videoWidth.to_f
+    destinationRect = MIShapes.make_rectangle(
+                       width: $zukiniLogoSize,
+                      height: $zukiniLogoSize,
+                        xloc: "($width - #{$zukiniLogoSize}) * 0.5",
+                        yloc: "($height - #{$zukiniLogoSize}) * 0.5")
+    drawToView.destinationrectangle = destinationRect
+    
 
     variables = [
       {
-        maxvalue: 200.0,
-        variablekey: :topwidth,
-        defaultvalue: 150.0,
-        minvalue: 100.0
-      },
-      {
-        maxvalue: 300.0,
-        variablekey: :bottom,
-        defaultvalue: 0.0,
-        minvalue: 0.0
-      },
-      {
-        maxvalue: 720.0,
-        variablekey: :top,
-        defaultvalue: 730.0,
-        minvalue: 420.0
+        maxvalue: 2000.0,
+        variablekey: :camera,
+        defaultvalue: 800.0,
+        minvalue: 600.0
       }
     ]
 
@@ -397,7 +392,7 @@ def make_applyfilter()
                      finalize: finalizeCommands.commandshash,
              drawinstructions: drawToView.elementhash,
                     variables: variables,
-               exportfilename: "TextWithPerspectiveMovie.mov"}
+               exportfilename: "SpinningLogoOverVideoMovie.mov"}
   end
   instructionHash
 end
