@@ -66,8 +66,6 @@ def make_drawteardrop(transformations, logowidth)
   pathDrawElement
 end
 
-# def make_drawlogo(inAngle, bitmapSize, scaleFactor)
-#  logowidth = bitmapSize * scaleFactor
 def make_drawlogo(inAngle, logoSize, centerPoint)
   logowidth = logoSize * 1.0
   drawLogo = MIDrawElement.new(:arrayofelements)
