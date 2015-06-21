@@ -81,12 +81,12 @@ def make_drawlogo(inAngle, logowidth)
 
   bScale = 1.5
   logowidth = logowidth / bScale
-  centerPoint = MIShapes.make_point(logowidth * 0.22, logowidth * 0.25)
+  logoOrigin = MIShapes.make_point(logowidth * 0.22, logowidth * 0.25)
   backgroundRectangle = MIShapes.make_rectangle(
-                                       width: logowidth * bScale,
-                                      height: logowidth * bScale,
-                                        xloc: -0.44 * (bScale - 1.0) *logowidth,
-                                        yloc: -0.5 * (bScale - 1.0) * logowidth)
+                                     width: logowidth * bScale,
+                                    height: logowidth * bScale,
+                                      xloc: -0.44 * (bScale - 1.0) *logowidth,
+                                      yloc: -0.5 * (bScale - 1.0) * logowidth)
 
   drawElement = MIDrawElement.new(:fillrectangle)
   drawElement.fillcolor = color = MIColor.make_rgbacolor(0,0,0, a: 0)
@@ -123,7 +123,7 @@ def make_drawlogo(inAngle, logowidth)
   drawLogo.add_drawelement_toarrayofelements(make_zstroke(logowidth))
 
   transformations3 = MITransformations.make_contexttransformation()
-  MITransformations.add_translatetransform(transformations3, centerPoint)
+  MITransformations.add_translatetransform(transformations3, logoOrigin)
   drawLogo.contexttransformations = transformations3
   drawLogo
 end
@@ -176,6 +176,10 @@ def render_filterchain(filterChain, angle)
   d = $zukiniLogoSize * 0.5 * Math.sin(angle)
   # max_d = $zukiniLogoSize ** 2 * 0.5 / (2 * $camera - $zukiniLogoSize)
   
+  cosAngle = Math.cos(angle)
+  
+  cosAngleNeg = cosAngle < 0.0
+  
   yLoc = "-#{$zukiniLogoSizeSq} * 0.25 / (2.0 * $camera - #{$zukiniLogoSize})"
   height = "#{$zukiniLogoSize} + #{$zukiniLogoSizeSq} * 0.5 / (2.0 * $camera - #{$zukiniLogoSize})"
   
@@ -191,40 +195,40 @@ def render_filterchain(filterChain, angle)
     $zukiniLogoSize * 0.5 * (1.0 - Math.cos(angle)),
     "#{$zukiniLogoSize} + #{d * $zukiniLogoSize} * 0.5 / ($camera - #{d})")
   tL = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
-                               key: :inputTopLeft,
-                             point: topLeftPoint,
-                     filtername_id: $perspectiveTransformFilterID)
+                       key: cosAngleNeg ? :inputTopRight : :inputTopLeft,
+                     point: topLeftPoint,
+             filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(tL)
 
 # topRightPoint = MIShapes.make_point("(#{$videoWidth} + $topwidth) * 0.5", 720)
   topRightPoint = MIShapes.make_point(
-    $zukiniLogoSize * 0.5 * Math.cos(angle),
+    $zukiniLogoSize * 0.5 * (1.0 + Math.cos(angle)),
     "#{$zukiniLogoSize} - #{d * $zukiniLogoSize} * 0.5 / ($camera + #{d})")
   tR = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
-                               key: :inputTopRight,
-                             point: topRightPoint,
-                     filtername_id: $perspectiveTransformFilterID)
+                       key: cosAngleNeg ? :inputTopLeft : :inputTopRight,
+                     point: topRightPoint,
+             filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(tR)
 
   bottomLeftPoint = MIShapes.make_point(
     $zukiniLogoSize * 0.5 * (1.0 - Math.cos(angle)),
     "- #{d * $zukiniLogoSize} * 0.5 / ($camera - #{d})")
   bL = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
-                               key: :inputBottomLeft,
-                             point: bottomLeftPoint,
-                     filtername_id: $perspectiveTransformFilterID)
+                       key: cosAngleNeg ? :inputBottomRight : :inputBottomLeft,
+                     point: bottomLeftPoint,
+             filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(bL)
 
   bottomRightPoint = MIShapes.make_point(
-    $zukiniLogoSize * 0.5 * Math.cos(angle),
+    $zukiniLogoSize * 0.5 * (1.0 + Math.cos(angle)),
     "#{d * $zukiniLogoSize} * 0.5 / ($camera + #{d})")
   bR = MIFilterRenderProperty.make_renderproperty_pointvector_withfilternamid(
-                               key: :inputBottomRight,
-                             point: bottomRightPoint,
-                     filtername_id: $perspectiveTransformFilterID)
+                       key: cosAngleNeg ? :inputBottomLeft : :inputBottomRight,
+                     point: bottomRightPoint,
+             filtername_id: $perspectiveTransformFilterID)
   renderFilter.add_filterproperty(bR)
 
-  yLocD = "#{($videoWidth - $zukiniLogoSize) * 0.5} - #{$zukiniLogoSizeSq} * 0.25 / (2.0 * $camera - #{$zukiniLogoSize})"
+  yLocD = "#{($videoHeight - $zukiniLogoSize) * 0.5} - #{$zukiniLogoSizeSq} * 0.25 / (2.0 * $camera - #{$zukiniLogoSize})"
 #  height = "#{zukiniLogoSize} + #{$zukiniLogoSize}**2 / (2.0 * $camera - #{$zukiniLogoSize})"
 
   theRect = MIShapes.make_rectangle(xloc: ($videoWidth - $zukiniLogoSize) * 0.5,
@@ -331,7 +335,9 @@ def make_applyfilter()
       # drawTextCommand = draw_textbitmap(textBitmap, progress)
       # processCommands.add_command(drawTextCommand)
       
-      drawLogoElement = make_drawlogo(angle * 2.02 / Math::PI, $zukiniLogoSize)
+      logoAngle = angle * 4.04 / Math::PI
+      logoAngle = 8.08 - logoAngle if logoAngle > 4.04
+      drawLogoElement = make_drawlogo(logoAngle, $zukiniLogoSize)
       drawLogoCommand = CommandModule.make_drawelement(logoBitmap,
         drawinstructions: drawLogoElement)
       processCommands.add_command(drawLogoCommand)
@@ -357,7 +363,6 @@ def make_applyfilter()
     finalizeCommands.add_tocleanupcommands_removeimagefromcollection(
                                                           imageIdentifier)
     drawToView = MIDrawImageElement.new
-=begin
     drawToView.set_imagecollection_imagesource(
                                   identifier: imageIdentifier)
     scaleFactor = $videoHeight.to_f / $videoWidth.to_f
@@ -367,7 +372,7 @@ def make_applyfilter()
                         xloc: 0,
                         yloc: "($height - $width * #{scaleFactor}) * 0.5")
     drawToView.destinationrectangle = destinationRect
-=end
+=begin
     drawToView.set_bitmap_imagesource(source_object: logoBitmap)
     scaleFactor = $videoHeight.to_f / $videoWidth.to_f
     destinationRect = MIShapes.make_rectangle(
@@ -376,7 +381,7 @@ def make_applyfilter()
                         xloc: "($width - #{$zukiniLogoSize}) * 0.5",
                         yloc: "($height - #{$zukiniLogoSize}) * 0.5")
     drawToView.destinationrectangle = destinationRect
-    
+=end
 
     variables = [
       {
