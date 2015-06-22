@@ -76,32 +76,31 @@ def make_drawteardrop(transformations, logowidth)
   pathDrawElement
 end
 
-def make_drawlogo(inAngle, logowidth, isFlipped)
-  drawLogo = MIDrawElement.new(:arrayofelements)
-
+def make_drawlogo(inAngle, bitmapSize, isFlipped)
   bScale = 1.5
-  logowidth = logowidth / bScale
-  logoOrigin = MIShapes.make_point(logowidth * 0.22, logowidth * 0.25)
-  backgroundRectangle = MIShapes.make_rectangle(
-                                     width: logowidth * bScale,
-                                    height: logowidth * bScale,
-                                      xloc: -0.44 * (bScale - 1.0) *logowidth,
-                                      yloc: -0.5 * (bScale - 1.0) * logowidth)
+  logowidth = bitmapSize / bScale
 
+  drawBitmap = MIDrawElement.new(:arrayofelements)
+  
   drawElement = MIDrawElement.new(:fillrectangle)
+  bitmapRect = MIShapes.make_rectangle(width: bitmapSize, height: bitmapSize)
   drawElement.fillcolor = color = MIColor.make_rgbacolor(0,0,0, a: 0)
-  drawElement.rectangle = backgroundRectangle
+  drawElement.rectangle = bitmapRect
   drawElement.blendmode = :kCGBlendModeCopy
-  drawLogo.add_drawelement_toarrayofelements(drawElement)
-
-  drawLogo.fillcolor = MIColor.make_rgbacolor(0.05, 0.35, 0.05)
-
+  drawBitmap.add_drawelement_toarrayofelements(drawElement)
+  
   drawBackgroundElement = MIDrawElement.new(:fillroundedrectangle)
   drawBackgroundElement.radius = 16
   backgroundColor = MIColor.make_rgbacolor(0.9, 0.9, 0.9, a: 0.5)
   drawBackgroundElement.fillcolor = backgroundColor
-  drawBackgroundElement.rectangle = backgroundRectangle
-  drawLogo.add_drawelement_toarrayofelements(drawBackgroundElement)
+  drawBackgroundElement.rectangle = bitmapRect
+  drawBitmap.add_drawelement_toarrayofelements(drawBackgroundElement)
+
+  drawLogo = MIDrawElement.new(:arrayofelements)
+
+  logoOrigin = MIShapes.make_point(logowidth * 0.22, logowidth * 0.25)
+
+  drawLogo.fillcolor = MIColor.make_rgbacolor(0.05, 0.35, 0.05)
 
   transformations1 = MITransformations.make_contexttransformation()
   offset = MIShapes.make_point(logowidth * 0.82438, 0.20262 * logowidth)
@@ -124,13 +123,19 @@ def make_drawlogo(inAngle, logowidth, isFlipped)
 
   transformations3 = MITransformations.make_contexttransformation()
   MITransformations.add_translatetransform(transformations3, logoOrigin)
-  if isFlipped
-    MITransformations.add_translatetransform(transformations3,
-                                             {x: logowidth, y: 0})
-    MITransformations.add_scaletransform(transformations3, {x: -1, y: 1})
-  end
   drawLogo.contexttransformations = transformations3
-  drawLogo
+  
+  drawBitmap.add_drawelement_toarrayofelements(drawLogo)
+  
+  if isFlipped
+    transformations4 = MITransformations.make_contexttransformation()
+    MITransformations.add_translatetransform(transformations4,
+                                             {x: bitmapSize, y: 0})
+    MITransformations.add_scaletransform(transformations4, {x: -1, y: 1})
+    drawBitmap.contexttransformations = transformations4
+  end
+  
+  drawBitmap
 end
 
 # While creating the filter chain we don't have to get the inputs that will
@@ -341,9 +346,7 @@ def make_applyfilter()
       drawFrameCommand = drawmovieframe_tobitmap(movieImporter, bitmap, fT)
       processCommands.add_command(drawFrameCommand)
       progress = i.to_f / numFrames.to_f
-      # drawTextCommand = draw_textbitmap(textBitmap, progress)
-      # processCommands.add_command(drawTextCommand)
-      
+
       logoAngle = angle * 4.04 / Math::PI
       logoAngle = 8.08 - logoAngle if logoAngle > 4.04
       isFlipped = Math.cos(angle) < 0.0
