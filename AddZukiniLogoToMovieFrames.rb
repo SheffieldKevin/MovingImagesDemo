@@ -66,7 +66,7 @@ def make_drawteardrop(transformations, logowidth)
   pathDrawElement
 end
 
-def make_drawlogo(inAngle, logoSize, centerPoint)
+def make_drawlogo(inAngle, logoSize, logoBottomLeft)
   logowidth = logoSize * 1.0
   drawLogo = MIDrawElement.new(:arrayofelements)
   drawLogo.fillcolor = MIColor.make_rgbacolor(0.05, 0.35, 0.05)
@@ -104,7 +104,7 @@ def make_drawlogo(inAngle, logoSize, centerPoint)
   drawLogo.add_drawelement_toarrayofelements(make_zstroke(logowidth))
 
   transformations3 = MITransformations.make_contexttransformation()
-  MITransformations.add_translatetransform(transformations3, centerPoint)
+  MITransformations.add_translatetransform(transformations3, logoBottomLeft)
   drawLogo.contexttransformations = transformations3
   drawLogo
 end
@@ -177,8 +177,8 @@ def make_videowithzukinilogo()
     # frames a second that is 300 frames to process.
     numFrames = 280
     
-    logoCenter = MIShapes.make_point(videoWidth - logoSize * 1.275,
-                                     logoSize * 0.255)
+    logoBottomLeft = MIShapes.make_point(videoWidth - logoSize * 1.275,
+                                         logoSize * 0.255)
     
     numFrames.times do |i|
 #      assignImage = CommandModule.make_assignimage_frommovie_tocollection(
@@ -204,7 +204,7 @@ def make_videowithzukinilogo()
       else
         angle = 4.04*((numFrames-i-1)%logoMaxFrames).to_f/(logoMaxFrames-1).to_f
       end
-      drawLogoElement = make_drawlogo(angle, logoSize, logoCenter)
+      drawLogoElement = make_drawlogo(angle, logoSize, logoBottomLeft)
       drawLogoCommand = CommandModule.make_drawelement(bitmap,
                                     drawinstructions: drawLogoElement,
                                          createimage: true)
