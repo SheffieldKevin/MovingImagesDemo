@@ -46,6 +46,7 @@
 		6EBC3B8A1AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EBC3B891AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json */; };
 		6EBC3B8C1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EBC3B8B1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json */; };
 		6EBE1BDC1B30930000C41479 /* renderer_TextWithPerspectiveMovie.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EBE1BDB1B30930000C41479 /* renderer_TextWithPerspectiveMovie.json */; };
+		6EC024531B3879EA008CCADF /* renderer_SpinningLogoPerspective.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EC024521B3879EA008CCADF /* renderer_SpinningLogoPerspective.json */; };
 		6EC4C4141AC9983000314829 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C4131AC9983000314829 /* AppDelegate.swift */; };
 		6EC4C4161AC9983000314829 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EC4C4151AC9983000314829 /* Images.xcassets */; };
 		6EC4C4251AC9983000314829 /* MovingImages_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC4C4241AC9983000314829 /* MovingImages_DemoTests.swift */; };
@@ -137,6 +138,7 @@
 		6EBC3B891AD5D8730040D5DD /* simple_renderer_DrawTextInOval.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawTextInOval.json; sourceTree = "<group>"; };
 		6EBC3B8B1AD5FC5B0040D5DD /* simple_renderer_DrawTextInnerShadow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawTextInnerShadow.json; sourceTree = "<group>"; };
 		6EBE1BDB1B30930000C41479 /* renderer_TextWithPerspectiveMovie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_TextWithPerspectiveMovie.json; sourceTree = "<group>"; };
+		6EC024521B3879EA008CCADF /* renderer_SpinningLogoPerspective.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_SpinningLogoPerspective.json; sourceTree = "<group>"; };
 		6EC4C40E1AC9983000314829 /* MovingImages Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovingImages Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EC4C4121AC9983000314829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EC4C4131AC9983000314829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				6E74B31C1B0CC03400015E68 /* renderer_AZukini.json */,
 				6E02947A1B13CDA800D88559 /* renderer_AZukiniLogo.json */,
 				6EA6803F1B2855E300C88104 /* renderer_AddZukiniLogoToMovie.json */,
+				6EC024521B3879EA008CCADF /* renderer_SpinningLogoPerspective.json */,
 				6EF60D3B1B2DF89600B582B0 /* renderer_SaturationContrastMovie.json */,
 				6EBE1BDB1B30930000C41479 /* renderer_TextWithPerspectiveMovie.json */,
 				6ECE89BE1AD82E6700BE8FB0 /* Info.plist */,
@@ -507,6 +510,7 @@
 				6E0294771B1205BC00D88559 /* SpinnerPopover.xib in Resources */,
 				6ECE89C51AD82E6700BE8FB0 /* MainMenu.xib in Resources */,
 				6EA680401B2855E300C88104 /* renderer_AddZukiniLogoToMovie.json in Resources */,
+				6EC024531B3879EA008CCADF /* renderer_SpinningLogoPerspective.json in Resources */,
 				6EBE1BDC1B30930000C41479 /* renderer_TextWithPerspectiveMovie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

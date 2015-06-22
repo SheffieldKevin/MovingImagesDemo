@@ -260,7 +260,7 @@ def drawmovieframe_tobitmap(movie, bitmap, frametime)
   track_id = MovieTrackIdentifier.make_movietrackid_from_mediatype(
                                             mediatype: :vide,
                                            trackindex: 0)
-  rect = MIShapes.make_rectangle(width: 1280, height: 720)
+  rect = MIShapes.make_rectangle(width: $videoWidth, height: $videoHeight)
   drawFrameElement = MIDrawImageElement.new
   drawFrameElement.destinationrectangle = rect
   drawFrameElement.set_moviefile_imagesource(source_object: movie,
@@ -363,6 +363,38 @@ def make_applyfilter()
       processCommands.add_command(addImageToWriterInput)
     end
     
+    # The bitmap should already be drawn with angle = 0 and isFlipped = false.
+    
+    numFrames2 = 99
+    numFrames2.times do |index|
+      i = index + numFrames
+      fT = MovieTime.make_movietime(timevalue: 1001 * i,
+                                    timescale: 30000)
+      # nextFrame = MovieTime.make_movietime_nextsample()
+      drawFrameCommand = drawmovieframe_tobitmap(movieImporter, bitmap, fT)
+      processCommands.add_command(drawFrameCommand)
+      fraction = index.to_f / (numFrames2.to_f - 1.0)
+      fraction_pi = fraction * Math::PI
+      scaleF = 1.0 - 0.36 * Math.sqrt(fraction_pi) * Math.cos(fraction_pi)
+      xLoc = ($videoWidth - $zukiniLogoSize * scaleF) * 0.5
+      yLoc = ($videoHeight - $zukiniLogoSize * scaleF) * 0.5
+      dim = $zukiniLogoSize * scaleF
+      destRect = MIShapes.make_rectangle(width: dim, height: dim,
+                                         xloc: xLoc, yloc: yLoc)
+      drawFrameElement = MIDrawImageElement.new
+      drawFrameElement.interpolationquality = :kCGInterpolationHigh
+      drawFrameElement.destinationrectangle = destRect
+      drawFrameElement.set_bitmap_imagesource(source_object: logoBitmap)
+      drawCommand = CommandModule.make_drawelement(bitmap,
+                             drawinstructions: drawFrameElement)
+      processCommands.add_command(drawCommand)
+
+      processCommands.add_command(assignImageToCollection)
+      addImageToWriterInput = CommandModule.make_addimageto_videoinputwriter(
+          movieWriter, sourceobject: bitmap)
+      processCommands.add_command(addImageToWriterInput)
+    end
+
     # The process commands are now done.
     # Create finalize commands list. Save the movie, close objects.
     finalizeCommands = SmigCommands.new
