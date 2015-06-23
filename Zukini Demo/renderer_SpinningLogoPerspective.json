@@ -81350,10 +81350,10 @@
   },
   "variables": [
     {
-      "maxvalue": 2000.0,
+      "maxvalue": 1000.0,
       "variablekey": "camera",
       "defaultvalue": 800.0,
-      "minvalue": 600.0
+      "minvalue": 250.0
     }
   ],
   "exportfilename": "SpinningLogoOverVideoMovie.mov"
