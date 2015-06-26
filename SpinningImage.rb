@@ -147,7 +147,9 @@ def make_perspectivetransformfilter(sourceBitmap, targetBitmap)
     identifier: $perspectiveTransformFilterID)
 
   # Setting keep static means that the image is held onto and even if the
-  # source bitmap changes the input image remains unchanged.
+  # source bitmap changes the input image remains unchanged. False means that
+  # when ever filter chain is asked to render, the filter chain knows if it
+  # needs to update the input image or not.
   filter.add_inputimage_property(sourceBitmap, keep_static: false)
 
   # Need to work with idea of camera position. sourceBitmap has dimensions

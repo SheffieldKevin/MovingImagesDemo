@@ -205,6 +205,7 @@ class ZukiniDemoController: NSWindowController {
         let chooseFolderPanel = NSOpenPanel.new()
         chooseFolderPanel.canChooseDirectories = true
         chooseFolderPanel.canChooseFiles = false
+        chooseFolderPanel.canCreateDirectories = true
         chooseFolderPanel.beginSheetModalForWindow(window!, completionHandler:
         { result in
             if result == NSModalResponseOK {
