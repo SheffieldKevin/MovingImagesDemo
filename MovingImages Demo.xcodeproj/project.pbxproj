@@ -37,6 +37,7 @@
 		6E61EE251AFB667F000DAB79 /* simple_renderer_DrawArc.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E61EE241AFB667F000DAB79 /* simple_renderer_DrawArc.json */; };
 		6E74B31F1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E74B31E1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json */; };
 		6E77D9D21B3DB91400C89BBB /* renderer_CopyMachineTransition.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E77D9D11B3DB91400C89BBB /* renderer_CopyMachineTransition.json */; };
+		6E77D9D41B3DCA9300C89BBB /* renderer_BarsSwipeTransition.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E77D9D31B3DCA9300C89BBB /* renderer_BarsSwipeTransition.json */; };
 		6E8DE3FA1AD59C660029A64D /* simple_renderer_DrawText.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E8DE3F91AD59C660029A64D /* simple_renderer_DrawText.json */; };
 		6EA4D1751ADAAC9200A33936 /* simple_renderer_RobotArm.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EA4D1741ADAAC9200A33936 /* simple_renderer_RobotArm.json */; };
 		6EA4D1761ADE91EC00A33936 /* ZukiniUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */; };
@@ -133,6 +134,7 @@
 		6E74B31C1B0CC03400015E68 /* renderer_AZukini.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_AZukini.json; sourceTree = "<group>"; };
 		6E74B31E1B0F6A4B00015E68 /* simple_renderer_AZukiniLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_AZukiniLogo.json; sourceTree = "<group>"; };
 		6E77D9D11B3DB91400C89BBB /* renderer_CopyMachineTransition.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_CopyMachineTransition.json; sourceTree = "<group>"; };
+		6E77D9D31B3DCA9300C89BBB /* renderer_BarsSwipeTransition.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_BarsSwipeTransition.json; sourceTree = "<group>"; };
 		6E8DE3F91AD59C660029A64D /* simple_renderer_DrawText.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_DrawText.json; sourceTree = "<group>"; };
 		6EA4D1741ADAAC9200A33936 /* simple_renderer_RobotArm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_RobotArm.json; sourceTree = "<group>"; };
 		6EA6803D1B1F28DB00C88104 /* renderer_ZukiniGIF.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_ZukiniGIF.json; sourceTree = "<group>"; };
@@ -308,14 +310,15 @@
 			children = (
 				6E02947E1B1B46A400D88559 /* Movies */,
 				6E02947F1B1B46A400D88559 /* Pictures */,
-				6EA6803D1B1F28DB00C88104 /* renderer_ZukiniGIF.json */,
 				6E74B31C1B0CC03400015E68 /* renderer_AZukini.json */,
 				6E02947A1B13CDA800D88559 /* renderer_AZukiniLogo.json */,
 				6EA6803F1B2855E300C88104 /* renderer_AddZukiniLogoToMovie.json */,
+				6E77D9D31B3DCA9300C89BBB /* renderer_BarsSwipeTransition.json */,
 				6E77D9D11B3DB91400C89BBB /* renderer_CopyMachineTransition.json */,
 				6EC024521B3879EA008CCADF /* renderer_SpinningLogoPerspective.json */,
 				6EF60D3B1B2DF89600B582B0 /* renderer_SaturationContrastMovie.json */,
 				6EBE1BDB1B30930000C41479 /* renderer_TextWithPerspectiveMovie.json */,
+				6EA6803D1B1F28DB00C88104 /* renderer_ZukiniGIF.json */,
 				6ECE89BE1AD82E6700BE8FB0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -515,6 +518,7 @@
 				6ECE89C51AD82E6700BE8FB0 /* MainMenu.xib in Resources */,
 				6EA680401B2855E300C88104 /* renderer_AddZukiniLogoToMovie.json in Resources */,
 				6EC024531B3879EA008CCADF /* renderer_SpinningLogoPerspective.json in Resources */,
+				6E77D9D41B3DCA9300C89BBB /* renderer_BarsSwipeTransition.json in Resources */,
 				6EBE1BDC1B30930000C41479 /* renderer_TextWithPerspectiveMovie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
