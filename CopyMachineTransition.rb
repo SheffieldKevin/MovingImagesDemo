@@ -22,7 +22,7 @@ $videoHeight = 720.0
 # now.
 def make_copymachinetransitionfilter(sourceImage, targetImage, targetBitmap)
   filterChain = MIFilterChain.new(targetBitmap)
-
+  filterChain.use_srgbprofile = true
   imageSourceID = SmigIDHash.make_imageidentifier(sourceImage)
   imageTargetID = SmigIDHash.make_imageidentifier(targetImage)
   filter = MIFilters::MITransitionFilter.new(:CICopyMachineTransition,
@@ -127,7 +127,8 @@ def make_applyfilter()
     bitmap = setupCommands.make_createbitmapcontext(
                               size: frameSize,
                             preset: :PlatformDefaultBitmapContext,
-                      addtocleanup: false)
+                      addtocleanup: false,
+                           profile: :kCGColorSpaceGenericRGB)
 
     sourceImageID = SecureRandom.uuid
     targetImageID = SecureRandom.uuid
@@ -185,13 +186,11 @@ def make_applyfilter()
 
     numFrames1.times do |i|
       fT = MovieTime.make_movietime(timevalue: 1201 * i, timescale: 36000)
-#      add_movieframe_tocollection(movieImporter1,
-#            collection_identifier: sourceImageID,
-#                        frametime: frameTime)
+      assignFinal = add_movieframe_tocollection(movieImporter1,
+                         collection_identifier: finalImageID,
+                                     frametime: fT)
+      processCommands.add_command(assignFinal)
 
-      drawFrameCommand = drawmovieframe_tobitmap(movieImporter1, bitmap, fT)
-      processCommands.add_command(drawFrameCommand)
-      processCommands.add_command(assignImageToCollection)
       # All the drawing is done now. Need to add the drawing to the video writer
       addImageToWriterInput = CommandModule.make_addimageto_videoinputwriter(
                                                            movieWriter,
@@ -230,10 +229,14 @@ def make_applyfilter()
     numFrames3.times do |index|
       i = numFrames2 + index
       fT = MovieTime.make_movietime(timevalue: 1201 * i, timescale: 36000)
+      assignFinal = add_movieframe_tocollection(movieImporter2,
+                         collection_identifier: finalImageID,
+                                     frametime: fT)
+      processCommands.add_command(assignFinal)
 
-      drawFrameCommand = drawmovieframe_tobitmap(movieImporter2, bitmap, fT)
-      processCommands.add_command(drawFrameCommand)
-      processCommands.add_command(assignImageToCollection)
+#      drawFrameCommand = drawmovieframe_tobitmap(movieImporter2, bitmap, fT)
+#      processCommands.add_command(drawFrameCommand)
+#      processCommands.add_command(assignImageToCollection)
       # All the drawing is done now. Need to add the drawing to the video writer
       addImageToWriterInput = CommandModule.make_addimageto_videoinputwriter(
                                                            movieWriter,
@@ -271,12 +274,11 @@ def make_applyfilter()
                         yloc: "($height - $width * #{scaleFactor}) * 0.5")
 =begin
     drawToView.set_bitmap_imagesource(source_object: logoBitmap)
-    scaleFactor = $videoHeight.to_f / $videoWidth.to_f
     destinationRect = MIShapes.make_rectangle(
-                       width: $zukiniLogoSize,
-                      height: $zukiniLogoSize,
-                        xloc: "($width - #{$zukiniLogoSize}) * 0.5",
-                        yloc: "($height - #{$zukiniLogoSize}) * 0.5")
+                       width: $videoWidth,
+                      height: $videoHeight,
+                        xloc: "($width - #{$videoWidth}) * 0.5",
+                        yloc: "($height - #{$videoHeight}) * 0.5")
 =end
     drawToView.destinationrectangle = destinationRect
 
