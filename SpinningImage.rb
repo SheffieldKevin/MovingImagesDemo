@@ -145,6 +145,7 @@ def make_perspectivetransformfilter(sourceBitmap, targetBitmap)
   filterChain = MIFilterChain.new(targetBitmap)
   filter = MIFilter.new(:CIPerspectiveTransform,
     identifier: $perspectiveTransformFilterID)
+  filterChain.softwarerender = false # false is the default so actually unneeded
 
   # Setting keep static means that the image is held onto and even if the
   # source bitmap changes the input image remains unchanged. False means that
