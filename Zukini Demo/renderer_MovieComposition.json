@@ -1,0 +1,406 @@
+{
+  "setup": {
+    "commands": [
+      {
+        "command": "create",
+        "objecttype": "movieimporter",
+        "file": "~/DummyMovie.mov",
+        "objectname": "ea9cd7d4-45df-4028-bf6b-b7d7c31e4736",
+        "pathsubstitution": "movie1path"
+      },
+      {
+        "command": "create",
+        "objecttype": "movieimporter",
+        "file": "~/DummyMovie.mov",
+        "objectname": "573ed259-4cac-4a4f-85b3-c25d5018dbcb",
+        "pathsubstitution": "movie2path"
+      },
+      {
+        "command": "create",
+        "objecttype": "movieeditor",
+        "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+      },
+      {
+        "command": "createtrack",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "mediatype": "vide"
+      },
+      {
+        "command": "createtrack",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "mediatype": "vide"
+      },
+      {
+        "command": "create",
+        "objecttype": "bitmapcontext",
+        "objectname": "c8838c25-730e-4a60-bbe6-39b0df81a088",
+        "size": {
+          "width": 800,
+          "height": 600
+        },
+        "colorprofile": "kCGColorSpaceGenericRGB",
+        "preset": "PlatformDefaultBitmapContext"
+      }
+    ]
+  },
+  "process": {
+    "commands": [
+      {
+        "command": "inserttracksegment",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "track": {
+          "trackindex": 0,
+          "mediatype": "vide"
+        },
+        "sourceobject": {
+          "objecttype": "movieimporter",
+          "objectname": "ea9cd7d4-45df-4028-bf6b-b7d7c31e4736"
+        },
+        "sourcetrack": {
+          "trackindex": 0,
+          "mediatype": "vide"
+        },
+        "insertiontime": {
+          "value": 0,
+          "timescale": 1,
+          "flags": 1,
+          "epoch": 0
+        },
+        "sourcetimerange": {
+          "start": {
+            "value": 0,
+            "timescale": 1,
+            "flags": 1,
+            "epoch": 0
+          },
+          "duration": {
+            "value": 10,
+            "timescale": 1,
+            "flags": 1,
+            "epoch": 0
+          }
+        }
+      },
+      {
+        "command": "inserttracksegment",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "track": {
+          "trackindex": 1,
+          "mediatype": "vide"
+        },
+        "sourceobject": {
+          "objecttype": "movieimporter",
+          "objectname": "573ed259-4cac-4a4f-85b3-c25d5018dbcb"
+        },
+        "sourcetrack": {
+          "trackindex": 0,
+          "mediatype": "vide"
+        },
+        "insertiontime": {
+          "value": 0,
+          "timescale": 1,
+          "flags": 1,
+          "epoch": 0
+        },
+        "sourcetimerange": {
+          "start": {
+            "value": 0,
+            "timescale": 1,
+            "flags": 1,
+            "epoch": 0
+          },
+          "duration": {
+            "value": 10,
+            "timescale": 1,
+            "flags": 1,
+            "epoch": 0
+          }
+        }
+      },
+      {
+        "command": "addmovieinstruction",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "timerange": {
+          "start": {
+            "value": 0,
+            "timescale": 1,
+            "flags": 1,
+            "epoch": 0
+          },
+          "duration": {
+            "value": 2,
+            "timescale": 1,
+            "flags": 1,
+            "epoch": 0
+          }
+        },
+        "layerinstructions": [
+          {
+            "layerinstructiontype": "passthruinstruction",
+            "track": {
+              "trackindex": 0,
+              "mediatype": "vide"
+            }
+          }
+        ]
+      },
+      {
+        "command": "addmovieinstruction",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "timerange": {
+          "start": {
+            "value": 2,
+            "timescale": 1,
+            "flags": 1,
+            "epoch": 0
+          },
+          "duration": {
+            "timeinseconds": "$transdur1"
+          }
+        },
+        "layerinstructions": [
+          {
+            "layerinstructiontype": "opacityramp",
+            "startrampvalue": 1.0,
+            "endrampvalue": 0.0,
+            "track": {
+              "trackindex": 0,
+              "mediatype": "vide"
+            },
+            "timerange": {
+              "start": {
+                "value": 2,
+                "timescale": 1,
+                "flags": 1,
+                "epoch": 0
+              },
+              "duration": {
+                "timeinseconds": "$transdur1"
+              }
+            }
+          },
+          {
+            "layerinstructiontype": "passthruinstruction",
+            "track": {
+              "trackindex": 1,
+              "mediatype": "vide"
+            }
+          }
+        ]
+      },
+      {
+        "command": "addmovieinstruction",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "timerange": {
+          "start": {
+            "timeinseconds": "2.0 + $transdur1"
+          },
+          "duration": {
+            "value": 2,
+            "timescale": 1,
+            "flags": 1,
+            "epoch": 0
+          }
+        },
+        "layerinstructions": [
+          {
+            "layerinstructiontype": "passthruinstruction",
+            "track": {
+              "trackindex": 1,
+              "mediatype": "vide"
+            }
+          }
+        ]
+      },
+      {
+        "command": "addmovieinstruction",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "timerange": {
+          "start": {
+            "timeinseconds": "4.0 + $transdur1"
+          },
+          "duration": {
+            "timeinseconds": "$transdur2"
+          }
+        },
+        "layerinstructions": [
+          {
+            "layerinstructiontype": "transformramp",
+            "startrampvalue": {
+              "m11": 1.0,
+              "m12": 0.0,
+              "m21": 0.0,
+              "m22": 1.0,
+              "tX": 0.0,
+              "tY": 0.0
+            },
+            "endrampvalue": [
+              {
+                "transformationtype": "scale",
+                "scale": {
+                  "x": 0.0,
+                  "y": 1.0
+                }
+              }
+            ],
+            "track": {
+              "trackindex": 1,
+              "mediatype": "vide"
+            },
+            "timerange": {
+              "start": {
+                "timeinseconds": "4.0 + $transdur1"
+              },
+              "duration": {
+                "timeinseconds": "$transdur2"
+              }
+            }
+          },
+          {
+            "layerinstructiontype": "passthruinstruction",
+            "track": {
+              "trackindex": 0,
+              "mediatype": "vide"
+            }
+          }
+        ]
+      },
+      {
+        "command": "addmovieinstruction",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "timerange": {
+          "start": {
+            "timeinseconds": "4.0 + $transdur1 + $transdur2"
+          },
+          "duration": {
+            "timeinseconds": "6.0 - ($transdur1 + $transdur2)"
+          }
+        },
+        "layerinstructions": [
+          {
+            "layerinstructiontype": "passthruinstruction",
+            "track": {
+              "trackindex": 0,
+              "mediatype": "vide"
+            }
+          }
+        ]
+      },
+      {
+        "command": "assignimagetocollection",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "imageidentifier": "086e2d76-e15c-4b1e-bb6b-a9851d2f5ae8"
+      },
+      {
+        "command": "export",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        },
+        "preset": "AVAssetExportPreset1280x720",
+        "file": "DummyPath.mov",
+        "utifiletype": "com.apple.quicktime-movie",
+        "pathsubstitution": "exportfilepath"
+      }
+    ],
+    "runasynchronously": true
+  },
+  "finalize": {
+    "commands": [
+
+    ],
+    "cleanupcommands": [
+      {
+        "command": "close",
+        "receiverobject": {
+          "objecttype": "movieimporter",
+          "objectname": "ea9cd7d4-45df-4028-bf6b-b7d7c31e4736"
+        }
+      },
+      {
+        "command": "close",
+        "receiverobject": {
+          "objecttype": "movieimporter",
+          "objectname": "573ed259-4cac-4a4f-85b3-c25d5018dbcb"
+        }
+      },
+      {
+        "command": "close",
+        "receiverobject": {
+          "objecttype": "bitmapcontext",
+          "objectname": "c8838c25-730e-4a60-bbe6-39b0df81a088"
+        }
+      },
+      {
+        "command": "close",
+        "receiverobject": {
+          "objecttype": "movieeditor",
+          "objectname": "c5a70825-da5e-4d4c-88c9-75eaebbceb5f"
+        }
+      },
+      {
+        "command": "removeimagefromcollection",
+        "imageidentifier": "086e2d76-e15c-4b1e-bb6b-a9851d2f5ae8"
+      }
+    ]
+  },
+  "drawinstructions": {
+    "elementtype": "drawimage",
+    "imageidentifier": "086e2d76-e15c-4b1e-bb6b-a9851d2f5ae8",
+    "destinationrectangle": {
+      "origin": {
+        "x": 0,
+        "y": "($height - $width * 0.6) * 0.5"
+      },
+      "size": {
+        "width": "$width",
+        "height": "$width * 0.6"
+      }
+    }
+  },
+  "variables": [
+    {
+      "maxvalue": 2.5,
+      "variablekey": "transdur1",
+      "defaultvalue": 1.5,
+      "minvalue": 0.5
+    },
+    {
+      "maxvalue": 2.5,
+      "variablekey": "transdur2",
+      "defaultvalue": 1.5,
+      "minvalue": 0.5
+    }
+  ],
+  "exportfilename": "VideoCompositionMovie.mov"
+}
