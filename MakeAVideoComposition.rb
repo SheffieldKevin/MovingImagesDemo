@@ -19,9 +19,6 @@ include MIMovie
 # any sort of transition is 2 seconds. The movie length will be:
 # 3 * 2 seconds + transdur1 + transdur2
 
-$videoWidth = 1280.0
-$videoHeight = 720.0
-
 def make_videocomposition()
   # Constants
   instructionHash = {}
@@ -150,6 +147,7 @@ def make_videocomposition()
                                     layerinstructions: passThru2)
     processCommands.add_command(passThru2Command)
 
+    # Now add a transform ramp layer instruction.
     transformRampTimeRange = MovieTime.make_movie_timerange(
                                               start: secondTransitionStartTime,
                                            duration: secondTransitionDuration)

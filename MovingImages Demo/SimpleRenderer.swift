@@ -83,7 +83,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                             self.configureWithJSON(jsonDict)
                         }
                         else {
-                            println("Invaid JSON dictionary")
+                            println("Invalid JSON dictionary")
                         }
                 }
                 else {
