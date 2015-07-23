@@ -97,6 +97,7 @@ class ZukiniDemoController: NSWindowController {
     @IBOutlet weak var processButton: NSButton!
     @IBOutlet weak var finalizeButton: NSButton!
     @IBOutlet weak var assignDestinationButton: NSButton!
+    @IBOutlet weak var openFile: NSButton!
     
     // MARK: @IBActions
     @IBAction func addSpinner(sender: AnyObject) {
@@ -196,7 +197,12 @@ class ZukiniDemoController: NSWindowController {
     }
 
     @IBAction func doFinalizeCommands(#sender: AnyObject) {
-        self.performFinalizeCommands()
+        if self.performFinalizeCommands() && openFile.integerValue != 0 {
+            let fileName = self.exportMediaFilename.stringValue
+            let folderPath = self.exportFolderLocation
+            let filePath = folderPath.stringByAppendingPathComponent(fileName)
+            NSWorkspace.sharedWorkspace().openFile(filePath)
+        }
     }
 
     @IBAction func exportDestination(#sender: AnyObject) {
@@ -231,6 +237,13 @@ class ZukiniDemoController: NSWindowController {
         if let theWindow = self.window {
             theWindow.backgroundColor = NSColor(deviceWhite: 0.15, alpha: 1.0)
         }
+        openFile.toolTip = "Open the movie after it has been generated"
+        var attributedString = openFile.attributedTitle.mutableCopy() as! NSMutableAttributedString
+        let stringRange = NSRange(location: 0, length: attributedString.length)
+        attributedString.addAttribute(NSForegroundColorAttributeName,
+            value: NSColor.whiteColor(), range: stringRange)
+
+        openFile.attributedTitle = attributedString.copy() as! NSAttributedString
         
         // Setup the spinner controls.
         spinners.append(spinnerOne)
@@ -462,7 +475,6 @@ class ZukiniDemoController: NSWindowController {
             self.updateVariables()
         }
         
-        
         self.hasSetupRun = false
         self.canProcess = false
         self.canDoFinalize = false
@@ -594,8 +606,6 @@ extension ZukiniDemoController: SpinnerDelegate {
     func spinnerValueChanged() {
         self.updateVariables()
         self.rendererView.needsDisplay = true
-    //    self.performProcessCommands(progressHandler: self.progressHandler,
-    //    completionHandler: self.processCompletionHandler)
     }
     
     func spinnersModified() {

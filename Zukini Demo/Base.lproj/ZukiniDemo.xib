@@ -16,6 +16,7 @@
                 <outlet property="jsonTextView" destination="k2u-qq-YDH" id="xXr-Io-Ylw"/>
                 <outlet property="movieInput1" destination="vgj-KH-5A3" id="6MB-Sz-gqr"/>
                 <outlet property="movieInput2" destination="rkd-Q2-yKR" id="WRo-qd-vFw"/>
+                <outlet property="openFile" destination="pnA-d2-7X2" id="DmV-oG-f3G"/>
                 <outlet property="processButton" destination="fTT-3F-TcR" id="N4D-5f-Dl0"/>
                 <outlet property="removeSpinner" destination="FcI-kL-9jH" id="loz-Rm-mfz"/>
                 <outlet property="rendererView" destination="cZu-b1-qq6" id="Uar-JM-ZBl"/>
@@ -202,8 +203,8 @@
                             <action selector="exportDestinationWithSender:" target="-2" id="DXH-6S-kMo"/>
                         </connections>
                     </button>
-                    <popUpButton verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vgj-KH-5A3">
-                        <rect key="frame" x="104" y="81" width="152" height="19"/>
+                    <popUpButton verticalHuggingPriority="750" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vgj-KH-5A3">
+                        <rect key="frame" x="106" y="81" width="152" height="19"/>
                         <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0fS-ca-QPk">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -213,7 +214,7 @@
                             <action selector="movieSelected:" target="-2" id="m6e-Tx-9Wp"/>
                         </connections>
                     </popUpButton>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="k6c-GA-xAv">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" placeholderIntrinsicWidth="76" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="k6c-GA-xAv">
                         <rect key="frame" x="18" y="83" width="80" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Movie Input1:" id="csT-hK-K1f">
                             <font key="font" metaFont="smallSystem"/>
@@ -243,7 +244,7 @@
                             <binding destination="-2" name="enabled" keyPath="self.canDoFinalize" id="vWw-sa-DLe"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-sX-xgH">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" placeholderIntrinsicWidth="76" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-sX-xgH">
                         <rect key="frame" x="18" y="58" width="80" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Movie Input2:" id="tIY-cH-Pds">
                             <font key="font" metaFont="smallSystem"/>
@@ -272,8 +273,8 @@
                             <action selector="importJSONWithSender:" target="-2" id="KVL-Cn-ZcM"/>
                         </connections>
                     </button>
-                    <popUpButton verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rkd-Q2-yKR">
-                        <rect key="frame" x="104" y="56" width="152" height="19"/>
+                    <popUpButton verticalHuggingPriority="750" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rkd-Q2-yKR">
+                        <rect key="frame" x="106" y="56" width="152" height="19"/>
                         <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNH-OB-8Eu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -283,6 +284,13 @@
                             <action selector="movieSelected:" target="-2" id="xef-u9-AKb"/>
                         </connections>
                     </popUpButton>
+                    <button placeholderIntrinsicWidth="73" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="pnA-d2-7X2">
+                        <rect key="frame" x="476" y="84" width="78" height="20"/>
+                        <buttonCell key="cell" type="check" title="Open file" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="NJG-7L-kyh">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="DeA-sX-xgH" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="0qk-VA-p33"/>
@@ -291,15 +299,16 @@
                     <constraint firstAttribute="bottom" secondItem="Z4d-Jj-ETc" secondAttribute="bottom" constant="108" id="6Px-GH-SXp"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Dqn-QZ-47q"/>
                     <constraint firstItem="flh-mG-rbv" firstAttribute="leading" secondItem="h7J-kt-AmM" secondAttribute="trailing" constant="8" id="GMq-WL-1zq"/>
-                    <constraint firstItem="rkd-Q2-yKR" firstAttribute="leading" secondItem="DeA-sX-xgH" secondAttribute="trailing" constant="8" id="GaS-JQ-qJo"/>
+                    <constraint firstItem="rkd-Q2-yKR" firstAttribute="leading" secondItem="DeA-sX-xgH" secondAttribute="trailing" constant="10" id="GaS-JQ-qJo"/>
                     <constraint firstAttribute="bottom" secondItem="XIu-sy-yrV" secondAttribute="bottom" constant="19" id="HNS-7G-Job"/>
                     <constraint firstItem="cZu-b1-qq6" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="38" id="HuW-Xb-bF9"/>
                     <constraint firstAttribute="bottom" secondItem="6hE-YR-T1e" secondAttribute="bottom" constant="19" id="IZu-r5-FKd"/>
                     <constraint firstAttribute="bottom" secondItem="vgj-KH-5A3" secondAttribute="bottom" constant="82" id="Nqr-3k-zhh"/>
                     <constraint firstItem="k6c-GA-xAv" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="PHX-ei-0fO"/>
-                    <constraint firstItem="vgj-KH-5A3" firstAttribute="leading" secondItem="k6c-GA-xAv" secondAttribute="trailing" constant="8" id="RZz-WF-BWr"/>
+                    <constraint firstItem="vgj-KH-5A3" firstAttribute="leading" secondItem="k6c-GA-xAv" secondAttribute="trailing" constant="10" id="RZz-WF-BWr"/>
                     <constraint firstItem="h7J-kt-AmM" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Rcl-4v-keS"/>
                     <constraint firstAttribute="bottom" secondItem="9FT-ds-Cep" secondAttribute="bottom" constant="134" id="SNT-AM-sfS"/>
+                    <constraint firstAttribute="bottom" secondItem="pnA-d2-7X2" secondAttribute="bottom" constant="87" id="ShI-Lv-1j9"/>
                     <constraint firstItem="6hE-YR-T1e" firstAttribute="trailing" secondItem="9FT-ds-Cep" secondAttribute="trailing" id="Y7a-nG-fTK"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="trailing" secondItem="Z4d-Jj-ETc" secondAttribute="trailing" id="YiF-bX-Ajc"/>
                     <constraint firstItem="6hE-YR-T1e" firstAttribute="leading" secondItem="XIu-sy-yrV" secondAttribute="trailing" constant="8" id="b67-PE-SbA"/>
@@ -312,6 +321,7 @@
                     <constraint firstAttribute="bottom" secondItem="fTT-3F-TcR" secondAttribute="bottom" constant="108" id="fJ4-V8-CqH"/>
                     <constraint firstItem="Z4d-Jj-ETc" firstAttribute="leading" secondItem="fTT-3F-TcR" secondAttribute="trailing" constant="8" id="fTG-Ht-chV"/>
                     <constraint firstAttribute="bottom" secondItem="leB-cp-iFV" secondAttribute="bottom" constant="108" id="gij-Xb-hmu"/>
+                    <constraint firstItem="pnA-d2-7X2" firstAttribute="leading" secondItem="Z4d-Jj-ETc" secondAttribute="leading" constant="2" id="hFQ-J2-MWr"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="38" id="hjj-Nb-1Me"/>
                     <constraint firstAttribute="trailing" secondItem="cZu-b1-qq6" secondAttribute="trailing" constant="20" id="i91-Vq-g4N"/>
                     <constraint firstAttribute="bottom" secondItem="ULL-n6-KJ6" secondAttribute="bottom" constant="20" id="l63-9X-VsX"/>
