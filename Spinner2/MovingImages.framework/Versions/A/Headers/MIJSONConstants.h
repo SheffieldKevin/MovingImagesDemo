@@ -1903,7 +1903,7 @@ extern NSString *const MIJSONValueMovieVideoWriterPresetH264_SD;
 /// Video writer preset which uses jpeg for compressing data. "jpegpreset"
 extern NSString *const MIJSONValueMovieVideoWriterPresetJPEG;
 
-/// Video writer preset which uses the pro res 4444 codec. "prores444preset"
+/// Video writer preset which uses the pro res 4444 codec. "prores4444preset"
 extern NSString *const MIJSONValueMovieVideoWriterPresetProRes4444;
 
 /// Video writer preset which uses the pro res 422 codec. "prores422preset"

@@ -19,7 +19,7 @@
 @property (nullable, nonatomic, copy) NSDictionary *variables;
 
 /// Instantiating the renderer. Designated initializer.
--(instancetype)initWithMIContext:(MIContext *)miContext;
+-(instancetype)initWithMIContext:(MIContext *)miContext NS_DESIGNATED_INITIALIZER;
 
 // Convenience initializer.
 -(instancetype)init;

@@ -76,7 +76,7 @@ NSDictionary *MIMovingImagesHandleCommands(MIContext * __nullable context,
                                 __nullable MICommandCompletionHandler handler);
 
 /**
- @brief Generate a MICGImage using object represented by objectDict and options.
+ @brief Create a CGImage using object represented by objectDict and options.
  @discussion The contents of the option dictionary should change depending on
  the object described in objectDict. A bitmap context takes no options whereas
  a movie importer object requires the frame time to be specified, while an image
@@ -88,9 +88,9 @@ NSDictionary *MIMovingImagesHandleCommands(MIContext * __nullable context,
  @param cantBeThisObject    This object is not available to get the image from
  @result a MICGImage wrapping a CGImageRef and returns nil on failure.
 */
- MICGImage * __nullable MICGImageFromObjectAndOptions(MIContext * __nullable context,
+CGImageRef __nullable MICreateImageFromObjectAndOptions(MIContext * __nullable context,
         NSDictionary *objectDict, NSDictionary * __nullable imageOptions,
-        id __nullable cantBeThisObject);
+        id __nullable cantBeThisObject) CF_RETURNS_RETAINED;
 
 /**
  @brief Generate a MICGImage based on the properties of the image dictionary.
@@ -99,9 +99,10 @@ NSDictionary *MIMovingImagesHandleCommands(MIContext * __nullable context,
  is not specified then MICGImageFromDictionary will determine the object to
  create the image and get the image options from the image dictionary and then
  call MICGImageFromObjectAndOptions to create the image.
-*/
+
 MICGImage * __nullable MICGImageFromDictionary(MIContext * __nullable context,
         NSDictionary *imageDict, id __nullable cantBeThisObject);
+*/
 
 /**
  @brief Get a Integer value from a string. Uses DDMathParser to get the number

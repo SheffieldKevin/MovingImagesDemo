@@ -121,6 +121,7 @@
 		6E02947A1B13CDA800D88559 /* renderer_AZukiniLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = renderer_AZukiniLogo.json; sourceTree = "<group>"; };
 		6E02947E1B1B46A400D88559 /* Movies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Movies; sourceTree = "<group>"; };
 		6E02947F1B1B46A400D88559 /* Pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pictures; sourceTree = "<group>"; };
+		6E346A361B6106D300811D79 /* MovingImagesBridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovingImagesBridgingHeader.h; sourceTree = SOURCE_ROOT; };
 		6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_Bluecamera.json; sourceTree = "<group>"; };
 		6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_Fillrect.json; sourceTree = "<group>"; };
 		6E3FF0B21AD544E700AD45AD /* simple_renderer_Strokeoval.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simple_renderer_Strokeoval.json; sourceTree = "<group>"; };
@@ -246,6 +247,7 @@
 				6EC4C4381AC9BD6B00314829 /* SimpleRendererView.swift */,
 				6E61EE171AF5004A000DAB79 /* SpinnerPopoverController.swift */,
 				6ECE89DC1AD830B800BE8FB0 /* ZukiniUtilities.swift */,
+				6E346A361B6106D300811D79 /* MovingImagesBridgingHeader.h */,
 			);
 			path = "MovingImages Demo";
 			sourceTree = "<group>";
@@ -660,6 +662,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = MovingImagesBridgingHeader.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -697,6 +700,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = MovingImagesBridgingHeader.h;
 			};
 			name = Release;
 		};
