@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ZukiniDemoController" customModule="Zukini_Demo" customModuleProvider="target">
@@ -13,8 +13,6 @@
                 <outlet property="exampleList" destination="flh-mG-rbv" id="F8R-Hm-lN3"/>
                 <outlet property="exportMediaFilename" destination="1Dh-2W-k04" id="cMX-6k-SdW"/>
                 <outlet property="finalizeButton" destination="Z4d-Jj-ETc" id="avs-5b-vB8"/>
-                <outlet property="imageInput1" destination="bl8-Eq-7pY" id="ZX0-u6-l1h"/>
-                <outlet property="imageInput2" destination="4eF-jx-dDP" id="x4k-0u-MyQ"/>
                 <outlet property="jsonTextView" destination="k2u-qq-YDH" id="xXr-Io-Ylw"/>
                 <outlet property="movieInput1" destination="vgj-KH-5A3" id="6MB-Sz-gqr"/>
                 <outlet property="movieInput2" destination="rkd-Q2-yKR" id="WRo-qd-vFw"/>
@@ -53,10 +51,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="528" height="502"/>
+                                    <size key="minSize" width="513" height="487"/>
                                     <size key="maxSize" width="10000000" height="10000000"/>
                                     <color key="insertionPointColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="528" height="502"/>
+                                    <size key="minSize" width="513" height="487"/>
                                     <size key="maxSize" width="10000000" height="10000000"/>
                                     <connections>
                                         <outlet property="delegate" destination="-2" id="jWE-Jn-VDG"/>
@@ -223,25 +221,6 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <popUpButton verticalHuggingPriority="750" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="bl8-Eq-7pY">
-                        <rect key="frame" x="400" y="81" width="152" height="19"/>
-                        <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ILQ-7r-gyz">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                            <menu key="menu" id="Pe0-16-viK"/>
-                        </popUpButtonCell>
-                        <connections>
-                            <action selector="imageSelected:" target="-2" id="o7l-XR-VXR"/>
-                        </connections>
-                    </popUpButton>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="9rI-Gj-bKv">
-                        <rect key="frame" x="316" y="83" width="78" height="14"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Image Input1:" id="WDo-RQ-Gnx">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fTT-3F-TcR">
                         <rect key="frame" x="387" y="102" width="87" height="28"/>
                         <buttonCell key="cell" type="push" title="Do Process" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CmT-Pw-bR3">
@@ -267,25 +246,6 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-sX-xgH">
                         <rect key="frame" x="18" y="58" width="80" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Movie Input2:" id="tIY-cH-Pds">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <popUpButton verticalHuggingPriority="750" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-jx-dDP">
-                        <rect key="frame" x="400" y="56" width="152" height="19"/>
-                        <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vpf-Ba-Qyq">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                            <menu key="menu" id="709-aV-amJ"/>
-                        </popUpButtonCell>
-                        <connections>
-                            <action selector="imageSelected:" target="-2" id="S4U-cC-ayC"/>
-                        </connections>
-                    </popUpButton>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="55" placeholderIntrinsicHeight="14" translatesAutoresizingMaskIntoConstraints="NO" id="nMm-0D-5tA">
-                        <rect key="frame" x="316" y="58" width="78" height="14"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Image input2:" id="Tcn-sP-3Ta">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -327,7 +287,6 @@
                 <constraints>
                     <constraint firstItem="DeA-sX-xgH" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="0qk-VA-p33"/>
                     <constraint firstItem="ULL-n6-KJ6" firstAttribute="leading" secondItem="cZu-b1-qq6" secondAttribute="leading" id="1Ku-Hl-7LO"/>
-                    <constraint firstAttribute="bottom" secondItem="nMm-0D-5tA" secondAttribute="bottom" constant="58" id="2mg-SR-gac"/>
                     <constraint firstAttribute="bottom" secondItem="rkd-Q2-yKR" secondAttribute="bottom" constant="57" id="5Ue-Wy-HsU"/>
                     <constraint firstAttribute="bottom" secondItem="Z4d-Jj-ETc" secondAttribute="bottom" constant="108" id="6Px-GH-SXp"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Dqn-QZ-47q"/>
@@ -336,9 +295,7 @@
                     <constraint firstAttribute="bottom" secondItem="XIu-sy-yrV" secondAttribute="bottom" constant="19" id="HNS-7G-Job"/>
                     <constraint firstItem="cZu-b1-qq6" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="38" id="HuW-Xb-bF9"/>
                     <constraint firstAttribute="bottom" secondItem="6hE-YR-T1e" secondAttribute="bottom" constant="19" id="IZu-r5-FKd"/>
-                    <constraint firstItem="9FT-ds-Cep" firstAttribute="trailing" secondItem="bl8-Eq-7pY" secondAttribute="trailing" id="MV7-8i-KVf"/>
                     <constraint firstAttribute="bottom" secondItem="vgj-KH-5A3" secondAttribute="bottom" constant="82" id="Nqr-3k-zhh"/>
-                    <constraint firstAttribute="bottom" secondItem="9rI-Gj-bKv" secondAttribute="bottom" constant="83" id="Oge-nX-PuQ"/>
                     <constraint firstItem="k6c-GA-xAv" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="PHX-ei-0fO"/>
                     <constraint firstItem="vgj-KH-5A3" firstAttribute="leading" secondItem="k6c-GA-xAv" secondAttribute="trailing" constant="8" id="RZz-WF-BWr"/>
                     <constraint firstItem="h7J-kt-AmM" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Rcl-4v-keS"/>
@@ -351,22 +308,17 @@
                     <constraint firstItem="cZu-b1-qq6" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="560" id="d2s-pg-GiP"/>
                     <constraint firstAttribute="bottom" secondItem="k6c-GA-xAv" secondAttribute="bottom" constant="83" id="ddW-tV-qz8"/>
                     <constraint firstAttribute="bottom" secondItem="DeA-sX-xgH" secondAttribute="bottom" constant="58" id="eWs-P7-j5U"/>
-                    <constraint firstItem="9FT-ds-Cep" firstAttribute="trailing" secondItem="4eF-jx-dDP" secondAttribute="trailing" id="ef6-Ql-w5A"/>
                     <constraint firstItem="ULL-n6-KJ6" firstAttribute="top" secondItem="cZu-b1-qq6" secondAttribute="bottom" constant="18" id="fDT-Oy-CFm"/>
                     <constraint firstAttribute="bottom" secondItem="fTT-3F-TcR" secondAttribute="bottom" constant="108" id="fJ4-V8-CqH"/>
                     <constraint firstItem="Z4d-Jj-ETc" firstAttribute="leading" secondItem="fTT-3F-TcR" secondAttribute="trailing" constant="8" id="fTG-Ht-chV"/>
                     <constraint firstAttribute="bottom" secondItem="leB-cp-iFV" secondAttribute="bottom" constant="108" id="gij-Xb-hmu"/>
                     <constraint firstItem="9FT-ds-Cep" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="38" id="hjj-Nb-1Me"/>
                     <constraint firstAttribute="trailing" secondItem="cZu-b1-qq6" secondAttribute="trailing" constant="20" id="i91-Vq-g4N"/>
-                    <constraint firstAttribute="bottom" secondItem="bl8-Eq-7pY" secondAttribute="bottom" constant="82" id="iu9-VF-fGj"/>
                     <constraint firstAttribute="bottom" secondItem="ULL-n6-KJ6" secondAttribute="bottom" constant="20" id="l63-9X-VsX"/>
                     <constraint firstAttribute="bottom" secondItem="h7J-kt-AmM" secondAttribute="bottom" constant="21" id="mFv-BF-fBG"/>
-                    <constraint firstAttribute="bottom" secondItem="4eF-jx-dDP" secondAttribute="bottom" constant="57" id="naR-ld-XQq"/>
                     <constraint firstAttribute="bottom" secondItem="spP-D9-dhu" secondAttribute="bottom" constant="108" id="srC-7P-f31"/>
                     <constraint firstAttribute="bottom" secondItem="1Dh-2W-k04" secondAttribute="bottom" constant="108" id="uuh-YE-oi1"/>
-                    <constraint firstItem="bl8-Eq-7pY" firstAttribute="leading" secondItem="9rI-Gj-bKv" secondAttribute="trailing" constant="8" id="xaY-NV-sM9"/>
                     <constraint firstAttribute="bottom" secondItem="flh-mG-rbv" secondAttribute="bottom" constant="20" id="xlZ-RH-jMB"/>
-                    <constraint firstItem="4eF-jx-dDP" firstAttribute="leading" secondItem="nMm-0D-5tA" secondAttribute="trailing" constant="8" id="ylV-gF-grz"/>
                     <constraint firstItem="1Dh-2W-k04" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="zii-se-a4q"/>
                 </constraints>
             </view>

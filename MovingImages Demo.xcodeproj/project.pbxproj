@@ -14,7 +14,6 @@
 		6E0294791B12372C00D88559 /* simple_renderer_AZukiniIcon.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E0294781B12372C00D88559 /* simple_renderer_AZukiniIcon.json */; };
 		6E02947B1B13CDA800D88559 /* renderer_AZukiniLogo.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E02947A1B13CDA800D88559 /* renderer_AZukiniLogo.json */; };
 		6E0294801B1B46A400D88559 /* Movies in Resources */ = {isa = PBXBuildFile; fileRef = 6E02947E1B1B46A400D88559 /* Movies */; };
-		6E0294811B1B46A400D88559 /* Pictures in Resources */ = {isa = PBXBuildFile; fileRef = 6E02947F1B1B46A400D88559 /* Pictures */; };
 		6E3FF0AF1AD1D68700AD45AD /* simple_renderer_Bluecamera.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0AE1AD1D68700AD45AD /* simple_renderer_Bluecamera.json */; };
 		6E3FF0B11AD53EE500AD45AD /* simple_renderer_Fillrect.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B01AD53EE500AD45AD /* simple_renderer_Fillrect.json */; };
 		6E3FF0B31AD544E700AD45AD /* simple_renderer_Strokeoval.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FF0B21AD544E700AD45AD /* simple_renderer_Strokeoval.json */; };
@@ -512,7 +511,6 @@
 			files = (
 				6EA953A61B47000C00A1C434 /* renderer_MovieComposition.json in Resources */,
 				6EA6803E1B1F28DB00C88104 /* renderer_ZukiniGIF.json in Resources */,
-				6E0294811B1B46A400D88559 /* Pictures in Resources */,
 				6E5CBB651B023FA200BF8FB7 /* drawarc.json in Resources */,
 				6EF60D3C1B2DF89600B582B0 /* renderer_SaturationContrastMovie.json in Resources */,
 				6E0294801B1B46A400D88559 /* Movies in Resources */,

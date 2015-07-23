@@ -90,8 +90,8 @@ class ZukiniDemoController: NSWindowController {
     
     @IBOutlet weak var movieInput1: NSPopUpButton!
     @IBOutlet weak var movieInput2: NSPopUpButton!
-    @IBOutlet weak var imageInput1: NSPopUpButton!
-    @IBOutlet weak var imageInput2: NSPopUpButton!
+//  @IBOutlet weak var imageInput1: NSPopUpButton!
+//  @IBOutlet weak var imageInput2: NSPopUpButton!
     
     @IBOutlet weak var exportMediaFilename: NSTextField!
     
@@ -262,12 +262,12 @@ class ZukiniDemoController: NSWindowController {
         movie1Filepath = firstMoviePath
         movie2Filepath = firstMoviePath
         
-        let imagesList = ZukiniDemoController.listOfImages()
-        imageInput1.addItemsWithTitles(imagesList)
-        imageInput2.addItemsWithTitles(imagesList)
-        let firstImagePath = imageNameToPath(imagesList.first!)
-        image1Filepath = firstImagePath
-        image2Filepath = firstImagePath
+        // let imagesList = ZukiniDemoController.listOfImages()
+        // imageInput1.addItemsWithTitles(imagesList)
+        // imageInput2.addItemsWithTitles(imagesList)
+        // let firstImagePath = imageNameToPath(imagesList.first!)
+        // image1Filepath = firstImagePath
+        // image2Filepath = firstImagePath
 
         self.exampleSelected(exampleList)
         let jsonString = jsonSegmentStrings[JSONSegment.DrawInstructions.rawValue]
@@ -540,8 +540,8 @@ class ZukiniDemoController: NSWindowController {
     
     private var movie1Filepath:String = ""
     private var movie2Filepath:String = ""
-    private var image1Filepath:String = ""
-    private var image2Filepath:String = ""
+//  private var image1Filepath:String = ""
+//  private var image2Filepath:String = ""
     private var destination:String = ""
     
     private var variables:[String:AnyObject] {
@@ -550,9 +550,9 @@ class ZukiniDemoController: NSWindowController {
                 MIJSONKeyWidth : rendererView.drawWidth,
                 MIJSONKeyHeight : rendererView.drawHeight,
                 "movie1path" : movie1Filepath,
-                "movie2path" : movie2Filepath,
-                "image1path" : image1Filepath,
-                "image2path" : image2Filepath,
+                "movie2path" : movie2Filepath
+// "image1path" : image1Filepath,
+// "image2path" : image2Filepath,
             ]
             for spinner in spinners {
                 if !spinner.view.hidden {
@@ -600,7 +600,8 @@ extension ZukiniDemoController {
         let theBundle = NSBundle(forClass: self.dynamicType)
         return theBundle.resourcePath!.stringByAppendingPathExtension(moviePath)!
     }
-    
+
+/*
     @IBAction func imageSelected(sender: AnyObject) {
         let popup = sender as! NSPopUpButton
         if let selectedTitle = popup.titleOfSelectedItem {
@@ -613,6 +614,7 @@ extension ZukiniDemoController {
             }
         }
     }
+*/
 }
 
 // MARK: ZukiniDemoController. Delegate protocol extensions.
