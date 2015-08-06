@@ -269,9 +269,10 @@ class ZukiniDemoController: NSWindowController {
         let moviesList = ZukiniDemoController.listOfMovies()
         movieInput1.addItemsWithTitles(moviesList)
         movieInput2.addItemsWithTitles(moviesList)
+        movieInput2.selectItemAtIndex(1)
         let firstMoviePath = movieNameToPath(moviesList.first!)
         movie1Filepath = firstMoviePath
-        movie2Filepath = firstMoviePath
+        movie2Filepath = movieNameToPath(moviesList[1])
         
         self.exampleSelected(exampleList)
         let jsonString = jsonSegmentStrings[JSONSegment.DrawInstructions.rawValue]
@@ -349,6 +350,7 @@ class ZukiniDemoController: NSWindowController {
         let result = performJSONCommands(jsonSegmentStrings[JSONSegment.Setup.rawValue])
         self.hasSetupRun = true
         self.updateDoCommandsButtons()
+        self.rendererView.needsDisplay = true
         return result
     }
 

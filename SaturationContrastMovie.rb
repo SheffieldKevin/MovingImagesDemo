@@ -139,6 +139,8 @@ def make_applyfilter()
     finalizeCommands.add_tocleanupcommands_closeobject(filterChain)
     finalizeCommands.add_tocleanupcommands_removeimagefromcollection(
                                                           imageIdentifier)
+    finalizeCommands.add_tocleanupcommands_removeimagefromcollection(
+                                                   $sourceImageFilterChainID)
     drawToView = MIDrawImageElement.new
     drawToView.set_imagecollection_imagesource(
                                   identifier: imageIdentifier)
