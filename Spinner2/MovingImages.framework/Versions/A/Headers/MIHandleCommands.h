@@ -9,8 +9,18 @@
 
 #pragma clang assume_nonnull begin
 
-/// Prepare Cocoa Lumberjack for logging messages.
-void MIInitializeCocoaLumberjack();
+typedef void (^MILoggingFunction)(NSString * __nullable message,
+                                  NSString * __nullable objectClass,
+                                  NSString * __nullable objectStringRef,
+                                  NSString * __nullable file,
+                                  int line,
+                                  NSString * __nullable function);
+
+/// Assign the block to use to do logging.
+void MISetLogging(MILoggingFunction loggingFunction);
+
+/// Register a command.
+void MIRegisterCommand(NSString *commandString);
 
 /**
  @brief Completion handler block definition for MIMovingImagesHandleCommands()
@@ -91,18 +101,6 @@ NSDictionary *MIMovingImagesHandleCommands(MIContext * __nullable context,
 CGImageRef __nullable MICreateImageFromObjectAndOptions(MIContext * __nullable context,
         NSDictionary *objectDict, NSDictionary * __nullable imageOptions,
         id __nullable cantBeThisObject) CF_RETURNS_RETAINED;
-
-/**
- @brief Generate a MICGImage based on the properties of the image dictionary.
- @discussion MICGImageFromDictionary will first see if it can obtain an
- image from the image collection in the context, but if the image identifier key
- is not specified then MICGImageFromDictionary will determine the object to
- create the image and get the image options from the image dictionary and then
- call MICGImageFromObjectAndOptions to create the image.
-
-MICGImage * __nullable MICGImageFromDictionary(MIContext * __nullable context,
-        NSDictionary *imageDict, id __nullable cantBeThisObject);
-*/
 
 /**
  @brief Get a Integer value from a string. Uses DDMathParser to get the number
