@@ -1,4 +1,6 @@
 //  MovingImagesBridgingHeader.h
 //  Copyright (c) 2015 Kevin Meaney.
 
-#import <MovingImages/MovingImages.h>
+@import MovingImages;
+
+#import "CocoaLumberjack/Zukini/MICocoaLumberjack.h"
