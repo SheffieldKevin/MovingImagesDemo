@@ -33,7 +33,7 @@ class ZukiniRendererView: NSView {
         }
     }
 
-    func makeNewRenderer(#miContext:MIContext) {
+    func makeNewRenderer(miContext miContext:MIContext) {
         simpleRenderer = MISimpleRenderer(MIContext: miContext)
     }
 

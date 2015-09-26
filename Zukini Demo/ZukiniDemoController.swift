@@ -113,7 +113,7 @@ class ZukiniDemoController: NSWindowController {
     }
     
     @IBAction func removeSpinner(sender: AnyObject) {
-        for spinner in reverse(spinners) {
+        for spinner in spinners.reverse() {
             if !spinner.view.hidden {
                 spinner.view.hidden = true
                 break
@@ -139,7 +139,7 @@ class ZukiniDemoController: NSWindowController {
         }
     }
     
-    @IBAction func exportJSON(#sender: AnyObject) {
+    @IBAction func exportJSON(sender sender: AnyObject) {
         let savePanel = NSSavePanel()
         savePanel.allowedFileTypes = ["public.json"]
         savePanel.beginSheetModalForWindow(window!, completionHandler: { result in
@@ -149,31 +149,31 @@ class ZukiniDemoController: NSWindowController {
                     writeJSONToFile(theDict, filePath: filePath)
                 }
                 else {
-                    println("Invalid file path for exporting moving images source")
+                    print("Invalid file path for exporting moving images source")
                 }
             }
         })
     }
     
-    @IBAction func importJSON(#sender: AnyObject) {
+    @IBAction func importJSON(sender sender: AnyObject) {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
         openPanel.beginSheetModalForWindow(window!, completionHandler: { result in
             if result == NSModalResponseOK {
-                self.configureWithJSONFile(openPanel.URLs[0] as? NSURL)
+                self.configureWithJSONFile(openPanel.URLs[0])
             }
             else {
-                println("Invalid file path for importing moving images source")
+                print("Invalid file path for importing moving images source")
             }
         })
     }
 
-    @IBAction func selectSegmentCommand(#sender: AnyObject) {
+    @IBAction func selectSegmentCommand(sender sender: AnyObject) {
         if let theText = jsonTextView.string {
             jsonSegmentStrings[lastSelectedSegment.rawValue] = theText
         }
         self.lastSelectedSegment = JSONSegment(rawValue: commandSegments.selectedSegment)!
-        if let theText = jsonSegmentStrings[self.lastSelectedSegment.rawValue] {
+        if let _ = jsonSegmentStrings[self.lastSelectedSegment.rawValue] {
             jsonTextView.string = jsonSegmentStrings[self.lastSelectedSegment.rawValue]
         }
         else {
@@ -187,41 +187,40 @@ class ZukiniDemoController: NSWindowController {
         }
     }
 
-    @IBAction func doSetupCommands(#sender: AnyObject) {
+    @IBAction func doSetupCommands(sender sender: AnyObject) {
         self.performSetupCommands()
     }
     
-    @IBAction func doProcessCommands(#sender: AnyObject) {
-        self.performProcessCommands(progressHandler: self.progressHandler,
+    @IBAction func doProcessCommands(sender sender: AnyObject) {
+        self.performProcessCommands(self.progressHandler,
             completionHandler: self.processCompletionHandler)
     }
 
-    @IBAction func doFinalizeCommands(#sender: AnyObject) {
+    @IBAction func doFinalizeCommands(sender sender: AnyObject) {
         if self.performFinalizeCommands() && openFile.integerValue != 0 {
             let fileName = self.exportMediaFilename.stringValue
             let folderPath = self.exportFolderLocation
-            let filePath = folderPath.stringByAppendingPathComponent(fileName)
+            let filePath = NSString(string: folderPath).stringByAppendingPathComponent(fileName)
             NSWorkspace.sharedWorkspace().openFile(filePath)
         }
     }
 
-    @IBAction func exportDestination(#sender: AnyObject) {
-        let chooseFolderPanel = NSOpenPanel.new()
+    @IBAction func exportDestination(sender sender: AnyObject) {
+        let chooseFolderPanel = NSOpenPanel()
         chooseFolderPanel.canChooseDirectories = true
         chooseFolderPanel.canChooseFiles = false
         chooseFolderPanel.canCreateDirectories = true
         chooseFolderPanel.beginSheetModalForWindow(window!, completionHandler:
         { result in
             if result == NSModalResponseOK {
-                if let theURL = chooseFolderPanel.URLs[0] as? NSURL,
-                    let path = theURL.path
+                if let path = chooseFolderPanel.URLs[0].path
                 {
                     self.exportFolderLocation = path
                     NSUserDefaults.standardUserDefaults().setObject(path,
                         forKey: ZukiniDemoController.exportFolderPathDefaultsKey)
                 }
                 else {
-                    println("Invalid file path for exporting moving images source")
+                    print("Invalid file path for exporting moving images source")
                 }
             }
         })
@@ -238,7 +237,7 @@ class ZukiniDemoController: NSWindowController {
             theWindow.backgroundColor = NSColor(deviceWhite: 0.15, alpha: 1.0)
         }
         openFile.toolTip = "Open the movie after it has been generated"
-        var attributedString = openFile.attributedTitle.mutableCopy() as! NSMutableAttributedString
+        let attributedString = openFile.attributedTitle.mutableCopy() as! NSMutableAttributedString
         let stringRange = NSRange(location: 0, length: attributedString.length)
         attributedString.addAttribute(NSForegroundColorAttributeName,
             value: NSColor.whiteColor(), range: stringRange)
@@ -280,8 +279,8 @@ class ZukiniDemoController: NSWindowController {
             rendererView.drawDictionary =
                     createJSONObjectFromJSONString(jsonString) as? [String:AnyObject]
         }
-        let folderPath = self.exportFolderLocation.stringByExpandingTildeInPath
-        let defaultsDict:[NSObject : AnyObject] =
+        let folderPath = NSString(string: self.exportFolderLocation).stringByExpandingTildeInPath
+        let defaultsDict:[String : AnyObject] =
             [ZukiniDemoController.exportFolderPathDefaultsKey : folderPath,
             ZukiniDemoController.windowWidthKey : ZukiniDemoController.windowWidth,
             ZukiniDemoController.windowHeightKey : ZukiniDemoController.windowHeight,
@@ -319,7 +318,7 @@ class ZukiniDemoController: NSWindowController {
             
             let result = MIGetErrorCodeFromReplyDictionary(resultDict) == MIReplyErrorEnum.NoError
             if !result {
-                println("Error result: \(resultDict)")
+                print("Error result: \(resultDict)")
             }
             return result
         }
@@ -341,7 +340,7 @@ class ZukiniDemoController: NSWindowController {
         processCompleted()
         let result = MIGetErrorCodeFromReplyDictionary(replyDictionary) == MIReplyErrorEnum.NoError
         if !result {
-            println("Error result: \(replyDictionary)")
+            print("Error result: \(replyDictionary)")
         }
     }
 
@@ -391,7 +390,7 @@ class ZukiniDemoController: NSWindowController {
         let bundle = NSBundle(forClass: ZukiniDemoController.self)
         let moviePaths = bundle.pathsForResourcesOfType("mov", inDirectory: "Movies")
         let movies = moviePaths.map() { filePath -> String in
-            return filePath.lastPathComponent.stringByDeletingPathExtension
+            return NSString(string: NSString(string: filePath).lastPathComponent).stringByDeletingPathExtension
         }
         return movies
     }
@@ -401,7 +400,7 @@ class ZukiniDemoController: NSWindowController {
         let moviePaths = bundle.pathsForResourcesOfType("jpg", inDirectory: "Pictures")
         
         let examples = moviePaths.map() {
-            filePath -> String in return filePath.lastPathComponent.stringByDeletingPathExtension
+            filePath -> String in return NSString(string: NSString(string: filePath).lastPathComponent).stringByDeletingPathExtension
         }
         return examples
     }
@@ -413,7 +412,7 @@ class ZukiniDemoController: NSWindowController {
                 self.configureWithJSONDict(jsonDict)
         }
         else {
-            println("Invalid JSON file: \(fileURL)")
+            print("Invalid JSON file: \(fileURL)")
         }
     }
     
@@ -466,7 +465,7 @@ class ZukiniDemoController: NSWindowController {
             jsonDict[JSONSegment.Variables.stringValue],
             let variableDefs = varDefs as? [AnyObject]
         {
-            for (index, variableDefinition) in enumerate(variableDefs) {
+            for (index, variableDefinition) in variableDefs.enumerate() {
                 if let variableDef = variableDefinition as? [String:AnyObject] {
                     spinners[index].configureSpinner(dictionary: variableDef)
                     spinners[index].view.hidden = false
@@ -562,7 +561,7 @@ class ZukiniDemoController: NSWindowController {
             }
             
             let fileName = self.exportMediaFilename.stringValue
-            let filePath = self.exportFolderLocation.stringByAppendingPathComponent(fileName)
+            let filePath = NSString(string: self.exportFolderLocation).stringByAppendingPathComponent(fileName)
             theDictionary["exportfilepath"] = filePath
             return theDictionary
         }
@@ -576,10 +575,10 @@ class ZukiniDemoController: NSWindowController {
 // MARK: ZukiniDemoController extension managing resources.
 extension ZukiniDemoController {
     private func movieNameToPath(name: String) -> String {
-        let fileName = name.stringByAppendingPathExtension("mov")!
-        let moviePath = "Movies".stringByAppendingPathComponent(fileName)
+        let fileName = NSString(string: name).stringByAppendingPathExtension("mov")!
+        let moviePath = NSString(string: "Movies").stringByAppendingPathComponent(fileName)
         let theBundle = NSBundle(forClass: self.dynamicType)
-        return theBundle.resourcePath!.stringByAppendingPathComponent(moviePath)
+        return NSString(string: theBundle.resourcePath!).stringByAppendingPathComponent(moviePath)
     }
     
     @IBAction func movieSelected(sender: AnyObject) {
@@ -596,10 +595,10 @@ extension ZukiniDemoController {
     }
     
     private func imageNameToPath(name: String) -> String {
-        let fileName = name.stringByAppendingPathExtension("jpg")!
-        let moviePath = "Images".stringByAppendingPathComponent(fileName)
+        let fileName = NSString(string: name).stringByAppendingPathExtension("jpg")!
+        let moviePath = NSString(string: "Images").stringByAppendingPathComponent(fileName)
         let theBundle = NSBundle(forClass: self.dynamicType)
-        return theBundle.resourcePath!.stringByAppendingPathExtension(moviePath)!
+        return NSString(string: theBundle.resourcePath!).stringByAppendingPathExtension(moviePath)!
     }
 }
 
@@ -669,7 +668,7 @@ extension ZukiniDemoController: NSWindowDelegate {
     
     func windowDidEnterFullScreen(notification: NSNotification) {
         self.updateVariables()
-        if let theWindow = self.window {
+        if let _ = self.window {
             let defaults = NSUserDefaults.standardUserDefaults()
             defaults.setBool(true, forKey: ZukiniDemoController.windowFullScreenKey)
         }
@@ -677,7 +676,7 @@ extension ZukiniDemoController: NSWindowDelegate {
 
     func windowDidExitFullScreen(notification: NSNotification) {
         self.updateVariables()
-        if let theWindow = self.window {
+        if let _ = self.window {
             let defaults = NSUserDefaults.standardUserDefaults()
             defaults.setBool(false, forKey: ZukiniDemoController.windowFullScreenKey)
         }

@@ -13,7 +13,7 @@ class SpinnerPopoverController: NSViewController {
     
     weak var spinnerController: SpinnerController?
     
-    @IBAction func handleDone(#sender: NSButton) {
+    @IBAction func handleDone(sender sender: NSButton) {
         spinnerController!.dismissPopover()
     }
     

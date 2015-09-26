@@ -60,10 +60,7 @@ class Spinner: NSControl {
     
     override func awakeFromNib() {
         let trackingArea = NSTrackingArea(rect: visibleRect,
-            options: NSTrackingAreaOptions.MouseEnteredAndExited |
-                    NSTrackingAreaOptions.MouseMoved |
-                    NSTrackingAreaOptions.InVisibleRect |
-                    NSTrackingAreaOptions.ActiveAlways,
+            options: [NSTrackingAreaOptions.MouseEnteredAndExited, NSTrackingAreaOptions.MouseMoved, NSTrackingAreaOptions.InVisibleRect, NSTrackingAreaOptions.ActiveAlways],
             owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea)
     }
@@ -271,9 +268,9 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
 
     // MARK: Public instance methods.
     func displayPopover(sender: Spinner) -> Void {
-        let thePopover = self.popover
-        popover.showRelativeToRect(self.view.bounds, ofView: self.view,
-            preferredEdge: NSMaxYEdge)
+        // let thePopover = self.popover
+        self.popover.showRelativeToRect(self.view.bounds, ofView: self.view,
+            preferredEdge: NSRectEdge.MaxY)
         popoverController?.maxValue?.doubleValue = self.maxValue
         popoverController?.minValue?.doubleValue = self.minValue
         popoverController?.controlKey?.stringValue = self.variableKey
@@ -291,11 +288,11 @@ class SpinnerController: NSViewController, NSPopoverDelegate {
         }
     }
     
-    func spinnerValueChanged(#spinner: Spinner) -> Void {
+    func spinnerValueChanged(spinner spinner: Spinner) -> Void {
         delegate?.spinnerValueChanged()
     }
     
-    func configureSpinner(#dictionary: [String:AnyObject]) -> Void {
+    func configureSpinner(dictionary dictionary: [String:AnyObject]) -> Void {
         if let theKey = dictionary["variablekey"] as? String {
             self.variableKey = theKey
         }

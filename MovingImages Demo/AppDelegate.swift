@@ -22,13 +22,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-    @IBAction func exportAsJSON(#sender: AnyObject) {
+    @IBAction func exportAsJSON(sender sender: AnyObject) {
         if let windowController = simpleRendererWindowContoller {
             windowController.exportJSON(sender: sender)
         }
     }
     
-    @IBAction func importJSON(#sender: AnyObject)  {
+    @IBAction func importJSON(sender sender: AnyObject)  {
         if let windowController = simpleRendererWindowContoller {
             windowController.importJSON(sender: sender)
         }

@@ -58,6 +58,7 @@ class SimpleRendererView: NSView {
         let theContext = NSGraphicsContext.currentContext()!.CGContext
         CGContextSetTextMatrix(theContext, CGAffineTransformIdentity)
         drawOutlineAndInsetDrawing(theContext)
+        CGContextSetLineWidth(theContext, 1.0)
         if let drawDict = self.drawDictionary,
             let renderer = self.simpleRenderer
         {

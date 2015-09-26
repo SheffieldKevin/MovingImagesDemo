@@ -36,7 +36,7 @@ extension Float {
     }
 }
 
-func listOfExamples(#prefix: String) -> [String] {
+func listOfExamples(prefix prefix: String) -> [String] {
     // Find list of JSON file in the first instance in the application
     // bundle. Might change this to application support as well
     // at some point which would take precedence.
@@ -44,7 +44,7 @@ func listOfExamples(#prefix: String) -> [String] {
     let allJSONPaths = bundle.pathsForResourcesOfType("json",
         inDirectory: Optional.None)
     let simpleRendererJSONPaths = allJSONPaths.filter() { filePath -> Bool in
-        let fileName = filePath.lastPathComponent
+        let fileName = NSString(string: filePath).lastPathComponent
         if fileName.hasPrefix(prefix) {
             return true
         }
@@ -52,14 +52,14 @@ func listOfExamples(#prefix: String) -> [String] {
     }
     
     let examples = simpleRendererJSONPaths.map() { filePath -> String in
-        let fileName = filePath.lastPathComponent
+        let fileName = NSString(string: filePath).lastPathComponent
         let subString = fileName.substringFromIndex(prefix.endIndex)
         return subString
     }
     return examples
 }
 
-func exampleNameToFilePath(exampleName: String, #prefix: String) -> String {
+func exampleNameToFilePath(exampleName: String, prefix: String) -> String {
     let fileName = prefix + exampleName
     let resourcesURL = NSBundle.mainBundle().resourceURL!
     let resourceURL = resourcesURL.URLByAppendingPathComponent(fileName)
@@ -70,39 +70,38 @@ func readJSONFromFile(filePath: String) -> [String:AnyObject]? {
     if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
         if let inStream = NSInputStream(fileAtPath: filePath) {
             inStream.open()
-            let container:AnyObject? = NSJSONSerialization.JSONObjectWithStream(
+            let container:AnyObject? = try? NSJSONSerialization.JSONObjectWithStream(
                 inStream,
-                options: NSJSONReadingOptions.allZeros,
-                error: nil)
+                options: NSJSONReadingOptions())
             if let container:AnyObject = container,
                 let dictionary = container as? [String:AnyObject] {
                     return dictionary
             }
             else {
-                println("Failed to create a dictionary from file \(filePath)")
+                print("Failed to create a dictionary from file \(filePath)")
             }
         }
         else {
-            println("Could not read from file \(filePath)")
+            print("Could not read from file \(filePath)")
         }
     }
     else {
-        println("File does not exists: \(filePath)")
+        print("File does not exists: \(filePath)")
     }
     return Optional.None
 }
 
 func createJSONObjectFromJSONString(jsonString: String?) -> AnyObject? {
     if let data = jsonString?.dataUsingEncoding(NSUTF8StringEncoding),
-        let theObject:AnyObject = NSJSONSerialization.JSONObjectWithData(
-            data, options: NSJSONReadingOptions.allZeros, error:nil)
+        let theObject:AnyObject = try? NSJSONSerialization.JSONObjectWithData(
+            data, options: NSJSONReadingOptions())
     {
             return theObject
     }
     return Optional.None
 }
 
-func writeJSONToFile(jsonObject: [String:AnyObject], #filePath: String) -> Void {
+func writeJSONToFile(jsonObject: [String:AnyObject], filePath: String) -> Void {
     if NSJSONSerialization.isValidJSONObject(jsonObject) {
         if let outputStream = NSOutputStream(toFileAtPath: filePath, append: false) {
             outputStream.open()
@@ -121,20 +120,20 @@ func makePrettyJSONFromJSONObject(jsonObject: AnyObject?) -> String? {
             return Optional.None
         }
 */
-        let data = NSJSONSerialization.dataWithJSONObject(jsonObject,
-            options: NSJSONWritingOptions.PrettyPrinted, error: nil)
+        let data = try? NSJSONSerialization.dataWithJSONObject(jsonObject,
+            options: NSJSONWritingOptions.PrettyPrinted)
         
         if let data = data,
             let jsonString = NSString(data: data, encoding: NSUTF8StringEncoding) {
                 return String(jsonString)
         }
-        println("Could not convert dictionary to a json string")
+        print("Could not convert dictionary to a json string")
     }
     
     return Optional.None
 }
 
-func createCGImage(name: String, #fileExtension: String) -> CGImage? {
+func createCGImage(name: String, fileExtension: String) -> CGImage? {
     let bundle = NSBundle.mainBundle()
     if let url = bundle.URLForResource(name, withExtension: fileExtension) {
         if NSFileManager.defaultManager().fileExistsAtPath(url.path!) {
@@ -159,8 +158,8 @@ func createDictionaryFromJSONFile(name: String, inBundle: NSBundle? = Optional.N
        let inStream = NSInputStream(URL: url)
     {
         inStream.open()
-        if let container:AnyObject? = NSJSONSerialization.JSONObjectWithStream(
-            inStream, options:NSJSONReadingOptions.allZeros, error:nil),
+        if let container:AnyObject? = try? NSJSONSerialization.JSONObjectWithStream(
+            inStream, options:NSJSONReadingOptions()),
             let theContainer = container as? [String : AnyObject]
         {
             return theContainer

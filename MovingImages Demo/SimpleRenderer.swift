@@ -36,7 +36,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
     }
     
     @IBAction func removeSpinner(sender: AnyObject) {
-        for spinner in reverse(spinners) {
+        for spinner in Array(spinners.reverse()) {
             if !spinner.view.hidden {
                 spinner.view.hidden = true
                 break
@@ -45,7 +45,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         updateSpinnersEditingControls()
     }
 
-    @IBAction func exampleSelected(#sender: AnyObject) {
+    @IBAction func exampleSelected(sender sender: AnyObject) {
         let popup = sender as! NSPopUpButton
         let selectedTitle = popup.titleOfSelectedItem!
         let filePath = exampleNameToFilePath(selectedTitle,
@@ -55,7 +55,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         }
     }
 
-    @IBAction func exportJSON(#sender: AnyObject) {
+    @IBAction func exportJSON(sender sender: AnyObject) {
         let savePanel = NSSavePanel()
         savePanel.allowedFileTypes = ["public.json"]
         savePanel.beginSheetModalForWindow(window!, completionHandler: { result in
@@ -65,13 +65,13 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                     writeJSONToFile(theDict, filePath: filePath)
                 }
                 else {
-                    println("Invalid file path for exporting moving images source")
+                    print("Invalid file path for exporting moving images source")
                 }
             }
         })
     }
     
-    @IBAction func importJSON(#sender: AnyObject) {
+    @IBAction func importJSON(sender sender: AnyObject) {
         let openPanel = NSOpenPanel()
         // openPanel.directoryURL = Optional.None
         openPanel.allowsMultipleSelection = false
@@ -83,11 +83,11 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                             self.configureWithJSON(jsonDict)
                         }
                         else {
-                            println("Invalid JSON dictionary")
+                            print("Invalid JSON dictionary")
                         }
                 }
                 else {
-                    println("Invalid file path for importing moving images source")
+                    print("Invalid file path for importing moving images source")
                 }
             }
         })
@@ -154,7 +154,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
             simpleRenderView.needsDisplay = true
         }
         else {
-            println("\(__FUNCTION__) failed to convert json text to dictionary")
+            print("\(__FUNCTION__) failed to convert json text to dictionary")
         }
     }
     
@@ -182,7 +182,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
                 jsonDictionary[SimpleRendererWindowController.variableDefinitions],
                 let variableDefs = varDefs as? [AnyObject]
             {
-                for (index, variableDefinition) in enumerate(variableDefs) {
+                for (index, variableDefinition) in variableDefs.enumerate() {
                     if let variableDef = variableDefinition as? [String:AnyObject] {
                         spinners[index].configureSpinner(dictionary: variableDef)
                         spinners[index].view.hidden = false
