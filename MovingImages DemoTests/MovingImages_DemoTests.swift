@@ -25,7 +25,7 @@ class MovingImages_DemoTests: XCTestCase {
         let simpleRendererView = SimpleRendererView(frame: NSRect(x: 200, y: 200,
             width: 800, height: 800))
         
-        if let theDict = simpleRendererView.variables {
+        if let _ = simpleRendererView.variables {
             XCTAssert(false,
                 "Variables dictionary not set, should have Optional.None")
         }
@@ -39,7 +39,7 @@ class MovingImages_DemoTests: XCTestCase {
         ]
         simpleRendererView.variables = variables
         
-        if let theDict = simpleRendererView.variables {
+        if let _ = simpleRendererView.variables {
             XCTAssert(true, "Variables dictionary should be defined")
         }
         else {

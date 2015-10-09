@@ -77,8 +77,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         openPanel.allowsMultipleSelection = false
         openPanel.beginSheetModalForWindow(window!, completionHandler: { result in
             if result == NSModalResponseOK {
-                if let theURL = openPanel.URLs[0] as? NSURL,
-                    let thePath = theURL.path {
+                    if let thePath = openPanel.URLs[0].path {
                         if let jsonDict = readJSONFromFile(thePath) {
                             self.configureWithJSON(jsonDict)
                         }
@@ -154,6 +153,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
             simpleRenderView.needsDisplay = true
         }
         else {
+            simpleRenderView.drawDictionary = .None
             print("\(__FUNCTION__) failed to convert json text to dictionary")
         }
     }
