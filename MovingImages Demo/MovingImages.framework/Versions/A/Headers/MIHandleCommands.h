@@ -9,10 +9,24 @@
 
 #pragma clang assume_nonnull begin
 
+/**
+ @brief The logging handler block definition for applying a logging function.
+ @discussion If you provide a logging function to MovingImages then the type
+ of the logging function must match MILoggingFunction. You assign the logging
+ function using MISetLogging. In version 1 of MovingImages file was a full
+ file path. This has been changed to file name which is just the name of the
+ source file, not the full path.
+ @param message This is the message for the issue that needed reporting.
+ @param objectClass This is the class of the object returned in objectStringRep
+ @param objectStringRep This is the string representation of the object.
+ @param fileName This is the source file from which the log message was emitted.
+ @param line    This is the line number in source file where message was emitted.
+ @param function    This is the name of the function that emitted the message.
+*/
 typedef void (^MILoggingFunction)(NSString * __nullable message,
                                   NSString * __nullable objectClass,
-                                  NSString * __nullable objectStringRef,
-                                  NSString * __nullable file,
+                                  NSString * __nullable objectStringRep,
+                                  NSString * __nullable fileName,
                                   int line,
                                   NSString * __nullable function);
 

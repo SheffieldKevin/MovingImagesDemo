@@ -27,7 +27,7 @@
 /// Draw into the context. Assumes already oriented to bottom left is 0,0.
 -(void)drawDictionary:(NSDictionary *)drawDict intoCGContext:(CGContextRef)context;
 
-/// Assign an image to the image collection with identifier.
+/// Assign an image to the image collection with identifier. Replaces previous.
 -(void)assignImage:(CGImageRef)image withIdentifier:(NSString *)identifier;
 
 /// Remove image from image collection with identifier.

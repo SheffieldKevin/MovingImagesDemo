@@ -279,6 +279,9 @@ extern NSString *const MIJSONKeyVariablesDictionary;
 /// The key for representing an array of path elements. "arrayofpathelements"
 extern NSString *const MIJSONKeyArrayOfPathElements;
 
+/// The key for representing an SVG style path representation. "svgpath"
+extern NSString *const MIJSONKeySVGPath;
+
 /// The key for representing a rectangle. "rect". Made of: { origin, size }.
 extern NSString *const MIJSONKeyRect;
 
@@ -1192,6 +1195,13 @@ extern NSString *const MIJSONValueCreateTrackCommand;
 */
 extern NSString *const MIJSONValueAddMovieInstruction;
 
+/**
+ @brief Add a audio mix instruction. MIJSONKeyCommand key "addaudiomixinstruction"
+ @discussion An audio mix instruction provides a way to set the volume of a
+ specific audio track at a certain point in time, or to specify a volume ramp.
+*/
+extern NSString *const MIJSONValueAddAudioMixInstruction;
+
 /// Add an empty segment to a track of a movie editor. "insertemptytracksegment"
 extern NSString *const MIJSONValueInsertEmptyTrackSegment;
 
@@ -1686,7 +1696,7 @@ extern NSString *const MIJSONPropertyMovieTrackMinFrameDuration;
 extern NSString *const MIJSONPropertyMovieFrameDuration;
 
 /// Dictionary describing movie editor instruction to add. "movieeditorinstruction"
-extern NSString *const MIJSONPropertyMovieEditorInstruction;
+// extern NSString *const MIJSONPropertyMovieEditorInstruction;
 
 /// Movie editor layer instructions. An array of instructions. "layerinstructions"
 extern NSString *const MIJSONPropertyMovieEditorLayerInstructions;
@@ -1711,6 +1721,15 @@ extern NSString *const MIJSONValueMovieEditorTransformInstruction;
 
 /// Opacity instruction. "opacityinstruction"
 extern NSString *const MIJSONValueMovieEditorOpacityInstruction;
+
+/// Movie editor audio instruction type. "audioinstruction"
+extern NSString *const MIJSONKeyMovieEditorAudioInstruction;
+
+/// Volume instruction. "volumeinstruction"
+extern NSString *const MIJSONValueMovieEditorVolumeInstruction;
+
+/// Volume ramp audio mix instruction. "volumerampinstruction"
+extern NSString *const MIJSONValueMovieEditorVolumeRampInstruction;
 
 /// Crop instruction. "cropinstruction"
 extern NSString *const MIJSONValueMovieEditorCropInstruction;
