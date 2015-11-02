@@ -793,6 +793,20 @@ extern NSString *const MIJSONKeyInnerShadow;
 extern NSString *const MIJSONKeyClippingpath;
 
 /*
+ @brief Array of line dash lengths to create a line dash pattern. "dasharray"
+ @discussion When setting the dashing for stroking a line you define a line pattern.
+ The pattern is defined by a series of lengths, the first length being how long
+ the first line segment drawn is, the second is how long the segment is that is
+ not drawn and then you can repeat.
+*/
+extern NSString *const MIJSONKeyLineDashArray;
+
+/*
+ @brief A value that specifies how far into dash pattern the line starts "dashphase"
+*/
+extern NSString *const MIJSONKeyLineDashPhase;
+
+/*
  @brief Use an image as a mask. Dictionary spec for applying the image mask.
  @discussion The dictionary specification for applying an image as a mask takes
  an object dictionary from which to get the image, an optional image index
