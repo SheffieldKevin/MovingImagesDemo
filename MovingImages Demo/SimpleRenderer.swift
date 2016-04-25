@@ -154,7 +154,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         }
         else {
             simpleRenderView.drawDictionary = .None
-            print("\(__FUNCTION__) failed to convert json text to dictionary")
+            print("\(#function) failed to convert json text to dictionary")
         }
     }
     
@@ -214,7 +214,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         var numberOfSpinners = 0
         for spinner in spinners {
             if !spinner.view.hidden {
-                numberOfSpinners++
+                numberOfSpinners += 1
             }
         }
         return !(numberOfSpinners == maximumNumberOfSpinners)
@@ -224,7 +224,7 @@ class SimpleRendererWindowController:NSWindowController, NSTextViewDelegate,
         var numberOfSpinners = 0
         for spinner in spinners {
             if spinner.view.hidden {
-                numberOfSpinners++
+                numberOfSpinners += 1
             }
         }
         return !(numberOfSpinners == 4)
