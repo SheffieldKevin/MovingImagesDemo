@@ -180,9 +180,9 @@
           "x" : 0,
           "y" : 60
         },
-        "fontsize" : 20,
+        "fontsize" : 18,
         "elementtype" : "drawbasicstring",
-        "userinterfacefont" : "kCTFontUIFontSystem",
+        "userinterfacefont" : "kCTFontUIFontUserFixedPitch",
         "fillcolor" : {
           "red" : 0.8,
           "alpha" : 1,
